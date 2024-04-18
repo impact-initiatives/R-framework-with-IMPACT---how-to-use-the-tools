@@ -1,0 +1,4 @@
+"0","my_raw_dataset %>% "
+"0","  dplyr::mutate(xxx =  primary_livelihood == ""employment"" & tot_expenses < 1000000) %>% "
+"0","  dplyr::select(X_uuid, xxx, primary_livelihood, tot_expenses) %>% "
+"0","  head()"

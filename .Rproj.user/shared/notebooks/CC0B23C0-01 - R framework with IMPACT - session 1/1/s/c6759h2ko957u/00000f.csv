@@ -1,0 +1,7 @@
+"0","example_logic2 <- my_raw_dataset %>% "
+"0","  check_logical(uuid_column = ""X_uuid"", "
+"0","                check_to_perform = ""primary_livelihood == \""employment\"" & tot_expenses < 1000000"","
+"0","                description = ""primary_livelihood is rented but expenses less than 1 000 000"")"
+"2","Warning: columns_to_clean not shared, results may not be accurate"
+"0","example_logic2$logical_xx %>% "
+"0","  head()"

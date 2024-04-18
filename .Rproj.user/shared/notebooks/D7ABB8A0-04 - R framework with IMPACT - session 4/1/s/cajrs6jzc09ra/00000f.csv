@@ -1,0 +1,17 @@
+"0","#| output: false"
+"0","my_data <- my_data %>% "
+"0","  add_weights(sampling_frame, ""admin1"", ""strata"", ""population"")"
+"0",""
+"0","my_design <- srvyr::as_survey_design(my_data, weights = ""weights"", strata = ""admin1"")"
+"0","my_results <- create_analysis(my_design, loa = my_loa, sm_separator = ""/"")"
+"2","Joining with `by = join_by(admin1)`"
+"2","Joining with `by = join_by(wash_drinkingwatersource)`"
+"2"," [32m■■■■■■■■■■■■■■■                 [39m  46% |  ETA:  2s"
+"2"," [32m■■■■■■■■■■■■■■■■■               [39m  54% |  ETA:  2s"
+"2"," [32m■■■■■■■■■■■■■■■■■■■             [39m  62% |  ETA:  1s"
+"2"," [32m■■■■■■■■■■■■■■■■■■■■■■          [39m  69% |  ETA:  1s"
+"2"," [32m■■■■■■■■■■■■■■■■■■■■■■■■        [39m  77% |  ETA:  1s"
+"2"," [32m■■■■■■■■■■■■■■■■■■■■■■■■■■      [39m  85% |  ETA:  1s"
+"2","Joining with `by = join_by(admin1, wash_drinkingwatersource)`"
+"2"," [32m■■■■■■■■■■■■■■■■■■■■■■■■■■■■■   [39m  92% |  ETA:  0s"
+"2","                                                   "

@@ -1,0 +1,568 @@
+---
+title: "03 - R framework with IMPACT - session 3"
+author: "Yann Say"
+date: today
+
+format:
+  html:
+    toc: true
+    css: config/css/styles.css
+    df-print: kable
+    embed-resources: true
+---
+```{r}
+#| warning: false
+library(addindicators)
+library(dplyr)
+
+my_data <- addindicators::addindicators_MSNA_template_data
+```
+
+# Composition - adding indicators
+
+The framework is built around 4 steps: cleaning, composition, analysis, outputs
+
+-   *Cleaning*: any manipulation to go from the raw data to the clean data
+-   *Composition*: any manipulation before the analysis e.g. adding indicators, adding information from loop or main, aok aggregation, etc.
+-   *Analysis*: any manipulation regarding only the analysis
+-   *Outputs*: any manipulation to format the outputs. Outputs are created from the results table, from the stat + analysis key
+
+The following section will present some introduction about the composition, in particular how to add indicators and review them.
+
+::: {.callout-tip appearance="minimal"}
+### add\_\*
+
+**add_**\* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.
+
+**add_**\* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation). 
+
+For example, to check the duration of a survey, there is only the start and end, but not the duration column.
+
+With `addindicators` some intermediate columns can be added if they are used to create the new indicator.
+:::
+
+## add_fcs
+
+```{r}
+my_data_with_fcs <- my_data %>% add_fcs(
+  cutoffs = "normal",
+  fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
+  fsl_fcs_legumes = "fs_fcs_beans_nuts",
+  fsl_fcs_veg = "fs_fcs_vegetables_leaves",
+  fsl_fcs_fruit = "fs_fcs_fruit",
+  fsl_fcs_meat = "fs_fcs_meat_fish_eggs",
+  fsl_fcs_dairy = "fs_fcs_dairy",
+  fsl_fcs_sugar = "fs_fcs_sugar",
+  fsl_fcs_oil = "fs_fcs_oil_fat_butter"
+)
+
+my_data_with_fcs[, tail(names(my_data_with_fcs), 10)] %>%
+  head()
+```
+::: {.callout-note .column-margin}
+You can learn more about food security indicators [here](https://fscluster.org/handbook/).
+:::
+
+## add_hhs
+
+::: {.callout-tip appearance="minimal"}
+### Pipe-able
+
+The framework is built around 2 adjectives, **pipe-able** and **independent**. In the framework, functions of the same family should be pipe-able. In the following case, 2 **add\_**\* functions are piped.
+:::
+
+
+```{r}
+my_data_with_indicators <- my_data %>%
+  add_fcs(
+  cutoffs = "normal",
+  fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
+  fsl_fcs_legumes = "fs_fcs_beans_nuts",
+  fsl_fcs_veg = "fs_fcs_vegetables_leaves",
+  fsl_fcs_fruit = "fs_fcs_fruit",
+  fsl_fcs_meat = "fs_fcs_meat_fish_eggs",
+  fsl_fcs_dairy = "fs_fcs_dairy",
+  fsl_fcs_sugar = "fs_fcs_sugar",
+  fsl_fcs_oil = "fs_fcs_oil_fat_butter"
+  ) %>%
+  add_hhs(
+  )
+
+my_data_with_indicators[, tail(names(my_data_with_indicators), 14)] %>%
+  head()
+```
+
+# Compsition - reviewing indicators
+
+Reviewing indicators will compare 2 indicators together and present the differences. It will not check how the indicator was created nor check for inconsistencies. That mean, to review an indicator, it is necessary to create one and compare them. The functions `review_one_variable` and `review_variables` will focus on the latter.
+
+## review_one_variable
+
+First, a new dataset can be created for the review.
+```{r}
+review_df <- addindicators_MSNA_template_data %>%
+  add_fcs(
+  cutoffs = "normal",
+  fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
+  fsl_fcs_legumes = "fs_fcs_beans_nuts",
+  fsl_fcs_veg = "fs_fcs_vegetables_leaves",
+  fsl_fcs_fruit = "fs_fcs_fruit",
+  fsl_fcs_meat = "fs_fcs_meat_fish_eggs",
+  fsl_fcs_dairy = "fs_fcs_dairy",
+  fsl_fcs_sugar = "fs_fcs_sugar",
+  fsl_fcs_oil = "fs_fcs_oil_fat_butter"
+  ) %>%
+  select(uuid, fsl_fcs_score, fsl_fcs_cat)
+```
+
+Then the dataset to be reviewed and the new dataset can be binded together.
+
+```{r}
+binded_df <- my_data_with_indicators %>%
+  full_join(review_df, by = "uuid")
+```
+
+::: {.callout-note .column-margin}
+I would advice to use a `full_join` rather than a `left/right_join`. That way if any computation has missing value they will be spotted.
+:::
+
+::: {.callout-note .column-margin}
+With the `join_*` if the names are the same .x and .y will added to the names.
+:::
+
+::: {.callout-tip appearance="minimal"}
+### review\_\*
+
+**review_**\* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis. 
+:::
+```{r}
+review_one_var <- review_one_variable(binded_df,
+  column_to_review = "fsl_fcs_cat.x",
+  column_to_compare_with = "fsl_fcs_cat.y"
+)
+
+review_one_var %>%
+  head()
+```
+```{r}
+review_one_var %>%
+  group_by(review_check_fsl_fcs_cat.x, review_comment_fsl_fcs_cat.x) %>%
+  tally()
+```
+
+
+```{r}
+jittered_df <- binded_df
+set.seed(123)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_cat.x"] <- sample(unique(jittered_df$fsl_fcs_cat.y), 5, T)
+set.seed(124)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_cat.y"] <- sample(unique(jittered_df$fsl_fcs_cat.y), 5, T)
+set.seed(125)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_cat.x"] <- NA
+set.seed(1236)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_cat.y"] <- NA
+set.seed(1237)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_score.x"] <- sample(unique(jittered_df$fsl_fcs_score.x), 5, T)
+```
+
+```{r}
+review_one_variable_jittered <- review_one_variable(jittered_df,
+  column_to_review = "fsl_fcs_cat.x",
+  column_to_compare_with = "fsl_fcs_cat.y"
+)
+
+review_one_variable_jittered %>%
+  group_by(review_check_fsl_fcs_cat.x, review_comment_fsl_fcs_cat.x) %>%
+  tally()
+```
+
+```{r}
+review_one_variable_jittered2 <- review_one_variable(jittered_df,
+  column_to_review = "fsl_fcs_cat.x",
+  column_to_compare_with = "fsl_fcs_cat.y",
+  return_dataset = T
+)
+
+review_one_variable_jittered2[, tail(names(review_one_variable_jittered2), 20)] %>%
+  head()
+```
+```{r}
+review_one_variable_jittered2 %>%
+  filter(!review_check_fsl_fcs_cat.x) %>%
+  select(uuid, fsl_fcs_cat.x, fsl_fcs_cat.y, review_check_fsl_fcs_cat.x, review_comment_fsl_fcs_cat.x)
+```
+
+
+## review_variables
+
+```{r}
+my_review <- review_variables(jittered_df,
+  columns_to_review = c("fsl_fcs_cat.x", "fsl_fcs_score.x"),
+  columns_to_compare_with = c("fsl_fcs_cat.y", "fsl_fcs_score.y")
+)
+
+typeof(my_review)
+names(my_review)
+```
+
+```{r}
+my_review$review_table %>%
+  group_by(variable, review_check, review_comment) %>%
+  tally()
+```
+```{r}
+my_review$dataset %>%
+  filter(!review_check_fsl_fcs_cat.x) %>%
+  select(uuid, fsl_fcs_cat.x, fsl_fcs_cat.y, review_comment_fsl_fcs_cat.x)
+```
+```{r}
+my_review$dataset %>%
+  filter(!review_check_fsl_fcs_score.x) %>%
+  select(uuid, fsl_fcs_score.x, fsl_fcs_score.y, review_comment_fsl_fcs_score.x)
+```
+
+
+# Exercises 
+
+- Add the **food consumption matrix score** to the dataset. The food consumption matrix score is a food security indicator that uses the **food consumption score**, **household hunger score** and the **reduced coping strategy index**.
+
+```{r}
+#| echo: false
+names_to_keep <- grep("rCSI", analysistools::analysistools_MSNA_template_survey$name, value = T)
+analysistools::analysistools_MSNA_template_survey %>% 
+  filter(name %in% names_to_keep,
+         name != "rCSI_module") %>% 
+  select(name, `label::english`, type) 
+```
+
+```{r}
+exercise_data <- addindicators_MSNA_template_data %>%
+  add_fcs(
+  cutoffs = "normal",
+  fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
+  fsl_fcs_legumes = "fs_fcs_beans_nuts",
+  fsl_fcs_veg = "fs_fcs_vegetables_leaves",
+  fsl_fcs_fruit = "fs_fcs_fruit",
+  fsl_fcs_meat = "fs_fcs_meat_fish_eggs",
+  fsl_fcs_dairy = "fs_fcs_dairy",
+  fsl_fcs_sugar = "fs_fcs_sugar",
+  fsl_fcs_oil = "fs_fcs_oil_fat_butter"
+  ) %>%
+  add_hhs(
+  )
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you try the function `add_fcm_phase`?
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+The food consumption matrix needs 3 indicators, FCS, rCSI, HHS.
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Have you used the correct HHS category variable?
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+my_answer <- exercise_data %>% add_rcsi(
+  ) %>%
+  add_fcm_phase(
+    fcs_column_name = "fsl_fcs_cat",
+    rcsi_column_name = "rcsi_cat",
+    hhs_column_name = "hhs_cat_ipc",
+    fcs_categories_acceptable = "Acceptable",
+    fcs_categories_poor = "Poor",
+    fcs_categories_borderline = "Borderline",
+    rcsi_categories_low = "No to Low",
+    rcsi_categories_medium = "Medium",
+    rcsi_categories_high = "High",
+    hhs_categories_none = "None",
+    hhs_categories_little = "Little",
+    hhs_categories_moderate = "Moderate",
+    hhs_categories_severe = "Severe",
+    hhs_categories_very_severe = "Very Severe"
+  )
+```
+:::
+
+
+- You receive a dataset, you need to review the following indicators.
+
+  - Food Consumption Score: *fcs_score*, *fcs_cat*
+  - Household Hunger Score: *hhs_score*, *hhs_cat*
+  
+Don't forget to write the review.
+
+```{r}
+dataset_to_review <- read.csv("inputs/06 - exercise - dataset_to_review.csv")
+
+dataset_without_indicators <- addindicators::addindicators_MSNA_template_data
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you try the function `review_variables`
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+How was the FSC created?
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+How was coded the category for the HHS? 
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+my_review <- dataset_without_indicators %>% 
+    add_fcs(
+  cutoffs = "normal",
+  fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
+  fsl_fcs_legumes = "fs_fcs_beans_nuts",
+  fsl_fcs_veg = "fs_fcs_vegetables_leaves",
+  fsl_fcs_fruit = "fs_fcs_fruit",
+  fsl_fcs_meat = "fs_fcs_meat_fish_eggs",
+  fsl_fcs_dairy = "fs_fcs_dairy",
+  fsl_fcs_sugar = "fs_fcs_sugar",
+  fsl_fcs_oil = "fs_fcs_oil_fat_butter"
+  )  %>% add_hhs(
+    hhs_nofoodhh_1 = "fs_hhs_nofood_yn",
+    hhs_nofoodhh_1a = "fs_hhs_nofood_freq",
+    hhs_sleephungry_2 = "fs_hhs_sleephungry_yn",
+    hhs_sleephungry_2a = "fs_hhs_sleephungry_freq",
+    hhs_alldaynight_3 = "fs_hhs_daynoteating_yn",
+    hhs_alldaynight_3a = "fs_hhs_daynoteating_freq",
+    yes_answer = "yes",
+    no_answer = "no",
+    rarely_answer = "rarely_1_2",
+    sometimes_answer = "sometimes_3_10",
+    often_answer = "often_10_times"
+  ) %>% 
+  select(uuid, fsl_fcs_cat, fsl_fcs_score, hhs_cat, hhs_score)
+dataset_to_review <- full_join(dataset_to_review, my_review, by = "uuid")
+
+review <- dataset_to_review %>% 
+  review_variables(columns_to_review = c("fsl_fcs_cat.x", "fsl_fcs_score.x", "hhs_cat.x", "hhs_score.x"),
+                   columns_to_compare_with = c("fsl_fcs_cat.y", "fsl_fcs_score.y", "hhs_cat.y", "hhs_score.y"))
+
+review$review_table %>% 
+  group_by(variable,review_check,review_comment) %>% 
+  tally()
+```
+
+- There are 10 fcs categories that are different.
+- There are 100 HHS categories that are different
+
+```{r}
+review$dataset %>% 
+  filter(!review_check_fsl_fcs_cat.x) %>% 
+  select(uuid, review_comment_fsl_fcs_cat.x, fsl_fcs_score.x, fsl_fcs_cat.x, fsl_fcs_cat.y)
+
+```
+- Food Consumption Score have different categories, what threshold were used to compute the FCS?  Maybe 28-42?
+
+
+```{r}
+review$dataset %>% 
+  filter(!review_check_hhs_cat.x) %>% 
+  select(hhs_cat.x, hhs_cat.y) %>% 
+  table(useNA = "ifany")
+```
+- HHS is fine. Labeling is different
+
+
+:::
+
+
+# Analysis - Introduction
+
+The framework is built around 4 steps: cleaning, composition, analysis, outputs
+
+-   *Cleaning*: any manipulation to go from the raw data to the clean data
+-   *Composition*: any manipulation before the analysis e.g. adding indicators, adding information from loop or main, aok aggregation, etc.
+-   *Analysis*: any manipulation regarding only the analysis
+-   *Outputs*: any manipulation to format the outputs.
+
+The following section will present some introduction about the analysis.
+
+The third step of the framework is the analysis. The analysis step aims to create a long table with one result per line and an **analysis key**. That table is not made for a human to read it but to store some information. Analysis stops at the results table: long format, stat + analysis key
+
+The analysis key format is currently :
+
+- analysis type @/@ analysis variable %/% analysis variable value @/@ grouping variable %/% grouping variable value
+
+- analysis type @/@ dependent variable %/% dependent variable value @/@ independent variable %/% independent variable value
+
+If there are two or more grouping variables it would look like that
+
+- analysis type @/@ analysis variable %/% analysis variable value @/@ grouping variable 1 %/% grouping variable value 1 -/-  grouping variable 2 %/% grouping variable value 2
+
+Same would apply for analysis variable in case of a ratio.
+
+
+The current analysis types are :
+
+- mean
+- median
+- prop_select_one: proportion for select one
+- prop_select_multiple: proportion for select multiple
+- ratio
+
+## create_analysis
+
+Any **create_analysis_*** function will need a survey to be used, not a dataset. A survey object will be defined with the weights, strata and cluster information if they exists. 
+
+::: {.callout-tip appearance="minimal"}
+### create\_\*
+
+**create_**\* functions will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output.
+
+Outputs from **create_**\* functions outputs can be in different shape, format, etc. 
+
+**create_**\* function is catch-all.
+:::
+
+```{r}
+library(analysistools)
+```
+
+
+```{r}
+only_nas <- my_data_with_indicators %>%
+  summarise(across(.cols = everything(), .fns = function(x) {
+    sum(is.na(x)) == nrow(my_data_with_indicators)
+  })) %>%
+  do.call(c, .)
+
+my_data_shorter <- my_data_with_indicators[, !only_nas] %>%
+  select(!grep("other", names(my_data_with_indicators), value = T))
+```
+
+::: {.callout-note .column-margin}
+At the moment, `create_analysis` breaks where a column only have missing values. They need to be removed beforehand.
+:::
+
+```{r}
+#| output: false
+my_design <- srvyr::as_survey_design(my_data_shorter, strata = "admin1")
+
+my_analysis <- create_analysis(my_design, sm_separator = "/")
+```
+
+::: {.callout-note .column-margin}
+`create_analysis` uses a survey design, not a dataset. Survey design object contains the information on the design of the survey, such as stratas, cluster, weights. It is built with **srvyr** package which is a wrapper around [**survey** package](http://r-survey.r-forge.r-project.org/survey/).
+
+:::
+
+`create_analysis` returns a list with:
+
+- Results table: a long table with summary statistics per line
+- Dataset: the dataset used with the survey design
+- List of analysis: all the analysis that were performed 
+
+```{r}
+my_analysis %>%
+  names()
+```
+
+```{r}
+my_analysis$results_table %>%
+  head()
+```
+
+```{r}
+my_analysis$loa %>%
+  head()
+```
+
+# Exercises
+
+```{r}
+exercise_data <- analysistools_MSNA_template_data
+
+only_nas <- exercise_data %>%
+  summarise(across(.cols = everything(), .fns = function(x) {
+    sum(is.na(x)) == nrow(exercise_data)
+  })) %>%
+  do.call(c, .)
+
+exercise_data_shorter <- exercise_data[, !only_nas] %>%
+  select(!grep("other", names(exercise_data), value = T))
+```
+
+
+With the dataset *exercise_data*, please do the following:
+
+- Create a results table at the level *respondent_gender*. Keep the strata at *admin1*
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you try the argument *group_var* in `create_analysis` ?
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```         
+my_exercise_design <- srvyr::as_survey_design(exercise_data_shorter, strata = "admin1") 
+
+my_answer_analysis <- create_analysis(my_exercise_design, group_var = "respondent_gender", sm_separator = "/")
+
+```
+:::
+- The analysis should be weighted, this is the sampling frame. Re-do the analysis at the overall level.
+
+```{r}
+sampling_frame <- data.frame(
+  strata = c("admin1a", "admin1b", "admin1c"),
+  population = c(100000, 200000, 300000)
+)
+sampling_frame
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you try the function *add_weights* ?
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you modify your design object?
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+exercise_data_shorter_weigthed <- exercise_data_shorter %>% 
+  add_weights(sample_data = sampling_frame, strata_column_dataset = "admin1", strata_column_sample = "strata", population_column = "population")
+
+my_exercise_design_weigthed <- srvyr::as_survey_design(exercise_data_shorter_weigthed, strata = "admin1", weights = "weights") 
+
+my_answer_analysis_weighted <- create_analysis(my_exercise_design_weigthed, sm_separator = "/")
+
+```
+:::

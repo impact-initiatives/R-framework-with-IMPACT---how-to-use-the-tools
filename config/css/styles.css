@@ -1,0 +1,94 @@
+/* Variables */
+/* Fonts */
+@font-face {
+  font-family: 'Roboto Condensed';
+  src: url('fonts/RC/RobotoCondensed-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: url('fonts/SegoeUI/segoeui.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: url('fonts/SegoeUI/segoeuii.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: url('fonts/SegoeUI/segoeuib.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: url('fonts/SegoeUI/segoeuiz.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Segoe UI Light';
+  src: url('fonts/SegoeUI/segoeuil.ttf') format('truetype');
+  font-weight: normal;
+}
+
+/* TITLE AND SUBTITLE */
+h1, h2 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bold;
+}
+
+/* BODY TEXT */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  text-align: left;
+}
+
+/* Segoe UI Italic */
+em {
+  font-family: 'Segoe UI', sans-serif;
+  font-style: italic;
+}
+
+/* Segoe UI Bold */
+strong {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+}
+
+/* Segoe UI Bold Italic */
+strong em {
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Segoe UI Light */
+.light {
+  font-family: 'Segoe UI Light', sans-serif;
+}
+
+/* PRIMARY COLOURS */
+body {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+/* Secondary colours */
+h1 {
+  color: #315975;
+}
+
+h2 {
+  color: #58585A;
+}
+
+/* Background colors */
+
+

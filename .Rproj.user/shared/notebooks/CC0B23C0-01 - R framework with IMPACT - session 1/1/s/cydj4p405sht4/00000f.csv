@@ -1,0 +1,21 @@
+"0","#| warning: false"
+"0","library(cleaningtools)"
+"0","library(dplyr)"
+"2","
+Attaching package: ‘dplyr’
+
+"
+"2","The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+"
+"2","The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal,
+    union
+
+"
+"0","my_raw_dataset <- cleaningtools::cleaningtools_raw_data"
+"0","my_kobo_survey <- cleaningtools::cleaningtools_survey"
+"0","my_kobo_choice <- cleaningtools::cleaningtools_choices"

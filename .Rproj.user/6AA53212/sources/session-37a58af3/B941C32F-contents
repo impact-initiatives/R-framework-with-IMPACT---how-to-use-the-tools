@@ -1,0 +1,507 @@
+---
+title: "04 - R framework with IMPACT - session 4"
+author: "Yann Say"
+date: last-modified
+
+format:
+  html:
+    toc: true
+    css: config/css/styles.css
+    df-print: kable
+    embed-resources: true
+---
+
+
+```{r}
+#| warning: false
+library(analysistools)
+library(dplyr)
+
+my_data <- analysistools::analysistools_MSNA_template_data
+
+sampling_frame <- data.frame(
+  strata = c("admin1a", "admin1b", "admin1c"),
+  population = c(100000, 200000, 300000)
+)
+
+set.seed(1323)
+my_data <- my_data |>
+  mutate(num_aged_school_children = round(runif(100, min = 0, max = 5)),
+         num_enrolled_school_children = round(runif(100, min = 0, max = 5)),
+         num_enrolled_school_children = case_when(num_aged_school_children == 0 ~ NA, num_aged_school_children < num_enrolled_school_children ~ num_aged_school_children,
+                                                  TRUE ~ num_enrolled_school_children
+                                                  ))
+```
+
+# Analysis - extended analysis
+
+The framework is built around 4 steps: cleaning, composition, analysis, outputs
+
+-   *Cleaning*: Any manipulation to go from the raw data to the clean data
+-   *Composition*: Any manipulation before the analysis e.g. adding indicators, adding information from loop, main dataset, or any other dataset (e.g. previous round), aok aggregation, etc.
+-   *Analysis*: Any manipulation regarding only the analysis. 
+-   *Outputs*: Any manipulation to format the outputs. Outputs are created from the results table, from the stat + analysis key
+
+The following section will present some introduction about the analysis.
+
+The third step of the framework is the analysis. The analysis step aims to create a long table with one result per line and an **analysis key**. That table is not made for a human to read it but to store some information.
+
+The analysis key format is currently :
+
+- analysis type @/@ analysis variable %/% analysis variable value @/@ grouping variable %/% grouping variable value
+
+- analysis type @/@ dependent variable %/% dependent variable value @/@ independent variable %/% independent variable value
+
+If there are two or more grouping variables it would look like that
+
+- analysis type @/@ analysis variable %/% analysis variable value @/@ grouping variable 1 %/% grouping variable value 1 -/-  grouping variable 2 %/% grouping variable value 2
+
+Same would apply for analysis variable in case of a ratio.
+
+
+The current analysis types are :
+
+- mean
+- median
+- prop_select_one: proportion for select one
+- prop_select_multiple: proportion for select multiple
+- ratio
+
+::: {.callout-tip appearance="minimal"}
+### create\_\*
+
+**create_**\* functions will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output.
+
+Outputs from **create_**\* functions outputs can be in different shape, format, etc. 
+
+**create_**\* function is catch-all.
+:::
+
+## `create_analysis` and list of analysis (loa)
+
+List of analysis (loa) is a list with all analysis to be performed. It takes the form of a data frame with minimum 4 columns:
+
+- *analysis_type* : The analysis type that should be performed.
+- *analysis_var* : The analysis variable or dependent variable.
+- *group_var* : The grouping variable or independent variable.
+- *level* : The confidence level (expressed between 0 and 1).
+
+```{r}
+my_loa <- analysistools::analysistools_MSNA_template_loa
+
+my_loa
+```
+
+The loa can be passed as argument to the `create_analysis` function. 
+
+```{r}
+#| output: false
+my_data <- my_data %>% 
+  add_weights(sampling_frame, "admin1", "strata", "population")
+
+my_design <- srvyr::as_survey_design(my_data, weights = "weights", strata = "admin1")
+my_results <- create_analysis(my_design, loa = my_loa, sm_separator = "/")
+```
+```{r}
+head_results_table <- my_results$results_table %>% 
+  head(5)
+
+tail_results_table <- my_results$results_table %>% 
+  tail(5)
+
+rbind(head_results_table,tail_results_table)
+```
+
+## `create_analysis_ratio`
+
+To calculate ratio, there are two functions `create_analysis_ratio` or `create_analysis` with a loa with more information. 
+
+```{r}
+my_loa_with_ratio <- read.csv("inputs/07 - example - loa_with_ratio.csv")
+
+```
+```{r}
+my_loa_with_ratio %>% 
+  filter(analysis_type == "ratio") |>
+  select(analysis_type, analysis_var, group_var, analysis_var_numerator, analysis_var_denominator)
+```
+
+```{r}
+#| output: false
+my_results_with_ratio <- create_analysis(my_design, loa = my_loa_with_ratio, sm_separator = "/")
+```
+
+```{r}
+my_results_with_ratio$results_table %>% 
+  filter(analysis_type == "ratio")
+```
+
+### Arguments of `create_analysis_ratio`
+
+`create_analysis_ratio` has two arguments: `numerator_NA_to_0 ` and `filter_denominator_0 ` that by default are set to TRUE. 
+
+- `numerator_NA_to_0` will turn all NA of the numerator into 0's, default TRUE.
+
+- `filter_denominator_0` will remove all rows with 0's in the denominator, default TRUE.
+
+The following example show a dataset with the number of children (*num_children*), the number of children enrolled to a school (*num_enrolled*) and the number of children attending school on a regular basis (*num_attending*).
+
+```{r}
+school_ex <- data.frame(
+  hh = c("hh1", "hh2", "hh3", "hh4"),
+  num_children = c(3, 0, 2, NA),
+  num_enrolled = c(3, NA, 0, NA),
+  num_attending = c(1, NA, NA, NA)
+  )
+
+me_design <- srvyr::as_survey(school_ex)
+
+school_ex
+```
+
+- What is the ratio between children attending school and the number of children ?
+- How many households are included in the calculation?
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+###  Expand to get the answer
+
+Default value will give a ratio of 0.2 as there are 1 child out of 5 attending school.
+
+numerator: 1 child from hh1 and 0 from hh3. 
+
+denominator: 3 from hh1 and 2 from hh3. In the hh3, the num_attending is NA because there is a skip logic, there cannot be a child attending as none are enrolled. 
+
+By default, the function has the argument `numerator_NA_to_0` set to TRUE to turn that NA into a 0.
+
+n and n_total are 2 as 2 households were included in the calculation. hh2 was not included in the calculation of totals. The argument `filter_denominator_0` set to TRUE removes that row.
+
+
+``` {r}
+create_analysis_ratio(me_design,
+  analysis_var_numerator = "num_attending",
+  analysis_var_denominator = "num_children") %>%
+  select(analysis_type, analysis_var, stat, n, n_total, analysis_key)
+```
+:::
+
+- What will be the ratio if only `numerator_NA_to_0` is set to FALSE ?
+- How many households are included in the calculation?
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+###  Expand to get the answer
+
+Ratio will be 1/3, as hh3 with 2 children and NA for attending will be removed with the `na.rm = T` inside the `survey_ratio` calculation.
+
+n and n_total is 1 as only 1 household was used.
+
+``` {r}
+create_analysis_ratio(me_design,
+                      analysis_var_numerator = "num_attending",
+                      analysis_var_denominator = "num_children",
+                      numerator_NA_to_0 = FALSE) %>% 
+  select(analysis_type, analysis_var, stat, n, n_total, analysis_key)
+```
+:::
+
+- What will be the ratio if only `filter_denominator_0` is set to FALSE ?
+- How many households are included in the calculation?
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+###  Expand to get the answer
+
+ratio will be 0.2 as there are 1 child out of 5 attending school.
+The number of household counted, n and n_total, is equal to 3 instead 2. The household with 0 child is counted in the totals. (01 + 0 + 0) / (3 + 0 + 2)
+
+```{r}
+create_analysis_ratio(me_design,
+                      analysis_var_numerator = "num_attending",
+                      analysis_var_denominator = "num_children",
+                      filter_denominator_0 = FALSE)  %>% 
+  select(analysis_type, analysis_var, stat, n, n_total, analysis_key)
+```
+
+:::
+
+# Analysis - Reviewing the analysis
+
+::: {.callout-tip appearance="minimal"}
+### review\_\*
+
+**review\_**\* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis. 
+
+:::
+
+## `create_loa_from_results`
+
+If the loa that was used was shared, it can be re-used. Otherwise, with the results table and the analysis key, the function `create_loa_from_results` will generate a loa that can be used to create the analysis for the review. 
+
+```{r}
+my_loa_for_review <- my_results_with_ratio$results_table %>% 
+  create_loa_from_results()
+
+my_loa_for_review
+```
+
+::: {.callout-note .column-margin}
+create_loa_from_results will not guess the arguments for `numerator_NA_to_0 ` and `filter_denominator_0 `, they will be set to TRUE by default.
+
+The confidence level will also be set to .95 by default.
+:::
+
+## `review_analysis`
+
+`review_analysis` will compare 2 results together and present the differences. It will not check how the analysis was created nor check for inconsistencies. That mean, to review an analysis, it is necessary to create one and compare them. 
+
+::: {.callout-tip appearance="minimal"}
+### review\_\*
+
+**review_**\* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis. 
+
+-   if the cleaning has been filled correctly
+-   the cleaning has been done correctly
+-   comparing indicators
+-   comparing analysis
+-   etc.
+:::
+
+
+```{r}
+#| output: false
+my_design_for_review <- srvyr::as_survey_design(my_data, weights = "weights", strata = "admin1")
+analysis_for_review <- create_analysis(my_design_for_review, my_loa_for_review, sm_separator = "/")
+
+binded_table <- my_results_with_ratio$results_table %>% 
+  left_join(analysis_for_review$results_table, by = "analysis_key")
+```
+
+```{r}
+my_review <- review_analysis(binded_table)
+
+typeof(my_review)
+names(my_review)
+```
+```{r}
+my_review$review_table %>%
+  head()
+```
+
+```{r}
+my_review$review_table %>%
+  group_by(stat, review_check, review_comment) %>%
+  tally()
+```
+
+::: {.callout-note .column-margin}
+*analysis_key* are equivalent of an unique identifier. All analysis key should be unique.
+:::
+
+```{r}
+jittered_results_table <- binded_table
+set.seed(123)
+jittered_results_table[sample(1:nrow(jittered_results_table), 5), "stat.x"] <- sample(unique(jittered_results_table$stat.x), 5, T)
+set.seed(124)
+jittered_results_table[sample(1:nrow(jittered_results_table), 5), "stat.y"] <- sample(unique(jittered_results_table$stat.y), 5, T)
+set.seed(125)
+jittered_results_table[sample(1:nrow(jittered_results_table), 5), "stat.x"] <- NA
+set.seed(1236)
+jittered_results_table[sample(1:nrow(jittered_results_table), 5), "stat.y"] <- NA
+
+```
+
+```{r}
+my_jittered_review <- review_analysis(jittered_results_table, 
+                                      stat_columns_to_review = "stat.x",
+                                      stat_columns_to_compare_with = "stat.y")
+my_jittered_review$review_table %>%
+  group_by(stat, review_check, review_comment) %>%
+  tally()
+```
+
+```{r}
+my_jittered_review$results_table %>%
+  filter(!review_check_stat.x) %>% 
+  head(10)
+```
+
+# Exercises
+
+Create the analysis for the following indicators:
+
+- % of households having/had soap at home 
+- % of households by type of primary source of drinking water 
+- % of households by self-reported barriers to accessing health care	
+- Average household income over the 30 days prior to data collection (total)
+- Median household income over the 30 days prior to data collection (total)
+- Average household expenditures in the 6 months prior to data collection (health)
+- Median household expenditures in the 6 months prior to data collection (health)
+- Ratio household expenditures on health in the 6 months prior to data collection and the household income over the 30 days prior to data collection.
+- % of households per number of days when the household had to restrict consumption by adults in order for small children to eat to cope with a lack of food or money to buy it.
+
+The analysis should be at *admin1* level (the strata). 
+
+```{r}
+#| echo: false
+analysistools_MSNA_template_survey %>% 
+  filter(name %in% c("wash_soap", "wash_drinkingwatersource", "health_barriers", "income_v2_total", "expenditure_health", "rCSIMealAdult")) %>% 
+  select(name, `label::english`, type) %>% 
+  mutate(`label::english` = case_when(`label::english` == "${health_barriers_question_select}" ~ "What are your barriers to access health care?", 
+                                      TRUE ~ `label::english`))
+```
+```{r}
+exercise_data <- analysistools::analysistools_MSNA_template_data
+
+exercise_sampling_frame <- data.frame(
+  strata = c("admin1a", "admin1b", "admin1c"),
+  population = c(100000, 200000, 300000)
+)
+
+template_loa <- readxl::read_excel("inputs/08 - exercise - template loa.xlsx")
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+*rCSIMealAdult* should be analysed as a categorical variable not a numerical variable to get the proportion per day.
+
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+exercise_data <- exercise_data %>%
+  add_weights(
+    exercise_sampling_frame,
+    "admin1", "strata", "population"
+  )
+
+exercise_design <- srvyr::as_survey_design(exercise_data, weights = "weights", strata = "admin1")
+
+exercise_loa <- readxl::read_excel("inputs/09 - correction - loa.xlsx")
+
+exercise_results <- create_analysis(exercise_design, loa = exercise_loa, sm_separator = "/")
+
+```
+
+:::
+
+- Review this analysis 
+
+There is no weights. The strata are *admin1*
+```{r}
+analysis_to_review <- readxl::read_excel("inputs/10 - exercise - analysis_to_review.xlsx")
+dataset_to_review <- readxl::read_excel("inputs/10 - exercise - analysis_to_review.xlsx", sheet = "dataset")
+```
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+loa_for_review <- analysis_to_review %>% 
+  create_loa_from_results()
+
+review_design <- srvyr::as_survey_design(dataset_to_review, strata = "admin1")
+my_analysis_exercise <- create_analysis(review_design, loa = loa_for_review, sm_separator = "/")
+
+my_results_table_shorter <- my_analysis_exercise$results_table %>% 
+  select(analysis_key, stat)
+
+binded_results_table <- analysis_to_review %>% 
+  full_join(my_results_table_shorter, by = "analysis_key")
+
+exercise_review <- review_analysis(binded_results_table,
+                                   stat_columns_to_review = "stat.x",
+                                   stat_columns_to_compare_with = "stat.y", 
+                                   analysis_key_column = "analysis_key")
+
+exercise_review$review_table %>% 
+  group_by(review_check,review_comment) %>% 
+  tally()
+```
+
+:::
+
+How you would review an analysis that does not have an analysis key? (discussion)
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+- If the analysis is in long format, add the analysis key.
+- If the analysis is in a wide format, change to long format then add the analysis key.
+
+:::
+
+# Outputs
+
+```{r}
+library(presentresults)
+
+my_results_table <- my_results$results_table
+```
+
+The framework is built around 4 steps: cleaning, composition, analysis, outputs
+
+-   *Cleaning*: Any manipulation to go from the raw data to the clean data
+-   *Composition*: Any manipulation before the analysis e.g. adding indicators, adding information from loop, main dataset, or any other dataset (e.g. previous round), aok aggregation, etc.
+-   *Analysis*: Any manipulation regarding only the analysis. 
+-   *Outputs*: Any manipulation to format the outputs. Outputs are created from the results table, from the stat + analysis key
+
+The following section will present some introduction about the outputs.
+
+There are currently two types of table: 
+
+- one that have the variables in the rows and the disagregation in the columns,
+- one that have the disagregation in the rows and the variables in the columns.
+
+There are two steps to turn a results table:
+
+- Turn the long results table to a large results table.
+- Format and export it to Excel.
+
+::: {.callout-tip appearance="minimal"}
+### create\_\*
+
+**create_**\* functions will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output.
+
+Outputs from **create_**\* functions outputs can be in different shape, format, etc. 
+
+**create_**\* function is catch-all.
+:::
+
+## create_*_group_x_variable
+
+```{r}
+my_results_table %>% 
+  create_table_group_x_variable() %>% 
+  create_xlsx_group_x_variable(file_path = "outputs/04 - example - group_x_variable.xlsx", overwrite = T)
+```
+
+## create_*_variable_x_group
+
+```{r}
+my_results_table %>% 
+  create_table_variable_x_group() %>%
+  create_xlsx_variable_x_group(file_path = "outputs/05 - example - variable_x_group.xlsx", overwrite = T)
+```
+
+# Exercise
+
+- Create an excel table with the strata in the rows and the variables in the columns.
+
+```{r}
+exercise_outputs <- readxl::read_excel("inputs/10 - exercise - analysis_to_review.xlsx")
+
+```
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+exercise_outputs %>% 
+  create_table_group_x_variable() %>% 
+  create_xlsx_group_x_variable(file_path = "outputs/06 - correction - group_x_variable_table.xlsx", overwrite = T) 
+  
+```
+:::

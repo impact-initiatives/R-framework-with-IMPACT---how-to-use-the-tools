@@ -1,0 +1,7 @@
+"0","other_columns_to_check <- my_kobo_survey %>% "
+"0","  dplyr::filter(type == ""text"") %>% "
+"0","  dplyr::filter(name %in% names(my_raw_dataset)) %>%"
+"0","  dplyr::pull(name) "
+"0",""
+"0","more_logs <- more_logs %>% "
+"0","  check_others(uuid_column = ""X_uuid"", columns_to_check = other_columns_to_check) "

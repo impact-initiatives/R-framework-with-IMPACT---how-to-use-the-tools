@@ -1,0 +1,4 @@
+"0","exercise3_clean_dataset <- readxl::read_excel(""inputs/05 - exercise - clean dataset for review.xlsx"")"
+"0",""
+"0","exercise3_cleaning_log <- readxl::read_excel(""inputs/05 - exercise - clean dataset for review.xlsx"", sheet = 2)"
+"0",""

@@ -1,0 +1,2 @@
+"0","logical_check_list <- readxl::read_excel(""inputs/01 - example - check_list.xlsx"")"
+"0","logical_check_list"

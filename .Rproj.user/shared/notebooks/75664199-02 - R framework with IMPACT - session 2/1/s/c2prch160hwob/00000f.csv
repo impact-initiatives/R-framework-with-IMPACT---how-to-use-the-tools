@@ -1,0 +1,5 @@
+"0","review_other_log <- review_others(dataset = my_clean_data2$data_with_fix_concat,"
+"0","                                  uuid_column = ""X_uuid"", "
+"0","                                  kobo_survey = my_kobo_survey, "
+"0","                                  columns_not_to_check = ""consent_telephone_number"")"
+"2","Warning: The following parent names: well_quality, spring_quality, rainwater_quality, surface_quality, why_not_connected were not found in the dataset. The function is ignoring them."

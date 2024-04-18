@@ -1,0 +1,11 @@
+my_results_table_new <- my_results_table %>% 
+  select(stat, analysis_key)
+
+
+my_results_table_new %>% 
+  create_table_group_x_variable(value_columns = "stat") %>% 
+  create_xlsx_group_x_variable(file_path = "outputs/example2.xlsx")
+
+
+my_results_table_new %>% 
+  create_analysis_key_table() %>% View()

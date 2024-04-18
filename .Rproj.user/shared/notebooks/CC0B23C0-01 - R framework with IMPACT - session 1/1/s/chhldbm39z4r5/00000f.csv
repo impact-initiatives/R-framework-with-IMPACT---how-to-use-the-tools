@@ -1,0 +1,8 @@
+"0","example_logic <- my_raw_dataset %>% "
+"0","  check_logical(uuid_column = ""X_uuid"", "
+"0","                check_to_perform = ""primary_livelihood.employment == 1 & tot_expenses < 200000"","
+"0","                description = ""primary_livelihood is employment but expenses less than 200 000"","
+"0","                columns_to_clean = c(""primary_livelihood"", ""tot_expenses""))"
+"0",""
+"0","example_logic$logical_xx %>% "
+"0","  head()"
