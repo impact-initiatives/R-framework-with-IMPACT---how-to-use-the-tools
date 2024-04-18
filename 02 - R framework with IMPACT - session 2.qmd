@@ -304,9 +304,13 @@ review_of_cleaning <- review_cleaning(raw_dataset = my_raw_dataset,
 
 # Exercises
 
+## Exercise 1
+
 - Export the cleaning log you have created previously.
 ```{r}
 previous_exercise_log <- readRDS("inputs/03 - exercise - previous_log.RDS")
+
+previous_exercise_log %>% names()
 ```
 
 
@@ -338,7 +342,8 @@ previous_exercise_log %>%
 ```
 :::
 
-- *(Optional) Fill-in the log.*
+
+## Exercise 2
 
 - Create the clean data from the raw dataset and the filled cleaning.
 
@@ -381,6 +386,8 @@ exercise_clean_dataset2 <- recreate_parent_column(exercise_clean_dataset,
   
 ```
 :::
+
+## Exercise 3
 
 - Review the cleaning below, if there is someone else doing the exercise, you can try to review someone's cleaning.
 
