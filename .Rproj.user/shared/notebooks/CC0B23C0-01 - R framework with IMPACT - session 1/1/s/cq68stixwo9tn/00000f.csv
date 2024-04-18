@@ -1,0 +1,3 @@
+"0","more_logs$checked_dataset <- more_logs$checked_dataset %>% "
+"0","  add_duration(uuid_column = ""X_uuid"", start_column = ""X.U.FEFF.start"", end_column = ""end"")"
+"0","more_logs$checked_dataset[1:6, c(""start_date"", ""start_time"", ""end_date"", ""end_time"", ""days_diff"", ""duration"")]"

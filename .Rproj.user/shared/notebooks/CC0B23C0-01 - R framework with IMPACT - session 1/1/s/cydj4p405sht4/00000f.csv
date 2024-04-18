@@ -12,8 +12,7 @@ Attaching package: ‘dplyr’
 "
 "2","The following objects are masked from ‘package:base’:
 
-    intersect, setdiff, setequal,
-    union
+    intersect, setdiff, setequal, union
 
 "
 "0","my_raw_dataset <- cleaningtools::cleaningtools_raw_data"

@@ -194,18 +194,35 @@ more_logs <- more_logs %>%
   check_others(uuid_column = "X_uuid", columns_to_check = other_columns_to_check) 
 ```
 
-## check_logical
+## check_logical_with_list
 
-In other cases, the check is specific and should be tailored to the dataset, for example, `check_logical`.
+In other cases, the check is specific and should be tailored to the dataset, for example, `check_logical_with_list`. All the logical checks can be recorded in an excel file.
+
+```{r}
+logical_check_list <- readxl::read_excel("inputs/01 - example - check_list.xlsx")
+logical_check_list
+```
+The check list has 4 columns:
+
+- check_id : the name of the check
+- description: the description of the check
+- check_to_perform: the check to perform. The format for the check to be performed should take the format based on tidyverse. That format is as if a new indicator is create with a mutate. That new indicator should be a logical (i.e. TRUE or FALSE) with TRUE being the value to flag.
+
+This list can then be used with `check_logical_with_list`.
 
 ```{r}
 example_logic <- my_raw_dataset %>% 
-  check_logical(uuid_column = "X_uuid", 
-                check_to_perform = "primary_livelihood.employment == 1 & tot_expenses < 200000",
-                description = "primary_livelihood is employment but expenses less than 200 000",
-                columns_to_clean = c("primary_livelihood", "tot_expenses"))
+  check_logical_with_list(uuid_column = "X_uuid",
+                          list_of_check = logical_check_list,
+                          check_id_column = "check_id",
+                          check_to_perform_column = "check_to_perform",
+                          columns_to_clean_column = "columns_to_clean",
+                          description_column = "description")
+```
 
-example_logic$logical_xx %>% 
+```{r}
+
+example_logic$logical_all %>% 
   head()
 ```
 
@@ -220,7 +237,7 @@ The log returns :
 
 One check can be flagged in several rows, in the example above, for each uuid, the primary_livelihood and tot_expenses are flagged.
 
-Format for the **test_to_perform** should take the format based on *tidyverse*. That format is as if a new indicator is create with a `mutate`. That new indicator should be a logical (i.e. TRUE or FALSE) with TRUE being the value to flag.
+Format for the **check_to_perform** should take the format based on *tidyverse*. That format is as if a new indicator is create with a `mutate`. That new indicator should be a logical (i.e. TRUE or FALSE) with TRUE being the value to flag.
 
 ```{r}
 my_raw_dataset %>% 
@@ -229,55 +246,29 @@ my_raw_dataset %>%
   head()
 ```
 
-The checked dataset will be return with one extra column, i.e. the logical variable with the name of the **check_id**.
+The checked dataset will be return with extra columns, i.e. a logical variable with the name of the **check_id**.
 
 ```{r}
 example_logic$checked_dataset[1:6,tail(names(example_logic$checked_dataset))]
 ```
 
-**check_to_perform** is written as a character, between quotes and using with regular expression, e.g. escaping the quotes in **"employment"**.
-
-```{r}
-example_logic2 <- my_raw_dataset %>% 
-  check_logical(uuid_column = "X_uuid", 
-                check_to_perform = "primary_livelihood == \"employment\" & tot_expenses < 1000000",
-                description = "primary_livelihood is rented but expenses less than 1 000 000")
-
-
-example_logic2$logical_xx %>% 
-  head()
-```
-
 ::: {.callout-note .column-margin}
-If you don't include **columns_to_clean** the `check_logical` function will try to guess the variables. Not guarantee it will read or pick the correct names.
+If you don't include **columns_to_clean** the `check_logical_with_list` function will try to guess the variables. Not guarantee it will read or pick the correct names.
 :::
 
-This inherits from reading a checklist in an Excel format. In Excel, there is no quote.
-
-![](config/images/excelchecklist.png)
-
-```{r}
-logical_check_list <- readxl::read_excel("inputs/01 - example - check_list.xlsx")
-logical_check_list
-```
-
-This list can then be used with `check_logical_with_list`.
-
-```{r}
-more_logs <- more_logs %>% 
-  check_logical_with_list(uuid_column = "X_uuid",
-                          list_of_check = logical_check_list,
-                          check_id_column = "check_id",
-                          check_to_perform_column = "check_to_perform",
-                          columns_to_clean_column = "columns_to_clean",
-                          description_column = "description")
-```
 
 # Exercises
+
+## Exercise 1
 
 Try the following with a dataset:
 
 -   Perform a check to spot personal identifiable information
+
+```{r}
+my_raw_dataset <- cleaningtools_raw_data
+```
+
 
 ::: {.callout-note collapse="true" appearance="minimal"}
 ### Expand to get a hint
@@ -288,11 +279,14 @@ Try the function `check_pii`
 ::: {.callout-tip collapse="true" appearance="minimal"}
 ### Expand to get the answer
 
-```         
+```{r}  
+#| output: false
 my_raw_dataset %>% 
   check_pii(uuid_column = "X_uuid")
 ```
 :::
+
+## Exercise 2
 
 -   Perform a check that will look at the percentages of missing value per observation and that will spot any observation that is *different*.
 
@@ -331,10 +325,26 @@ more_logs %>%
 ```
 :::
 
--   Create logical check with the following checks. They should all be in an excel file.
+## Exercise 3
+
+-  Fill the excel checklist to do the following checks:
     -   household number (variable: *num_hh_member*) is above 8.
     -   the water source for drinking water is bottled (variable: *water_source_drinking*, value: *bottled*) and the household always treat the drinking water (variable: *treat_drink_water*, value: *always_treat*).
     -   the water source for drinking water is bottled (variable: *water_source_drinking*, value: *bottled*) and one of the main reason for the the household to not meet its water needs is the water pressure (variable: *access_water_enough_why_not*, value: *water_pressure*, this is a select multiple)
+    
+```{r}
+#| output: false
+exercise_check_list <- readxl::read_excel("inputs/01 - example - check_list.xlsx")
+
+my_raw_dataset %>% 
+    check_logical_with_list(uuid_column = "X_uuid",
+                          list_of_check = exercise_check_list,
+                          check_id_column = "check_id",
+                          check_to_perform_column = "check_to_perform",
+                          columns_to_clean_column = "columns_to_clean",
+                          description_column = "description")
+```
+
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
 ### Expand to get the answer
@@ -356,7 +366,9 @@ my_raw_dataset %>%
 ```
 :::
 
--   try add_duration on your dataset There is no specific answer just now.
+## Extra
+- Try to add duration to one of your dataset.
+- Try to add duration with audit files.
 
 ::: {.callout-note collapse="true" appearance="minimal"}
 ### Expand to get a tip
