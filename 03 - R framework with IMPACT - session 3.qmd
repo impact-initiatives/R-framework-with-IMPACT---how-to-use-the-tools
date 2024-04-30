@@ -96,7 +96,7 @@ my_data_with_indicators[, tail(names(my_data_with_indicators), 14)] %>%
 
 Reviewing indicators will compare 2 indicators together and present the differences. It will not check how the indicator was created nor check for inconsistencies. That mean, to review an indicator, it is necessary to create one and compare them. The functions `review_one_variable` and `review_variables` will focus on the latter.
 
-## review_one_variable
+## review_variables
 
 First, a new dataset can be created for the review.
 ```{r}
@@ -136,20 +136,30 @@ With the `join_*` if the names are the same .x and .y will added to the names.
 **review_**\* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis. 
 :::
 ```{r}
-review_one_var <- review_one_variable(binded_df,
-  column_to_review = "fsl_fcs_cat.x",
-  column_to_compare_with = "fsl_fcs_cat.y"
-)
+review_one_var <- review_variables(binded_df,
+  columns_to_review = "fsl_fcs_cat.x",
+  columns_to_compare_with = "fsl_fcs_cat.y")
 
-review_one_var %>%
+
+review_one_var %>% 
+  names()
+```
+It is a list with the dataset and a review table.
+
+```{r}
+review_one_var$review_table %>% 
   head()
 ```
+
+The review table can be summarised to have a quicker overview.
+
 ```{r}
-review_one_var %>%
-  group_by(review_check_fsl_fcs_cat.x, review_comment_fsl_fcs_cat.x) %>%
+review_one_var$review_table %>%
+  group_by(review_check, review_comment) %>%
   tally()
 ```
 
+To see how differences are shown, some noise is introduced to the dataset.
 
 ```{r}
 jittered_df <- binded_df
@@ -166,43 +176,35 @@ jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_score.x"] <- sample(unique(
 ```
 
 ```{r}
-review_one_variable_jittered <- review_one_variable(jittered_df,
-  column_to_review = "fsl_fcs_cat.x",
-  column_to_compare_with = "fsl_fcs_cat.y"
-)
+review_one_variable_jittered <- review_variables(jittered_df,
+  columns_to_review = "fsl_fcs_cat.x",
+  columns_to_compare_with = "fsl_fcs_cat.y")
 
-review_one_variable_jittered %>%
-  group_by(review_check_fsl_fcs_cat.x, review_comment_fsl_fcs_cat.x) %>%
+review_one_variable_jittered$review_table %>%
+  group_by(review_check, review_comment) %>%
   tally()
 ```
 
-```{r}
-review_one_variable_jittered2 <- review_one_variable(jittered_df,
-  column_to_review = "fsl_fcs_cat.x",
-  column_to_compare_with = "fsl_fcs_cat.y",
-  return_dataset = T
-)
+The dataset has new columns to help filtering for further investigation.
 
-review_one_variable_jittered2[, tail(names(review_one_variable_jittered2), 20)] %>%
+```{r}
+review_one_variable_jittered$dataset[, tail(names(review_one_variable_jittered$dataset), 5)] %>%
   head()
 ```
 ```{r}
-review_one_variable_jittered2 %>%
+review_one_variable_jittered$dataset %>%
   filter(!review_check_fsl_fcs_cat.x) %>%
   select(uuid, fsl_fcs_cat.x, fsl_fcs_cat.y, review_check_fsl_fcs_cat.x, review_comment_fsl_fcs_cat.x)
 ```
 
 
-## review_variables
+If there are more than one variable to review, pair-wise vectors can be used.
 
 ```{r}
 my_review <- review_variables(jittered_df,
   columns_to_review = c("fsl_fcs_cat.x", "fsl_fcs_score.x"),
   columns_to_compare_with = c("fsl_fcs_cat.y", "fsl_fcs_score.y")
 )
-
-typeof(my_review)
-names(my_review)
 ```
 
 ```{r}
@@ -224,6 +226,8 @@ my_review$dataset %>%
 
 # Exercises 
 
+## Exercise 1
+
 - Add the **food consumption matrix score** to the dataset. The food consumption matrix score is a food security indicator that uses the **food consumption score**, **household hunger score** and the **reduced coping strategy index**.
 
 ```{r}
@@ -233,6 +237,12 @@ analysistools::analysistools_MSNA_template_survey %>%
   filter(name %in% names_to_keep,
          name != "rCSI_module") %>% 
   select(name, `label::english`, type) 
+```
+
+```{r}
+#| eval: false
+library(addindicators)
+library(dplyr)
 ```
 
 ```{r}
@@ -296,6 +306,7 @@ my_answer <- exercise_data %>% add_rcsi(
 ```
 :::
 
+## Exercise 2
 
 - You receive a dataset, you need to review the following indicators.
 
@@ -496,6 +507,14 @@ my_analysis$loa %>%
 
 # Exercises
 
+## Exercise 1
+
+```{r}
+#| eval: false
+library(analysistools)
+```
+
+
 ```{r}
 exercise_data <- analysistools_MSNA_template_data
 
@@ -523,16 +542,21 @@ Did you try the argument *group_var* in `create_analysis` ?
 ::: {.callout-tip collapse="true" appearance="minimal"}
 ### Expand to get the answer
 
-```         
+```{r}
+#| eval: false
 my_exercise_design <- srvyr::as_survey_design(exercise_data_shorter, strata = "admin1") 
 
 my_answer_analysis <- create_analysis(my_exercise_design, group_var = "respondent_gender", sm_separator = "/")
 
 ```
 :::
+
+## Exercise 2
+
 - The analysis should be weighted, this is the sampling frame. Re-do the analysis at the overall level.
 
 ```{r}
+#| df-print: true
 sampling_frame <- data.frame(
   strata = c("admin1a", "admin1b", "admin1c"),
   population = c(100000, 200000, 300000)
@@ -556,7 +580,8 @@ Did you modify your design object?
 ### Expand to get the answer
 
 ```{r}
-#| output: false
+#| eval: false
+
 exercise_data_shorter_weigthed <- exercise_data_shorter %>% 
   add_weights(sample_data = sampling_frame, strata_column_dataset = "admin1", strata_column_sample = "strata", population_column = "population")
 
