@@ -1,0 +1,7 @@
+"0","review_one_variable_jittered <- review_variables(jittered_df,"
+"0","  columns_to_review = ""fsl_fcs_cat.x"","
+"0","  columns_to_compare_with = ""fsl_fcs_cat.y"")"
+"0",""
+"0","review_one_variable_jittered$review_table %>%"
+"0","  group_by(review_check, review_comment) %>%"
+"0","  tally()"

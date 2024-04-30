@@ -1,0 +1,8 @@
+"0","only_nas <- my_data_with_indicators %>%"
+"0","  summarise(across(.cols = everything(), .fns = function(x) {"
+"0","    sum(is.na(x)) == nrow(my_data_with_indicators)"
+"0","  })) %>%"
+"0","  do.call(c, .)"
+"0",""
+"0","my_data_shorter <- my_data_with_indicators[, !only_nas] %>%"
+"0","  select(!grep(""other"", names(my_data_with_indicators), value = T))"

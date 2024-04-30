@@ -1,0 +1,4 @@
+"0","logical_check_list <- readxl::read_excel(""inputs/01 - example - check_list.xlsx"")"
+"2","Error in utils::unzip(zip_path, list = TRUE) : 
+  zip file 'C:\Users\Yann SAY\ACTED\IMPACT-Research - DevOps\trainings\R framework with IMPACT - how to use the tools\inputs\01 - example - check_list.xlsx' cannot be opened
+"
