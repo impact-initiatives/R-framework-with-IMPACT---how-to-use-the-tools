@@ -1,5 +1,0 @@
-library(cleaningtools)
-library(dplyr)
-
-previous_exercise_log <- readRDS("inputs/03 - exercise - previous_log.RDS")
-previous_exercise_log %>% names()

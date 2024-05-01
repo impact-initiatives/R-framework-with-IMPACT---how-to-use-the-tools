@@ -1,0 +1,82 @@
+---
+title: Tabular html output
+subtitle: XXX2499
+
+format:
+  reach_tabular_html-html: default
+author: yannsay-impact
+date: last-modified
+
+params: 
+    results_table_path: "inputs/example1/resultstable.xlsx"
+    loa_outputs_label: "inputs/example1/daf_example.xlsx"
+---
+```{r}
+#| include: false
+
+library(tidyverse)
+results_table <- readxl::read_excel(params$results_table_path)
+loa_outputs_label <- readxl::read_excel(params$loa_outputs_label)
+
+section_info <- loa_outputs_label %>% 
+  select(section, analysis_var, group_var, label) %>% 
+  mutate(section = as_factor(section))
+
+results_table <- results_table %>% 
+  left_join(section_info)
+
+results_table <- results_table |>
+  select(-analysis_key) |>
+  mutate(across(any_of(c("stat","stat_low","stat_upp")), ~round(.x, digits =2)))
+
+names_sections_list <- results_table |>
+  group_by(section) |>
+  group_keys()
+
+sections_results_table_list <- results_table |>
+  group_by(section) |>
+  group_split() |>
+  set_names(names_sections_list$section)
+
+names_list <- sections_results_table_list |>
+  map(\(x)  x |> group_by(label,analysis_var,group_var) |> group_keys()
+)
+
+results_table_list <- map2(sections_results_table_list, 
+                           names_list,
+                           \(x,y) x |>
+                             group_by(label,analysis_var,group_var) |>
+                             group_split() |>
+                             map(~select(.x,-analysis_type, -section, -label)) |>
+                             set_names(y[["label"]])
+)
+  
+```
+```{r}
+#| include: false
+results_table_list %>%
+  map(\(x) x |> map(DT::datatable)) |> 
+  htmltools::tagList()
+
+```
+
+::: {.panel-tabset}
+
+## Introduction
+
+Write something here
+
+```{r}
+#| results: asis
+#| echo: false
+
+for(i in names_sections_list$section) {
+  cat(paste("\n##", i, "\n\n"))
+  for(j in names(results_table_list[[i]])) {
+  cat(paste("\n###", j, "\n\n"))
+  print(htmltools::tagList(DT::datatable(results_table_list[[i]][[j]],
+                                         options = list(scrollX  = TRUE))))}
+}
+```
+
+:::

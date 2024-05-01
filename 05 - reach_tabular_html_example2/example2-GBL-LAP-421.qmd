@@ -1,0 +1,63 @@
+---
+title: Tabular html output
+subtitle: XXX2499
+
+format:
+  reach_tabular_html-html: default
+author: yannsay-impact
+date: last-modified
+
+params: 
+    results_table_path: "inputs/example2/results_outputs.xlsx"
+---
+```{r}
+#| include: false
+
+library(tidyverse)
+results_table <- readxl::read_excel(params$results_table_path)
+
+results_table <- results_table |>
+  select(-analysis_key) |>
+  mutate(across(any_of(c("stat","stat_low","stat_upp")), ~round(.x, digits =2)))
+
+names_list <- results_table |>
+  group_by(analysis_type,analysis_var,group_var) |> 
+  group_keys() |> 
+  mutate(label = paste(analysis_type, "%/%", analysis_var, "%/%", group_var))
+
+
+results_table_list <- results_table|>
+                            group_by(analysis_type,analysis_var,group_var) |>
+                            group_split() |>
+                      map(~select(.x,-analysis_type)) |>
+                             set_names(names_list[["label"]])
+
+  
+```
+```{r}
+#| include: false
+results_table_list %>%
+  map(DT::datatable) |> 
+  htmltools::tagList()
+
+```
+
+::: {.panel-tabset}
+
+## Introduction
+
+Write something here
+
+## Results
+
+```{r}
+#| results: asis
+#| echo: false
+
+for(j in names(results_table_list)) {
+  cat(paste("\n###", j, "\n\n"))
+  print(htmltools::tagList(DT::datatable(results_table_list[[j]],
+                                         options = list(scrollX  = TRUE))))}
+```
+
+:::
