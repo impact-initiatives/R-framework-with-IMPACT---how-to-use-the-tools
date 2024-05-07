@@ -2,13 +2,6 @@
 title: "04 - R framework with IMPACT - session 4"
 author: "Yann Say"
 date: last-modified
-
-format:
-  html:
-    toc: true
-    css: config/css/styles.css
-    df-print: kable
-    embed-resources: true
 ---
 
 # Recap
@@ -52,7 +45,6 @@ The framework is built around 4 steps: cleaning, composition, analysis, outputs
 The following section will present some introduction about the outputs.
 
 ![](config/images/step - outputs.png)
-
 
 There are currently two types of table: 
 
@@ -100,7 +92,7 @@ my_results_table %>%
 
 ![](config/images/table variables x group.png)
 
-# Tabular HTML
+# Outputs - Tabular HTML
 
 The folders *05 - reach_tabular_html_\**  are example of Quarto projects. They can be used to produce some tables in the html format.
 

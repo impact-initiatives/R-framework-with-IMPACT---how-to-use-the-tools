@@ -3,12 +3,6 @@ title: "02 - R framework with IMPACT - session 2"
 author: "Yann Say"
 date: last-modified
 
-format:
-  html:
-    toc: true
-    css: config/css/styles.css
-    df-print: kable
-    embed-resources: true
 ---
 
 ```{r}

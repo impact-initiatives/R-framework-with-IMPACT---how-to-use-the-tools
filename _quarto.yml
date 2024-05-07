@@ -1,0 +1,35 @@
+project:
+  type: website
+  render:
+      - 01 - R framework with IMPACT - session 1.qmd
+      - 02 - R framework with IMPACT - session 2.qmd
+      - 03 - R framework with IMPACT - session 3.qmd
+      - 04 - R framework with IMPACT - session 4.qmd
+
+website:
+  title: "Intoduction to R framework with IMPACT"
+  sidebar:
+    contents:
+      - 01 - R framework with IMPACT - session 1.qmd
+      - 02 - R framework with IMPACT - session 2.qmd
+      - 03 - R framework with IMPACT - session 3.qmd
+      - 04 - R framework with IMPACT - session 4.qmd
+    search: false
+
+  navbar:
+    tools:
+      search: false
+      - icon: github
+        menu:
+          - text: Source Code
+            href:  https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools
+          - text: Report a Bug
+            href:  https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues
+
+format:
+  html:
+    toc: true
+    theme: custom.scss
+    df-print: kable
+    embed-resources: true
+
