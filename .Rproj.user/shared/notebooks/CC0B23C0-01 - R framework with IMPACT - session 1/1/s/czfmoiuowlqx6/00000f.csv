@@ -1,2 +1,0 @@
-"0","more_logs <- more_logs %>% "
-"0","  check_duration(column_to_check = ""duration"", uuid_column = ""X_uuid"")"

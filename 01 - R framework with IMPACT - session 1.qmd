@@ -13,26 +13,36 @@ format:
 
 # IMPACT R framework
 
-------------------------------------------------------------------------
+![](config/images/rframwork.png)
 
 The IMPACT R framework has been developed to meet the requirements of the IMPACT research cycle. <br/><br/> The ecosystem is a modular framework with two dimensions:
 
 -   a horizontal dimension that focuses on the outcome of a given step, and
 -   a vertical dimension that focuses on the content of a given step.
 
-------------------------------------------------------------------------
-
 The framework is built around:
 
--   4 steps: cleaning, composition, analysis, outputs
--   4 verbs: check, add, create, review
--   2 adjectives: pipeable, independent
+-   **4 steps**: 
+    -   **Cleaning**: any manipulation to go from the raw data to the clean data
+    -   **Composition**: any manipulation before the analysis e.g. adding indicators, adding information from loop or main, aok aggregation, etc.
+    -   **Analysis**: any manipulation regarding only the analysis
+    -   **Outputs**: any manipulation to format the outputs.
+-   **4 verbs**: 
+    -   **Add**: functions that will add a variable (column) to the dataset.
+    -   **Check**: functions that will flag values based on a specific check. It will return them in a log. A **check\_**\* will return a list: the checked dataset, and the log. The function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation).
+    -   **Create**: functions that will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output. Outputs from **create\_**\* functions outputs can be in different shape, format, etc.
+    -   **Review**: functions that will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis.
+-   **2 adjectives**: 
+    -   **Pipe-able**: In the framework, functions of the same family should be pipe-able. In the following case, 2 **check\_**\* functions are piped.
+    -   **Independent**: At any given step, the user can change tool. Each input and each output of a step should follow the same format and definition.
 
 These elements will help to improve cooperation and collaboration between different teams while allowing modularity to adapt to each context and assessment.
 
-------------------------------------------------------------------------
+# Cleaning - Checking a dataset
 
-![](config/images/rframwork.png)
+The following section will present some introduction about the composition.
+
+![](config/images/step%20-%20cleaning.png)
 
 ```{r}
 #| warning: false
@@ -44,13 +54,14 @@ my_kobo_survey <- cleaningtools::cleaningtools_survey
 my_kobo_choice <- cleaningtools::cleaningtools_choices
 ```
 
-# Checking a dataset
-
 ::: {.callout-tip appearance="minimal"}
 ### check\_\*
-**check_**\* functions will flag values based on a specific check. It will return them in a log. A *check_** will return a list: the checked dataset, and the log. 
 
-**check_**\* functions are used only in the cleaning step.
+![](config/images/verb%20-%20check.png)
+
+**check\_**\* functions will flag values based on a specific check. It will return them in a log. A \*check\_\*\* will return a list: the checked dataset, and the log.
+
+**check\_**\* functions are used only in the cleaning step.
 :::
 
 ## check_outliers
@@ -103,6 +114,8 @@ my_log2$duplicate_log %>%
 
 There is no duplicate. The log is empty.
 
+## Pipe-able
+
 ::: {.callout-tip appearance="minimal"}
 ### Pipe-able
 
@@ -144,17 +157,19 @@ more_logs <- my_raw_dataset %>%
   check_value(uuid_column = "X_uuid") 
 ```
 
+## add_duration
+
 ::: {.callout-tip appearance="minimal"}
 ### add\_\*
 
-**add_**\* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.
+![](config/images/verb%20-%20add.png)
 
-**add_**\* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation). 
+**add\_**\* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.
+
+**add\_**\* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation).
 
 For example, to check the duration of a survey, there is only the start and end, but not the duration column.
 :::
-
-## add_duration
 
 ```{r}
 more_logs$checked_dataset <- more_logs$checked_dataset %>% 
@@ -202,11 +217,12 @@ In other cases, the check is specific and should be tailored to the dataset, for
 logical_check_list <- readxl::read_excel("inputs/01 - example - check_list.xlsx")
 logical_check_list
 ```
+
 The check list has 4 columns:
 
-- check_id : the name of the check
-- description: the description of the check
-- check_to_perform: the check to perform. The format for the check to be performed should take the format based on tidyverse. That format is as if a new indicator is create with a mutate. That new indicator should be a logical (i.e. TRUE or FALSE) with TRUE being the value to flag.
+-   check_id : the name of the check
+-   description: the description of the check
+-   check_to_perform: the check to perform. The format for the check to be performed should take the format based on tidyverse. That format is as if a new indicator is create with a mutate. That new indicator should be a logical (i.e. TRUE or FALSE) with TRUE being the value to flag.
 
 This list can then be used with `check_logical_with_list`.
 
@@ -241,8 +257,8 @@ Format for the **check_to_perform** should take the format based on *tidyverse*.
 
 ```{r}
 my_raw_dataset %>% 
-  dplyr::mutate(xxx =  primary_livelihood == "employment" & tot_expenses < 1000000) %>% 
-  dplyr::select(X_uuid, xxx, primary_livelihood, tot_expenses) %>% 
+  dplyr::mutate(xxx =  primary_livelihood.employment == 1 & tot_expenses < 200000) %>% 
+  dplyr::select(X_uuid, xxx, primary_livelihood.employment, tot_expenses) %>% 
   head()
 ```
 
@@ -256,7 +272,6 @@ example_logic$checked_dataset[1:6,tail(names(example_logic$checked_dataset))]
 If you don't include **columns_to_clean** the `check_logical_with_list` function will try to guess the variables. Not guarantee it will read or pick the correct names.
 :::
 
-
 # Exercises
 
 ## Exercise 1
@@ -266,9 +281,13 @@ Try the following with a dataset:
 -   Perform a check to spot personal identifiable information
 
 ```{r}
-my_raw_dataset <- cleaningtools_raw_data
-```
+library(cleaningtools)
+library(dplyr)
 
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
 ### Expand to get a hint
@@ -279,7 +298,7 @@ Try the function `check_pii`
 ::: {.callout-tip collapse="true" appearance="minimal"}
 ### Expand to get the answer
 
-```{r}  
+```{r}
 #| output: false
 my_raw_dataset %>% 
   check_pii(uuid_column = "X_uuid")
@@ -327,11 +346,23 @@ more_logs %>%
 
 ## Exercise 3
 
--  Fill the excel checklist to do the following checks:
-    -   household number (variable: *num_hh_member*) is above 8.
-    -   the water source for drinking water is bottled (variable: *water_source_drinking*, value: *bottled*) and the household always treat the drinking water (variable: *treat_drink_water*, value: *always_treat*).
-    -   the water source for drinking water is bottled (variable: *water_source_drinking*, value: *bottled*) and one of the main reason for the the household to not meet its water needs is the water pressure (variable: *access_water_enough_why_not*, value: *water_pressure*, this is a select multiple)
+-   Fill the excel checklist to do the following checks:
+    -   household number (variable: **num_hh_member**) is above 8.
+    -   the water source for drinking water is bottled (variable: **water_source_drinking**, value: **bottled**) and the household always treat the drinking water (variable: **treat_drink_water**, value: **always_treat**).
+    -   the water source for drinking water is bottled (variable: **water_source_drinking**, value: **bottled**) and one of the main reason for the the household to not meet its water needs is the water pressure (variable: **access_water_enough_why_not**, value: **water_pressure**, this is a select multiple)
     
+```{r}
+#| echo: false
+my_kobo_survey %>% 
+  filter(name %in% c("num_hh_member", "water_source_drinking", "treat_drink_water","access_water_enough_why_not")) %>% 
+  select(name, `label::English (en)`, type)
+  
+my_kobo_choice %>% 
+  filter(list_name %in% c("water_sources","treat", "barriers_water_needs"),
+         name %in% c("bottled", "always_treat", "water_pressure")) %>% 
+  select(name,`label::English (en)`, list_name )
+```
+
 ```{r}
 #| output: false
 exercise_check_list <- readxl::read_excel("inputs/01 - example - check_list.xlsx")
@@ -344,7 +375,6 @@ my_raw_dataset %>%
                           columns_to_clean_column = "columns_to_clean",
                           description_column = "description")
 ```
-
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
 ### Expand to get the answer
@@ -367,16 +397,11 @@ my_raw_dataset %>%
 :::
 
 ## Extra
-- Try to add duration to one of your dataset.
-- Try to add duration with audit files.
+
+-   Try to add duration with audit files.
 
 ::: {.callout-note collapse="true" appearance="minimal"}
 ### Expand to get a tip
 
-```         
-my_raw_dataset$new_start <- ymd_hms(my_raw_dataset[["start"]])
-my_raw_dataset$new_end <- ymd_hms(my_raw_dataset[["end"]])
-my_raw_dataset$duration <- difftime(as.POSIXct(my_raw_dataset$new_start), as.POSIXct(my_raw_dataset$new_end), units = "mins")
-```
+Try `create_audit_list()` and `add_duration_from_audit()`
 :::
-

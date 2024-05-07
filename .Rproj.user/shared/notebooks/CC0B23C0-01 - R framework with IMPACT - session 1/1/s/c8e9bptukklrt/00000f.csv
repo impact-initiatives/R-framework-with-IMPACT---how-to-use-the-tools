@@ -1,7 +1,0 @@
-"0","example_logic <- my_raw_dataset %>% "
-"0","  check_logical_with_list(uuid_column = ""X_uuid"","
-"0","                          list_of_check = logical_check_list,"
-"0","                          check_id_column = ""check_id"","
-"0","                          check_to_perform_column = ""check_to_perform"","
-"0","                          columns_to_clean_column = ""columns_to_clean"","
-"0","                          description_column = ""description"")"
