@@ -27,8 +27,15 @@ jobs:
         with:
           cache-version: 1
 
+      - name: Get gh-page adress
+        run: |
+          owner=$(echo ${{ github.repository }} | cut -d'/' -f1)
+          repo=$(echo ${{ github.repository }} | cut -d'/' -f2)
+          ghpagesite="https://$owner.github.io/$repo/"
+          echo "ghpagesite=$ghpagesite" >> $GITHUB_ENV
+
       - name: Render Book with babelquarto
-        run: Rscript -e 'babelquarto::render_website()'
+        run: Rscript -e 'babelquarto::render_website(site_url = Sys.getenv('ghpagesite'))'
 
       - name: Achive book render
         uses: actions/upload-artifact@v4
