@@ -1,32 +1,54 @@
 project:
   type: website
   render:
-      - 01 - R framework with IMPACT - session 1.qmd
+      - session1.qmd
+      - session1.es.qmd
       - 02 - R framework with IMPACT - session 2.qmd
+      - 02 - R framework with IMPACT - session 2.es.qmd
       - 03 - R framework with IMPACT - session 3.qmd
-      - 04 - R framework with IMPACT - session 4.qmd
+      - 03 - R framework with IMPACT - session 3.es.qmd
+      - session4.qmd
+
 website:
   title: "Intoduction to R framework with IMPACT"
   sidebar:
+    style: "docked"
+    search: true
     contents:
-      - 01 - R framework with IMPACT - session 1.qmd
-      - 02 - R framework with IMPACT - session 2.qmd
-      - 03 - R framework with IMPACT - session 3.qmd
-      - 04 - R framework with IMPACT - session 4.qmd
-  navbar:
-    tools:
-      - icon: github
-        menu:
-          - text: Source Code
-            href:  https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools
-          - text: Report a Bug
-            href:  https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues
+      - text: "session1"
+        href: session1.qmd
+      - text: "session 2"
+        href: 02 - R framework with IMPACT - session 2.qmd
+      - text: "session 3"
+        href: 03 - R framework with IMPACT - session 3.qmd
+      - text: "session4"
+        href: session4.qmd
 format:
   html:
     toc: true
+    code-link: true
     theme:
       - simplex
       - config/custom.scss
     df-print: kable
     embed-resources: true
 
+
+babelquarto:
+  languagelinks: sidebar
+  languagecodes:
+  - name: es
+    text: "Version in es"
+  - name: fr
+    text: "Version in fr"
+  - name: en
+    text: "Version in en"
+  mainlanguage: 'en'
+  languages: ['es', 'fr']
+title-es: title in es
+title-fr: title in fr
+description-es: description in es
+description-fr: description in fr
+author-es: author in es
+author-fr: author in fr
+lang: en
