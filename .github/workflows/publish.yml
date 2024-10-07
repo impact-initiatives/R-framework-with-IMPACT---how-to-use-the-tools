@@ -35,7 +35,7 @@ jobs:
           echo "ghpagesite=$ghpagesite" >> $GITHUB_ENV
 
       - name: Render Book with babelquarto
-        run: Rscript -e 'babelquarto::render_website(site_url = Sys.getenv('ghpagesite'))'
+        run: Rscript -e 'babelquarto::render_website(site_url = Sys.getenv("ghpagesite"))'
 
       - name: Achive book render
         uses: actions/upload-artifact@v4
