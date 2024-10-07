@@ -1,4 +1,3 @@
-.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
@@ -9,4 +8,4 @@
 .DS_Store
 .quarto
 _site/
-_site/
+/.Rproj.user
