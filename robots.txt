@@ -1,1 +1,0 @@
-Sitemap: https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/sitemap.xml
