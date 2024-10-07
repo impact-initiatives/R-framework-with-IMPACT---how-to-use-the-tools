@@ -1,13 +1,14 @@
 project:
   type: website
   render:
-      - session1.qmd
-      - session1.es.qmd
-      - 02 - R framework with IMPACT - session 2.qmd
-      - 02 - R framework with IMPACT - session 2.es.qmd
-      - 03 - R framework with IMPACT - session 3.qmd
-      - 03 - R framework with IMPACT - session 3.es.qmd
-      - session4.qmd
+      - 01-session1.qmd
+      - 01-session1.es.qmd
+      - 02-session2.qmd
+      - 02-session2.es.qmd
+      - 03-session3.qmd
+      - 03-session3.es.qmd
+      - 04-session4.qmd
+      - 04-session4.es.qmd
 
 website:
   title: "Intoduction to R framework at IMPACT Initiatives"
