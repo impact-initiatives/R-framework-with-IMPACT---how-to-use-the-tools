@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.2.2",
+    "Version": "4.4.0",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -56,7 +56,7 @@
       "Package": "Matrix",
       "Version": "1.6-4",
       "Source": "Repository",
-      "Repository": "https://packagemanager.posit.co/cran/2023-12-06",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "grDevices",
@@ -307,14 +307,14 @@
     },
     "cachem": {
       "Package": "cachem",
-      "Version": "1.0.8",
+      "Version": "1.1.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "fastmap",
         "rlang"
       ],
-      "Hash": "c35768291560ce302c0a6589f92e837d"
+      "Hash": "cd9a672193789068eb5a2aad65a0dedf"
     },
     "callr": {
       "Package": "callr",
@@ -431,7 +431,7 @@
       "Package": "commonmark",
       "Version": "1.9.1",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "RSPM",
       "Hash": "5d8225445acb167abf7797de48b2ee3c"
     },
     "conflicted": {
@@ -627,10 +627,10 @@
     },
     "fastmap": {
       "Package": "fastmap",
-      "Version": "1.1.1",
+      "Version": "1.2.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f7736a18de97dea803bde0a2daaafb27"
+      "Hash": "aa5e1cd11c2d15497494c5292d7ffcc8"
     },
     "fontawesome": {
       "Package": "fontawesome",
@@ -1583,7 +1583,7 @@
     },
     "shiny": {
       "Package": "shiny",
-      "Version": "1.8.1.1",
+      "Version": "1.9.1",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1612,7 +1612,7 @@
         "withr",
         "xtable"
       ],
-      "Hash": "54b26646816af9960a4c64d8ceec75d6"
+      "Hash": "6a293995a66e12c48d13aa1f957d09c7"
     },
     "snakecase": {
       "Package": "snakecase",
@@ -1630,7 +1630,7 @@
       "Package": "sourcetools",
       "Version": "0.1.7-1",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "RSPM",
       "Requirements": [
         "R"
       ],
@@ -1995,7 +1995,7 @@
       "Package": "xtable",
       "Version": "1.8-4",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "stats",

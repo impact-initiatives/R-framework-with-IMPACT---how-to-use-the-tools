@@ -2,5 +2,11 @@
 .Rhistory
 .RData
 .Ruserdata
-
 /.quarto/
+.Rproj.user
+.Rdata
+.httr-oauth
+.DS_Store
+.quarto
+_site/
+_site/
