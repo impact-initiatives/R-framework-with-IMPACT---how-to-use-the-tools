@@ -10,19 +10,19 @@ project:
       - session4.qmd
 
 website:
-  title: "Intoduction to R framework with IMPACT"
+  title: "Intoduction to R framework at IMPACT Initiatives"
   sidebar:
     style: "docked"
     search: true
     contents:
-      - text: "session1"
-        href: session1.qmd
+      - text: "session 1"
+        href: 01-session1.qmd
       - text: "session 2"
-        href: 02 - R framework with IMPACT - session 2.qmd
+        href: 02-session2.qmd
       - text: "session 3"
-        href: 03 - R framework with IMPACT - session 3.qmd
-      - text: "session4"
-        href: session4.qmd
+        href: 03-session2.qmd
+      - text: "session 4"
+        href: 04-session4.qmd
 format:
   html:
     toc: true
@@ -38,15 +38,15 @@ babelquarto:
   languagelinks: sidebar
   languagecodes:
   - name: es
-    text: "Version in es"
+    text: "Español"
   - name: fr
-    text: "Version in fr"
+    text: "Francais"
   - name: en
-    text: "Version in en"
+    text: "Anglais"
   mainlanguage: 'en'
   languages: ['es', 'fr']
-title-es: title in es
-title-fr: title in fr
+title-es: Introduction au cadre R chez IMPACT Initiatives
+title-fr: Intoducciòn al Marco R en IMPACT Initiatives
 description-es: description in es
 description-fr: description in fr
 author-es: author in es
