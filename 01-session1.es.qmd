@@ -9,32 +9,33 @@ date: last-modified
 
 ![](config/images/rframwork.png)
 
-The IMPACT R framework has been developed to meet the requirements of the IMPACT research cycle. <br/><br/> The ecosystem is a modular framework with two dimensions:
+El marco IMPACT R se ha desarrollado para cumplir con los requisitos del ciclo de investigación IMPACT. <br/><br/> El ecosistema es un marco modular con dos dimensiones:
 
--   a horizontal dimension that focuses on the outcome of a given step, and
--   a vertical dimension that focuses on the content of a given step.
+-   una dimensión horizontal que se centra en el resultado de un cierto paso, y
+-   una dimensión vertical que se centra en el contenido de un cierto paso.
 
-The framework is built around:
+El marco se basa en :
 
--   **4 steps**: 
-    -   **Cleaning**: any manipulation to go from the raw data to the clean data
-    -   **Composition**: any manipulation before the analysis e.g. adding indicators, adding information from loop or main, aok aggregation, etc.
-    -   **Analysis**: any manipulation regarding only the analysis
-    -   **Outputs**: any manipulation to format the outputs.
--   **4 verbs**: 
-    -   **Add**: functions that will add a variable (column) to the dataset.
-    -   **Check**: functions that will flag values based on a specific check. It will return them in a log. A **check\_**\* will return a list: the checked dataset, and the log. The function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation).
-    -   **Create**: functions that will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output. Outputs from **create\_**\* functions outputs can be in different shape, format, etc.
-    -   **Review**: functions that will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis.
--   **2 adjectives**: 
-    -   **Pipe-able**: In the framework, functions of the same family should be pipe-able. In the following case, 2 **check\_**\* functions are piped.
-    -   **Independent**: At any given step, the user can change tool. Each input and each output of a step should follow the same format and definition.
+-   **4 etapas**: 
+    -   **Limpieza**: cualquier manipulaciòn necesaria para pasar de los datos brutos a los datos limpios.
+    -   **Composición**: cualquier manipulaciòn anterior al análisis p.ej., añadir indicadores, añadir información proveniente del bucle o del dato principal , agragación por AOK, etc.
+    -   **Análisis**: cualquier manipulaciòn que sea relativa al análisis unicamente
+    -   **Resultados**: cualquier manipulaciòn necesaria para formatear los resultados.
+-   **4 verbos**: 
+    -   **Add**: (añadir) funciones que añaden una nueva variable (columna) a los datos.
+    -   **Check**: (verificar) funciones que maracarán valores basándose en una verificación específica. Retornarán estos valores en un registro. Una función check_* devolverá una lista: el conjunto de datos verificado y el registro. La función toma un conjunto de datos como entrada y devuelve el conjunto de datos + el nuevo indicador (y cualquier paso intermedio utilizado para el cálculo).
+    -   **Create**: (crear) funciones que crearán o transformaran algun objecto p.ej. functiones que crearán o transformarán algun objeto creando un registro de limpieza con las verificaciones por hacer, creando una tabla de resultados del análisis etc. Las salidas de las funciones **create\_**\* pueden tener formatos diversos.
+    -   **Review**: (revisar) funciones que revisarán un objeto comparándolo con estándares u otro objeto y señalaran las diferencias. Por ejemplo, revisando la limpieza comparando el conjunto de datos original, el conjunto de datos limpio y el registro de limplieza o comparando los resultados de dos análisis.
+-   ** 2 adjetivos**:
+    - **Pipe-able**: (encadenable) En el marco, las funciones de la misma familia son encadenables (es decir, se pueden aplicar una después de la otra). En el siguiento ejemplo, se encadenan dos funciones **check\_**\*.
+    - **Independiente**: En cualquier paso dado, el usuario puede cambiar de herramienta. Cada entrada y cada salida de un paso deben seguir el mismo formato y definición.
 
-These elements will help to improve cooperation and collaboration between different teams while allowing modularity to adapt to each context and assessment.
+El objetivo es que este conjunto de elementos ayude a la cooperación y colaboración entre diferentes equipos. Las herramientas presentes en este marco deben ser adaptables a cada contexto y evaluación.
 
-# Cleaning - Checking a dataset
 
-The following section will present some introduction about the composition.
+# Limpieza - Verificación de un conjunto de datos
+
+En esta sección, se presentarán ciertas herramientas para la verificación de un conjunto de datos.
 
 ![](config/images/step%20-%20cleaning.png)
 
@@ -53,9 +54,9 @@ my_kobo_choice <- cleaningtools::cleaningtools_choices
 
 ![](config/images/verb%20-%20check.png)
 
-**check\_**\* functions will flag values based on a specific check. It will return them in a log. A \*check\_\*\* will return a list: the checked dataset, and the log.
+Las funciones de tipo check_* marcarán valores basándose en una verificación específica. Retornarán estos valores en un registro. Una función check_* devolverá una lista: el conjunto de datos verificado y el registro.
 
-**check\_**\* functions are used only in the cleaning step.
+Las funciones check_* solo se utilizan durante las etapas de limpieza.
 :::
 
 ## check_outliers
@@ -66,10 +67,10 @@ my_log1 <- my_raw_dataset %>%
   check_outliers(uuid_column = "X_uuid")
 ```
 
-In this example, there are:
+En este ejemplo, la salida será:
 
--   `checked_dataset`: the raw dataset (with extra variables if needed)
--   `potential_outliers`: a log of potential outliers
+-   `checked_dataset`: el conjunto de datos original (con variables adicionales si es necesario)
+-   `potential_outliers`: un registro de posibles valores atípicos.
 
 ```{r}
 typeof(my_log1)
@@ -78,12 +79,12 @@ my_log1 %>%
   names()
 ```
 
-The log has at least 4 columns:
+El registro tiene al menos 4 columnas:
 
--   `uuid`: the unique identifier
--   `issue`: the issue being flagged
--   `question`: the name of the question
--   `old_value`: the value being flagged
+-   `uuid`: el identificador único de la encuesta
+-   `issue`: el problema que se esta señalando
+-   `question`: el nombre de la variable en el conjunto de datos
+-   `old_value`: el valor que se está señalando
 
 ```{r}
 my_log1$potential_outliers %>% 
@@ -91,9 +92,9 @@ my_log1$potential_outliers %>%
 ```
 
 ::: {.callout-note .column-margin}
-Outliers are defined as +/- 3 standard deviation from the mean.
+Se considerán como atípicos valores con +/- 3 deviaciones estándar de la media.
 
-For log outliers, log(x + 1) is used.
+Si asumimos una distribución logarítmica, utilizamos la función log(x + 1).
 :::
 
 ## check_duplicate
@@ -106,14 +107,14 @@ my_log2$duplicate_log %>%
   head()
 ```
 
-There is no duplicate. The log is empty.
+Dado que no hay duplicados, el registro está vacío.
 
 ## Pipe-able
 
 ::: {.callout-tip appearance="minimal"}
 ### Pipe-able
 
-The framework is built around 2 adjectives, **pipe-able** and **independent**. In the framework, functions of the same family should be pipe-able. In the following case, 2 **check\_**\* functions are piped.
+El marco se basa en 2 adjetivos, **pipe-able** e **independiente**. En el marco, las funciones de la misma familias deben ser encadenables (pipeable). En el siguiente caso, se encadenan 2 funciones **check\_**\*.
 :::
 
 ```{r}
@@ -137,9 +138,9 @@ my_log3$duplicate_log %>%
   head()
 ```
 
-## More checks
+## Verificaciones adicionales
 
-This an example of more checks that exist.
+Este es un ejemplo de verificaciones adicionales que existen.
 
 ```{r}
 #| output: false
@@ -158,11 +159,11 @@ more_logs <- my_raw_dataset %>%
 
 ![](config/images/verb%20-%20add.png)
 
-**add\_**\* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.
+Las funciones **add\_**\* añadirán una variable (columna) al conjunto de datos. Por ejemplo, añadirán la duración de una encuesta, añadiran la categoría de puntaje de consumo de alimentos, etc.
 
-**add\_**\* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation).
+Una funcion **add\_**\* toma un conjunto de datos como entrada y devuelve el conjunto de datos + el nuevo indicador (y cualquier paso intermedia utilizado para el cálculo).
 
-For example, to check the duration of a survey, there is only the start and end, but not the duration column.
+En el ejemplo siguiento, se usa la funcion **add_duration** para añadir la duración de la encuesta usando el tiempo de inicio y de fin.
 :::
 
 ```{r}
@@ -173,25 +174,25 @@ more_logs$checked_dataset[1:6, c("start_date", "start_time", "end_date", "end_ti
 ```
 
 ::: {.callout-warning .column-margin}
-The duration is added to the `checked_dataset` in the list, not in the `my_raw_dataset` dataframe. The **check\_**\* functions are used in a pipe, so it needs the current dataset to be modified.
+La duración se añade a `checked_dataset` en la lista, no a `my_raw_dataset`. Las funciones **check\_**\* se utilizan en cadena, por lo cual es necesario que el conjunto actual de datos sea modificado.
 :::
 
 ::: {.callout-warning .column-margin}
-At the moment, `add_duration` takes very specific format. It will change in the future to become more robust and using **lubridate**.
+En este momento, la funcion `add_duration` acepta solo un formato muy específico. En el futuro, cambiará para volverse màs robusta y se harà usando **lubridate**.
 :::
 
-`check_duration` can now be used with the previous checks.
+`check_duration` se puede utilizar en cadena con las verificaciones anteriores.
 
 ```{r}
 more_logs <- more_logs %>% 
   check_duration(column_to_check = "duration", uuid_column = "X_uuid")
 ```
 
-As much as possible, **check\_**\* functions take default argument or the functions will be able to guess some information, e.g. the `check_outliers` function guesses some numerical values. Some functions need more information.
+En la medida de lo posible, las funciones **check\_**\* toman argumentos predeterminados o infieren la información necesaria, p.ej. la funcion `check_outliers` infiere que columnas contienen valores numericos. Ciertas funciones requieren mãs informaciòn.
 
-## other/text columns
+## Columnas de text
 
-`check_other` needs the list of columns to be checked. It currently, it cannot detect the open text question. KOBO tool can be used.
+La funcion `check_other` necesita la lista de columnas que se deben verificar. Al momento, no es capaz de detectar preguntas de texto abierto. Se puede utilizar la herramienta KOBO.
 
 ```{r}
 other_columns_to_check <- my_kobo_survey %>% 
@@ -205,20 +206,21 @@ more_logs <- more_logs %>%
 
 ## check_logical_with_list
 
-In other cases, the check is specific and should be tailored to the dataset, for example, `check_logical_with_list`. All the logical checks can be recorded in an excel file.
+En otros casos, la verificación es específica y debe ser adaptada al conjunto de datos. Es el caso de la función `check_logical_with_list`, a la cual se le puede dar como entrada una tabla de Excel con las verificaciones lógicas por aplicar.
 
 ```{r}
 logical_check_list <- readxl::read_excel("inputs/01 - example - check_list.xlsx")
 logical_check_list
 ```
 
-The check list has 4 columns:
+La entrada, es decir, la tabla de Excel con las verificaciones lógicas, debe tener 4 columnas:
 
--   check_id : the name of the check
--   description: the description of the check
--   check_to_perform: the check to perform. The format for the check to be performed should take the format based on tidyverse. That format is as if a new indicator is create with a mutate. That new indicator should be a logical (i.e. TRUE or FALSE) with TRUE being the value to flag.
+-   check_id : el nombre de la verificación
+-   description : la descripcion de la verificacion 
+-   check_to_perform : la verificación por hacer. El formato de la verificación por hacer debe ser compatible con tidyverse. Se debe usar un formato similar al que se utilizaría en la función `mutate` para crear un nuevo indicador lógico (es decir, TRUE o FALSE). La verificación lógica debe estar escrita de manera que la salida TRUE corresponda a la encuesta que se quiera señalar.
+-   columns_to_clean : la lista de columnas utilizadas para la verificación lógica.
 
-This list can then be used with `check_logical_with_list`.
+Una tal lista se puede utilizar con  `check_logical_with_list`.
 
 ```{r}
 example_logic <- my_raw_dataset %>% 
@@ -236,19 +238,18 @@ example_logic$logical_all %>%
   head()
 ```
 
-The log returns :
+El registro que se obtiene contiene las siguientes columnas:
 
--   uuid
--   question: for all variables in **columns_to_clean**
--   old value: for all variables in **columns_to_clean**
--   issue
--   check_id: logical check identifier
--   check_binding: the combination of the check_id and the uuid.
+-   uuid: el identificador único de la encuesta
+-   question: el nombre de la columna señalada, sera un elemento de la lista **columns_to_clean**
+-   old value: el valor en la columna de **columns_to_clean** señalada
+-   issue: el problema señalado
+-   check_id: el identificador de la verificación lógica
+-   check_binding: una combinación del check_id y del uuid.
 
-One check can be flagged in several rows, in the example above, for each uuid, the primary_livelihood and tot_expenses are flagged.
+Para una verificación dada, el registro tendrá varias líneas relativas al mismo señalamiento. En el ejemplo anterior, para cada uuid, los valores de las columnas primary_livelihood y tot_expenses son señalados (una línea por cada uuid por cada columna en columns_to_clean).
 
-Format for the **check_to_perform** should take the format based on *tidyverse*. That format is as if a new indicator is create with a `mutate`. That new indicator should be a logical (i.e. TRUE or FALSE) with TRUE being the value to flag.
-
+El formato de la verificación por hacer debe ser compatible con tidyverse. Se debe usar un formato similar al que se utilizaría en la función `mutate` para crear un nuevo indicador lógico (es decir, TRUE o FALSE). La verificación lógica debe estar escrita de manera que la salida TRUE corresponda a la encuesta que se quiera señalar.
 ```{r}
 my_raw_dataset %>% 
   dplyr::mutate(xxx =  primary_livelihood.employment == 1 & tot_expenses < 200000) %>% 
@@ -256,23 +257,23 @@ my_raw_dataset %>%
   head()
 ```
 
-The checked dataset will be return with extra columns, i.e. a logical variable with the name of the **check_id**.
+El conjunto de datos verificado incluirá columnas adicionales. Estas columnas tendrán el nombre del check_id y contendrán valores lógicos.
 
 ```{r}
 example_logic$checked_dataset[1:6,tail(names(example_logic$checked_dataset))]
 ```
 
 ::: {.callout-note .column-margin}
-If you don't include **columns_to_clean** the `check_logical_with_list` function will try to guess the variables. Not guarantee it will read or pick the correct names.
+Si no se incluya la lista **columns_to_clean** la funcion `check_logical_with_list` intentará identificar las variables de forma automática. Sin embargo, no se puede garantizar que seleccione los nombres correctos.
 :::
 
-# Exercises
+# Ejercicios
 
-## Exercise 1
+## Ejercicio 1
 
-Try the following with a dataset:
+Probar lo siguiente con un conjunto de datos:
 
--   Perform a check to spot personal identifiable information
+-   Realiza una verificación para detectar información de identificación personal.
 
 ```{r}
 library(cleaningtools)
@@ -284,13 +285,13 @@ my_kobo_choice <- cleaningtools::cleaningtools_choices
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haz clic para ver una pista.
 
-Try the function `check_pii`
+Prueba con la función `check_pii`
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haz clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -299,24 +300,24 @@ my_raw_dataset %>%
 ```
 :::
 
-## Exercise 2
+## Ejercicio 2
 
--   Perform a check that will look at the percentages of missing value per observation and that will spot any observation that is *different*.
+-   Realiza una verificación que examine los porcentajes de valores faltantes por encuesta y que señale cualquier observación *atípica*.
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haz clic para ver una pista.
 
-Try the function `check_percentage_missing`
+Prueba con la función `check_percentage_missing`
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haz clic para ver una pista.
 
-Did you try to add a new column with `add_percentage_missing`
+¿Intentaste añadir una nueva columna con `add_percentage_missing` ? 
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haz clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -327,7 +328,7 @@ my_raw_dataset %>%
   check_percentage_missing(uuid_column = "X_uuid")
 ```
 
-Or if using a log already
+Si si ya estás utilizando un registro 
 
 ```{r}
 #| output: false
@@ -338,12 +339,12 @@ more_logs %>%
 ```
 :::
 
-## Exercise 3
+## Ejercicio 3
 
--   Fill the excel checklist to do the following checks:
-    -   household number (variable: **num_hh_member**) is above 8.
-    -   the water source for drinking water is bottled (variable: **water_source_drinking**, value: **bottled**) and the household always treat the drinking water (variable: **treat_drink_water**, value: **always_treat**).
-    -   the water source for drinking water is bottled (variable: **water_source_drinking**, value: **bottled**) and one of the main reason for the the household to not meet its water needs is the water pressure (variable: **access_water_enough_why_not**, value: **water_pressure**, this is a select multiple)
+-   Completa una tabla Excel para realizar las siguientes verificaciones lógicas :
+    -   El número de miembros del hogar (variable: **num_hh_member**) es superior a 8.
+    -   La fuente de agua para beber es agua embotellada (variable: **water_source_drinking**, value: **bottled**) y el hogar siempre trata el agua (variable: **treat_drink_water**, value: **always_treat**).
+    -   La fuente de agua para beber es agua embotellada (variable: **water_source_drinking**, value: **bottled**) y una de las principales razones por las que el hogar no satisface sus nececidades de agua es la presión del agua (variable: **access_water_enough_why_not**, value: **water_pressure**, this is a select multiple)
     
 ```{r}
 #| echo: false
@@ -371,7 +372,7 @@ my_raw_dataset %>%
 ```
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haz clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -390,12 +391,12 @@ my_raw_dataset %>%
 ```
 :::
 
-## Extra
+## Ejercicio adicional
 
--   Try to add duration with audit files.
+-   Intenta añadir la duración con los archivos de auditoría (es decir, los *audit files* de la herramienta KOBO).
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a tip
+### Haz clic para ver una clave.
 
-Try `create_audit_list()` and `add_duration_from_audit()`
+Prueba usando las funciones `create_audit_list()` y `add_duration_from_audit()`
 :::
