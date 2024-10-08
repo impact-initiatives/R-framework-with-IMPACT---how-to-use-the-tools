@@ -9,21 +9,21 @@ date: last-modified
 
 ![](config/images/rframwork.png)
 
-The IMPACT R framework has been developed to meet the requirements of the IMPACT research cycle. <br/><br/> The ecosystem is a modular framework with two dimensions:
+El marco IMPACT R se ha desarrollado para cumplir con los requisitos del ciclo de investigación IMPACT. <br/><br/> El ecosistema es un marco modular con dos dimensiones:
 
--   a horizontal dimension that focuses on the outcome of a given step, and
--   a vertical dimension that focuses on the content of a given step.
+-   una dimensión horizontal que se centra en el resultado de un cierto paso, y
+-   una dimensión vertical que se centra en el contenido de un cierto paso.
 
-The framework is built around:
+El marco se basa en :
 
--   **4 steps**: 
-    -   **Cleaning**: any manipulation to go from the raw data to the clean data
-    -   **Composition**: any manipulation before the analysis e.g. adding indicators, adding information from loop or main, aok aggregation, etc.
-    -   **Analysis**: any manipulation regarding only the analysis
-    -   **Outputs**: any manipulation to format the outputs.
--   **4 verbs**: 
-    -   **Add**: functions that will add a variable (column) to the dataset.
-    -   **Check**: functions that will flag values based on a specific check. It will return them in a log. A **check\_**\* will return a list: the checked dataset, and the log. The function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation).
+-   **4 etapas**: 
+    -   **Limpieza**: cualquier manipulaciòn necesaria para pasar de los datos brutos a los datos limpios.
+    -   **Composición**: cualquier manipulaciòn anterior al análisis p.ej., añadir indicadores, añadir información proveniente del bucle o del dato principal , agragación por AOK, etc.
+    -   **Análisis**: cualquier manipulaciòn que sea relativa al análisis unicamente
+    -   **Resultados**: cualquier manipulaciòn necesaria para formatear los resultados.
+-   **4 verbos**: 
+    -   **Add**: (añadir) functiones que añaden una nueva variable (columna) a los datos.
+    -   **Check**: (verificar) functiones que maracarán valores basándose en una verificación específica. Retornará estos valores en un registro. Una función check_* devolverá una lista: el conjunto de datos verificado y el registro. La función toma un conjunto de datos como entrada y devuelve el conjunto de datos + el nuevo indicador (y cualquier paso intermedio utilizado para el cálculo).
     -   **Create**: functions that will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output. Outputs from **create\_**\* functions outputs can be in different shape, format, etc.
     -   **Review**: functions that will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis.
 -   **2 adjectives**: 
