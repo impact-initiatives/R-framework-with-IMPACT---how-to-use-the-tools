@@ -1,5 +1,5 @@
 ---
-title: "01 - R framework with IMPACT - session 1"
+title: "01 - El marco R de IMPACT - session 1"
 author: "Yann Say"
 date: last-modified
 
@@ -9,7 +9,7 @@ date: last-modified
 
 ![](config/images/rframwork.png)
 
-El marco IMPACT R se ha desarrollado para cumplir con los requisitos del ciclo de investigación IMPACT. <br/><br/> El ecosistema es un marco modular con dos dimensiones:
+El marco R de IMPACT se desarrollo para cumplir con los requisitos del ciclo de investigación IMPACT. <br/><br/> El ecosistema es un marco modular con dos dimensiones:
 
 -   una dimensión horizontal que se centra en el resultado de un cierto paso, y
 -   una dimensión vertical que se centra en el contenido de un cierto paso.
@@ -190,7 +190,7 @@ more_logs <- more_logs %>%
 
 En la medida de lo posible, las funciones **check\_**\* toman argumentos predeterminados o infieren la información necesaria, p.ej. la funcion `check_outliers` infiere que columnas contienen valores numericos. Ciertas funciones requieren mãs informaciòn.
 
-## Columnas de text
+## Columnas de texto
 
 La funcion `check_other` necesita la lista de columnas que se deben verificar. Al momento, no es capaz de detectar preguntas de texto abierto. Se puede utilizar la herramienta KOBO.
 
@@ -302,22 +302,22 @@ my_raw_dataset %>%
 
 ## Ejercicio 2
 
--   Realiza una verificación que examine los porcentajes de valores faltantes por encuesta y que señale cualquier observación *atípica*.
+-   Realize una verificación que examine los porcentajes de valores faltantes por encuesta y que señale cualquier observación *atípica*.
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Haz clic para ver una pista.
+### Haga clic para ver una pista.
 
-Prueba con la función `check_percentage_missing`
+Pruebe con la función `check_percentage_missing`
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Haz clic para ver una pista.
+### Haga clic para ver una pista.
 
-¿Intentaste añadir una nueva columna con `add_percentage_missing` ? 
+¿Intento añadir una nueva columna con `add_percentage_missing` ? 
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Haz clic para ver la respuesta.
+### Haga clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -328,7 +328,7 @@ my_raw_dataset %>%
   check_percentage_missing(uuid_column = "X_uuid")
 ```
 
-Si si ya estás utilizando un registro 
+Si ya estás utilizando un registro 
 
 ```{r}
 #| output: false
@@ -341,7 +341,7 @@ more_logs %>%
 
 ## Ejercicio 3
 
--   Completa una tabla Excel para realizar las siguientes verificaciones lógicas :
+-   Complete una tabla Excel para realizar las siguientes verificaciones lógicas :
     -   El número de miembros del hogar (variable: **num_hh_member**) es superior a 8.
     -   La fuente de agua para beber es agua embotellada (variable: **water_source_drinking**, value: **bottled**) y el hogar siempre trata el agua (variable: **treat_drink_water**, value: **always_treat**).
     -   La fuente de agua para beber es agua embotellada (variable: **water_source_drinking**, value: **bottled**) y una de las principales razones por las que el hogar no satisface sus nececidades de agua es la presión del agua (variable: **access_water_enough_why_not**, value: **water_pressure**, this is a select multiple)
@@ -372,7 +372,7 @@ my_raw_dataset %>%
 ```
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Haz clic para ver la respuesta.
+### Haga clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -393,10 +393,10 @@ my_raw_dataset %>%
 
 ## Ejercicio adicional
 
--   Intenta añadir la duración con los archivos de auditoría (es decir, los *audit files* de la herramienta KOBO).
+-   Intente añadir la duración con los archivos de auditoría (es decir, los *audit files* de la herramienta KOBO).
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Haz clic para ver una clave.
+### Haga clic para ver una clave.
 
 Prueba usando las funciones `create_audit_list()` y `add_duration_from_audit()`
 :::
