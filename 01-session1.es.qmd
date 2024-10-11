@@ -9,7 +9,7 @@ date: last-modified
 
 ![](config/images/rframwork.png)
 
-El marco R de IMPACT se desarrollo para cumplir con los requisitos del ciclo de investigación IMPACT. <br/><br/> El ecosistema es un marco modular con dos dimensiones:
+El marco R de IMPACT se desarrollo para cumplir con los requisitos del ciclo de investigación IMPACT. <br/><br/> El marco es modular y tiene dos dimensiones:
 
 -   una dimensión horizontal que se centra en el resultado de un cierto paso, y
 -   una dimensión vertical que se centra en el contenido de un cierto paso.
@@ -17,7 +17,7 @@ El marco R de IMPACT se desarrollo para cumplir con los requisitos del ciclo de 
 El marco se basa en :
 
 -   **4 etapas**: 
-    -   **Limpieza**: cualquier manipulaciòn necesaria para pasar de los datos brutos a los datos limpios.
+    -   **Limpieza**: cualquier manipulación necesaria para pasar de los datos brutos a los datos limpios.
     -   **Composición**: cualquier manipulaciòn anterior al análisis p.ej., añadir indicadores, añadir información proveniente del bucle o del dato principal , agragación por AOK, etc.
     -   **Análisis**: cualquier manipulaciòn que sea relativa al análisis unicamente
     -   **Resultados**: cualquier manipulaciòn necesaria para formatear los resultados.
@@ -35,7 +35,7 @@ El objetivo es que este conjunto de elementos ayude a la cooperación y colabora
 
 # Limpieza - Verificación de un conjunto de datos
 
-En esta sección, se presentarán ciertas herramientas para la verificación de un conjunto de datos.
+En esta sección, se presentan ciertas herramientas para la verificación de un conjunto de datos.
 
 ![](config/images/step%20-%20cleaning.png)
 
@@ -285,13 +285,13 @@ my_kobo_choice <- cleaningtools::cleaningtools_choices
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Haz clic para ver una pista.
+### Haga clic para ver una pista.
 
-Prueba con la función `check_pii`
+Pruebe con la función `check_pii`
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Haz clic para ver la respuesta.
+### Haga clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -398,5 +398,5 @@ my_raw_dataset %>%
 ::: {.callout-note collapse="true" appearance="minimal"}
 ### Haga clic para ver una clave.
 
-Prueba usando las funciones `create_audit_list()` y `add_duration_from_audit()`
+Pruebe usando las funciones `create_audit_list()` y `add_duration_from_audit()`
 :::
