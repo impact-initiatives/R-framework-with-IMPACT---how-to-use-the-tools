@@ -1,5 +1,5 @@
 ---
-title: "02 - R framework with IMPACT - session 2"
+title: "02 - El marco R de IMPACT - session 2"
 author: "Yann Say"
 date: last-modified
 
@@ -15,10 +15,10 @@ my_kobo_survey <- cleaningtools::cleaningtools_survey
 my_kobo_choice <- cleaningtools::cleaningtools_choices
 ```
 
-This section continues with the cleaning step.
+En esta sección continuamos con el paso de limpieza.
 ![](config/images/step - cleaning.png)
 
-# Recap
+# Resumen
 
 ```{r}
 #| output: false
@@ -50,23 +50,23 @@ more_logs <- more_logs %>%
 ```
 
 
-# Cleaning - Creating a cleaning log
+# Limpieza - Creando un registro de limpieza
 
 ::: {.callout-tip appearance="minimal"}
 ### create\_\*
 
 ![](config/images/verb - create.png)
 
-**create_**\* functions will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output.
+Las funciones **create_**\* crean o transforman algo, p.ej. creación un registro de limpieza incluyendo las verificaciones por completar, creación de una table de resultados de analisis, creación de una salida.
 
-Outputs from **create_**\* functions outputs can be in different shape, format, etc. 
+Las salidas de las funciones **create_**\* pueden tener diferentes formatos, formas, especificaciones, etc. 
 
-**create_**\* function is catch-all.
+Las funciones **create_**\* son funciones generales que pueden servir para varias tareas.
 :::
 
 ## create_combined_log
 
-`create_combined_log` will combined all the logs from a list into one. It will also add 2 columns that will be used for the cleaning.
+La función `create_combined_log` combina todos los registros de una lista en uno. La función añade también dos columnas necesarias durante el proceso de limpieza.
 
 ```{r}
 names(more_logs)
@@ -79,26 +79,26 @@ my_combined_log$cleaning_log %>%
   head()
 ```
 
-The cleaning log contains all the columns from all the logs from `more_logs` with in addition:
+El registro de limpieza contiene todas las columnas de todos los registros en `more_logs` y ademas contiene las siguientes columnas:
 
--   check_binding is filled for all rows.
--   change_type (empty)
--   new_value (empty)
+-   check_binding : esta columna se rellena automáticamente.
+-   change_type (vacía)
+-   new_value (vacía)
 
 ## add_info_to_cleaning_log
 
-If more information from the dataset should be added, the function `add_info_to_cleaning_log` can help.
+Si se desea añadir mas información al registro de limpieza, se puede usar la función `add_info_to_cleaning_log`.
 
 ::: {.callout-tip appearance="minimal"}
 ### add\_\*
 
 ![](config/images/verb - add.png)
 
-**add_**\* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.
+Las funciones **add_**\* añaden una variable (columna) al conjunto de datos. Por ejemplo, se puede añadir la duración de la encuesta o la categoría de puntaje de consumo de alimentos (FCS)...
 
-**add_**\* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation). 
+Una función **add_**\* toma a un conjunto de datos como entrada y retorna el conjunto de datos incluyendo el nuevo indicador (tambien añadira todos las columnas necesarias para el calculo del nuevo indicador). 
 
-For example, to check the duration of a survey, there is only the start and end, but not the duration column.
+Por ejemplo, para comprobar la duración de una encuesta teniendo las variables de inicio y fin de la encuesta.
 :::
 
 ```{r}
@@ -119,20 +119,20 @@ create_xlsx_cleaning_log(my_combined_log,
                          output_path =  "outputs/01 - example - cleaning-log-no-kobo.xlsx")
 ```
 
-`create_xlsx_cleaning_log` will write an excel file with:
+La función `create_xlsx_cleaning_log` crea una tabla Excel que contiene:
 
--   checked_dataset tab: the checked dataset, with additional columns if any.
--   cleaning_log tab: the combined log with the **change_type** column with a data validation rules.
--   readme tab: change_type values definition.
+-   checked_dataset: la pestaña con el conjunto de datos verificado y las columnas añadidas si hay.
+-   cleaning_log: la pestaña con los registros combinados y la columna **change_type** que describe las posibles modificaciones.
+-   readme tab: la pestaña con la definición de las opciones para la columna change_type (en inglés).
 
-There are 4 actions possible:
+Hay 4 acciones posibles:
 
--   change_response: Change the response to new.value
--   blank_response: Remove and NA the response
--   remove_survey: Delete the survey
--   no_action: No action to take.
+-   change_response: cambiar al valor especificado en la columna new.value,
+-   blank_response: remplazar el valor por NA,
+-   remove_survey: borrar la encuesta,
+-   no_action: no hacer nada.
 
-This log will have to be filled in with actions to take and new value if needed.
+En el registro se debe indicar la acción por hacer y, si necesario, el nuevo valor.
 
 ```{r}
 #| output: false
@@ -144,17 +144,17 @@ create_xlsx_cleaning_log(my_combined_log,
                          output_path =  "outputs/02 - example - cleaning-log-with-kobo.xlsx")
 ```
 
-If the KOBO information are provided and the **use_dropdown** argument is set to TRUE, **new_value** will have a data validation rule based on the KOBO options.
+En las entradas de la función, se puede especificar la herramienta KOBO. Si se específica la herramienta y que el argumento **use_dropdown** está configurado como TRUE, **new_value** tendrá una regla de validación de datos basada en las opciones de la herramienta KOBO.
 
 ::: callout-note
-Select multiple dummy columns (TRUE/FALSE or 1/0) are flagged and used later for the cleaning, not the parent column.
+En el caso de variables de opción multiple, se señalan las columnas ficticias (TRUE/FALSE o 0/1 i.e. dummy columns)  y son esas las columnas usadas durante el proceso de limpieza, no la columna principal.
 :::
 
 
-# Cleaning - Creating a clean dataset
+# Limpieza - Crear un conjunto de datos limpios
 
 ::: callout-important
-The cleaning has to be filled before moving forward. The above steps are to create the cleaning log, not to **fill** it or **clean** the dataset. Filling the cleaning log is not an automatic step for this process. The decision to change a value has to be recorded.
+El registro de limpieza debe completarse antes de continuar el proceso. Los pasos anteriores son para crear el registro de limpieza, no para **completarlo** o **limpiar** el conjunto de datos. Completar el registro de limpieza no es un paso automático y la decision de modificar un valor debe ser registrada manualmente.
 :::
 
 ::: {.callout-tip appearance="minimal"}
@@ -162,18 +162,18 @@ The cleaning has to be filled before moving forward. The above steps are to crea
 
 ![](config/images/verb - review.png)
 
-**review_**\* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis. 
+Las funciones **review_**\* revisan un objeto comparándolo con estándares u otro objeto y marcan las diferencias en un registro. Por ejemplo, revisan la limpieza al comparar el conjunto de datos en bruto, el conjunto de datos limpio y en registro o revisan un análisis comparándolo a otro o tambien:
 
--   if the cleaning has been filled correctly
--   the cleaning has been done correctly
--   comparing indicators
--   comparing analysis
+-   si se relleno el registro de limpieza correctamente
+-   si las modificaciones corresponden a lo inscrito en el registro de limpieza
+-   comparan los valores de ciertos indicadores
+-   comparan dos análisis
 -   etc.
 :::
 
 ## review_cleaning_log
 
-`review_cleaning_log` will review the **filled** cleaning log.
+La funcion `review_cleaning_log` revisa como se `relleno` el registro de limpieza.
 
 ```{r}
 my_filled_log <- readxl::read_excel("inputs/02 - example - cleaning-log-with-kobo - filled.xlsx", sheet = 2)
@@ -191,7 +191,7 @@ check_log_results
 
 ## create_clean_data
 
-To create the clean dataset, `create_clean_data` will use the raw dataset and the filled cleaning log.
+Para crear el conjunto de datos limpio, la función `create_clean_data` necesita el conjunto de datos bruto y el registro de limpieza completado.
 
 ```{r}
 my_clean_data <- create_clean_data(raw_dataset = my_raw_dataset,
@@ -205,7 +205,7 @@ my_clean_data <- create_clean_data(raw_dataset = my_raw_dataset,
 
 ## recreate_parent_column
 
-In the cleaning log, some select multiple are changed, but only the dummy.
+En el siguiente ejemplo, en el registro de limpieza, se modifican ciertas columnas de opción multiple pero solo se registraron las modificaciones hechas a las columnas ficticias (TRUE/FALSE , 0/1 i.e. dummy variables).
 
 ```{r}
 my_filled_log %>% 
@@ -214,7 +214,7 @@ my_filled_log %>%
   select(uuid, question, old_value, new_value)
 ```
 
-The parent column did not change, in the following example employment still appears in the parent column.
+La columna principal no fue modificada y por lo tanto, acorde al ejemplo anterior, 'employment' sigue marcado en la columna principal.
 
 ```{r}
 my_clean_data %>% 
@@ -222,7 +222,7 @@ my_clean_data %>%
   select(X_uuid,primary_livelihood, primary_livelihood.employment)
 ```
 
-`recreate_parent_column` will recode the parent columns based on the dummies.
+La función `recreate_parent_column` modifica la columna principal basandosé en las columnas ficticias.
 
 ```{r}
 #| output: false
@@ -234,7 +234,7 @@ my_clean_data2 <- recreate_parent_column(dataset = my_clean_data,
                                          cleaning_log_to_append = my_filled_log)
 ```
 
-The parent are corrected, employment does not appear in the parent column.
+Como se puede ver, la columna principal esta correcta y 'employment' ya no aparece como respuesta.
 
 ```{r}
 my_clean_data2$data_with_fix_concat %>% 
@@ -242,7 +242,8 @@ my_clean_data2$data_with_fix_concat %>%
   select(X_uuid,primary_livelihood, primary_livelihood.employment)
 ```
 
-The changes were added to the cleaning log.
+Al haber especificado el parametro `cleaning_log_to_append`, los cambios hechos fueron añadidos al registro de limpieza.
+
 
 ```{r}
 my_clean_data2$cleaning_log %>% 
@@ -253,9 +254,8 @@ my_clean_data2$cleaning_log %>%
 
 ## review_others
 
-In the cleaning log, some opentext values are changed to blank. Some open text questions are linked some skip logic, i.e. *what is X? Other, please specify*. In some cases, values some values should be changed.
-
-In the example below, the value for **water_supply_other_neighbourhoods_why** for the **uuid 019bc718-c06a-46b8-bba8-c84f6c6efbd5** was changed to NA.
+En el registro de limpieza, algunos valores de texto abierto se cambian a vacío. Algunas preguntas de texto abierto están vinculadas a una lógica condicional, es decir, ¿qué es X? Otro, por favor especifique. En algunos casos, algunos valores deben ser cambiados.
+En el siguiente ejemplo, se cambio el valor de **water_supply_other_neighbourhoods_why*** de la encuesta **uuid 019bc718-c06a-46b8-bba8-c84f6c6efbd5**.
 
 ```{r}
 my_filled_log %>% 
@@ -263,7 +263,7 @@ my_filled_log %>%
          change_type == "blank_response")
 ```
 
-The kobo show a skip logic based on **water_supply_other_neighbourhoods**.
+En la herramienta KOBO se puede notar una logical condicional basada en la variable **water_supply_other_neighbourhoods**.
 
 ```{r}
 my_kobo_survey %>% 
@@ -277,7 +277,8 @@ my_clean_data %>%
   select(water_supply_other_neighbourhoods, water_supply_other_neighbourhoods_why	)
 ```
 
-Should the value of **water_supply_other_neighbourhoods** be changed? It depends on the question and skip logic but it important to flag those so a decision can be taken.
+
+¿Debe cambiarse el valor de water_supply_other_neighbourhoods? Depende de la pregunta y de la lógica condicional, pero es importante señalarlos para que se pueda tomar una decisión.
 
 ```{r}
 review_other_log <- review_others(dataset = my_clean_data2$data_with_fix_concat,
@@ -312,11 +313,11 @@ review_of_cleaning <- review_cleaning(raw_dataset = my_raw_dataset,
                     )
 ```
 
-# Exercises
+# Ejercicios
 
-## Exercise 1
+## Ejercicio 1
 
-- Export the cleaning log you have created previously. The previous log is loaded below.
+- Exporte el registro de limpieza creado previamente. El registro anterior ya esta cargado.
 ```{r}
 previous_exercise_log <- readRDS("inputs/03 - exercise - previous_log.RDS")
 
@@ -325,19 +326,21 @@ previous_exercise_log %>% names()
 
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint.
+### Haga clic para obtener una pista.
 
-Did you try the function `create_combined_log`
+¿Intento usando la funcion `create_combined_log` ? 
+
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint.
+### Haga clic para obtener una pista.
 
-Did you try the function `create_xlsx_cleaning_log`
+¿Intento usando la funcion `create_xlsx_cleaning_log` ? 
+
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -353,28 +356,29 @@ previous_exercise_log %>%
 :::
 
 
-## Exercise 2
+## Ejercicio 2
 
-- Create the clean data from the raw dataset and the filled cleaning.
+- Cree los datos limpios a partir del conjunto de datos en bruto y del registro de limpieza completado.
 
 ```{r}
 exercise_filled_log <- readxl::read_excel("inputs/04 - exercise - cleaning_log - filled.xlsx", sheet = "cleaning_log")
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para ver una pista.
 
-Did you try the function `create_clean_data`
+¿Intento usando la funcion `create_clean_data` ?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para ver una pista.
 
-Did you try the function `recreate_parent_column`
+¿Intento usando la funcion `recreate_parent_column` ?
+
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -397,9 +401,9 @@ exercise_clean_dataset2 <- recreate_parent_column(exercise_clean_dataset,
 ```
 :::
 
-## Exercise 3
+## Ejercicio 3
 
-- Review the cleaning below, if there is someone else doing the exercise, you can try to review someone's cleaning.
+- Revise la limpieza a continuación; si hay alguien más haciendo el ejercicio, puede intentar revisar la limpieza de esa persona.
 
 ```{r}
 exercise3_clean_dataset <- readxl::read_excel("inputs/05 - exercise - clean dataset for review.xlsx")
@@ -409,19 +413,20 @@ exercise3_cleaning_log <- readxl::read_excel("inputs/05 - exercise - clean datas
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para ver una pista.
 
-Did you try the function `review_cleaning`
+¿Intento usando la funcion `review_cleaning` ?
+
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para ver una pista.
 
-Did you separate the cleaning log?
+¿ Separo el registro de limpieza ?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -449,20 +454,20 @@ review_of_cleaning <- review_cleaning(raw_dataset = my_raw_dataset,
 
 :::
 
-# Review templates
+#  Plantillas de revisión
 
-There are some project templates that can be used to review the cleaning. More information on [this repository](https://github.com/impact-initiatives/impacttemplates).
+Hay algunas plantillas de proyecto que se pueden utilizar para revisar la limpieza. Más información en [este repositorio Github.](https://github.com/impact-initiatives/impacttemplates).
 
-# Composition - adding indicators
+# Composición - añadir indicadores
 
-The framework is built around 4 steps: cleaning, composition, analysis, outputs
+El marco se basa en 4 etapas : limpieza, composición, análisis, resultados.
 
--   *Cleaning*: any manipulation to go from the raw data to the clean data
--   *Composition*: any manipulation before the analysis e.g. adding indicators, adding information from loop or main, aok aggregation, etc.
--   *Analysis*: any manipulation regarding only the analysis
--   *Outputs*: any manipulation to format the outputs.
+-   *Limpieza*: cualquier manipulación necesaria para pasar de los datos brutos a los datos limpios.
+-   *Composición*: cualquier manipulaciòn anterior al análisis p.ej., añadir indicadores, añadir información proveniente del bucle o del dato principal , agragación por AOK, etc.
+-   *Análisis*: cualquier manipulaciòn que sea relativa al análisis unicamente.
+-   *Resultados*: cualquier manipulaciòn necesaria para formatear los resultados.
 
-The following section will present some introduction about the composition.
+En la siguiente sección miraremos ciertas funciones usadas durante la etapa de composición.
 
 ![](config/images/step - composition.png)
 
@@ -479,13 +484,13 @@ my_data <- addindicators::addindicators_MSNA_template_data
 
 ![](config/images/verb - add.png)
 
-**add_**\* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.
+Las funciones **add_**\* le añaden una variable (columna) al conjunto de datos. Por ejemplo, añadir la duración de una encuesta, añadir la categoría de puntaje de consumo de alimentos (FCS)...
 
-**add_**\* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation). 
+Las funciones **add_**\* toman como entrada el conjunto de datos y retornan el conjunto de datos con el nuevo indicador (y toda variable intermedia necesaria).
 
-For example, to check the duration of a survey, there is only the start and end, but not the duration column.
+Un ejemplo es añadir la duración de cada encuesta usando el tiempo de inicio y de fin.
 
-With `addindicators` some intermediate columns can be added if they are used to create the new indicator.
+Al usar la función `addindicators` se puede que algunas columnas intermedias sean añadidas al conjunto de datos si son necesarias para el calculo del indicador deseado.
 :::
 
 ## add_fcs
@@ -507,15 +512,15 @@ my_data_with_fcs[, tail(names(my_data_with_fcs), 10)] %>%
   head()
 ```
 ::: {.callout-note .column-margin}
-You can learn more about food security indicators [here](https://fscluster.org/handbook/).
+En este [enlace](https://fscluster.org/handbook/) entrará mas información sobre los indicadores de seguridad alimentaria.
 :::
 
 ## add_hhs
 
 ::: {.callout-tip appearance="minimal"}
-### Pipe-able
+### Pipe-able (encadenable)
 
-The framework is built around 2 adjectives, **pipe-able** and **independent**. In the framework, functions of the same family should be pipe-able. In the following case, 2 **add\_**\* functions are piped.
+El marco se basa en 2 adjetivos, **pipeable** (encadenable) e **independiente**. En particular, funciones de la misma familia deben ser encadenable. En el siguiente ejemplo, se encadenan dos funciones **add\_**\*.
 :::
 
 
@@ -539,13 +544,15 @@ my_data_with_indicators[, tail(names(my_data_with_indicators), 14)] %>%
   head()
 ```
 
-# Composition - reviewing indicators
+# Composición - verificar un indicador
 
-Reviewing indicators will compare 2 indicators together and present the differences. It will not check how the indicator was created nor check for inconsistencies. That mean, to review an indicator, it is necessary to create one and compare them. The functions `review_one_variable` and `review_variables` will focus on the latter.
+Las funciones de verificación de indicadores comparan dos indicadores entre si, no verifican cómo se creó el indicador ni buscan inconsistencias. Eso significa que, para revisar un indicador, es necesario crear uno y compararlo al otro.
+Para lo ultimo, se puede usar las funciones `review_one_variable` y `review_variables`.
 
 ## review_variables
 
-First, a new dataset can be created for the review.
+Primero, creamos un nuevo conjunto de datos para la revisión.
+
 ```{r}
 review_df <- addindicators_MSNA_template_data %>%
   add_fcs(
@@ -562,7 +569,7 @@ review_df <- addindicators_MSNA_template_data %>%
   select(uuid, fsl_fcs_score, fsl_fcs_cat)
 ```
 
-Then the dataset to be reviewed and the new dataset can be binded together.
+Luego, unimos los datos por revisar y el nuevo conjunto de datos.
 
 ```{r}
 binded_df <- my_data_with_indicators %>%
@@ -570,11 +577,11 @@ binded_df <- my_data_with_indicators %>%
 ```
 
 ::: {.callout-note .column-margin}
-I would advice to use a `full_join` rather than a `left/right_join`. That way if any computation has missing value they will be spotted.
+Se recomienda usar un `full_join` en ligar de un `left/right_join`. De esa manera, se detectará si faltan valores.
 :::
 
 ::: {.callout-note .column-margin}
-With the `join_*` if the names are the same .x and .y will added to the names.
+Al usar la función `join_*`, si hay dos columnas con el mismo nombre en los conjuntos de datos unidos, R añadira los prefijos ".x" y ".y" a dichas columnas.
 :::
 
 ::: {.callout-tip appearance="minimal"}
@@ -582,7 +589,7 @@ With the `join_*` if the names are the same .x and .y will added to the names.
 
 ![](config/images/verb - review.png)
 
-**review_**\* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis. 
+Las funciones**review_**\* revisan un objeto comparándolo con estándares u otro objeto y marcan las diferencias. Por ejemplo, revisando la limpiezo al comparar el conjunto de datos en bruto, el conjunto de datos limpio y el registro de limpieza o realizando un análisis y comparándolo con otro análisis.
 :::
 ```{r}
 review_one_var <- review_variables(binded_df,
@@ -593,14 +600,14 @@ review_one_var <- review_variables(binded_df,
 review_one_var %>% 
   names()
 ```
-It is a list with the dataset and a review table.
+La salida es una lista que contiene el conjunto de datos y una tabla de revisión.
 
 ```{r}
 review_one_var$review_table %>% 
   head()
 ```
 
-The review table can be summarised to have a quicker overview.
+Se puede hacer un resumen de la tabla de revisión para obtener una visión general mas rapidamente.
 
 ```{r}
 review_one_var$review_table %>%
@@ -608,7 +615,7 @@ review_one_var$review_table %>%
   tally()
 ```
 
-To see how differences are shown, some noise is introduced to the dataset.
+Para ver cómo se muestran las diferencias, se introduce algo de ruido en el conjunto de datos.
 
 ```{r}
 jittered_df <- binded_df
@@ -634,7 +641,7 @@ review_one_variable_jittered$review_table %>%
   tally()
 ```
 
-The dataset has new columns to help filtering for further investigation.
+El conjunto de datos tiene nuevas columnas que ayudan a filtrar para una revisión más detallada.
 
 ```{r}
 review_one_variable_jittered$dataset[, tail(names(review_one_variable_jittered$dataset), 5)] %>%
@@ -646,8 +653,7 @@ review_one_variable_jittered$dataset %>%
   select(uuid, fsl_fcs_cat.x, fsl_fcs_cat.y, review_check_fsl_fcs_cat.x, review_comment_fsl_fcs_cat.x)
 ```
 
-
-If there are more than one variable to review, pair-wise vectors can be used.
+Si hay más de una variable por revisar, se puede usar vectores pareados.
 
 ```{r}
 my_review <- review_variables(jittered_df,
@@ -673,11 +679,11 @@ my_review$dataset %>%
 ```
 
 
-# Exercises 
+# Ejercicios 
 
-## Exercise 1
+## Ejercicio 1
 
-- Add the **food consumption matrix score** to the dataset. The food consumption matrix score is a food security indicator that uses the **food consumption score**, **household hunger score** and the **reduced coping strategy index**.
+- Añada la **matriz de puntaje de consumo de alimentos** al conjunto de datos. La matriz de consumo de alimentos es un indicador de seguridad alimentaria que utiliza el **puntaje de consumo de alimentos (FCS)**, el **puntaje de hambre en el hogar (HHS)** y el **índice reducido de estrategias de afrontamiento (rCSI)**.
 
 ```{r}
 #| echo: false
@@ -712,25 +718,27 @@ exercise_data <- addindicators_MSNA_template_data %>%
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para ver una pista.
 
-Did you try the function `add_fcm_phase`?
+¿Intento usar la función `add_fcm_phase` ?
+
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para ver una pista.
 
-The food consumption matrix needs 3 indicators, FCS, rCSI, HHS.
+La matriz de puntaje de consumo de alimentos necesita 3 indicadores: FCS, rCSI y HHS.
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para ver una pista.
 
-Have you used the correct HHS category variable?
+¿Ha utilizado la variable correcta de la categoría de HHS (puntaje de hambre en el hogar)?
+
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -755,14 +763,14 @@ my_answer <- exercise_data %>% add_rcsi(
 ```
 :::
 
-## Exercise 2
+## Ejercicio 2
 
-- You receive a dataset, you need to review the following four indicators.
+- En el siguiente conjunto de datos, debe revisar los siguientes indicadores.
 
-  - Food Consumption Score: **fcs_score**, **fcs_cat**
-  - Household Hunger Score: **hhs_score**, **hhs_cat**
+  - Puntaje de consumo de alimentos (Food Consumption Score) : **fcs_score**, **fcs_cat**
+  - Puntaje de hambre del hogar (Household Hunger Score) : **hhs_score**, **hhs_cat**
   
-Don't forget to write the review.
+No olvide escribir la revisión.
 
 ```{r}
 dataset_to_review <- read.csv("inputs/06 - exercise - dataset_to_review.csv")
@@ -771,25 +779,28 @@ dataset_without_indicators <- addindicators::addindicators_MSNA_template_data
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para ver una pista.
 
-Did you try the function `review_variables`
+¿Intento usando la funcion `review_variables` ?
+
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para ver una pista.
 
-How was the FSC created?
+¿Como fue definida la variable FCS ?
+
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para ver una pista.
 
-How was coded the category for the HHS? 
+¿Cómo se codificó la categoría para el HHS (puntaje de hambre en el hogar)?
+
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -829,8 +840,9 @@ review$review_table %>%
   tally()
 ```
 
-- There are 10 fcs categories that are different.
-- There are 100 HHS categories that are different
+- Hay 10 categorías de FCS que son diferentes.
+- Hay 100 categorías de HHS que son diferentes.
+
 
 ```{r}
 review$dataset %>% 
@@ -838,7 +850,7 @@ review$dataset %>%
   select(uuid, review_comment_fsl_fcs_cat.x, fsl_fcs_score.x, fsl_fcs_cat.x, fsl_fcs_cat.y)
 
 ```
-- Food Consumption Score have different categories, what threshold were used to compute the FCS?  Maybe 28-42?
+- El puntaje de consumo de alimentos tiene diferentes categorías. ¿Qué umbrales se utilizaron para calcular el FCS? ¿Quizás 28-42?
 
 
 ```{r}
@@ -847,9 +859,10 @@ review$dataset %>%
   select(hhs_cat.x, hhs_cat.y) %>% 
   table(useNA = "ifany")
 ```
-- HHS is fine. Labeling is different
+
+- El HHS está bien. El etiquetado es diferente.
 :::
 
 # impactR4PHU
 
-The functions about public health checks and indicators are more updated on the impactR4PHU. More information on [this repository](https://github.com/impact-initiatives/impactR4PHU).
+Las funciones relacionadas con los chequeos e indicadores de salud pública están más actualizadas en impactR4PHU. Más información en [este repositorio](https://github.com/impact-initiatives/impactR4PHU).
