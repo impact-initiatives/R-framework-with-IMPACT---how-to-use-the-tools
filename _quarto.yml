@@ -1,8 +1,16 @@
 project:
   type: website
   render:
-      - 01-session1.qmd
-      - 01-session1.es.qmd
+      - 01-intro.qmd
+      - 01-intro.es.qmd
+      - 02-cleaning/02-cleaning-01-checks.qmd
+      - 02-cleaning/02-cleaning-01-checks.qmd
+      - 02-cleaning/02-cleaning-02-add-duration-others.qmd
+      - 02-cleaning/02-cleaning-02-add-duration-others.es.qmd
+      - 02-cleaning/02-cleaning-03-logical-with-lists.qmd
+      - 02-cleaning/02-cleaning-03-logical-with-lists.es.qmd
+      - 02-cleaning-04-exercises.qmd
+      - 02-cleaning-04-exercises.es.qmd
       - 02-session2.qmd
       - 02-session2.es.qmd
       - 03-session3.qmd
@@ -16,14 +24,22 @@ website:
     style: "docked"
     search: true
     contents:
-      - text: "session 1"
-        href: 01-session1.qmd
+      - text: "Introduction"
+        href: 01-intro.qmd
+      - section: "Cleaning"
+        contents:
+          - 02-cleaning/02-cleaning-01-checks.qmd
+          - 02-cleaning/02-cleaning-02-add-duration-others.qmd
+          - 02-cleaning/02-cleaning-03-logical-with-lists.qmd
+          - 02-cleaning-04-exercises.qmd
       - text: "session 2"
         href: 02-session2.qmd
       - text: "session 3"
-        href: 03-session2.qmd
+        href: 03-session3.qmd
       - text: "session 4"
         href: 04-session4.qmd
+  repo-url: https://github.com/quarto-dev/quarto-demo
+  repo-actions: [edit, source, issue]
 format:
   html:
     toc: true
@@ -33,7 +49,6 @@ format:
       - config/custom.scss
     df-print: kable
     embed-resources: true
-
 
 babelquarto:
   languagelinks: sidebar

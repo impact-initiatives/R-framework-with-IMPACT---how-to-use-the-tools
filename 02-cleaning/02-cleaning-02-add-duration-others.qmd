@@ -1,0 +1,74 @@
+---
+title: "02 - Add, durations and others"
+author: "Yann Say"
+date: last-modified
+
+---
+```{r}
+#| warning: false
+#| output: false
+library(cleaningtools)
+library(dplyr)
+
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+
+more_logs <- my_raw_dataset %>% 
+  check_duplicate(uuid_column = "X_uuid") %>% 
+  check_soft_duplicates(uuid_column = "X_uuid", kobo_survey = my_kobo_survey, sm_separator = ".") %>%
+  check_outliers(uuid_column = "X_uuid") %>%
+  check_value(uuid_column = "X_uuid") 
+```
+
+## add_duration
+
+::: {.callout-tip appearance="minimal"}
+### add\_\*
+
+![](../config/images/verb%20-%20add.png)
+
+**add\_**\* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.
+
+**add\_**\* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation).
+
+For example, to check the duration of a survey, there is only the start and end, but not the duration column.
+:::
+
+```{r}
+more_logs$checked_dataset <- more_logs$checked_dataset %>% 
+  add_duration(uuid_column = "X_uuid", start_column = "X.U.FEFF.start", end_column = "end")
+more_logs$checked_dataset[1:6, c("start_date", "start_time", "end_date", "end_time", "days_diff", "duration")]
+
+```
+
+::: {.callout-warning .column-margin}
+The duration is added to the `checked_dataset` in the list, not in the `my_raw_dataset` dataframe. The **check\_**\* functions are used in a pipe, so it needs the current dataset to be modified.
+:::
+
+::: {.callout-warning .column-margin}
+At the moment, `add_duration` takes very specific format. It will change in the future to become more robust and using **lubridate**.
+:::
+
+`check_duration` can now be used with the previous checks.
+
+```{r}
+more_logs <- more_logs %>% 
+  check_duration(column_to_check = "duration", uuid_column = "X_uuid")
+```
+
+As much as possible, **check\_**\* functions take default argument or the functions will be able to guess some information, e.g. the `check_outliers` function guesses some numerical values. Some functions need more information.
+
+## other/text columns
+
+`check_other` needs the list of columns to be checked. It currently, it cannot detect the open text question. KOBO tool can be used.
+
+```{r}
+other_columns_to_check <- my_kobo_survey %>% 
+  dplyr::filter(type == "text") %>% 
+  dplyr::filter(name %in% names(my_raw_dataset)) %>%
+  dplyr::pull(name) 
+
+more_logs <- more_logs %>% 
+  check_others(uuid_column = "X_uuid", columns_to_check = other_columns_to_check) 
+```

@@ -1,0 +1,141 @@
+---
+title: "04 - Exercises"
+author: "Yann Say"
+date: last-modified
+
+---
+# Exercises
+
+## Exercise 1
+
+Try the following with a dataset:
+
+-   Perform a check to spot personal identifiable information
+
+```{r}
+library(cleaningtools)
+library(dplyr)
+
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Try the function `check_pii`
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+my_raw_dataset %>% 
+  check_pii(uuid_column = "X_uuid")
+```
+:::
+
+## Exercise 2
+
+-   Perform a check that will look at the percentages of missing value per observation and that will spot any observation that is *different*.
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Try the function `check_percentage_missing`
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you try to add a new column with `add_percentage_missing`
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+my_data_with_missing <- my_raw_dataset %>% 
+  add_percentage_missing(kobo_survey = my_kobo_survey)
+  
+my_data_with_missing %>% 
+  check_percentage_missing(uuid_column = "X_uuid")
+```
+
+Or if using a log already
+
+```{r}
+#| output: false
+a_log <- my_raw_dataset %>% 
+  check_pii(uuid_column = "X_uuid")
+a_log$checked_dataset <- a_log$checked_dataset %>% 
+  add_percentage_missing(kobo_survey = my_kobo_survey)
+a_log %>% 
+  check_percentage_missing(uuid_column = "X_uuid")
+```
+:::
+
+## Exercise 3
+
+-   Fill the excel checklist to do the following checks:
+    -   household number (variable: **num_hh_member**) is above 8.
+    -   the water source for drinking water is bottled (variable: **water_source_drinking**, value: **bottled**) and the household always treat the drinking water (variable: **treat_drink_water**, value: **always_treat**).
+    -   the water source for drinking water is bottled (variable: **water_source_drinking**, value: **bottled**) and one of the main reason for the the household to not meet its water needs is the water pressure (variable: **access_water_enough_why_not**, value: **water_pressure**, this is a select multiple)
+    
+```{r}
+#| echo: false
+my_kobo_survey %>% 
+  filter(name %in% c("num_hh_member", "water_source_drinking", "treat_drink_water","access_water_enough_why_not")) %>% 
+  select(name, `label::English (en)`, type)
+  
+my_kobo_choice %>% 
+  filter(list_name %in% c("water_sources","treat", "barriers_water_needs"),
+         name %in% c("bottled", "always_treat", "water_pressure")) %>% 
+  select(name,`label::English (en)`, list_name )
+```
+
+```{r}
+#| output: false
+exercise_check_list <- readxl::read_excel("../inputs/01 - example - check_list.xlsx")
+
+my_raw_dataset %>% 
+    check_logical_with_list(uuid_column = "X_uuid",
+                          list_of_check = exercise_check_list,
+                          check_id_column = "check_id",
+                          check_to_perform_column = "check_to_perform",
+                          columns_to_clean_column = "columns_to_clean",
+                          description_column = "description")
+```
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+my_check_list <- data.frame(check_id = c("check_household number", "check_water_treatment", "check_3"),
+                            description = c("num_hh_member is big","using bottled water and always treat","using bottled water and main reason is water pressure"),
+                            check_to_perform = c("num_hh_member > 8","water_source_drinking == \"bottled\" & treat_drink_water == \"always_treat\"","water_source_drinking == \"bottled\" & access_water_enough_why_not.water_pressure == TRUE"),
+                            columns_to_clean = c("num_hh_member","water_source_drinking, treat_drink_water","water_source_drinking, access_water_enough_why_not.water_pressure"))
+
+my_raw_dataset %>% 
+    check_logical_with_list(uuid_column = "X_uuid",
+                          list_of_check = my_check_list,
+                          check_id_column = "check_id",
+                          check_to_perform_column = "check_to_perform",
+                          columns_to_clean_column = "columns_to_clean",
+                          description_column = "description")
+```
+:::
+
+## Extra
+
+-   Try to add duration with audit files.
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a tip
+
+Try `create_audit_list()` and `add_duration_from_audit()`
+:::

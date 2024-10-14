@@ -1,0 +1,33 @@
+---
+title: "01 - El marco R con IMPACT Initiatives"
+author: "Yann Say"
+date: last-modified
+
+---
+
+# IMPACT R framework
+
+![](config/images/rframwork.png)
+
+El marco IMPACT R se ha desarrollado para cumplir con los requisitos del ciclo de investigación IMPACT. <br/><br/> El ecosistema es un marco modular con dos dimensiones:
+
+-   una dimensión horizontal que se centra en el resultado de un cierto paso, y
+-   una dimensión vertical que se centra en el contenido de un cierto paso.
+
+El marco se basa en :
+
+-   **4 etapas**: 
+    -   **Limpieza**: cualquier manipulaciòn necesaria para pasar de los datos brutos a los datos limpios.
+    -   **Composición**: cualquier manipulaciòn anterior al análisis p.ej., añadir indicadores, añadir información proveniente del bucle o del dato principal , agragación por AOK, etc.
+    -   **Análisis**: cualquier manipulaciòn que sea relativa al análisis unicamente
+    -   **Resultados**: cualquier manipulaciòn necesaria para formatear los resultados.
+-   **4 verbos**: 
+    -   **Add**: (añadir) funciones que añaden una nueva variable (columna) a los datos.
+    -   **Check**: (verificar) funciones que maracarán valores basándose en una verificación específica. Retornarán estos valores en un registro. Una función check_* devolverá una lista: el conjunto de datos verificado y el registro. La función toma un conjunto de datos como entrada y devuelve el conjunto de datos + el nuevo indicador (y cualquier paso intermedio utilizado para el cálculo).
+    -   **Create**: (crear) funciones que crearán o transformaran algun objecto p.ej. functiones que crearán o transformarán algun objeto creando un registro de limpieza con las verificaciones por hacer, creando una tabla de resultados del análisis etc. Las salidas de las funciones **create\_**\* pueden tener formatos diversos.
+    -   **Review**: (revisar) funciones que revisarán un objeto comparándolo con estándares u otro objeto y señalaran las diferencias. Por ejemplo, revisando la limpieza comparando el conjunto de datos original, el conjunto de datos limpio y el registro de limplieza o comparando los resultados de dos análisis.
+-   ** 2 adjetivos**:
+    - **Pipe-able**: (encadenable) En el marco, las funciones de la misma familia son encadenables (es decir, se pueden aplicar una después de la otra). En el siguiento ejemplo, se encadenan dos funciones **check\_**\*.
+    - **Independiente**: En cualquier paso dado, el usuario puede cambiar de herramienta. Cada entrada y cada salida de un paso deben seguir el mismo formato y definición.
+
+El objetivo es que este conjunto de elementos ayude a la cooperación y colaboración entre diferentes equipos. Las herramientas presentes en este marco deben ser adaptables a cada contexto y evaluación.

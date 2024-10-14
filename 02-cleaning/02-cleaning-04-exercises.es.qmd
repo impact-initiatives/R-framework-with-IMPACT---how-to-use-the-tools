@@ -1,0 +1,142 @@
+---
+title: "04 - Ejercicios"
+author: "Yann Say"
+date: last-modified
+
+---
+# Ejercicios
+
+## Ejercicio 1
+
+Probar lo siguiente con un conjunto de datos:
+
+-   Realiza una verificación para detectar información de identificación personal.
+
+```{r}
+library(cleaningtools)
+library(dplyr)
+
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haz clic para ver una pista.
+
+Prueba con la función `check_pii`
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haz clic para ver la respuesta.
+
+```{r}
+#| output: false
+my_raw_dataset %>% 
+  check_pii(uuid_column = "X_uuid")
+```
+:::
+
+## Ejercicio 2
+
+-   Realiza una verificación que examine los porcentajes de valores faltantes por encuesta y que señale cualquier observación *atípica*.
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haz clic para ver una pista.
+
+Prueba con la función `check_percentage_missing`
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haz clic para ver una pista.
+
+¿Intentaste añadir una nueva columna con `add_percentage_missing` ? 
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haz clic para ver la respuesta.
+
+```{r}
+#| output: false
+my_data_with_missing <- my_raw_dataset %>% 
+  add_percentage_missing(kobo_survey = my_kobo_survey)
+  
+my_data_with_missing %>% 
+  check_percentage_missing(uuid_column = "X_uuid")
+```
+
+Si si ya estás utilizando un registro 
+
+```{r}
+#| output: false
+#| echo: false
+a_log <- my_raw_dataset %>% 
+  check_pii(uuid_column = "X_uuid")
+a_log$checked_dataset <- a_log$checked_dataset %>% 
+  add_percentage_missing(kobo_survey = my_kobo_survey)
+a_log %>% 
+  check_percentage_missing(uuid_column = "X_uuid")
+```
+:::
+
+## Ejercicio 3
+
+-   Completa una tabla Excel para realizar las siguientes verificaciones lógicas :
+    -   El número de miembros del hogar (variable: **num_hh_member**) es superior a 8.
+    -   La fuente de agua para beber es agua embotellada (variable: **water_source_drinking**, value: **bottled**) y el hogar siempre trata el agua (variable: **treat_drink_water**, value: **always_treat**).
+    -   La fuente de agua para beber es agua embotellada (variable: **water_source_drinking**, value: **bottled**) y una de las principales razones por las que el hogar no satisface sus nececidades de agua es la presión del agua (variable: **access_water_enough_why_not**, value: **water_pressure**, this is a select multiple)
+    
+```{r}
+#| echo: false
+my_kobo_survey %>% 
+  filter(name %in% c("num_hh_member", "water_source_drinking", "treat_drink_water","access_water_enough_why_not")) %>% 
+  select(name, `label::English (en)`, type)
+  
+my_kobo_choice %>% 
+  filter(list_name %in% c("water_sources","treat", "barriers_water_needs"),
+         name %in% c("bottled", "always_treat", "water_pressure")) %>% 
+  select(name,`label::English (en)`, list_name )
+```
+
+```{r}
+#| output: false
+exercise_check_list <- readxl::read_excel("../inputs/01 - example - check_list.xlsx")
+
+my_raw_dataset %>% 
+    check_logical_with_list(uuid_column = "X_uuid",
+                          list_of_check = exercise_check_list,
+                          check_id_column = "check_id",
+                          check_to_perform_column = "check_to_perform",
+                          columns_to_clean_column = "columns_to_clean",
+                          description_column = "description")
+```
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haz clic para ver la respuesta.
+
+```{r}
+#| output: false
+my_check_list <- data.frame(check_id = c("check_household number", "check_water_treatment", "check_3"),
+                            description = c("num_hh_member is big","using bottled water and always treat","using bottled water and main reason is water pressure"),
+                            check_to_perform = c("num_hh_member > 8","water_source_drinking == \"bottled\" & treat_drink_water == \"always_treat\"","water_source_drinking == \"bottled\" & access_water_enough_why_not.water_pressure == TRUE"),
+                            columns_to_clean = c("num_hh_member","water_source_drinking, treat_drink_water","water_source_drinking, access_water_enough_why_not.water_pressure"))
+
+my_raw_dataset %>% 
+    check_logical_with_list(uuid_column = "X_uuid",
+                          list_of_check = my_check_list,
+                          check_id_column = "check_id",
+                          check_to_perform_column = "check_to_perform",
+                          columns_to_clean_column = "columns_to_clean",
+                          description_column = "description")
+```
+:::
+
+## Ejercicio adicional
+
+-   Intenta añadir la duración con los archivos de auditoría (es decir, los *audit files* de la herramienta KOBO).
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haz clic para ver una clave.
+
+Prueba usando las funciones `create_audit_list()` y `add_duration_from_audit()`
+:::

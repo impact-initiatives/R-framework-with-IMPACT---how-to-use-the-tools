@@ -1,0 +1,124 @@
+---
+title: "01 - Verificaciones"
+author: "Yann Say"
+date: last-modified
+
+---
+# Limpieza - Verificación de un conjunto de datos
+
+En esta sección, se presentarán ciertas herramientas para la verificación de un conjunto de datos.
+
+![](../config/images/step%20-%20cleaning.png)
+
+```{r}
+#| warning: false
+library(cleaningtools)
+library(dplyr)
+
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+```
+
+::: {.callout-tip appearance="minimal"}
+### check\_\*
+
+![](../config/images/verb%20-%20check.png)
+
+Las funciones de tipo check_* marcarán valores basándose en una verificación específica. Retornarán estos valores en un registro. Una función check_* devolverá una lista: el conjunto de datos verificado y el registro.
+
+Las funciones check_* solo se utilizan durante las etapas de limpieza.
+:::
+
+## check_outliers
+
+```{r}
+#| output: false
+my_log1 <- my_raw_dataset %>% 
+  check_outliers(uuid_column = "X_uuid")
+```
+
+En este ejemplo, la salida será:
+
+-   `checked_dataset`: el conjunto de datos original (con variables adicionales si es necesario)
+-   `potential_outliers`: un registro de posibles valores atípicos.
+
+```{r}
+typeof(my_log1)
+
+my_log1 %>% 
+  names()
+```
+
+El registro tiene al menos 4 columnas:
+
+-   `uuid`: el identificador único de la encuesta
+-   `issue`: el problema que se esta señalando
+-   `question`: el nombre de la variable en el conjunto de datos
+-   `old_value`: el valor que se está señalando
+
+```{r}
+my_log1$potential_outliers %>% 
+  head()
+```
+
+::: {.callout-note .column-margin}
+Se considerán como atípicos valores con +/- 3 deviaciones estándar de la media.
+
+Si asumimos una distribución logarítmica, utilizamos la función log(x + 1).
+:::
+
+## check_duplicate
+
+```{r}
+my_log2 <- my_raw_dataset %>% 
+  check_duplicate(uuid_column = "X_uuid")
+
+my_log2$duplicate_log %>% 
+  head()
+```
+
+Dado que no hay duplicados, el registro está vacío.
+
+## Pipe-able
+
+::: {.callout-tip appearance="minimal"}
+### Pipe-able
+
+El marco se basa en 2 adjetivos, **pipe-able** e **independiente**. En el marco, las funciones de la misma familias deben ser encadenables (pipeable). En el siguiente caso, se encadenan 2 funciones **check\_**\*.
+:::
+
+```{r}
+#| output: false
+my_log3 <- my_raw_dataset %>% 
+  check_outliers(uuid_column = "X_uuid") %>% 
+  check_duplicate(uuid_column = "X_uuid")
+```
+
+```{r}
+names(my_log3)
+```
+
+```{r}
+my_log3$potential_outliers %>% 
+  head()
+```
+
+```{r}
+my_log3$duplicate_log %>% 
+  head()
+```
+
+## Verificaciones adicionales
+
+Este es un ejemplo de verificaciones adicionales que existen.
+
+```{r}
+#| output: false
+
+more_logs <- my_raw_dataset %>% 
+  check_duplicate(uuid_column = "X_uuid") %>% 
+  check_soft_duplicates(uuid_column = "X_uuid", kobo_survey = my_kobo_survey, sm_separator = ".") %>%
+  check_outliers(uuid_column = "X_uuid") %>%
+  check_value(uuid_column = "X_uuid") 
+```

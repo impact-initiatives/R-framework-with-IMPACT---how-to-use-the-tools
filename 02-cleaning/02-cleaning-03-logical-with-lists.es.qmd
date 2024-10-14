@@ -1,0 +1,77 @@
+---
+title: "03 - verificación con lista de lógicas"
+author: "Yann Say"
+date: last-modified
+
+---
+```{r}
+#| warning: false
+library(cleaningtools)
+library(dplyr)
+
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+```
+## check_logical_with_list
+
+En otros casos, la verificación es específica y debe ser adaptada al conjunto de datos. Es el caso de la función `check_logical_with_list`, a la cual se le puede dar como entrada una tabla de Excel con las verificaciones lógicas por aplicar.
+
+```{r}
+logical_check_list <- readxl::read_excel("../inputs/01 - example - check_list.xlsx")
+logical_check_list
+```
+
+La entrada, es decir, la tabla de Excel con las verificaciones lógicas, debe tener 4 columnas:
+
+-   check_id : el nombre de la verificación
+-   description : la descripcion de la verificacion 
+-   check_to_perform : la verificación por hacer. El formato de la verificación por hacer debe ser compatible con tidyverse. Se debe usar un formato similar al que se utilizaría en la función `mutate` para crear un nuevo indicador lógico (es decir, TRUE o FALSE). La verificación lógica debe estar escrita de manera que la salida TRUE corresponda a la encuesta que se quiera señalar.
+-   columns_to_clean : la lista de columnas utilizadas para la verificación lógica.
+
+Una tal lista se puede utilizar con  `check_logical_with_list`.
+
+```{r}
+example_logic <- my_raw_dataset %>% 
+  check_logical_with_list(uuid_column = "X_uuid",
+                          list_of_check = logical_check_list,
+                          check_id_column = "check_id",
+                          check_to_perform_column = "check_to_perform",
+                          columns_to_clean_column = "columns_to_clean",
+                          description_column = "description")
+```
+
+```{r}
+
+example_logic$logical_all %>% 
+  head()
+```
+
+El registro que se obtiene contiene las siguientes columnas:
+
+-   uuid: el identificador único de la encuesta
+-   question: el nombre de la columna señalada, sera un elemento de la lista **columns_to_clean**
+-   old value: el valor en la columna de **columns_to_clean** señalada
+-   issue: el problema señalado
+-   check_id: el identificador de la verificación lógica
+-   check_binding: una combinación del check_id y del uuid.
+
+Para una verificación dada, el registro tendrá varias líneas relativas al mismo señalamiento. En el ejemplo anterior, para cada uuid, los valores de las columnas primary_livelihood y tot_expenses son señalados (una línea por cada uuid por cada columna en columns_to_clean).
+
+El formato de la verificación por hacer debe ser compatible con tidyverse. Se debe usar un formato similar al que se utilizaría en la función `mutate` para crear un nuevo indicador lógico (es decir, TRUE o FALSE). La verificación lógica debe estar escrita de manera que la salida TRUE corresponda a la encuesta que se quiera señalar.
+```{r}
+my_raw_dataset %>% 
+  dplyr::mutate(xxx =  primary_livelihood.employment == 1 & tot_expenses < 200000) %>% 
+  dplyr::select(X_uuid, xxx, primary_livelihood.employment, tot_expenses) %>% 
+  head()
+```
+
+El conjunto de datos verificado incluirá columnas adicionales. Estas columnas tendrán el nombre del check_id y contendrán valores lógicos.
+
+```{r}
+example_logic$checked_dataset[1:6,tail(names(example_logic$checked_dataset))]
+```
+
+::: {.callout-note .column-margin}
+Si no se incluya la lista **columns_to_clean** la funcion `check_logical_with_list` intentará identificar las variables de forma automática. Sin embargo, no se puede garantizar que seleccione los nombres correctos.
+:::
