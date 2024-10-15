@@ -1,0 +1,152 @@
+---
+title: "02 - Crear un conjunto de datos limpios"
+author: "Yann Say"
+date: last-modified
+
+---
+
+```{r}
+#| warning: false
+library(cleaningtools)
+library(dplyr)
+
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+```
+
+# Limpieza - Crear un conjunto de datos limpios
+
+::: callout-important
+El registro de limpieza debe completarse antes de continuar el proceso. Los pasos anteriores son para crear el registro de limpieza, no para **completarlo** o **limpiar** el conjunto de datos. Completar el registro de limpieza no es un paso automático y la decision de modificar un valor debe ser registrada manualmente.
+:::
+
+::: {.callout-tip appearance="minimal"}
+### review\_\*
+
+![](../config/images/verb - review.png)
+
+Las funciones **review_**\* revisan un objeto comparándolo con estándares u otro objeto y marcan las diferencias en un registro. Por ejemplo, revisan la limpieza al comparar el conjunto de datos en bruto, el conjunto de datos limpio y en registro o revisan un análisis comparándolo a otro o tambien:
+
+-   si se relleno el registro de limpieza correctamente
+-   si las modificaciones corresponden a lo inscrito en el registro de limpieza
+-   comparan los valores de ciertos indicadores
+-   comparan dos análisis
+-   etc.
+:::
+
+## review_cleaning_log
+
+La funcion `review_cleaning_log` revisa como se `relleno` el registro de limpieza.
+
+```{r}
+my_filled_log <- readxl::read_excel("../inputs/02 - example - cleaning-log-with-kobo - filled.xlsx", sheet = 2)
+
+check_log_results <- review_cleaning_log(raw_dataset = my_raw_dataset,
+                                        raw_data_uuid_column = "X_uuid",
+                                        cleaning_log = my_filled_log, 
+                                        cleaning_log_uuid_column = "uuid",
+                                        cleaning_log_question_column = "question",
+                                        cleaning_log_new_value_column = "new_value",
+                                        cleaning_log_change_type_column = "change_type",
+                                        change_response_value = "change_response")
+check_log_results
+```
+
+## create_clean_data
+
+Para crear el conjunto de datos limpio, la función `create_clean_data` necesita el conjunto de datos bruto y el registro de limpieza completado.
+
+```{r}
+my_clean_data <- create_clean_data(raw_dataset = my_raw_dataset,
+                                   raw_data_uuid_column = "X_uuid",
+                                   cleaning_log = my_filled_log, 
+                                   cleaning_log_uuid_column = "uuid",
+                                   cleaning_log_question_column = "question",
+                                   cleaning_log_new_value_column = "new_value",
+                                   cleaning_log_change_type_column = "change_type")
+```
+
+## recreate_parent_column
+
+En el siguiente ejemplo, en el registro de limpieza, se modifican ciertas columnas de opción multiple pero solo se registraron las modificaciones hechas a las columnas ficticias (TRUE/FALSE , 0/1 i.e. dummy variables).
+
+```{r}
+my_filled_log %>% 
+  filter(question == "primary_livelihood.employment", 
+         change_type == "change_response") %>% 
+  select(uuid, question, old_value, new_value)
+```
+
+La columna principal no fue modificada y por lo tanto, acorde al ejemplo anterior, 'employment' sigue marcado en la columna principal.
+
+```{r}
+my_clean_data %>% 
+  filter(X_uuid %in% c("eb3b9935-fa0b-4d54-8058-3b629f1421ad", "eec1f630-15d5-475e-a344-32bba74b32ea", "f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb")) %>% 
+  select(X_uuid,primary_livelihood, primary_livelihood.employment)
+```
+
+La función `recreate_parent_column` modifica la columna principal basandosé en las columnas ficticias.
+
+```{r}
+#| output: false
+my_clean_data2 <- recreate_parent_column(dataset = my_clean_data,
+                                         uuid_column = "X_uuid",
+                                         kobo_survey = my_kobo_survey,
+                                         kobo_choices = my_kobo_choice,
+                                         sm_separator = ".", 
+                                         cleaning_log_to_append = my_filled_log)
+```
+
+Como se puede ver, la columna principal esta correcta y 'employment' ya no aparece como respuesta.
+
+```{r}
+my_clean_data2$data_with_fix_concat %>% 
+  filter(X_uuid %in% c("eb3b9935-fa0b-4d54-8058-3b629f1421ad", "eec1f630-15d5-475e-a344-32bba74b32ea", "f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb")) %>% 
+  select(X_uuid,primary_livelihood, primary_livelihood.employment)
+```
+
+Al haber especificado el parametro `cleaning_log_to_append`, los cambios hechos fueron añadidos al registro de limpieza.
+
+
+```{r}
+my_clean_data2$cleaning_log %>% 
+  filter(question == "primary_livelihood", 
+         uuid %in% c("eb3b9935-fa0b-4d54-8058-3b629f1421ad", "eec1f630-15d5-475e-a344-32bba74b32ea", "f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb")) %>% 
+  select(uuid, question, old_value, new_value)
+```
+
+## review_others
+
+En el registro de limpieza, algunos valores de texto abierto se cambian a vacío. Algunas preguntas de texto abierto están vinculadas a una lógica condicional, es decir, ¿qué es X? Otro, por favor especifique. En algunos casos, algunos valores deben ser cambiados.
+En el siguiente ejemplo, se cambio el valor de **water_supply_other_neighbourhoods_why*** de la encuesta **uuid 019bc718-c06a-46b8-bba8-c84f6c6efbd5**.
+
+```{r}
+my_filled_log %>% 
+  filter(question == "water_supply_other_neighbourhoods_why", 
+         change_type == "blank_response")
+```
+
+En la herramienta KOBO se puede notar una logical condicional basada en la variable **water_supply_other_neighbourhoods**.
+
+```{r}
+my_kobo_survey %>% 
+  filter(name == "water_supply_other_neighbourhoods_why") %>% 
+  select(type, name, relevant)
+```
+
+```{r}
+my_clean_data %>% 
+  filter(X_uuid == "019bc718-c06a-46b8-bba8-c84f6c6efbd5") %>% 
+  select(water_supply_other_neighbourhoods, water_supply_other_neighbourhoods_why	)
+```
+
+
+¿Debe cambiarse el valor de water_supply_other_neighbourhoods? Depende de la pregunta y de la lógica condicional, pero es importante señalarlos para que se pueda tomar una decisión.
+
+```{r}
+review_other_log <- review_others(dataset = my_clean_data2$data_with_fix_concat,
+                                  uuid_column = "X_uuid", 
+                                  kobo_survey = my_kobo_survey, 
+                                  columns_not_to_check = "consent_telephone_number")
+```

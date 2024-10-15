@@ -1,0 +1,9 @@
+---
+title: "05 - Plantillas de revisión"
+author: "Yann Say"
+date: last-modified
+
+---
+#  Plantillas de revisión
+
+Hay algunas plantillas de proyecto que se pueden utilizar para revisar la limpieza. Más información en [este repositorio Github.](https://github.com/impact-initiatives/impacttemplates).

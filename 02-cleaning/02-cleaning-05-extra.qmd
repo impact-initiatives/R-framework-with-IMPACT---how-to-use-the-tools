@@ -1,0 +1,9 @@
+---
+title: "05 - Review templates"
+author: "Yann Say"
+date: last-modified
+
+---
+# Review templates
+
+There are some project templates that can be used to review the cleaning. More information on [this repository](https://github.com/impact-initiatives/impacttemplates).

@@ -1,0 +1,75 @@
+---
+title: "02 - Añadir, duracion y otros"
+author: "Yann Say"
+date: last-modified
+
+---
+```{r}
+#| warning: false
+#| output: false
+library(cleaningtools)
+library(dplyr)
+
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+
+more_logs <- my_raw_dataset %>% 
+  check_duplicate(uuid_column = "X_uuid") %>% 
+  check_soft_duplicates(uuid_column = "X_uuid", kobo_survey = my_kobo_survey, sm_separator = ".") %>%
+  check_outliers(uuid_column = "X_uuid") %>%
+  check_value(uuid_column = "X_uuid") 
+```
+
+## add_duration
+
+::: {.callout-tip appearance="minimal"}
+### add\_\*
+
+![](../config/images/verb%20-%20add.png)
+
+Las funciones **add\_**\* añadirán una variable (columna) al conjunto de datos. Por ejemplo, añadirán la duración de una encuesta, añadiran la categoría de puntaje de consumo de alimentos, etc.
+
+Una funcion **add\_**\* toma un conjunto de datos como entrada y devuelve el conjunto de datos + el nuevo indicador (y cualquier paso intermedia utilizado para el cálculo).
+
+En el ejemplo siguiento, se usa la funcion **add_duration** para añadir la duración de la encuesta usando el tiempo de inicio y de fin.
+:::
+
+```{r}
+more_logs$checked_dataset <- more_logs$checked_dataset %>% 
+  add_duration(uuid_column = "X_uuid", start_column = "X.U.FEFF.start", end_column = "end")
+more_logs$checked_dataset[1:6, c("start_date", "start_time", "end_date", "end_time", "days_diff", "duration")]
+
+```
+
+::: {.callout-warning .column-margin}
+La duración se añade a `checked_dataset` en la lista, no a `my_raw_dataset`. Las funciones **check\_**\* se utilizan en cadena, por lo cual es necesario que el conjunto actual de datos sea modificado.
+:::
+
+::: {.callout-warning .column-margin}
+En este momento, la funcion `add_duration` acepta solo un formato muy específico. En el futuro, cambiará para volverse màs robusta y se harà usando **lubridate**.
+:::
+
+`check_duration` se puede utilizar en cadena con las verificaciones anteriores.
+
+```{r}
+more_logs <- more_logs %>% 
+  check_duration(column_to_check = "duration", uuid_column = "X_uuid")
+```
+
+En la medida de lo posible, las funciones **check\_**\* toman argumentos predeterminados o infieren la información necesaria, p.ej. la funcion `check_outliers` infiere que columnas contienen valores numericos. Ciertas funciones requieren mãs informaciòn.
+
+## Columnas de texto
+
+La funcion `check_other` necesita la lista de columnas que se deben verificar. Al momento, no es capaz de detectar preguntas de texto abierto. Se puede utilizar la herramienta KOBO.
+
+```{r}
+other_columns_to_check <- my_kobo_survey %>% 
+  dplyr::filter(type == "text") %>% 
+  dplyr::filter(name %in% names(my_raw_dataset)) %>%
+  dplyr::pull(name) 
+
+more_logs <- more_logs %>% 
+  check_others(uuid_column = "X_uuid", columns_to_check = other_columns_to_check) 
+```
+
