@@ -4,460 +4,6 @@ author: "Yann Say"
 date: last-modified
 
 ---
-
-```{r}
-#| warning: false
-library(cleaningtools)
-library(dplyr)
-
-my_raw_dataset <- cleaningtools::cleaningtools_raw_data
-my_kobo_survey <- cleaningtools::cleaningtools_survey
-my_kobo_choice <- cleaningtools::cleaningtools_choices
-```
-
-En esta sección continuamos con el paso de limpieza.
-![](config/images/step - cleaning.png)
-
-# Resumen
-
-```{r}
-#| output: false
-more_logs <- my_raw_dataset %>% 
-  check_duplicate(uuid_column = "X_uuid") %>% 
-  check_soft_duplicates(uuid_column = "X_uuid", kobo_survey = my_kobo_survey, sm_separator = ".") %>%
-  check_outliers(uuid_column = "X_uuid") %>%
-  check_value(uuid_column = "X_uuid") 
-more_logs$checked_dataset <- more_logs$checked_dataset %>% 
-  add_duration(uuid_column = "X_uuid", start_column = "X.U.FEFF.start", end_column = "end")
-more_logs <- more_logs %>% 
-  check_duration(column_to_check = "duration", uuid_column = "X_uuid")
-other_columns_to_check <- my_kobo_survey %>% 
-  filter(type == "text") %>% 
-  filter(name %in% names(my_raw_dataset)) %>%
-  pull(name) 
-
-more_logs <- more_logs %>% 
-  check_others(uuid_column = "X_uuid", columns_to_check = other_columns_to_check) 
-logical_check_list <- readxl::read_excel("inputs/01 - example - check_list.xlsx")
-more_logs <- more_logs %>% 
-  check_logical_with_list(uuid_column = "X_uuid",
-                          list_of_check = logical_check_list,
-                          check_id_column = "check_id",
-                          check_to_perform_column = "check_to_perform",
-                          columns_to_clean_column = "columns_to_clean",
-                          description_column = "description")
-
-```
-
-
-# Limpieza - Creando un registro de limpieza
-
-::: {.callout-tip appearance="minimal"}
-### create\_\*
-
-![](config/images/verb - create.png)
-
-Las funciones **create_**\* crean o transforman algo, p.ej. creación un registro de limpieza incluyendo las verificaciones por completar, creación de una table de resultados de analisis, creación de una salida.
-
-Las salidas de las funciones **create_**\* pueden tener diferentes formatos, formas, especificaciones, etc. 
-
-Las funciones **create_**\* son funciones generales que pueden servir para varias tareas.
-:::
-
-## create_combined_log
-
-La función `create_combined_log` combina todos los registros de una lista en uno. La función añade también dos columnas necesarias durante el proceso de limpieza.
-
-```{r}
-names(more_logs)
-my_combined_log <- create_combined_log(more_logs)
-
-typeof(my_combined_log)
-names(my_combined_log)
-
-my_combined_log$cleaning_log %>% 
-  head()
-```
-
-El registro de limpieza contiene todas las columnas de todos los registros en `more_logs` y ademas contiene las siguientes columnas:
-
--   check_binding : esta columna se rellena automáticamente.
--   change_type (vacía)
--   new_value (vacía)
-
-## add_info_to_cleaning_log
-
-Si se desea añadir mas información al registro de limpieza, se puede usar la función `add_info_to_cleaning_log`.
-
-::: {.callout-tip appearance="minimal"}
-### add\_\*
-
-![](config/images/verb - add.png)
-
-Las funciones **add_**\* añaden una variable (columna) al conjunto de datos. Por ejemplo, se puede añadir la duración de la encuesta o la categoría de puntaje de consumo de alimentos (FCS)...
-
-Una función **add_**\* toma a un conjunto de datos como entrada y retorna el conjunto de datos incluyendo el nuevo indicador (tambien añadira todos las columnas necesarias para el calculo del nuevo indicador). 
-
-Por ejemplo, para comprobar la duración de una encuesta teniendo las variables de inicio y fin de la encuesta.
-:::
-
-```{r}
-my_combined_log <- my_combined_log %>% 
-  add_info_to_cleaning_log(dataset_uuid_column = "X_uuid", 
-                           information_to_add = "enumerator_num")
-
-my_combined_log$cleaning_log %>% 
-  head()
-```
-
-## create_xlsx_cleaning_log
-
-```{r}
-#| output: false
-create_xlsx_cleaning_log(my_combined_log,
-                         sm_dropdown_type = "logical",
-                         output_path =  "outputs/01 - example - cleaning-log-no-kobo.xlsx")
-```
-
-La función `create_xlsx_cleaning_log` crea una tabla Excel que contiene:
-
--   checked_dataset: la pestaña con el conjunto de datos verificado y las columnas añadidas si hay.
--   cleaning_log: la pestaña con los registros combinados y la columna **change_type** que describe las posibles modificaciones.
--   readme tab: la pestaña con la definición de las opciones para la columna change_type (en inglés).
-
-Hay 4 acciones posibles:
-
--   change_response: cambiar al valor especificado en la columna new.value,
--   blank_response: remplazar el valor por NA,
--   remove_survey: borrar la encuesta,
--   no_action: no hacer nada.
-
-En el registro se debe indicar la acción por hacer y, si necesario, el nuevo valor.
-
-```{r}
-#| output: false
-create_xlsx_cleaning_log(my_combined_log,
-                         kobo_survey = my_kobo_survey,
-                         kobo_choices = my_kobo_choice,
-                         use_dropdown = T,
-                         sm_dropdown_type = "logical",
-                         output_path =  "outputs/02 - example - cleaning-log-with-kobo.xlsx")
-```
-
-En las entradas de la función, se puede especificar la herramienta KOBO. Si se específica la herramienta y que el argumento **use_dropdown** está configurado como TRUE, **new_value** tendrá una regla de validación de datos basada en las opciones de la herramienta KOBO.
-
-::: callout-note
-En el caso de variables de opción multiple, se señalan las columnas ficticias (TRUE/FALSE o 0/1 i.e. dummy columns)  y son esas las columnas usadas durante el proceso de limpieza, no la columna principal.
-:::
-
-
-# Limpieza - Crear un conjunto de datos limpios
-
-::: callout-important
-El registro de limpieza debe completarse antes de continuar el proceso. Los pasos anteriores son para crear el registro de limpieza, no para **completarlo** o **limpiar** el conjunto de datos. Completar el registro de limpieza no es un paso automático y la decision de modificar un valor debe ser registrada manualmente.
-:::
-
-::: {.callout-tip appearance="minimal"}
-### review\_\*
-
-![](config/images/verb - review.png)
-
-Las funciones **review_**\* revisan un objeto comparándolo con estándares u otro objeto y marcan las diferencias en un registro. Por ejemplo, revisan la limpieza al comparar el conjunto de datos en bruto, el conjunto de datos limpio y en registro o revisan un análisis comparándolo a otro o tambien:
-
--   si se relleno el registro de limpieza correctamente
--   si las modificaciones corresponden a lo inscrito en el registro de limpieza
--   comparan los valores de ciertos indicadores
--   comparan dos análisis
--   etc.
-:::
-
-## review_cleaning_log
-
-La funcion `review_cleaning_log` revisa como se `relleno` el registro de limpieza.
-
-```{r}
-my_filled_log <- readxl::read_excel("inputs/02 - example - cleaning-log-with-kobo - filled.xlsx", sheet = 2)
-
-check_log_results <- review_cleaning_log(raw_dataset = my_raw_dataset,
-                                        raw_data_uuid_column = "X_uuid",
-                                        cleaning_log = my_filled_log, 
-                                        cleaning_log_uuid_column = "uuid",
-                                        cleaning_log_question_column = "question",
-                                        cleaning_log_new_value_column = "new_value",
-                                        cleaning_log_change_type_column = "change_type",
-                                        change_response_value = "change_response")
-check_log_results
-```
-
-## create_clean_data
-
-Para crear el conjunto de datos limpio, la función `create_clean_data` necesita el conjunto de datos bruto y el registro de limpieza completado.
-
-```{r}
-my_clean_data <- create_clean_data(raw_dataset = my_raw_dataset,
-                                   raw_data_uuid_column = "X_uuid",
-                                   cleaning_log = my_filled_log, 
-                                   cleaning_log_uuid_column = "uuid",
-                                   cleaning_log_question_column = "question",
-                                   cleaning_log_new_value_column = "new_value",
-                                   cleaning_log_change_type_column = "change_type")
-```
-
-## recreate_parent_column
-
-En el siguiente ejemplo, en el registro de limpieza, se modifican ciertas columnas de opción multiple pero solo se registraron las modificaciones hechas a las columnas ficticias (TRUE/FALSE , 0/1 i.e. dummy variables).
-
-```{r}
-my_filled_log %>% 
-  filter(question == "primary_livelihood.employment", 
-         change_type == "change_response") %>% 
-  select(uuid, question, old_value, new_value)
-```
-
-La columna principal no fue modificada y por lo tanto, acorde al ejemplo anterior, 'employment' sigue marcado en la columna principal.
-
-```{r}
-my_clean_data %>% 
-  filter(X_uuid %in% c("eb3b9935-fa0b-4d54-8058-3b629f1421ad", "eec1f630-15d5-475e-a344-32bba74b32ea", "f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb")) %>% 
-  select(X_uuid,primary_livelihood, primary_livelihood.employment)
-```
-
-La función `recreate_parent_column` modifica la columna principal basandosé en las columnas ficticias.
-
-```{r}
-#| output: false
-my_clean_data2 <- recreate_parent_column(dataset = my_clean_data,
-                                         uuid_column = "X_uuid",
-                                         kobo_survey = my_kobo_survey,
-                                         kobo_choices = my_kobo_choice,
-                                         sm_separator = ".", 
-                                         cleaning_log_to_append = my_filled_log)
-```
-
-Como se puede ver, la columna principal esta correcta y 'employment' ya no aparece como respuesta.
-
-```{r}
-my_clean_data2$data_with_fix_concat %>% 
-  filter(X_uuid %in% c("eb3b9935-fa0b-4d54-8058-3b629f1421ad", "eec1f630-15d5-475e-a344-32bba74b32ea", "f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb")) %>% 
-  select(X_uuid,primary_livelihood, primary_livelihood.employment)
-```
-
-Al haber especificado el parametro `cleaning_log_to_append`, los cambios hechos fueron añadidos al registro de limpieza.
-
-
-```{r}
-my_clean_data2$cleaning_log %>% 
-  filter(question == "primary_livelihood", 
-         uuid %in% c("eb3b9935-fa0b-4d54-8058-3b629f1421ad", "eec1f630-15d5-475e-a344-32bba74b32ea", "f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb")) %>% 
-  select(uuid, question, old_value, new_value)
-```
-
-## review_others
-
-En el registro de limpieza, algunos valores de texto abierto se cambian a vacío. Algunas preguntas de texto abierto están vinculadas a una lógica condicional, es decir, ¿qué es X? Otro, por favor especifique. En algunos casos, algunos valores deben ser cambiados.
-En el siguiente ejemplo, se cambio el valor de **water_supply_other_neighbourhoods_why*** de la encuesta **uuid 019bc718-c06a-46b8-bba8-c84f6c6efbd5**.
-
-```{r}
-my_filled_log %>% 
-  filter(question == "water_supply_other_neighbourhoods_why", 
-         change_type == "blank_response")
-```
-
-En la herramienta KOBO se puede notar una logical condicional basada en la variable **water_supply_other_neighbourhoods**.
-
-```{r}
-my_kobo_survey %>% 
-  filter(name == "water_supply_other_neighbourhoods_why") %>% 
-  select(type, name, relevant)
-```
-
-```{r}
-my_clean_data %>% 
-  filter(X_uuid == "019bc718-c06a-46b8-bba8-c84f6c6efbd5") %>% 
-  select(water_supply_other_neighbourhoods, water_supply_other_neighbourhoods_why	)
-```
-
-
-¿Debe cambiarse el valor de water_supply_other_neighbourhoods? Depende de la pregunta y de la lógica condicional, pero es importante señalarlos para que se pueda tomar una decisión.
-
-```{r}
-review_other_log <- review_others(dataset = my_clean_data2$data_with_fix_concat,
-                                  uuid_column = "X_uuid", 
-                                  kobo_survey = my_kobo_survey, 
-                                  columns_not_to_check = "consent_telephone_number")
-```
-
-## review_cleaning
-
-```{r}
-#| output: false
-my_deletion_log <- my_clean_data2$cleaning_log %>% 
-  filter(change_type == "remove_survey")
-
-my_filled_log_no_deletion <- my_clean_data2$cleaning_log %>% 
-  filter(change_type != "remove_survey") %>% 
-  filter(!uuid %in% my_deletion_log$uuid)
-
-review_of_cleaning <- review_cleaning(raw_dataset = my_raw_dataset,
-                    raw_dataset_uuid_column = "X_uuid", 
-                    clean_dataset = my_clean_data2$data_with_fix_concat,
-                    clean_dataset_uuid_column = "X_uuid",
-                    cleaning_log = my_filled_log_no_deletion, 
-                    cleaning_log_uuid_column = "uuid",
-                    cleaning_log_question_column = "question",
-                    cleaning_log_new_value_column = "new_value",
-                    cleaning_log_change_type_column = "change_type", 
-                    cleaning_log_old_value_column = "old_value", 
-                    deletion_log = my_deletion_log, 
-                    deletion_log_uuid_column = "uuid"
-                    )
-```
-
-# Ejercicios
-
-## Ejercicio 1
-
-- Exporte el registro de limpieza creado previamente. El registro anterior ya esta cargado.
-```{r}
-previous_exercise_log <- readRDS("inputs/03 - exercise - previous_log.RDS")
-
-previous_exercise_log %>% names()
-```
-
-
-::: {.callout-note collapse="true" appearance="minimal"}
-### Haga clic para obtener una pista.
-
-¿Intento usando la funcion `create_combined_log` ? 
-
-:::
-
-::: {.callout-note collapse="true" appearance="minimal"}
-### Haga clic para obtener una pista.
-
-¿Intento usando la funcion `create_xlsx_cleaning_log` ? 
-
-:::
-
-::: {.callout-tip collapse="true" appearance="minimal"}
-### Haga clic para ver la respuesta.
-
-```{r}
-#| output: false
-previous_exercise_log %>% 
-  create_combined_log() %>%
-  create_xlsx_cleaning_log(output_path = "outputs/03 - correction - cleaning_log.xlsx", 
-                           kobo_survey = my_kobo_survey,
-                           kobo_choices = my_kobo_choice,
-                           sm_dropdown_type = "logical",
-                           use_dropdown = TRUE)
-  
-```
-:::
-
-
-## Ejercicio 2
-
-- Cree los datos limpios a partir del conjunto de datos en bruto y del registro de limpieza completado.
-
-```{r}
-exercise_filled_log <- readxl::read_excel("inputs/04 - exercise - cleaning_log - filled.xlsx", sheet = "cleaning_log")
-```
-
-::: {.callout-note collapse="true" appearance="minimal"}
-### Haga clic para ver una pista.
-
-¿Intento usando la funcion `create_clean_data` ?
-:::
-
-::: {.callout-note collapse="true" appearance="minimal"}
-### Haga clic para ver una pista.
-
-¿Intento usando la funcion `recreate_parent_column` ?
-
-:::
-
-::: {.callout-tip collapse="true" appearance="minimal"}
-### Haga clic para ver la respuesta.
-
-```{r}
-#| output: false
-exercise_clean_dataset <- create_clean_data(raw_dataset = my_raw_dataset,
-                                            raw_data_uuid_column = "X_uuid",
-                                            cleaning_log = exercise_filled_log, 
-                                            cleaning_log_uuid_column = "uuid",
-                                            cleaning_log_question_column = "question",
-                                            cleaning_log_new_value_column = "new_value",
-                                            cleaning_log_change_type_column = "change_type")
-
-
-exercise_clean_dataset2 <- recreate_parent_column(exercise_clean_dataset,
-                                                  uuid_column = "X_uuid", 
-                                                  kobo_survey = my_kobo_survey,
-                                                  kobo_choices = my_kobo_choice,
-                                                  cleaning_log_to_append = exercise_filled_log)
-
-  
-```
-:::
-
-## Ejercicio 3
-
-- Revise la limpieza a continuación; si hay alguien más haciendo el ejercicio, puede intentar revisar la limpieza de esa persona.
-
-```{r}
-exercise3_clean_dataset <- readxl::read_excel("inputs/05 - exercise - clean dataset for review.xlsx")
-
-exercise3_cleaning_log <- readxl::read_excel("inputs/05 - exercise - clean dataset for review.xlsx", sheet = 2)
-
-```
-
-::: {.callout-note collapse="true" appearance="minimal"}
-### Haga clic para ver una pista.
-
-¿Intento usando la funcion `review_cleaning` ?
-
-:::
-
-::: {.callout-note collapse="true" appearance="minimal"}
-### Haga clic para ver una pista.
-
-¿ Separo el registro de limpieza ?
-:::
-
-::: {.callout-tip collapse="true" appearance="minimal"}
-### Haga clic para ver la respuesta.
-
-```{r}
-#| output: false
-exercise3_deletion_log <- exercise3_cleaning_log %>% 
-  filter(change_type == "remove_survey")
-
-exercise3_log_no_deletion <- exercise3_cleaning_log %>% 
-  filter(change_type != "remove_survey") %>% 
-  filter(!uuid %in% exercise3_deletion_log$uuid)
-
-review_of_cleaning <- review_cleaning(raw_dataset = my_raw_dataset,
-                                      raw_dataset_uuid_column = "X_uuid", 
-                                      clean_dataset = exercise3_clean_dataset,
-                                      clean_dataset_uuid_column = "X_uuid",
-                                      cleaning_log = exercise3_log_no_deletion, 
-                                      cleaning_log_uuid_column = "uuid",
-                                      cleaning_log_question_column = "question",
-                                      cleaning_log_new_value_column = "new_value",
-                                      cleaning_log_change_type_column = "change_type", 
-                                      cleaning_log_old_value_column = "old_value", 
-                                      deletion_log = exercise3_deletion_log, 
-                                      deletion_log_uuid_column = "uuid"
-)
-```
-
-:::
-
-#  Plantillas de revisión
-
-Hay algunas plantillas de proyecto que se pueden utilizar para revisar la limpieza. Más información en [este repositorio Github.](https://github.com/impact-initiatives/impacttemplates).
-
 # Composición - añadir indicadores
 
 El marco se basa en 4 etapas : limpieza, composición, análisis, resultados.
@@ -469,20 +15,22 @@ El marco se basa en 4 etapas : limpieza, composición, análisis, resultados.
 
 En la siguiente sección miraremos ciertas funciones usadas durante la etapa de composición.
 
-![](config/images/step - composition.png)
+![](../config/images/step - composition.png)
+
 
 ```{r}
 #| warning: false
-library(addindicators)
+library(impactR4PHU)
 library(dplyr)
 
-my_data <- addindicators::addindicators_MSNA_template_data
+my_data <- impactR4PHU::impactR4PHU_data_template |>  
+  filter(respondent_consent != "no") 
 ```
 
 ::: {.callout-tip appearance="minimal"}
 ### add\_\*
 
-![](config/images/verb - add.png)
+![](../config/images/verb - add.png)
 
 Las funciones **add_**\* le añaden una variable (columna) al conjunto de datos. Por ejemplo, añadir la duración de una encuesta, añadir la categoría de puntaje de consumo de alimentos (FCS)...
 
@@ -497,15 +45,7 @@ Al usar la función `addindicators` se puede que algunas columnas intermedias se
 
 ```{r}
 my_data_with_fcs <- my_data %>% add_fcs(
-  cutoffs = "normal",
-  fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
-  fsl_fcs_legumes = "fs_fcs_beans_nuts",
-  fsl_fcs_veg = "fs_fcs_vegetables_leaves",
-  fsl_fcs_fruit = "fs_fcs_fruit",
-  fsl_fcs_meat = "fs_fcs_meat_fish_eggs",
-  fsl_fcs_dairy = "fs_fcs_dairy",
-  fsl_fcs_sugar = "fs_fcs_sugar",
-  fsl_fcs_oil = "fs_fcs_oil_fat_butter"
+  cutoffs = "normal"
 )
 
 my_data_with_fcs[, tail(names(my_data_with_fcs), 10)] %>%
@@ -526,16 +66,7 @@ El marco se basa en 2 adjetivos, **pipeable** (encadenable) e **independiente**.
 
 ```{r}
 my_data_with_indicators <- my_data %>%
-  add_fcs(
-  cutoffs = "normal",
-  fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
-  fsl_fcs_legumes = "fs_fcs_beans_nuts",
-  fsl_fcs_veg = "fs_fcs_vegetables_leaves",
-  fsl_fcs_fruit = "fs_fcs_fruit",
-  fsl_fcs_meat = "fs_fcs_meat_fish_eggs",
-  fsl_fcs_dairy = "fs_fcs_dairy",
-  fsl_fcs_sugar = "fs_fcs_sugar",
-  fsl_fcs_oil = "fs_fcs_oil_fat_butter"
+  add_fcs(cutoffs = "normal"
   ) %>%
   add_hhs(
   )
@@ -554,17 +85,9 @@ Para lo ultimo, se puede usar las funciones `review_one_variable` y `review_vari
 Primero, creamos un nuevo conjunto de datos para la revisión.
 
 ```{r}
-review_df <- addindicators_MSNA_template_data %>%
+review_df <- my_data %>%
   add_fcs(
   cutoffs = "normal",
-  fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
-  fsl_fcs_legumes = "fs_fcs_beans_nuts",
-  fsl_fcs_veg = "fs_fcs_vegetables_leaves",
-  fsl_fcs_fruit = "fs_fcs_fruit",
-  fsl_fcs_meat = "fs_fcs_meat_fish_eggs",
-  fsl_fcs_dairy = "fs_fcs_dairy",
-  fsl_fcs_sugar = "fs_fcs_sugar",
-  fsl_fcs_oil = "fs_fcs_oil_fat_butter"
   ) %>%
   select(uuid, fsl_fcs_score, fsl_fcs_cat)
 ```
@@ -587,10 +110,14 @@ Al usar la función `join_*`, si hay dos columnas con el mismo nombre en los con
 ::: {.callout-tip appearance="minimal"}
 ### review\_\*
 
-![](config/images/verb - review.png)
+![](../config/images/verb - review.png)
 
 Las funciones**review_**\* revisan un objeto comparándolo con estándares u otro objeto y marcan las diferencias. Por ejemplo, revisando la limpiezo al comparar el conjunto de datos en bruto, el conjunto de datos limpio y el registro de limpieza o realizando un análisis y comparándolo con otro análisis.
 :::
+```{r}
+library(addindicators)
+```
+
 ```{r}
 review_one_var <- review_variables(binded_df,
   columns_to_review = "fsl_fcs_cat.x",
@@ -696,12 +223,12 @@ analysistools::analysistools_MSNA_template_survey %>%
 
 ```{r}
 #| eval: false
-library(addindicators)
+library(impactR4PHU)
 library(dplyr)
 ```
 
 ```{r}
-exercise_data <- addindicators_MSNA_template_data %>%
+exercise_data <- addindicators::addindicators_MSNA_template_data %>%
   add_fcs(
   cutoffs = "normal",
   fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
@@ -773,7 +300,7 @@ my_answer <- exercise_data %>% add_rcsi(
 No olvide escribir la revisión.
 
 ```{r}
-dataset_to_review <- read.csv("inputs/06 - exercise - dataset_to_review.csv")
+dataset_to_review <- read.csv("../inputs/06 - exercise - dataset_to_review.csv")
 
 dataset_without_indicators <- addindicators::addindicators_MSNA_template_data
 ```
@@ -863,6 +390,7 @@ review$dataset %>%
 - El HHS está bien. El etiquetado es diferente.
 :::
 
-# impactR4PHU
+# impactR4PHU y umind
 
-Las funciones relacionadas con los chequeos e indicadores de salud pública están más actualizadas en impactR4PHU. Más información en [este repositorio](https://github.com/impact-initiatives/impactR4PHU).
+Las funciones relacionadas con los chequeos e indicadores de salud pública están más actualizadas en `impactR4PHU.` Más información en [este repositorio](https://github.com/impact-initiatives/impactR4PHU).
+Las funciones relacionadas con los indicadores del *Multi Sector Needs Index* están en `humind` Más información en [este repositorio](https://github.com/impact-initiatives-hppu/humind).

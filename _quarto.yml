@@ -30,13 +30,13 @@ website:
     contents:
       - text: "Introduction"
         href: 00-intro.qmd
-      - section: "Cleaning session 1"
+      - section: "Cleaning - Checking a dataset"
         contents:
           - 01-cleaning/01-cleaning-01-checks.qmd
           - 01-cleaning/01-cleaning-02-add-duration-others.qmd
           - 01-cleaning/01-cleaning-03-logical-with-lists.qmd
           - 01-cleaning/01-cleaning-04-exercise.qmd
-      - section: "Cleaning session 2"
+      - section: "Cleaning - Creating a clean dataset"
         contents:
           - 02-cleaning/02-cleaning-01-create-cleaning-log.qmd
           - 02-cleaning/02-cleaning-02-create-clean-dataset.qmd
