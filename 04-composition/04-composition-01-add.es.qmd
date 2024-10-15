@@ -66,8 +66,9 @@ El marco se basa en 2 adjetivos, **pipeable** (encadenable) e **independiente**.
 
 ```{r}
 my_data_with_indicators <- my_data %>%
-  add_fcs(cutoffs = "normal"
-  ) %>%
+  add_fcs(
+  cutoffs = "normal"
+) %>%
   add_hhs(
   )
 
@@ -224,6 +225,7 @@ analysistools::analysistools_MSNA_template_survey %>%
 ```{r}
 #| eval: false
 library(impactR4PHU)
+library(addindicators)
 library(dplyr)
 ```
 
@@ -241,6 +243,17 @@ exercise_data <- addindicators::addindicators_MSNA_template_data %>%
   fsl_fcs_oil = "fs_fcs_oil_fat_butter"
   ) %>%
   add_hhs(
+  fsl_hhs_nofoodhh = "fs_hhs_nofood_yn",
+  fsl_hhs_nofoodhh_freq = "fs_hhs_nofood_freq",
+  fsl_hhs_sleephungry = "fs_hhs_sleephungry_yn",
+  fsl_hhs_sleephungry_freq = "fs_hhs_sleephungry_freq",
+  fsl_hhs_alldaynight = "fs_hhs_daynoteating_yn",
+  fsl_hhs_alldaynight_freq = "fs_hhs_daynoteating_freq",
+  yes_answer = "yes",
+  no_answer = "no",
+  rarely_answer = "rarely_1_2",
+  sometimes_answer = "sometimes_3_10",
+  often_answer = "often_10_times"
   )
 ```
 
@@ -269,23 +282,15 @@ La matriz de puntaje de consumo de alimentos necesita 3 indicadores: FCS, rCSI y
 
 ```{r}
 #| output: false
-my_answer <- exercise_data %>% add_rcsi(
+my_answer <- exercise_data %>% 
+  add_rcsi(
+    fsl_rcsi_lessquality = "rCSILessQlty",
+    fsl_rcsi_borrow = "rCSIBorrow",
+    fsl_rcsi_mealsize = "rCSIMealSize",
+    fsl_rcsi_mealadult = "rCSIMealAdult",
+    fsl_rcsi_mealnb = "rCSIMealNb"
   ) %>%
   add_fcm_phase(
-    fcs_column_name = "fsl_fcs_cat",
-    rcsi_column_name = "rcsi_cat",
-    hhs_column_name = "hhs_cat_ipc",
-    fcs_categories_acceptable = "Acceptable",
-    fcs_categories_poor = "Poor",
-    fcs_categories_borderline = "Borderline",
-    rcsi_categories_low = "No to Low",
-    rcsi_categories_medium = "Medium",
-    rcsi_categories_high = "High",
-    hhs_categories_none = "None",
-    hhs_categories_little = "Little",
-    hhs_categories_moderate = "Moderate",
-    hhs_categories_severe = "Severe",
-    hhs_categories_very_severe = "Very Severe"
   )
 ```
 :::
@@ -323,6 +328,8 @@ dataset_without_indicators <- addindicators::addindicators_MSNA_template_data
 ### Haga clic para ver una pista.
 
 ¿Cómo se codificó la categoría para el HHS (puntaje de hambre en el hogar)?
+Nombres en el dataset son: "hhs_cat", "hhs_score"
+Nombres creados con `add_hhs` son: "fsl_hhs_cat", "fsl_hhs_score"
 
 :::
 
@@ -332,7 +339,7 @@ dataset_without_indicators <- addindicators::addindicators_MSNA_template_data
 ```{r}
 #| output: false
 my_review <- dataset_without_indicators %>% 
-    add_fcs(
+  add_fcs(
   cutoffs = "normal",
   fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
   fsl_fcs_legumes = "fs_fcs_beans_nuts",
@@ -342,25 +349,26 @@ my_review <- dataset_without_indicators %>%
   fsl_fcs_dairy = "fs_fcs_dairy",
   fsl_fcs_sugar = "fs_fcs_sugar",
   fsl_fcs_oil = "fs_fcs_oil_fat_butter"
-  )  %>% add_hhs(
-    hhs_nofoodhh_1 = "fs_hhs_nofood_yn",
-    hhs_nofoodhh_1a = "fs_hhs_nofood_freq",
-    hhs_sleephungry_2 = "fs_hhs_sleephungry_yn",
-    hhs_sleephungry_2a = "fs_hhs_sleephungry_freq",
-    hhs_alldaynight_3 = "fs_hhs_daynoteating_yn",
-    hhs_alldaynight_3a = "fs_hhs_daynoteating_freq",
-    yes_answer = "yes",
-    no_answer = "no",
-    rarely_answer = "rarely_1_2",
-    sometimes_answer = "sometimes_3_10",
-    often_answer = "often_10_times"
+  ) %>%
+  add_hhs(
+  fsl_hhs_nofoodhh = "fs_hhs_nofood_yn",
+  fsl_hhs_nofoodhh_freq = "fs_hhs_nofood_freq",
+  fsl_hhs_sleephungry = "fs_hhs_sleephungry_yn",
+  fsl_hhs_sleephungry_freq = "fs_hhs_sleephungry_freq",
+  fsl_hhs_alldaynight = "fs_hhs_daynoteating_yn",
+  fsl_hhs_alldaynight_freq = "fs_hhs_daynoteating_freq",
+  yes_answer = "yes",
+  no_answer = "no",
+  rarely_answer = "rarely_1_2",
+  sometimes_answer = "sometimes_3_10",
+  often_answer = "often_10_times"
   ) %>% 
-  select(uuid, fsl_fcs_cat, fsl_fcs_score, hhs_cat, hhs_score)
+  select(uuid, fsl_fcs_cat, fsl_fcs_score, fsl_hhs_cat, fsl_hhs_score)
 dataset_to_review <- full_join(dataset_to_review, my_review, by = "uuid")
 
 review <- dataset_to_review %>% 
-  review_variables(columns_to_review = c("fsl_fcs_cat.x", "fsl_fcs_score.x", "hhs_cat.x", "hhs_score.x"),
-                   columns_to_compare_with = c("fsl_fcs_cat.y", "fsl_fcs_score.y", "hhs_cat.y", "hhs_score.y"))
+  review_variables(columns_to_review = c("fsl_fcs_cat.x", "fsl_fcs_score.x", "hhs_cat", "hhs_score"),
+                   columns_to_compare_with = c("fsl_fcs_cat.y", "fsl_fcs_score.y", "fsl_hhs_cat", "fsl_hhs_score"))
 
 review$review_table %>% 
   group_by(variable,review_check,review_comment) %>% 
@@ -382,15 +390,15 @@ review$dataset %>%
 
 ```{r}
 review$dataset %>% 
-  filter(!review_check_hhs_cat.x) %>% 
-  select(hhs_cat.x, hhs_cat.y) %>% 
+  filter(!review_check_hhs_cat) %>% 
+  select(hhs_cat, fsl_hhs_cat) %>% 
   table(useNA = "ifany")
 ```
 
 - El HHS está bien. El etiquetado es diferente.
 :::
 
-# impactR4PHU y umind
+# impactR4PHU y humind
 
 Las funciones relacionadas con los chequeos e indicadores de salud pública están más actualizadas en `impactR4PHU.` Más información en [este repositorio](https://github.com/impact-initiatives/impactR4PHU).
 Las funciones relacionadas con los indicadores del *Multi Sector Needs Index* están en `humind` Más información en [este repositorio](https://github.com/impact-initiatives-hppu/humind).
