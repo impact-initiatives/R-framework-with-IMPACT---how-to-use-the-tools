@@ -1,0 +1,97 @@
+---
+title: "03 - Review cleaning"
+author: "Yann Say"
+date: last-modified
+
+---
+
+```{r}
+#| warning: false
+#| output: false
+library(cleaningtools)
+library(dplyr)
+
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+my_filled_log <- readxl::read_excel("../inputs/02 - example - cleaning-log-with-kobo - filled.xlsx", sheet = 2)
+
+my_clean_data <- create_clean_data(raw_dataset = my_raw_dataset,
+                                   raw_data_uuid_column = "X_uuid",
+                                   cleaning_log = my_filled_log, 
+                                   cleaning_log_uuid_column = "uuid",
+                                   cleaning_log_question_column = "question",
+                                   cleaning_log_new_value_column = "new_value",
+                                   cleaning_log_change_type_column = "change_type")
+my_clean_data2 <- recreate_parent_column(dataset = my_clean_data,
+                                         uuid_column = "X_uuid",
+                                         kobo_survey = my_kobo_survey,
+                                         kobo_choices = my_kobo_choice,
+                                         sm_separator = ".", 
+                                         cleaning_log_to_append = my_filled_log)
+```
+
+## review_others
+
+In the cleaning log, some opentext values are changed to blank. Some open text questions are linked some skip logic, i.e. *what is X? Other, please specify*. In some cases, values some values should be changed.
+
+In the example below, the value for **water_supply_other_neighbourhoods_why** for the **uuid 019bc718-c06a-46b8-bba8-c84f6c6efbd5** was changed to NA.
+
+```{r}
+my_filled_log %>% 
+  filter(question == "water_supply_other_neighbourhoods_why", 
+         change_type == "blank_response")
+```
+
+The kobo show a skip logic based on **water_supply_other_neighbourhoods**.
+
+```{r}
+my_kobo_survey %>% 
+  filter(name == "water_supply_other_neighbourhoods_why") %>% 
+  select(type, name, relevant)
+```
+
+```{r}
+my_clean_data %>% 
+  filter(X_uuid == "019bc718-c06a-46b8-bba8-c84f6c6efbd5") %>% 
+  select(water_supply_other_neighbourhoods, water_supply_other_neighbourhoods_why	)
+```
+
+Should the value of **water_supply_other_neighbourhoods** be changed? It depends on the question and skip logic but it important to flag those so a decision can be taken.
+
+```{r}
+review_other_log <- review_others(dataset = my_clean_data2$data_with_fix_concat,
+                                  uuid_column = "X_uuid", 
+                                  kobo_survey = my_kobo_survey, 
+                                  columns_not_to_check = "consent_telephone_number")
+```
+## review_cleaning
+
+```{r}
+#| output: false
+my_deletion_log <- my_clean_data2$cleaning_log %>% 
+  filter(change_type == "remove_survey")
+
+my_filled_log_no_deletion <- my_clean_data2$cleaning_log %>% 
+  filter(change_type != "remove_survey") %>% 
+  filter(!uuid %in% my_deletion_log$uuid)
+
+review_of_cleaning <- review_cleaning(raw_dataset = my_raw_dataset,
+                    raw_dataset_uuid_column = "X_uuid", 
+                    clean_dataset = my_clean_data2$data_with_fix_concat,
+                    clean_dataset_uuid_column = "X_uuid",
+                    cleaning_log = my_filled_log_no_deletion, 
+                    cleaning_log_uuid_column = "uuid",
+                    cleaning_log_question_column = "question",
+                    cleaning_log_new_value_column = "new_value",
+                    cleaning_log_change_type_column = "change_type", 
+                    cleaning_log_old_value_column = "old_value", 
+                    deletion_log = my_deletion_log, 
+                    deletion_log_uuid_column = "uuid"
+                    )
+```
+
+```{r}
+review_of_cleaning
+```
+

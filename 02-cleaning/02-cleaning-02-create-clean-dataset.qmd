@@ -1,0 +1,117 @@
+---
+title: "02 - Creating a clean dataset"
+author: "Yann Say"
+date: last-modified
+
+---
+
+```{r}
+#| warning: false
+library(cleaningtools)
+library(dplyr)
+
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+```
+
+# Cleaning - Creating a clean dataset
+
+::: callout-important
+The cleaning has to be filled before moving forward. The above steps are to create the cleaning log, not to **fill** it or **clean** the dataset. Filling the cleaning log is not an automatic step for this process. The decision to change a value has to be recorded.
+:::
+
+::: {.callout-tip appearance="minimal"}
+### review\_\*
+
+![](../config/images/verb - review.png)
+
+**review_**\* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis. 
+
+-   if the cleaning has been filled correctly
+-   the cleaning has been done correctly
+-   comparing indicators
+-   comparing analysis
+-   etc.
+:::
+
+## review_cleaning_log
+
+`review_cleaning_log` will review the **filled** cleaning log.
+
+```{r}
+my_filled_log <- readxl::read_excel("../inputs/02 - example - cleaning-log-with-kobo - filled.xlsx", sheet = 2)
+
+check_log_results <- review_cleaning_log(raw_dataset = my_raw_dataset,
+                                        raw_data_uuid_column = "X_uuid",
+                                        cleaning_log = my_filled_log, 
+                                        cleaning_log_uuid_column = "uuid",
+                                        cleaning_log_question_column = "question",
+                                        cleaning_log_new_value_column = "new_value",
+                                        cleaning_log_change_type_column = "change_type",
+                                        change_response_value = "change_response")
+check_log_results
+```
+
+## create_clean_data
+
+To create the clean dataset, `create_clean_data` will use the raw dataset and the filled cleaning log.
+
+```{r}
+my_clean_data <- create_clean_data(raw_dataset = my_raw_dataset,
+                                   raw_data_uuid_column = "X_uuid",
+                                   cleaning_log = my_filled_log, 
+                                   cleaning_log_uuid_column = "uuid",
+                                   cleaning_log_question_column = "question",
+                                   cleaning_log_new_value_column = "new_value",
+                                   cleaning_log_change_type_column = "change_type")
+```
+
+## recreate_parent_column
+
+In the cleaning log, some select multiple are changed, but only the dummy.
+
+```{r}
+my_filled_log %>% 
+  filter(question == "primary_livelihood.employment", 
+         change_type == "change_response") %>% 
+  select(uuid, question, old_value, new_value)
+```
+
+The parent column did not change, in the following example employment still appears in the parent column.
+
+```{r}
+my_clean_data %>% 
+  filter(X_uuid %in% c("eb3b9935-fa0b-4d54-8058-3b629f1421ad", "eec1f630-15d5-475e-a344-32bba74b32ea", "f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb")) %>% 
+  select(X_uuid,primary_livelihood, primary_livelihood.employment)
+```
+
+`recreate_parent_column` will recode the parent columns based on the dummies.
+
+```{r}
+#| output: false
+my_clean_data2 <- recreate_parent_column(dataset = my_clean_data,
+                                         uuid_column = "X_uuid",
+                                         kobo_survey = my_kobo_survey,
+                                         kobo_choices = my_kobo_choice,
+                                         sm_separator = ".", 
+                                         cleaning_log_to_append = my_filled_log)
+```
+
+The parent are corrected, employment does not appear in the parent column.
+
+```{r}
+my_clean_data2$data_with_fix_concat %>% 
+  filter(X_uuid %in% c("eb3b9935-fa0b-4d54-8058-3b629f1421ad", "eec1f630-15d5-475e-a344-32bba74b32ea", "f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb")) %>% 
+  select(X_uuid,primary_livelihood, primary_livelihood.employment)
+```
+
+The changes were added to the cleaning log.
+
+```{r}
+my_clean_data2$cleaning_log %>% 
+  filter(question == "primary_livelihood", 
+         uuid %in% c("eb3b9935-fa0b-4d54-8058-3b629f1421ad", "eec1f630-15d5-475e-a344-32bba74b32ea", "f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb")) %>% 
+  select(uuid, question, old_value, new_value)
+```
+

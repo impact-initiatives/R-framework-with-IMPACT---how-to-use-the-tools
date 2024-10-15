@@ -9,7 +9,7 @@ date: last-modified
 
 ![](config/images/rframwork.png)
 
-El marco IMPACT R se ha desarrollado para cumplir con los requisitos del ciclo de investigación IMPACT. <br/><br/> El ecosistema es un marco modular con dos dimensiones:
+El marco R de IMPACT se desarrollo para cumplir con los requisitos del ciclo de investigación IMPACT. <br/><br/> El marco es modular y tiene dos dimensiones:
 
 -   una dimensión horizontal que se centra en el resultado de un cierto paso, y
 -   una dimensión vertical que se centra en el contenido de un cierto paso.
@@ -17,7 +17,7 @@ El marco IMPACT R se ha desarrollado para cumplir con los requisitos del ciclo d
 El marco se basa en :
 
 -   **4 etapas**: 
-    -   **Limpieza**: cualquier manipulaciòn necesaria para pasar de los datos brutos a los datos limpios.
+    -   **Limpieza**: cualquier manipulación necesaria para pasar de los datos brutos a los datos limpios.
     -   **Composición**: cualquier manipulaciòn anterior al análisis p.ej., añadir indicadores, añadir información proveniente del bucle o del dato principal , agragación por AOK, etc.
     -   **Análisis**: cualquier manipulaciòn que sea relativa al análisis unicamente
     -   **Resultados**: cualquier manipulaciòn necesaria para formatear los resultados.

@@ -6,7 +6,7 @@ date: last-modified
 ---
 # Limpieza - Verificación de un conjunto de datos
 
-En esta sección, se presentarán ciertas herramientas para la verificación de un conjunto de datos.
+En esta sección, se presentan ciertas herramientas para la verificación de un conjunto de datos.
 
 ![](../config/images/step%20-%20cleaning.png)
 

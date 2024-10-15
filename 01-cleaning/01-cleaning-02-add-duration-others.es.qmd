@@ -59,7 +59,7 @@ more_logs <- more_logs %>%
 
 En la medida de lo posible, las funciones **check\_**\* toman argumentos predeterminados o infieren la información necesaria, p.ej. la funcion `check_outliers` infiere que columnas contienen valores numericos. Ciertas funciones requieren mãs informaciòn.
 
-## Columnas de text
+## Columnas de texto
 
 La funcion `check_other` necesita la lista de columnas que se deben verificar. Al momento, no es capaz de detectar preguntas de texto abierto. Se puede utilizar la herramienta KOBO.
 

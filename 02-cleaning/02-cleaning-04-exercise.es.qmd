@@ -1,0 +1,156 @@
+---
+title: "04 - Ejercicios (2)"
+author: "Yann Say"
+date: last-modified
+
+---
+
+# Ejercicios
+```{r}
+#| warning: false
+library(cleaningtools)
+library(dplyr)
+
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+```
+
+## Ejercicio 1
+
+- Exporte el registro de limpieza creado previamente. El registro anterior ya esta cargado.
+```{r}
+previous_exercise_log <- readRDS("../inputs/03 - exercise - previous_log.RDS")
+
+previous_exercise_log %>% names()
+```
+
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haga clic para obtener una pista.
+
+¿Intento usando la funcion `create_combined_log` ? 
+
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haga clic para obtener una pista.
+
+¿Intento usando la funcion `create_xlsx_cleaning_log` ? 
+
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haga clic para ver la respuesta.
+
+```{r}
+#| output: false
+previous_exercise_log %>% 
+  create_combined_log() %>%
+  create_xlsx_cleaning_log(output_path = "../outputs/03 - correction - cleaning_log.xlsx", 
+                           kobo_survey = my_kobo_survey,
+                           kobo_choices = my_kobo_choice,
+                           sm_dropdown_type = "logical",
+                           use_dropdown = TRUE)
+  
+```
+:::
+
+
+## Ejercicio 2
+
+- Cree los datos limpios a partir del conjunto de datos en bruto y del registro de limpieza completado.
+
+```{r}
+exercise_filled_log <- readxl::read_excel("../inputs/04 - exercise - cleaning_log - filled.xlsx", sheet = "cleaning_log")
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haga clic para ver una pista.
+
+¿Intento usando la funcion `create_clean_data` ?
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haga clic para ver una pista.
+
+¿Intento usando la funcion `recreate_parent_column` ?
+
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haga clic para ver la respuesta.
+
+```{r}
+#| output: false
+exercise_clean_dataset <- create_clean_data(raw_dataset = my_raw_dataset,
+                                            raw_data_uuid_column = "X_uuid",
+                                            cleaning_log = exercise_filled_log, 
+                                            cleaning_log_uuid_column = "uuid",
+                                            cleaning_log_question_column = "question",
+                                            cleaning_log_new_value_column = "new_value",
+                                            cleaning_log_change_type_column = "change_type")
+
+
+exercise_clean_dataset2 <- recreate_parent_column(exercise_clean_dataset,
+                                                  uuid_column = "X_uuid", 
+                                                  kobo_survey = my_kobo_survey,
+                                                  kobo_choices = my_kobo_choice,
+                                                  cleaning_log_to_append = exercise_filled_log)
+
+  
+```
+:::
+
+## Ejercicio 3
+
+- Revise la limpieza a continuación; si hay alguien más haciendo el ejercicio, puede intentar revisar la limpieza de esa persona.
+
+```{r}
+exercise3_clean_dataset <- readxl::read_excel("../inputs/05 - exercise - clean dataset for review.xlsx")
+
+exercise3_cleaning_log <- readxl::read_excel("../inputs/05 - exercise - clean dataset for review.xlsx", sheet = 2)
+
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haga clic para ver una pista.
+
+¿Intento usando la funcion `review_cleaning` ?
+
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haga clic para ver una pista.
+
+¿ Separo el registro de limpieza ?
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haga clic para ver la respuesta.
+
+```{r}
+#| output: false
+exercise3_deletion_log <- exercise3_cleaning_log %>% 
+  filter(change_type == "remove_survey")
+
+exercise3_log_no_deletion <- exercise3_cleaning_log %>% 
+  filter(change_type != "remove_survey") %>% 
+  filter(!uuid %in% exercise3_deletion_log$uuid)
+
+review_of_cleaning <- review_cleaning(raw_dataset = my_raw_dataset,
+                                      raw_dataset_uuid_column = "X_uuid", 
+                                      clean_dataset = exercise3_clean_dataset,
+                                      clean_dataset_uuid_column = "X_uuid",
+                                      cleaning_log = exercise3_log_no_deletion, 
+                                      cleaning_log_uuid_column = "uuid",
+                                      cleaning_log_question_column = "question",
+                                      cleaning_log_new_value_column = "new_value",
+                                      cleaning_log_change_type_column = "change_type", 
+                                      cleaning_log_old_value_column = "old_value", 
+                                      deletion_log = exercise3_deletion_log, 
+                                      deletion_log_uuid_column = "uuid"
+)
+```
+
+:::

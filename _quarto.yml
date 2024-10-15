@@ -1,44 +1,49 @@
 project:
   type: website
   render:
-      - 01-intro.qmd
-      - 01-intro.es.qmd
-      - 02-cleaning/02-cleaning-01-checks.qmd
-      - 02-cleaning/02-cleaning-01-checks.qmd
-      - 02-cleaning/02-cleaning-02-add-duration-others.qmd
-      - 02-cleaning/02-cleaning-02-add-duration-others.es.qmd
-      - 02-cleaning/02-cleaning-03-logical-with-lists.qmd
-      - 02-cleaning/02-cleaning-03-logical-with-lists.es.qmd
-      - 02-cleaning-04-exercises.qmd
-      - 02-cleaning-04-exercises.es.qmd
-      - 02-session2.qmd
-      - 02-session2.es.qmd
-      - 03-session3.qmd
-      - 03-session3.es.qmd
-      - 04-session4.qmd
-      - 04-session4.es.qmd
-
+    - 00-intro.qmd
+    - 00-intro.es.qmd
+    - 01-cleaning/01-cleaning-01-checks.qmd
+    - 01-cleaning/01-cleaning-01-checks.qmd
+    - 01-cleaning/01-cleaning-02-add-duration-others.qmd
+    - 01-cleaning/01-cleaning-02-add-duration-others.es.qmd
+    - 01-cleaning/01-cleaning-03-logical-with-lists.qmd
+    - 01-cleaning/01-cleaning-03-logical-with-lists.es.qmd
+    - 01-cleaning/01-cleaning-04-exercise.qmd
+    - 01-cleaning/01-cleaning-04-exercise.es.qmd
+    - 02-cleaning/02-cleaning-01-create-cleaning-log.qmd
+    - 02-cleaning/02-cleaning-01-create-cleaning-log.es.qmd
+    - 02-cleaning/02-cleaning-02-create-clean-dataset.qmd
+    - 02-cleaning/02-cleaning-02-create-clean-dataset.es.qmd
+    - 02-cleaning/02-cleaning-03-review-cleaning.qmd
+    - 02-cleaning/02-cleaning-03-review-cleaning.es.qmd
+    - 02-cleaning/02-cleaning-04-exercise.qmd
+    - 02-cleaning/02-cleaning-04-exercise.es.qmd
+    - 02-cleaning/02-cleaning-05-extra.qmd
+    - 02-cleaning/02-cleaning-05-extra.es.qmd
 website:
   title: "Intoduction to R framework at IMPACT Initiatives"
   sidebar:
     style: "docked"
     search: true
+    collapse-level: 1
     contents:
       - text: "Introduction"
-        href: 01-intro.qmd
-      - section: "Cleaning"
+        href: 00-intro.qmd
+      - section: "Cleaning session 1"
         contents:
-          - 02-cleaning/02-cleaning-01-checks.qmd
-          - 02-cleaning/02-cleaning-02-add-duration-others.qmd
-          - 02-cleaning/02-cleaning-03-logical-with-lists.qmd
-          - 02-cleaning-04-exercises.qmd
-      - text: "session 2"
-        href: 02-session2.qmd
-      - text: "session 3"
-        href: 03-session3.qmd
-      - text: "session 4"
-        href: 04-session4.qmd
-  repo-url: https://github.com/quarto-dev/quarto-demo
+          - 01-cleaning/01-cleaning-01-checks.qmd
+          - 01-cleaning/01-cleaning-02-add-duration-others.qmd
+          - 01-cleaning/01-cleaning-03-logical-with-lists.qmd
+          - 01-cleaning/01-cleaning-04-exercise.qmd
+      - section: "Cleaning session 2"
+        contents:
+          - 02-cleaning/02-cleaning-01-create-cleaning-log.qmd
+          - 02-cleaning/02-cleaning-02-create-clean-dataset.qmd
+          - 02-cleaning/02-cleaning-03-review-cleaning.qmd
+          - 02-cleaning/02-cleaning-04-exercise.qmd
+          - 02-cleaning/02-cleaning-05-extra.qmd
+  repo-url: https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools
   repo-actions: [edit, source, issue]
 format:
   html:
