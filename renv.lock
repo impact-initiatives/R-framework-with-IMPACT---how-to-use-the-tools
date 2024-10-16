@@ -561,13 +561,13 @@
     },
     "curl": {
       "Package": "curl",
-      "Version": "5.2.1",
+      "Version": "5.2.3",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "https://cloud.r-project.org",
       "Requirements": [
         "R"
       ],
-      "Hash": "411ca2c03b1ce5f548345d2fc2685f7a"
+      "Hash": "d91263322a58af798f6cf3b13fd56dde"
     },
     "data.table": {
       "Package": "data.table",
@@ -1159,12 +1159,13 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "impact-initiatives",
       "RemoteRepo": "impactR4PHU",
-      "RemoteRef": "main",
-      "RemoteSha": "da99b4d2d2cb57a631cfc2797b3671e976e61612",
+      "RemoteUsername": "impact-initiatives",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "0fdf0d76e3d7f03559c7bcd39fc6ea21883ae6f2",
       "Requirements": [
         "GGally",
+        "R",
         "apyramid",
         "dplyr",
         "flextable",
@@ -1182,7 +1183,7 @@
         "writexl",
         "zscorer"
       ],
-      "Hash": "348d309c03851e9983c1a36b9cb2fb12"
+      "Hash": "13e9348cb6a4b3b1178b21dd72138b7d"
     },
     "isoband": {
       "Package": "isoband",
@@ -1808,7 +1809,7 @@
     },
     "rmarkdown": {
       "Package": "rmarkdown",
-      "Version": "2.26",
+      "Version": "2.28",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -1827,7 +1828,7 @@
         "xfun",
         "yaml"
       ],
-      "Hash": "9b148e7f95d33aac01f31282d49e4f44"
+      "Hash": "062470668513dcda416927085ee9bdc7"
     },
     "rprojroot": {
       "Package": "rprojroot",
@@ -2102,14 +2103,15 @@
     },
     "systemfonts": {
       "Package": "systemfonts",
-      "Version": "1.0.6",
+      "Version": "1.1.0",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
-        "cpp11"
+        "cpp11",
+        "lifecycle"
       ],
-      "Hash": "6d538cff441f0f1f36db2209ac7495ac"
+      "Hash": "213b6b8ed5afbf934843e6c3b090d418"
     },
     "textshaping": {
       "Package": "textshaping",
