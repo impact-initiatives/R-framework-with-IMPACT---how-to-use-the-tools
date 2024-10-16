@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/01-cleaning/01-cleaning-03-logical-with-lists.html" />
-<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/01-cleaning/01-cleaning-03-logical-with-lists.es.html" />
-<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/01-cleaning/01-cleaning-03-logical-with-lists.fr.html" />
+<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/02-cleaning/02-cleaning-04-practice.html" />
+<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/02-cleaning/02-cleaning-04-practice.es.html" />
+<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/02-cleaning/02-cleaning-04-practice.fr.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yann Say">
-<title>03 - verificación con lista de lógicas – Introduction au cadre R chez IMPACT Initiatives</title>
+<title>04 - Práctica (2) – Introduction au cadre R chez IMPACT Initiatives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4728,7 +4728,7 @@ vertical-align: -.125em;
   }
 }</script>
 </head>
-<body class="nav-sidebar docked slimcontent">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
@@ -4736,8 +4736,8 @@ vertical-align: -.125em;
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-01-checks.html">Cleaning - Checking a dataset</a></li>
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-03-logical-with-lists.html">03 - verificación con lista de lógicas</a></li>
+<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html">Cleaning - Creating a clean dataset</a></li>
+<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-04-practice.html">04 - Práctica (2)</a></li>
 </ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -4757,7 +4757,7 @@ vertical-align: -.125em;
         </div>
         </div>
     <div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/01-cleaning/01-cleaning-03-logical-with-lists.html" id="language-link-en">Anglais</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/02-cleaning/02-cleaning-04-practice.html" id="language-link-en">Anglais</a></li></ul>
 </div>
 <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
@@ -4769,13 +4769,13 @@ vertical-align: -.125em;
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Cleaning - Checking a dataset</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-01-checks.html" class="sidebar-item-text sidebar-link">
@@ -4790,7 +4790,7 @@ vertical-align: -.125em;
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01-cleaning/01-cleaning-03-logical-with-lists.html" class="sidebar-item-text sidebar-link active">
+  <a href="../01-cleaning/01-cleaning-03-logical-with-lists.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">03 - verificación con lista de lógicas</span></a>
   </div>
 </li>
@@ -4804,13 +4804,13 @@ vertical-align: -.125em;
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
  <span class="menu-text">Cleaning - Creating a clean dataset</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html" class="sidebar-item-text sidebar-link">
@@ -4831,7 +4831,7 @@ vertical-align: -.125em;
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02-cleaning/02-cleaning-04-practice.html" class="sidebar-item-text sidebar-link">
+  <a href="../02-cleaning/02-cleaning-04-practice.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">04 - Práctica (2)</span></a>
   </div>
 </li>
@@ -4886,20 +4886,27 @@ vertical-align: -.125em;
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">En esta página</h2>
    
   <ul>
-<li><a href="#check_logical_with_list" id="toc-check_logical_with_list" class="nav-link active" data-scroll-target="#check_logical_with_list">check_logical_with_list</a></li>
+<li>
+<a href="#pr%C3%A1ctica" id="toc-práctica" class="nav-link active" data-scroll-target="#pr%C3%A1ctica">Práctica</a>
+  <ul class="collapse">
+<li><a href="#pr%C3%A1ctica-1" id="toc-práctica-1" class="nav-link" data-scroll-target="#pr%C3%A1ctica-1">Práctica 1</a></li>
+  <li><a href="#pr%C3%A1ctica-2" id="toc-práctica-2" class="nav-link" data-scroll-target="#pr%C3%A1ctica-2">Práctica 2</a></li>
+  <li><a href="#pr%C3%A1ctica-3" id="toc-práctica-3" class="nav-link" data-scroll-target="#pr%C3%A1ctica-3">Práctica 3</a></li>
+  </ul>
+</li>
   </ul>
 <div class="toc-actions"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/01-cleaning/01-cleaning-03-logical-with-lists.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/01-cleaning/01-cleaning-03-logical-with-lists.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/02-cleaning/02-cleaning-04-practice.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/02-cleaning/02-cleaning-04-practice.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
 <li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
 </ul></div></nav>
 </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-01-checks.html">Cleaning - Checking a dataset</a></li>
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-03-logical-with-lists.html">03 - verificación con lista de lógicas</a></li>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html">Cleaning - Creating a clean dataset</a></li>
+<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-04-practice.html">04 - Práctica (2)</a></li>
 </ol></nav><div class="quarto-title">
-<h1 class="title">03 - verificación con lista de lógicas</h1>
+<h1 class="title">04 - Práctica (2)</h1>
 </div>
 
 
@@ -4925,7 +4932,8 @@ vertical-align: -.125em;
   
 
 
-</header><div class="cell">
+</header><section id="práctica" class="level1"><h1>Práctica</h1>
+<div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/">cleaningtools</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -4933,301 +4941,226 @@ vertical-align: -.125em;
 <span><span class="va">my_kobo_survey</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_survey.html">cleaningtools_survey</a></span></span>
 <span><span class="va">my_kobo_choice</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_choices.html">cleaningtools_choices</a></span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="check_logical_with_list" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="check_logical_with_list">check_logical_with_list</h2>
-<p>En otros casos, la verificación es específica y debe ser adaptada al conjunto de datos. Es el caso de la función <code>check_logical_with_list</code>, a la cual se le puede dar como entrada una tabla de Excel con las verificaciones lógicas por aplicar.</p>
-<div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">logical_check_list</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/01 - example - check_list.xlsx"</span><span class="op">)</span></span>
-<span><span class="va">logical_check_list</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 4%">
-<col style="width: 31%">
-<col style="width: 38%">
-<col style="width: 26%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">check_id</th>
-<th style="text-align: left;">description</th>
-<th style="text-align: left;">check_to_perform</th>
-<th style="text-align: left;">columns_to_clean</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">primary_livelihood.employment == 1 &amp; tot_expenses &lt; 200000</td>
-<td style="text-align: left;">primary_livelihood.employment,</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">tot_expenses</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">check_2</td>
-<td style="text-align: left;">acces water and tank emptied</td>
-<td style="text-align: left;">access_water_enough == “totally_insufficient” &amp; tank_emptied == “about_half”</td>
-<td style="text-align: left;">access_water_enough, tank_emptied</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<p>La entrada, es decir, la tabla de Excel con las verificaciones lógicas, debe tener 4 columnas:</p>
+<section id="práctica-1" class="level2"><h2 class="anchored" data-anchor-id="práctica-1">Práctica 1</h2>
 <ul>
-<li>check_id : el nombre de la verificación</li>
-<li>description : la descripcion de la verificacion</li>
-<li>check_to_perform : la verificación por hacer. El formato de la verificación por hacer debe ser compatible con tidyverse. Se debe usar un formato similar al que se utilizaría en la función <code>mutate</code> para crear un nuevo indicador lógico (es decir, TRUE o FALSE). La verificación lógica debe estar escrita de manera que la salida TRUE corresponda a la encuesta que se quiera señalar.</li>
-<li>columns_to_clean : la lista de columnas utilizadas para la verificación lógica.</li>
+<li>Exporte el registro de limpieza creado previamente. El registro anterior ya esta cargado.</li>
 </ul>
-<p>Una tal lista se puede utilizar con <code>check_logical_with_list</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">example_logic</span> <span class="op">&lt;-</span> <span class="va">my_raw_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/check_logical_with_list.html">check_logical_with_list</a></span><span class="op">(</span>uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span>,</span>
-<span>                          list_of_check <span class="op">=</span> <span class="va">logical_check_list</span>,</span>
-<span>                          check_id_column <span class="op">=</span> <span class="st">"check_id"</span>,</span>
-<span>                          check_to_perform_column <span class="op">=</span> <span class="st">"check_to_perform"</span>,</span>
-<span>                          columns_to_clean_column <span class="op">=</span> <span class="st">"columns_to_clean"</span>,</span>
-<span>                          description_column <span class="op">=</span> <span class="st">"description"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">example_logic</span><span class="op">$</span><span class="va">logical_all</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 15%">
-<col style="width: 5%">
-<col style="width: 31%">
-<col style="width: 4%">
-<col style="width: 24%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">uuid</th>
-<th style="text-align: left;">question</th>
-<th style="text-align: left;">old_value</th>
-<th style="text-align: left;">issue</th>
-<th style="text-align: left;">check_id</th>
-<th style="text-align: left;">check_binding</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb</td>
-<td style="text-align: left;">primary_livelihood.employment</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb</td>
-<td style="text-align: left;">tot_expenses</td>
-<td style="text-align: left;">125000</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">e9f8b44c-c507-45a1-8d76-66d886437b8f</td>
-<td style="text-align: left;">primary_livelihood.employment</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> e9f8b44c-c507-45a1-8d76-66d886437b8f</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">e9f8b44c-c507-45a1-8d76-66d886437b8f</td>
-<td style="text-align: left;">tot_expenses</td>
-<td style="text-align: left;">175000</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> e9f8b44c-c507-45a1-8d76-66d886437b8f</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">994a60b8-e640-425c-9774-160651d7af04</td>
-<td style="text-align: left;">primary_livelihood.employment</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> 994a60b8-e640-425c-9774-160651d7af04</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">994a60b8-e640-425c-9774-160651d7af04</td>
-<td style="text-align: left;">tot_expenses</td>
-<td style="text-align: left;">175000</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> 994a60b8-e640-425c-9774-160651d7af04</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">previous_exercise_log</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"../inputs/03 - exercise - previous_log.RDS"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">previous_exercise_log</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "checked_dataset"        "percentage_missing_log" "potential_PII"         
+[4] "logical_all"           </code></pre>
 </div>
 </div>
-</div>
-<p>El registro que se obtiene contiene las siguientes columnas:</p>
-<ul>
-<li>uuid: el identificador único de la encuesta</li>
-<li>question: el nombre de la columna señalada, sera un elemento de la lista <strong>columns_to_clean</strong>
-</li>
-<li>old value: el valor en la columna de <strong>columns_to_clean</strong> señalada</li>
-<li>issue: el problema señalado</li>
-<li>check_id: el identificador de la verificación lógica</li>
-<li>check_binding: una combinación del check_id y del uuid.</li>
-</ul>
-<p>Para una verificación dada, el registro tendrá varias líneas relativas al mismo señalamiento. En el ejemplo anterior, para cada uuid, los valores de las columnas primary_livelihood y tot_expenses son señalados (una línea por cada uuid por cada columna en columns_to_clean).</p>
-<p>El formato de la verificación por hacer debe ser compatible con tidyverse. Se debe usar un formato similar al que se utilizaría en la función <code>mutate</code> para crear un nuevo indicador lógico (es decir, TRUE o FALSE). La verificación lógica debe estar escrita de manera que la salida TRUE corresponda a la encuesta que se quiera señalar.</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_raw_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>xxx <span class="op">=</span>  <span class="va">primary_livelihood.employment</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">tot_expenses</span> <span class="op">&lt;</span> <span class="fl">200000</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">X_uuid</span>, <span class="va">xxx</span>, <span class="va">primary_livelihood.employment</span>, <span class="va">tot_expenses</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 43%">
-<col style="width: 6%">
-<col style="width: 34%">
-<col style="width: 15%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">X_uuid</th>
-<th style="text-align: left;">xxx</th>
-<th style="text-align: left;">primary_livelihood.employment</th>
-<th style="text-align: right;">tot_expenses</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">dcf2753a-6ea2-40f5-b493-3527931ef96c</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">250000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">8790ce5c-1c35-41a2-b3c0-538f937d5397</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: right;">750000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">bb818e04-9c40-408e-919f-6b40ff1fdbb3</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">250000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">28b90cbb-2cf0-41c5-9ee1-1c719c0d4c02</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: right;">600000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">7f2a0c6a-529b-481f-963f-a96dca2ec034</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: right;">500000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">b4f92064-12ea-4970-b0f5-fd309de1dda3</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">650000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<p>El conjunto de datos verificado incluirá columnas adicionales. Estas columnas tendrán el nombre del check_id y contendrán valores lógicos.</p>
-<div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">example_logic</span><span class="op">$</span><span class="va">checked_dataset</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>,<span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">example_logic</span><span class="op">$</span><span class="va">checked_dataset</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<thead><tr class="header">
-<th style="text-align: left;">X_notes</th>
-<th style="text-align: left;">X_status</th>
-<th style="text-align: left;">X_submitted_by</th>
-<th style="text-align: right;">X_index</th>
-<th style="text-align: left;">check_1</th>
-<th style="text-align: left;">check_2</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-
-
-
-<div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
-<i class="callout-icon"></i>
+<i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Nota
+Haga clic para obtener una pista.
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Si no se incluya la lista <strong>columns_to_clean</strong> la funcion <code>check_logical_with_list</code> intentará identificar las variables de forma automática. Sin embargo, no se puede garantizar que seleccione los nombres correctos.</p>
+<p>¿Intento usando la funcion <code>create_combined_log</code> ?</p>
 </div>
-</div></div></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Haga clic para obtener una pista.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>¿Intento usando la funcion <code>create_xlsx_cleaning_log</code> ?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Haga clic para ver la respuesta.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">previous_exercise_log</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/create_combined_log.html">create_combined_log</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/create_xlsx_cleaning_log.html">create_xlsx_cleaning_log</a></span><span class="op">(</span>output_path <span class="op">=</span> <span class="st">"../outputs/03 - correction - cleaning_log.xlsx"</span>, </span>
+<span>                           kobo_survey <span class="op">=</span> <span class="va">my_kobo_survey</span>,</span>
+<span>                           kobo_choices <span class="op">=</span> <span class="va">my_kobo_choice</span>,</span>
+<span>                           sm_dropdown_type <span class="op">=</span> <span class="st">"logical"</span>,</span>
+<span>                           use_dropdown <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="práctica-2" class="level2"><h2 class="anchored" data-anchor-id="práctica-2">Práctica 2</h2>
+<ul>
+<li>Cree los datos limpios a partir del conjunto de datos en bruto y del registro de limpieza completado.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise_filled_log</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/04 - exercise - cleaning_log - filled.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"cleaning_log"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Haga clic para ver una pista.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>¿Intento usando la funcion <code>create_clean_data</code> ?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Haga clic para ver una pista.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>¿Intento usando la funcion <code>recreate_parent_column</code> ?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Haga clic para ver la respuesta.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise_clean_dataset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/create_clean_data.html">create_clean_data</a></span><span class="op">(</span>raw_dataset <span class="op">=</span> <span class="va">my_raw_dataset</span>,</span>
+<span>                                            raw_data_uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span>,</span>
+<span>                                            cleaning_log <span class="op">=</span> <span class="va">exercise_filled_log</span>, </span>
+<span>                                            cleaning_log_uuid_column <span class="op">=</span> <span class="st">"uuid"</span>,</span>
+<span>                                            cleaning_log_question_column <span class="op">=</span> <span class="st">"question"</span>,</span>
+<span>                                            cleaning_log_new_value_column <span class="op">=</span> <span class="st">"new_value"</span>,</span>
+<span>                                            cleaning_log_change_type_column <span class="op">=</span> <span class="st">"change_type"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">exercise_clean_dataset2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/recreate_parent_column.html">recreate_parent_column</a></span><span class="op">(</span><span class="va">exercise_clean_dataset</span>,</span>
+<span>                                                  uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span>, </span>
+<span>                                                  kobo_survey <span class="op">=</span> <span class="va">my_kobo_survey</span>,</span>
+<span>                                                  kobo_choices <span class="op">=</span> <span class="va">my_kobo_choice</span>,</span>
+<span>                                                  cleaning_log_to_append <span class="op">=</span> <span class="va">exercise_filled_log</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="práctica-3" class="level2"><h2 class="anchored" data-anchor-id="práctica-3">Práctica 3</h2>
+<ul>
+<li>Revise la limpieza a continuación; si hay alguien más haciendo el ejercicio, puede intentar revisar la limpieza de esa persona.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise3_clean_dataset</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/05 - exercise - clean dataset for review.xlsx"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">exercise3_cleaning_log</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/05 - exercise - clean dataset for review.xlsx"</span>, sheet <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Haga clic para ver una pista.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>¿Intento usando la funcion <code>review_cleaning</code> ?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Haga clic para ver una pista.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>¿ Separo el registro de limpieza ?</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Haga clic para ver la respuesta.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise3_deletion_log</span> <span class="op">&lt;-</span> <span class="va">exercise3_cleaning_log</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">change_type</span> <span class="op">==</span> <span class="st">"remove_survey"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">exercise3_log_no_deletion</span> <span class="op">&lt;-</span> <span class="va">exercise3_cleaning_log</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">change_type</span> <span class="op">!=</span> <span class="st">"remove_survey"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">uuid</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">exercise3_deletion_log</span><span class="op">$</span><span class="va">uuid</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">review_of_cleaning</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/review_cleaning.html">review_cleaning</a></span><span class="op">(</span>raw_dataset <span class="op">=</span> <span class="va">my_raw_dataset</span>,</span>
+<span>                                      raw_dataset_uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span>, </span>
+<span>                                      clean_dataset <span class="op">=</span> <span class="va">exercise3_clean_dataset</span>,</span>
+<span>                                      clean_dataset_uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span>,</span>
+<span>                                      cleaning_log <span class="op">=</span> <span class="va">exercise3_log_no_deletion</span>, </span>
+<span>                                      cleaning_log_uuid_column <span class="op">=</span> <span class="st">"uuid"</span>,</span>
+<span>                                      cleaning_log_question_column <span class="op">=</span> <span class="st">"question"</span>,</span>
+<span>                                      cleaning_log_new_value_column <span class="op">=</span> <span class="st">"new_value"</span>,</span>
+<span>                                      cleaning_log_change_type_column <span class="op">=</span> <span class="st">"change_type"</span>, </span>
+<span>                                      cleaning_log_old_value_column <span class="op">=</span> <span class="st">"old_value"</span>, </span>
+<span>                                      deletion_log <span class="op">=</span> <span class="va">exercise3_deletion_log</span>, </span>
+<span>                                      deletion_log_uuid_column <span class="op">=</span> <span class="st">"uuid"</span></span>
+<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -5652,8 +5585,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 <footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/01-cleaning/01-cleaning-03-logical-with-lists.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/01-cleaning/01-cleaning-03-logical-with-lists.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/02-cleaning/02-cleaning-04-practice.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/02-cleaning/02-cleaning-04-practice.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
 <li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
 </ul></div></div></div></footer>
 </body>

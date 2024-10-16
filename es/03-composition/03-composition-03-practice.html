@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/02-cleaning/02-cleaning-04-exercise.html" />
-<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/02-cleaning/02-cleaning-04-exercise.es.html" />
-<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/02-cleaning/02-cleaning-04-exercise.fr.html" />
+<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/03-composition/03-composition-03-practice.html" />
+<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/03-composition/03-composition-03-practice.es.html" />
+<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/03-composition/03-composition-03-practice.fr.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yann Say">
-<meta name="dcterms.date" content="2024-10-15">
-<title>04 - Exercises (2) – Intoduction to R framework at IMPACT Initiatives</title>
+<title>03 - Práctica (3) – Introduction au cadre R chez IMPACT Initiatives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4715,17 +4714,17 @@ vertical-align: -.125em;
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Sin resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
   }
 }</script>
 </head>
@@ -4733,15 +4732,15 @@ vertical-align: -.125em;
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html">Cleaning session 2</a></li>
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-04-exercise.html">04 - Exercises (2)</a></li>
-</ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+<li class="breadcrumb-item"><a href="../03-composition/03-composition-01-add.html">Composition - Add indicators</a></li>
+<li class="breadcrumb-item"><a href="../03-composition/03-composition-03-practice.html">03 - Práctica (3)</a></li>
+</ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -4749,16 +4748,16 @@ vertical-align: -.125em;
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Intoduction to R framework at IMPACT Initiatives</a> 
+      <a href="../">Introduction au cadre R chez IMPACT Initiatives</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class title="Search"></div>
+        <div id="quarto-search" class title="Buscar"></div>
         </div>
         </div>
     <div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/02-cleaning/02-cleaning-04-exercise.html" id="language-link-es">Español</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/03-composition/03-composition-03-practice.html" id="language-link-en">Anglais</a></li></ul>
 </div>
 <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
@@ -4771,8 +4770,8 @@ vertical-align: -.125em;
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Cleaning session 1</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+ <span class="menu-text">Cleaning - Checking a dataset</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4780,66 +4779,101 @@ vertical-align: -.125em;
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-01-checks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Checks</span></a>
+ <span class="menu-text">01 - Verificaciones</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-02-add-duration-others.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Add, durations and others</span></a>
+ <span class="menu-text">02 - Añadir, duracion y otros</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-03-logical-with-lists.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Checks with logical list</span></a>
+ <span class="menu-text">03 - verificación con lista de lógicas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01-cleaning/01-cleaning-04-exercise.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - Exercises - session 1</span></a>
+  <a href="../01-cleaning/01-cleaning-04-practice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04 - Práctica - session 1</span></a>
   </div>
 </li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Cleaning session 2</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cleaning - Creating a clean dataset</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Create a cleaning log</span></a>
+ <span class="menu-text">01 - Creando un registro de limpieza</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-02-create-clean-dataset.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Creating a clean dataset</span></a>
+ <span class="menu-text">02 - Crear un conjunto de datos limpios</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-03-review-cleaning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Review cleaning</span></a>
+ <span class="menu-text">03 - Revisar la limpieza</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02-cleaning/02-cleaning-04-exercise.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">04 - Exercises (2)</span></a>
+  <a href="../02-cleaning/02-cleaning-04-practice.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04 - Práctica (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-05-extra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">05 - Review templates</span></a>
+ <span class="menu-text">05 - Plantillas de revisión</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Composition - Add indicators</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-composition/03-composition-01-add.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01 - Añadir indicadores</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-composition/03-composition-02-review.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02 - Verificar un indicador</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-composition/03-composition-03-practice.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">03 - Práctica (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03-composition/03-composition-04-extra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04 - impactR4PHU y humind</span></a>
   </div>
 </li>
       </ul>
@@ -4849,30 +4883,29 @@ vertical-align: -.125em;
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">En esta página</h2>
    
   <ul>
 <li>
-<a href="#exercises" id="toc-exercises" class="nav-link active" data-scroll-target="#exercises">Exercises</a>
+<a href="#pr%C3%A1ctica" id="toc-práctica" class="nav-link active" data-scroll-target="#pr%C3%A1ctica">Práctica</a>
   <ul class="collapse">
-<li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
-  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
-  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
+<li><a href="#pr%C3%A1ctica-1" id="toc-práctica-1" class="nav-link" data-scroll-target="#pr%C3%A1ctica-1">Práctica 1</a></li>
+  <li><a href="#pr%C3%A1ctica-2" id="toc-práctica-2" class="nav-link" data-scroll-target="#pr%C3%A1ctica-2">Práctica 2</a></li>
   </ul>
 </li>
   </ul>
 <div class="toc-actions"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/02-cleaning/02-cleaning-04-exercise.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/02-cleaning/02-cleaning-04-exercise.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/03-composition/03-composition-03-practice.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/03-composition/03-composition-03-practice.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
 </ul></div></nav>
 </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html">Cleaning session 2</a></li>
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-04-exercise.html">04 - Exercises (2)</a></li>
+<li class="breadcrumb-item"><a href="../03-composition/03-composition-01-add.html">Composition - Add indicators</a></li>
+<li class="breadcrumb-item"><a href="../03-composition/03-composition-03-practice.html">03 - Práctica (3)</a></li>
 </ol></nav><div class="quarto-title">
-<h1 class="title">04 - Exercises (2)</h1>
+<h1 class="title">03 - Práctica (3)</h1>
 </div>
 
 
@@ -4880,16 +4913,16 @@ vertical-align: -.125em;
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
     <div class="quarto-title-meta-contents">
              <p>Yann Say </p>
           </div>
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 15, 2024</p>
+      <p class="date">16 de octubre de 2024</p>
     </div>
   </div>
   
@@ -4898,27 +4931,92 @@ vertical-align: -.125em;
   
 
 
-</header><section id="exercises" class="level1"><h1>Exercises</h1>
+</header><section id="práctica" class="level1"><h1>Práctica</h1>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/">cleaningtools</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">my_raw_dataset</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_raw_data.html">cleaningtools_raw_data</a></span></span>
-<span><span class="va">my_kobo_survey</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_survey.html">cleaningtools_survey</a></span></span>
-<span><span class="va">my_kobo_choice</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_choices.html">cleaningtools_choices</a></span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/impactR4PHU/">impactR4PHU</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/addindicators/">addindicators</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="exercise-1" class="level2"><h2 class="anchored" data-anchor-id="exercise-1">Exercise 1</h2>
+<section id="práctica-1" class="level2"><h2 class="anchored" data-anchor-id="práctica-1">Práctica 1</h2>
 <ul>
-<li>Export the cleaning log you have created previously. The previous log is loaded below.</li>
+<li>Añada la <strong>matriz de puntaje de consumo de alimentos</strong> al conjunto de datos. La matriz de consumo de alimentos es un indicador de seguridad alimentaria que utiliza el <strong>puntaje de consumo de alimentos (FCS)</strong>, el <strong>puntaje de hambre en el hogar (HHS)</strong> y el <strong>índice reducido de estrategias de afrontamiento (rCSI)</strong>.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">previous_exercise_log</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"../inputs/03 - exercise - previous_log.RDS"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">previous_exercise_log</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "checked_dataset"        "percentage_missing_log" "potential_PII"         
-[4] "logical_all"           </code></pre>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 90%">
+<col style="width: 3%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">label::english</th>
+<th style="text-align: left;">type</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">rCSILessQlty</td>
+<td style="text-align: left;">During the last 7 days, were there days (and, if so, how many) when your household had to rely on less preferred and less expensive food to cope with a lack of food or money to buy it?</td>
+<td style="text-align: left;">integer</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rCSIBorrow</td>
+<td style="text-align: left;">During the last 7 days, were there days (and, if so, how many) when your household had to borrow food or rely on help from a relative or friend to cope with a lack of food or money to buy it?</td>
+<td style="text-align: left;">integer</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">rCSIMealSize</td>
+<td style="text-align: left;">During the last 7 days, were there days (and, if so, how many) when your household had to limit portion size of meals at meal times to cope with a lack of food or money to buy it?</td>
+<td style="text-align: left;">integer</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">rCSIMealAdult</td>
+<td style="text-align: left;">During the last 7 days, were there days (and, if so, how many) when your household had to restrict consumption by adults in order for small children to eat to cope with a lack of food or money to buy it?</td>
+<td style="text-align: left;">integer</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">rCSIMealNb</td>
+<td style="text-align: left;">During the last 7 days, were there days (and, if so, how many) when your household had to reduce number of meals eaten in a day to cope with a lack of food or money to buy it?</td>
+<td style="text-align: left;">integer</td>
+</tr>
+</tbody>
+</table>
 </div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/impactR4PHU/">impactR4PHU</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/addindicators/">addindicators</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise_data</span> <span class="op">&lt;-</span> <span class="fu">addindicators</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/addindicators/reference/addindicators_MSNA_template_data.html">addindicators_MSNA_template_data</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/add_fcs.html">add_fcs</a></span><span class="op">(</span></span>
+<span>  cutoffs <span class="op">=</span> <span class="st">"normal"</span>,</span>
+<span>  fsl_fcs_cereal <span class="op">=</span> <span class="st">"fs_fcs_cereals_grains_roots_tubers"</span>,</span>
+<span>  fsl_fcs_legumes <span class="op">=</span> <span class="st">"fs_fcs_beans_nuts"</span>,</span>
+<span>  fsl_fcs_veg <span class="op">=</span> <span class="st">"fs_fcs_vegetables_leaves"</span>,</span>
+<span>  fsl_fcs_fruit <span class="op">=</span> <span class="st">"fs_fcs_fruit"</span>,</span>
+<span>  fsl_fcs_meat <span class="op">=</span> <span class="st">"fs_fcs_meat_fish_eggs"</span>,</span>
+<span>  fsl_fcs_dairy <span class="op">=</span> <span class="st">"fs_fcs_dairy"</span>,</span>
+<span>  fsl_fcs_sugar <span class="op">=</span> <span class="st">"fs_fcs_sugar"</span>,</span>
+<span>  fsl_fcs_oil <span class="op">=</span> <span class="st">"fs_fcs_oil_fat_butter"</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/add_hhs.html">add_hhs</a></span><span class="op">(</span></span>
+<span>  fsl_hhs_nofoodhh <span class="op">=</span> <span class="st">"fs_hhs_nofood_yn"</span>,</span>
+<span>  fsl_hhs_nofoodhh_freq <span class="op">=</span> <span class="st">"fs_hhs_nofood_freq"</span>,</span>
+<span>  fsl_hhs_sleephungry <span class="op">=</span> <span class="st">"fs_hhs_sleephungry_yn"</span>,</span>
+<span>  fsl_hhs_sleephungry_freq <span class="op">=</span> <span class="st">"fs_hhs_sleephungry_freq"</span>,</span>
+<span>  fsl_hhs_alldaynight <span class="op">=</span> <span class="st">"fs_hhs_daynoteating_yn"</span>,</span>
+<span>  fsl_hhs_alldaynight_freq <span class="op">=</span> <span class="st">"fs_hhs_daynoteating_freq"</span>,</span>
+<span>  yes_answer <span class="op">=</span> <span class="st">"yes"</span>,</span>
+<span>  no_answer <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span>  rarely_answer <span class="op">=</span> <span class="st">"rarely_1_2"</span>,</span>
+<span>  sometimes_answer <span class="op">=</span> <span class="st">"sometimes_3_10"</span>,</span>
+<span>  often_answer <span class="op">=</span> <span class="st">"often_10_times"</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -4926,13 +5024,13 @@ vertical-align: -.125em;
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get a hint.
+Haga clic para ver una pista.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Did you try the function <code>create_combined_log</code></p>
+<p>¿Intento usar la función <code>add_fcm_phase</code> ?</p>
 </div>
 </div>
 </div>
@@ -4942,62 +5040,76 @@ Expand to get a hint.
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get a hint.
+Haga clic para ver una pista.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Did you try the function <code>create_xlsx_cleaning_log</code></p>
+<p>La matriz de puntaje de consumo de alimentos necesita 3 indicadores: FCS, rCSI y HHS.</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get the answer
+Haga clic para ver una pista.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">previous_exercise_log</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/create_combined_log.html">create_combined_log</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/create_xlsx_cleaning_log.html">create_xlsx_cleaning_log</a></span><span class="op">(</span>output_path <span class="op">=</span> <span class="st">"../outputs/03 - correction - cleaning_log.xlsx"</span>, </span>
-<span>                           kobo_survey <span class="op">=</span> <span class="va">my_kobo_survey</span>,</span>
-<span>                           kobo_choices <span class="op">=</span> <span class="va">my_kobo_choice</span>,</span>
-<span>                           sm_dropdown_type <span class="op">=</span> <span class="st">"logical"</span>,</span>
-<span>                           use_dropdown <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>¿Ha utilizado la variable correcta de la categoría de HHS (puntaje de hambre en el hogar)?</p>
 </div>
 </div>
 </div>
-</div>
-</section><section id="exercise-2" class="level2"><h2 class="anchored" data-anchor-id="exercise-2">Exercise 2</h2>
-<ul>
-<li>Create the clean data from the raw dataset and the filled cleaning.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise_filled_log</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/04 - exercise - cleaning_log - filled.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"cleaning_log"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get a hint
+Haga clic para ver la respuesta.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Did you try the function <code>create_clean_data</code></p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_answer</span> <span class="op">&lt;-</span> <span class="va">exercise_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/add_rcsi.html">add_rcsi</a></span><span class="op">(</span></span>
+<span>    fsl_rcsi_lessquality <span class="op">=</span> <span class="st">"rCSILessQlty"</span>,</span>
+<span>    fsl_rcsi_borrow <span class="op">=</span> <span class="st">"rCSIBorrow"</span>,</span>
+<span>    fsl_rcsi_mealsize <span class="op">=</span> <span class="st">"rCSIMealSize"</span>,</span>
+<span>    fsl_rcsi_mealadult <span class="op">=</span> <span class="st">"rCSIMealAdult"</span>,</span>
+<span>    fsl_rcsi_mealnb <span class="op">=</span> <span class="st">"rCSIMealNb"</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/add_fcm_phase.html">add_fcm_phase</a></span><span class="op">(</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+</div>
+</div>
+</section><section id="práctica-2" class="level2"><h2 class="anchored" data-anchor-id="práctica-2">Práctica 2</h2>
+<ul>
+<li>
+<p>En el siguiente conjunto de datos, debe revisar los siguientes indicadores.</p>
+<ul>
+<li>Puntaje de consumo de alimentos (Food Consumption Score) : <strong>fcs_score</strong>, <strong>fcs_cat</strong>
+</li>
+<li>Puntaje de hambre del hogar (Household Hunger Score) : <strong>hhs_score</strong>, <strong>hhs_cat</strong>
+</li>
+</ul>
+</li>
+</ul>
+<p>No olvide escribir la revisión.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">dataset_to_review</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"../inputs/06 - exercise - dataset_to_review.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">dataset_without_indicators</span> <span class="op">&lt;-</span> <span class="fu">addindicators</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/addindicators/reference/addindicators_MSNA_template_data.html">addindicators_MSNA_template_data</a></span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -5005,55 +5117,31 @@ Expand to get a hint
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get a hint
+Haga clic para ver una pista.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Did you try the function <code>recreate_parent_column</code></p>
+<p>¿Intento usando la funcion <code>review_variables</code> ?</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get the answer
+Haga clic para ver una pista.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise_clean_dataset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/create_clean_data.html">create_clean_data</a></span><span class="op">(</span>raw_dataset <span class="op">=</span> <span class="va">my_raw_dataset</span>,</span>
-<span>                                            raw_data_uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span>,</span>
-<span>                                            cleaning_log <span class="op">=</span> <span class="va">exercise_filled_log</span>, </span>
-<span>                                            cleaning_log_uuid_column <span class="op">=</span> <span class="st">"uuid"</span>,</span>
-<span>                                            cleaning_log_question_column <span class="op">=</span> <span class="st">"question"</span>,</span>
-<span>                                            cleaning_log_new_value_column <span class="op">=</span> <span class="st">"new_value"</span>,</span>
-<span>                                            cleaning_log_change_type_column <span class="op">=</span> <span class="st">"change_type"</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="va">exercise_clean_dataset2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/recreate_parent_column.html">recreate_parent_column</a></span><span class="op">(</span><span class="va">exercise_clean_dataset</span>,</span>
-<span>                                                  uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span>, </span>
-<span>                                                  kobo_survey <span class="op">=</span> <span class="va">my_kobo_survey</span>,</span>
-<span>                                                  kobo_choices <span class="op">=</span> <span class="va">my_kobo_choice</span>,</span>
-<span>                                                  cleaning_log_to_append <span class="op">=</span> <span class="va">exercise_filled_log</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>¿Como fue definida la variable FCS ?</p>
 </div>
 </div>
-</div>
-</div>
-</section><section id="exercise-3" class="level2"><h2 class="anchored" data-anchor-id="exercise-3">Exercise 3</h2>
-<ul>
-<li>Review the cleaning below, if there is someone else doing the exercise, you can try to review someone’s cleaning.</li>
-</ul>
-<div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise3_clean_dataset</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/05 - exercise - clean dataset for review.xlsx"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">exercise3_cleaning_log</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/05 - exercise - clean dataset for review.xlsx"</span>, sheet <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
@@ -5061,66 +5149,185 @@ Expand to get the answer
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get a hint
+Haga clic para ver una pista.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Did you try the function <code>review_cleaning</code></p>
+<p>¿Cómo se codificó la categoría para el HHS (puntaje de hambre en el hogar)? Nombres en el dataset son: “hhs_cat”, “hhs_score” Nombres creados con <code>add_hhs</code> son: “fsl_hhs_cat”, “fsl_hhs_score”</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get a hint
+Haga clic para ver la respuesta.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Did you separate the cleaning log?</p>
-</div>
-</div>
-</div>
-<div class="callout callout-style-simple callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Expand to get the answer
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise3_deletion_log</span> <span class="op">&lt;-</span> <span class="va">exercise3_cleaning_log</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">change_type</span> <span class="op">==</span> <span class="st">"remove_survey"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_review</span> <span class="op">&lt;-</span> <span class="va">dataset_without_indicators</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/add_fcs.html">add_fcs</a></span><span class="op">(</span></span>
+<span>  cutoffs <span class="op">=</span> <span class="st">"normal"</span>,</span>
+<span>  fsl_fcs_cereal <span class="op">=</span> <span class="st">"fs_fcs_cereals_grains_roots_tubers"</span>,</span>
+<span>  fsl_fcs_legumes <span class="op">=</span> <span class="st">"fs_fcs_beans_nuts"</span>,</span>
+<span>  fsl_fcs_veg <span class="op">=</span> <span class="st">"fs_fcs_vegetables_leaves"</span>,</span>
+<span>  fsl_fcs_fruit <span class="op">=</span> <span class="st">"fs_fcs_fruit"</span>,</span>
+<span>  fsl_fcs_meat <span class="op">=</span> <span class="st">"fs_fcs_meat_fish_eggs"</span>,</span>
+<span>  fsl_fcs_dairy <span class="op">=</span> <span class="st">"fs_fcs_dairy"</span>,</span>
+<span>  fsl_fcs_sugar <span class="op">=</span> <span class="st">"fs_fcs_sugar"</span>,</span>
+<span>  fsl_fcs_oil <span class="op">=</span> <span class="st">"fs_fcs_oil_fat_butter"</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/add_hhs.html">add_hhs</a></span><span class="op">(</span></span>
+<span>  fsl_hhs_nofoodhh <span class="op">=</span> <span class="st">"fs_hhs_nofood_yn"</span>,</span>
+<span>  fsl_hhs_nofoodhh_freq <span class="op">=</span> <span class="st">"fs_hhs_nofood_freq"</span>,</span>
+<span>  fsl_hhs_sleephungry <span class="op">=</span> <span class="st">"fs_hhs_sleephungry_yn"</span>,</span>
+<span>  fsl_hhs_sleephungry_freq <span class="op">=</span> <span class="st">"fs_hhs_sleephungry_freq"</span>,</span>
+<span>  fsl_hhs_alldaynight <span class="op">=</span> <span class="st">"fs_hhs_daynoteating_yn"</span>,</span>
+<span>  fsl_hhs_alldaynight_freq <span class="op">=</span> <span class="st">"fs_hhs_daynoteating_freq"</span>,</span>
+<span>  yes_answer <span class="op">=</span> <span class="st">"yes"</span>,</span>
+<span>  no_answer <span class="op">=</span> <span class="st">"no"</span>,</span>
+<span>  rarely_answer <span class="op">=</span> <span class="st">"rarely_1_2"</span>,</span>
+<span>  sometimes_answer <span class="op">=</span> <span class="st">"sometimes_3_10"</span>,</span>
+<span>  often_answer <span class="op">=</span> <span class="st">"often_10_times"</span></span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">uuid</span>, <span class="va">fsl_fcs_cat</span>, <span class="va">fsl_fcs_score</span>, <span class="va">fsl_hhs_cat</span>, <span class="va">fsl_hhs_score</span><span class="op">)</span></span>
+<span><span class="va">dataset_to_review</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">dataset_to_review</span>, <span class="va">my_review</span>, by <span class="op">=</span> <span class="st">"uuid"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">exercise3_log_no_deletion</span> <span class="op">&lt;-</span> <span class="va">exercise3_cleaning_log</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">change_type</span> <span class="op">!=</span> <span class="st">"remove_survey"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">uuid</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">exercise3_deletion_log</span><span class="op">$</span><span class="va">uuid</span><span class="op">)</span></span>
+<span><span class="va">review</span> <span class="op">&lt;-</span> <span class="va">dataset_to_review</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/addindicators/reference/review_variables.html">review_variables</a></span><span class="op">(</span>columns_to_review <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fsl_fcs_cat.x"</span>, <span class="st">"fsl_fcs_score.x"</span>, <span class="st">"hhs_cat"</span>, <span class="st">"hhs_score"</span><span class="op">)</span>,</span>
+<span>                   columns_to_compare_with <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fsl_fcs_cat.y"</span>, <span class="st">"fsl_fcs_score.y"</span>, <span class="st">"fsl_hhs_cat"</span>, <span class="st">"fsl_hhs_score"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">review_of_cleaning</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/review_cleaning.html">review_cleaning</a></span><span class="op">(</span>raw_dataset <span class="op">=</span> <span class="va">my_raw_dataset</span>,</span>
-<span>                                      raw_dataset_uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span>, </span>
-<span>                                      clean_dataset <span class="op">=</span> <span class="va">exercise3_clean_dataset</span>,</span>
-<span>                                      clean_dataset_uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span>,</span>
-<span>                                      cleaning_log <span class="op">=</span> <span class="va">exercise3_log_no_deletion</span>, </span>
-<span>                                      cleaning_log_uuid_column <span class="op">=</span> <span class="st">"uuid"</span>,</span>
-<span>                                      cleaning_log_question_column <span class="op">=</span> <span class="st">"question"</span>,</span>
-<span>                                      cleaning_log_new_value_column <span class="op">=</span> <span class="st">"new_value"</span>,</span>
-<span>                                      cleaning_log_change_type_column <span class="op">=</span> <span class="st">"change_type"</span>, </span>
-<span>                                      cleaning_log_old_value_column <span class="op">=</span> <span class="st">"old_value"</span>, </span>
-<span>                                      deletion_log <span class="op">=</span> <span class="va">exercise3_deletion_log</span>, </span>
-<span>                                      deletion_log_uuid_column <span class="op">=</span> <span class="st">"uuid"</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">review</span><span class="op">$</span><span class="va">review_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">variable</span>,<span class="va">review_check</span>,<span class="va">review_comment</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">tally</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ul>
+<li>Hay 10 categorías de FCS que son diferentes.</li>
+<li>Hay 100 categorías de HHS que son diferentes.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">review</span><span class="op">$</span><span class="va">dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">review_check_fsl_fcs_cat.x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">uuid</span>, <span class="va">review_comment_fsl_fcs_cat.x</span>, <span class="va">fsl_fcs_score.x</span>, <span class="va">fsl_fcs_cat.x</span>, <span class="va">fsl_fcs_cat.y</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 25%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">uuid</th>
+<th style="text-align: left;">review_comment_fsl_fcs_cat.x</th>
+<th style="text-align: right;">fsl_fcs_score.x</th>
+<th style="text-align: left;">fsl_fcs_cat.x</th>
+<th style="text-align: left;">fsl_fcs_cat.y</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">f1b9ec67-20db-47404d-a3ada0-1a37e5c49d02</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">37.5</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Acceptable</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">e21a34f5-1a46-42404b-b7b6be-7bc9286d0f13</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">36.0</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Acceptable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">42dc8573-e2d0-43484b-aaada2-c37ef865d041</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">39.0</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Acceptable</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fcd69a08-498f-4c4b47-989799-743cbe5fd960</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">36.5</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Acceptable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4d1cae02-49e0-484c4e-8f8d8c-a97dec246310</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">41.0</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Acceptable</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">a8319ceb-857c-434142-b9b8bc-7905684fc1d3</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">37.5</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Acceptable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6d1acb45-cfb6-4b4441-87888f-e2a4756d30f9</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">38.0</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Acceptable</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0dea8527-2ab9-4e4844-88868e-8379e514ca2b</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">40.0</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Acceptable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">7e94afc5-af0b-4a4c46-bebcb7-9f60d1e53a47</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">37.0</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Acceptable</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">b719ef08-bdf5-474240-858d8a-a12bc65d349e</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">41.5</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Acceptable</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li>El puntaje de consumo de alimentos tiene diferentes categorías. ¿Qué umbrales se utilizaron para calcular el FCS? ¿Quizás 28-42?</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">review</span><span class="op">$</span><span class="va">dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">review_check_hhs_cat</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">hhs_cat</span>, <span class="va">fsl_hhs_cat</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span>useNA <span class="op">=</span> <span class="st">"ifany"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              fsl_hhs_cat
+hhs_cat        Little to No Moderate Severe
+  moderate                0       29      0
+  no_or_little           58        0      0
+  severe                  0        0     13</code></pre>
+</div>
+</div>
+<ul>
+<li>El HHS está bien. El etiquetado es diferente.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -5169,12 +5376,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
+    button.setAttribute("title", "Copiado");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
+      button.setAttribute("data-bs-title", "Copiado");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -5551,9 +5758,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 <footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/02-cleaning/02-cleaning-04-exercise.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/02-cleaning/02-cleaning-04-exercise.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/03-composition/03-composition-03-practice.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/03-composition/03-composition-03-practice.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
 </ul></div></div></div></footer>
 </body>
 </html>

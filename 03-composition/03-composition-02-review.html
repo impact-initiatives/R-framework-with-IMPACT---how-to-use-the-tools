@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/01-cleaning/01-cleaning-03-logical-with-lists.html" />
-<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/01-cleaning/01-cleaning-03-logical-with-lists.es.html" />
-<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/01-cleaning/01-cleaning-03-logical-with-lists.fr.html" />
+<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/03-composition/03-composition-02-review.html" />
+<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/03-composition/03-composition-02-review.es.html" />
+<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/03-composition/03-composition-02-review.fr.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yann Say">
-<title>03 - verificación con lista de lógicas – Introduction au cadre R chez IMPACT Initiatives</title>
+<meta name="dcterms.date" content="2024-10-16">
+<title>02 - Review indicators – Intoduction to R framework at IMPACT Initiatives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4714,17 +4715,17 @@ vertical-align: -.125em;
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
-    "search-matching-documents-text": "documentos encontrados",
-    "search-copy-link-title": "Copiar el enlace en la búsqueda",
-    "search-hide-matches-text": "Ocultar resultados adicionales",
-    "search-more-match-text": "resultado adicional en este documento",
-    "search-more-matches-text": "resultados adicionales en este documento",
-    "search-clear-button-title": "Borrar",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar",
-    "search-label": "Buscar"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 </head>
@@ -4732,15 +4733,15 @@ vertical-align: -.125em;
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-01-checks.html">Cleaning - Checking a dataset</a></li>
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-03-logical-with-lists.html">03 - verificación con lista de lógicas</a></li>
-</ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+<li class="breadcrumb-item"><a href="../03-composition/03-composition-01-add.html">Composition - Add indicators</a></li>
+<li class="breadcrumb-item"><a href="../03-composition/03-composition-02-review.html">02 - Review indicators</a></li>
+</ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -4748,16 +4749,16 @@ vertical-align: -.125em;
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Introduction au cadre R chez IMPACT Initiatives</a> 
+      <a href="../">Intoduction to R framework at IMPACT Initiatives</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class title="Buscar"></div>
+        <div id="quarto-search" class title="Search"></div>
         </div>
         </div>
     <div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/01-cleaning/01-cleaning-03-logical-with-lists.html" id="language-link-en">Anglais</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/03-composition/03-composition-02-review.html" id="language-link-es">Español</a></li></ul>
 </div>
 <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
@@ -4769,35 +4770,35 @@ vertical-align: -.125em;
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Cleaning - Checking a dataset</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-01-checks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Verificaciones</span></a>
+ <span class="menu-text">01 - Checks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-02-add-duration-others.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Añadir, duracion y otros</span></a>
+ <span class="menu-text">02 - Add, durations and others</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01-cleaning/01-cleaning-03-logical-with-lists.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">03 - verificación con lista de lógicas</span></a>
+  <a href="../01-cleaning/01-cleaning-03-logical-with-lists.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03 - Checks with logical list</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-04-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - Práctica - session 1</span></a>
+ <span class="menu-text">04 - Practice - session 1</span></a>
   </div>
 </li>
       </ul>
@@ -4806,7 +4807,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Cleaning - Creating a clean dataset</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4814,66 +4815,66 @@ vertical-align: -.125em;
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Creando un registro de limpieza</span></a>
+ <span class="menu-text">01 - Create a cleaning log</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-02-create-clean-dataset.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Crear un conjunto de datos limpios</span></a>
+ <span class="menu-text">02 - Creating a clean dataset</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-03-review-cleaning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Revisar la limpieza</span></a>
+ <span class="menu-text">03 - Review cleaning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-04-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - Práctica (2)</span></a>
+ <span class="menu-text">04 - Practice (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-05-extra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">05 - Plantillas de revisión</span></a>
+ <span class="menu-text">05 - Review templates</span></a>
   </div>
 </li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Composition - Add indicators</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-01-add.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Añadir indicadores</span></a>
+ <span class="menu-text">01 - Add indicators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03-composition/03-composition-02-review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Verificar un indicador</span></a>
+  <a href="../03-composition/03-composition-02-review.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">02 - Review indicators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-03-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Práctica (3)</span></a>
+ <span class="menu-text">03 - Practice (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-04-extra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - impactR4PHU y humind</span></a>
+ <span class="menu-text">04 - impactR4PHU and humind</span></a>
   </div>
 </li>
       </ul>
@@ -4883,23 +4884,28 @@ vertical-align: -.125em;
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">En esta página</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#check_logical_with_list" id="toc-check_logical_with_list" class="nav-link active" data-scroll-target="#check_logical_with_list">check_logical_with_list</a></li>
+<li>
+<a href="#composition---reviewing-indicators" id="toc-composition---reviewing-indicators" class="nav-link active" data-scroll-target="#composition---reviewing-indicators">Composition - reviewing indicators</a>
+  <ul class="collapse">
+<li><a href="#review_variables" id="toc-review_variables" class="nav-link" data-scroll-target="#review_variables">review_variables</a></li>
+  </ul>
+</li>
   </ul>
 <div class="toc-actions"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/01-cleaning/01-cleaning-03-logical-with-lists.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/01-cleaning/01-cleaning-03-logical-with-lists.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/03-composition/03-composition-02-review.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/03-composition/03-composition-02-review.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li>
 </ul></div></nav>
 </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-01-checks.html">Cleaning - Checking a dataset</a></li>
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-03-logical-with-lists.html">03 - verificación con lista de lógicas</a></li>
+<li class="breadcrumb-item"><a href="../03-composition/03-composition-01-add.html">Composition - Add indicators</a></li>
+<li class="breadcrumb-item"><a href="../03-composition/03-composition-02-review.html">02 - Review indicators</a></li>
 </ol></nav><div class="quarto-title">
-<h1 class="title">03 - verificación con lista de lógicas</h1>
+<h1 class="title">02 - Review indicators</h1>
 </div>
 
 
@@ -4907,16 +4913,16 @@ vertical-align: -.125em;
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
              <p>Yann Say </p>
           </div>
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">16 de octubre de 2024</p>
+      <p class="date">October 16, 2024</p>
     </div>
   </div>
   
@@ -4925,309 +4931,720 @@ vertical-align: -.125em;
   
 
 
-</header><div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/">cleaningtools</a></span><span class="op">)</span></span>
+</header><section id="composition---reviewing-indicators" class="level1 page-columns page-full"><h1>Composition - reviewing indicators</h1>
+<p>Reviewing indicators will compare 2 indicators together and present the differences. It will not check how the indicator was created nor check for inconsistencies. That mean, to review an indicator, it is necessary to create one and compare them. The functions <code>review_one_variable</code> and <code>review_variables</code> will focus on the latter.</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/impactR4PHU/">impactR4PHU</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">my_raw_dataset</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_raw_data.html">cleaningtools_raw_data</a></span></span>
-<span><span class="va">my_kobo_survey</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_survey.html">cleaningtools_survey</a></span></span>
-<span><span class="va">my_kobo_choice</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_choices.html">cleaningtools_choices</a></span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu">impactR4PHU</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/impactR4PHU_data_template.html">impactR4PHU_data_template</a></span> <span class="op">|&gt;</span>  </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">respondent_consent</span> <span class="op">!=</span> <span class="st">"no"</span><span class="op">)</span> </span>
+<span><span class="va">my_data_with_indicators</span> <span class="op">&lt;-</span> <span class="va">my_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/add_fcs.html">add_fcs</a></span><span class="op">(</span></span>
+<span>  cutoffs <span class="op">=</span> <span class="st">"normal"</span></span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/add_hhs.html">add_hhs</a></span><span class="op">(</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="check_logical_with_list" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="check_logical_with_list">check_logical_with_list</h2>
-<p>En otros casos, la verificación es específica y debe ser adaptada al conjunto de datos. Es el caso de la función <code>check_logical_with_list</code>, a la cual se le puede dar como entrada una tabla de Excel con las verificaciones lógicas por aplicar.</p>
+<section id="review_variables" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="review_variables">review_variables</h2>
+<p>First, a new dataset can be created for the review.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">logical_check_list</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/01 - example - check_list.xlsx"</span><span class="op">)</span></span>
-<span><span class="va">logical_check_list</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 4%">
-<col style="width: 31%">
-<col style="width: 38%">
-<col style="width: 26%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">check_id</th>
-<th style="text-align: left;">description</th>
-<th style="text-align: left;">check_to_perform</th>
-<th style="text-align: left;">columns_to_clean</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">primary_livelihood.employment == 1 &amp; tot_expenses &lt; 200000</td>
-<td style="text-align: left;">primary_livelihood.employment,</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">tot_expenses</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">check_2</td>
-<td style="text-align: left;">acces water and tank emptied</td>
-<td style="text-align: left;">access_water_enough == “totally_insufficient” &amp; tank_emptied == “about_half”</td>
-<td style="text-align: left;">access_water_enough, tank_emptied</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">review_df</span> <span class="op">&lt;-</span> <span class="va">my_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/add_fcs.html">add_fcs</a></span><span class="op">(</span></span>
+<span>  cutoffs <span class="op">=</span> <span class="st">"normal"</span>,</span>
+<span>  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">uuid</span>, <span class="va">fsl_fcs_score</span>, <span class="va">fsl_fcs_cat</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-<p>La entrada, es decir, la tabla de Excel con las verificaciones lógicas, debe tener 4 columnas:</p>
-<ul>
-<li>check_id : el nombre de la verificación</li>
-<li>description : la descripcion de la verificacion</li>
-<li>check_to_perform : la verificación por hacer. El formato de la verificación por hacer debe ser compatible con tidyverse. Se debe usar un formato similar al que se utilizaría en la función <code>mutate</code> para crear un nuevo indicador lógico (es decir, TRUE o FALSE). La verificación lógica debe estar escrita de manera que la salida TRUE corresponda a la encuesta que se quiera señalar.</li>
-<li>columns_to_clean : la lista de columnas utilizadas para la verificación lógica.</li>
-</ul>
-<p>Una tal lista se puede utilizar con <code>check_logical_with_list</code>.</p>
+<p>Then the dataset to be reviewed and the new dataset can be binded together.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">example_logic</span> <span class="op">&lt;-</span> <span class="va">my_raw_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/check_logical_with_list.html">check_logical_with_list</a></span><span class="op">(</span>uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span>,</span>
-<span>                          list_of_check <span class="op">=</span> <span class="va">logical_check_list</span>,</span>
-<span>                          check_id_column <span class="op">=</span> <span class="st">"check_id"</span>,</span>
-<span>                          check_to_perform_column <span class="op">=</span> <span class="st">"check_to_perform"</span>,</span>
-<span>                          columns_to_clean_column <span class="op">=</span> <span class="st">"columns_to_clean"</span>,</span>
-<span>                          description_column <span class="op">=</span> <span class="st">"description"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">example_logic</span><span class="op">$</span><span class="va">logical_all</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 15%">
-<col style="width: 5%">
-<col style="width: 31%">
-<col style="width: 4%">
-<col style="width: 24%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">uuid</th>
-<th style="text-align: left;">question</th>
-<th style="text-align: left;">old_value</th>
-<th style="text-align: left;">issue</th>
-<th style="text-align: left;">check_id</th>
-<th style="text-align: left;">check_binding</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb</td>
-<td style="text-align: left;">primary_livelihood.employment</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb</td>
-<td style="text-align: left;">tot_expenses</td>
-<td style="text-align: left;">125000</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">e9f8b44c-c507-45a1-8d76-66d886437b8f</td>
-<td style="text-align: left;">primary_livelihood.employment</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> e9f8b44c-c507-45a1-8d76-66d886437b8f</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">e9f8b44c-c507-45a1-8d76-66d886437b8f</td>
-<td style="text-align: left;">tot_expenses</td>
-<td style="text-align: left;">175000</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> e9f8b44c-c507-45a1-8d76-66d886437b8f</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">994a60b8-e640-425c-9774-160651d7af04</td>
-<td style="text-align: left;">primary_livelihood.employment</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> 994a60b8-e640-425c-9774-160651d7af04</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">994a60b8-e640-425c-9774-160651d7af04</td>
-<td style="text-align: left;">tot_expenses</td>
-<td style="text-align: left;">175000</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> 994a60b8-e640-425c-9774-160651d7af04</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<p>El registro que se obtiene contiene las siguientes columnas:</p>
-<ul>
-<li>uuid: el identificador único de la encuesta</li>
-<li>question: el nombre de la columna señalada, sera un elemento de la lista <strong>columns_to_clean</strong>
-</li>
-<li>old value: el valor en la columna de <strong>columns_to_clean</strong> señalada</li>
-<li>issue: el problema señalado</li>
-<li>check_id: el identificador de la verificación lógica</li>
-<li>check_binding: una combinación del check_id y del uuid.</li>
-</ul>
-<p>Para una verificación dada, el registro tendrá varias líneas relativas al mismo señalamiento. En el ejemplo anterior, para cada uuid, los valores de las columnas primary_livelihood y tot_expenses son señalados (una línea por cada uuid por cada columna en columns_to_clean).</p>
-<p>El formato de la verificación por hacer debe ser compatible con tidyverse. Se debe usar un formato similar al que se utilizaría en la función <code>mutate</code> para crear un nuevo indicador lógico (es decir, TRUE o FALSE). La verificación lógica debe estar escrita de manera que la salida TRUE corresponda a la encuesta que se quiera señalar.</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_raw_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>xxx <span class="op">=</span>  <span class="va">primary_livelihood.employment</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">tot_expenses</span> <span class="op">&lt;</span> <span class="fl">200000</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">X_uuid</span>, <span class="va">xxx</span>, <span class="va">primary_livelihood.employment</span>, <span class="va">tot_expenses</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 43%">
-<col style="width: 6%">
-<col style="width: 34%">
-<col style="width: 15%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">X_uuid</th>
-<th style="text-align: left;">xxx</th>
-<th style="text-align: left;">primary_livelihood.employment</th>
-<th style="text-align: right;">tot_expenses</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">dcf2753a-6ea2-40f5-b493-3527931ef96c</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">250000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">8790ce5c-1c35-41a2-b3c0-538f937d5397</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: right;">750000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">bb818e04-9c40-408e-919f-6b40ff1fdbb3</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">250000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">28b90cbb-2cf0-41c5-9ee1-1c719c0d4c02</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: right;">600000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">7f2a0c6a-529b-481f-963f-a96dca2ec034</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: right;">500000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">b4f92064-12ea-4970-b0f5-fd309de1dda3</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">650000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<p>El conjunto de datos verificado incluirá columnas adicionales. Estas columnas tendrán el nombre del check_id y contendrán valores lógicos.</p>
-<div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">example_logic</span><span class="op">$</span><span class="va">checked_dataset</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>,<span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">example_logic</span><span class="op">$</span><span class="va">checked_dataset</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<thead><tr class="header">
-<th style="text-align: left;">X_notes</th>
-<th style="text-align: left;">X_status</th>
-<th style="text-align: left;">X_submitted_by</th>
-<th style="text-align: right;">X_index</th>
-<th style="text-align: left;">check_1</th>
-<th style="text-align: left;">check_2</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">binded_df</span> <span class="op">&lt;-</span> <span class="va">my_data_with_indicators</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">review_df</span>, by <span class="op">=</span> <span class="st">"uuid"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-
-
-<div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-note callout-titled">
+<div class="no-row-height column-margin column-container">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Nota
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Si no se incluya la lista <strong>columns_to_clean</strong> la funcion <code>check_logical_with_list</code> intentará identificar las variables de forma automática. Sin embargo, no se puede garantizar que seleccione los nombres correctos.</p>
+<p>I would advice to use a <code>full_join</code> rather than a <code>left/right_join</code>. That way if any computation has missing value they will be spotted.</p>
 </div>
-</div></div></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>With the <code>join_*</code> if the names are the same .x and .y will added to the names.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+review_*
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img role="img" src="data:image/png;base64,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" class="img-fluid"></p>
+<p><strong>review_</strong>* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/addindicators/">addindicators</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">review_one_var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/addindicators/reference/review_variables.html">review_variables</a></span><span class="op">(</span><span class="va">binded_df</span>,</span>
+<span>  columns_to_review <span class="op">=</span> <span class="st">"fsl_fcs_cat.x"</span>,</span>
+<span>  columns_to_compare_with <span class="op">=</span> <span class="st">"fsl_fcs_cat.y"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">review_one_var</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "dataset"      "review_table"</code></pre>
+</div>
+</div>
+<p>It is a list with the dataset and a review table.</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">review_one_var</span><span class="op">$</span><span class="va">review_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 49%">
+<col style="width: 16%">
+<col style="width: 15%">
+<col style="width: 18%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">uuid</th>
+<th style="text-align: left;">variable</th>
+<th style="text-align: left;">review_check</th>
+<th style="text-align: left;">review_comment</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">14c3baf8-d4b0-43484c-8d8e8f-a5fd7134982e</td>
+<td style="text-align: left;">fsl_fcs_cat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1a8de690-60af-45494a-8b8487-78f45ec16b39</td>
+<td style="text-align: left;">fsl_fcs_cat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1c92baf4-107e-474c46-a3a8a5-6b2e815ad30c</td>
+<td style="text-align: left;">fsl_fcs_cat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1d7ca542-5ebf-434e44-949e9a-d3687ef9c145</td>
+<td style="text-align: left;">fsl_fcs_cat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1ecfd059-c215-4d4746-94999b-87920feb4a6c</td>
+<td style="text-align: left;">fsl_fcs_cat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">205d37b1-5a6f-44484d-b3b1ba-4eafbdc50873</td>
+<td style="text-align: left;">fsl_fcs_cat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>The review table can be summarised to have a quicker overview.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">review_one_var</span><span class="op">$</span><span class="va">review_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">review_check</span>, <span class="va">review_comment</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">tally</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">review_check</th>
+<th style="text-align: left;">review_comment</th>
+<th style="text-align: right;">n</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+<td style="text-align: right;">81</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+<p>To see how differences are shown, some noise is introduced to the dataset.</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">jittered_df</span> <span class="op">&lt;-</span> <span class="va">binded_df</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">jittered_df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">jittered_df</span><span class="op">)</span>, <span class="fl">5</span><span class="op">)</span>, <span class="st">"fsl_fcs_cat.x"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">jittered_df</span><span class="op">$</span><span class="va">fsl_fcs_cat.y</span><span class="op">)</span>, <span class="fl">5</span>, <span class="cn">T</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">124</span><span class="op">)</span></span>
+<span><span class="va">jittered_df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">jittered_df</span><span class="op">)</span>, <span class="fl">5</span><span class="op">)</span>, <span class="st">"fsl_fcs_cat.y"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">jittered_df</span><span class="op">$</span><span class="va">fsl_fcs_cat.y</span><span class="op">)</span>, <span class="fl">5</span>, <span class="cn">T</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">125</span><span class="op">)</span></span>
+<span><span class="va">jittered_df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">jittered_df</span><span class="op">)</span>, <span class="fl">5</span><span class="op">)</span>, <span class="st">"fsl_fcs_cat.x"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1236</span><span class="op">)</span></span>
+<span><span class="va">jittered_df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">jittered_df</span><span class="op">)</span>, <span class="fl">5</span><span class="op">)</span>, <span class="st">"fsl_fcs_cat.y"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1237</span><span class="op">)</span></span>
+<span><span class="va">jittered_df</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">jittered_df</span><span class="op">)</span>, <span class="fl">5</span><span class="op">)</span>, <span class="st">"fsl_fcs_score.x"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">jittered_df</span><span class="op">$</span><span class="va">fsl_fcs_score.x</span><span class="op">)</span>, <span class="fl">5</span>, <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">review_one_variable_jittered</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/addindicators/reference/review_variables.html">review_variables</a></span><span class="op">(</span><span class="va">jittered_df</span>,</span>
+<span>  columns_to_review <span class="op">=</span> <span class="st">"fsl_fcs_cat.x"</span>,</span>
+<span>  columns_to_compare_with <span class="op">=</span> <span class="st">"fsl_fcs_cat.y"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">review_one_variable_jittered</span><span class="op">$</span><span class="va">review_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">review_check</span>, <span class="va">review_comment</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">tally</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">review_check</th>
+<th style="text-align: left;">review_comment</th>
+<th style="text-align: right;">n</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.x</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.y</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+<td style="text-align: right;">62</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>The dataset has new columns to help filtering for further investigation.</p>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">review_one_variable_jittered</span><span class="op">$</span><span class="va">dataset</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">review_one_variable_jittered</span><span class="op">$</span><span class="va">dataset</span><span class="op">)</span>, <span class="fl">5</span><span class="op">)</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 27%">
+<col style="width: 29%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">fsl_hhs_cat</th>
+<th style="text-align: right;">fsl_fcs_score.y</th>
+<th style="text-align: left;">fsl_fcs_cat.y</th>
+<th style="text-align: left;">review_check_fsl_fcs_cat.x</th>
+<th style="text-align: left;">review_comment_fsl_fcs_cat.x</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Little to No</td>
+<td style="text-align: right;">32.5</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Little to No</td>
+<td style="text-align: right;">23.0</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Little to No</td>
+<td style="text-align: right;">23.5</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Little to No</td>
+<td style="text-align: right;">62.5</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Little to No</td>
+<td style="text-align: right;">29.5</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Little to No</td>
+<td style="text-align: right;">40.0</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">review_one_variable_jittered</span><span class="op">$</span><span class="va">dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">review_check_fsl_fcs_cat.x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">uuid</span>, <span class="va">fsl_fcs_cat.x</span>, <span class="va">fsl_fcs_cat.y</span>, <span class="va">review_check_fsl_fcs_cat.x</span>, <span class="va">review_comment_fsl_fcs_cat.x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 21%">
+<col style="width: 23%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">uuid</th>
+<th style="text-align: left;">fsl_fcs_cat.x</th>
+<th style="text-align: left;">fsl_fcs_cat.y</th>
+<th style="text-align: left;">review_check_fsl_fcs_cat.x</th>
+<th style="text-align: left;">review_comment_fsl_fcs_cat.x</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">205d37b1-5a6f-44484d-b3b1ba-4eafbdc50873</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3aef5849-5ca7-4c4841-8a8584-e64b1a8d0c92</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3b6948fe-3409-4f4143-b3bab2-86301b529fc7</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3e02914b-eb25-484243-909498-dcfa793514b2</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">492705a8-d2c4-4c4f48-acaea1-a6bf1239e5c4</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4b038c2e-25a6-484641-aca6a7-cf387e4b29d1</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">58f3eb24-46bc-404f4e-82878b-df5413c0be2a</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">60d81329-6dc0-484e4b-9c9e99-7e34af59b61d</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">761c2a9e-6f40-454042-8d8184-79a5f36d8e12</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">7b4261fa-61a5-4a4948-999093-13bc7e9f0658</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">82ed0b7c-e364-4b4244-9e9594-e9d52104b7a6</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">98fdb3a2-2c1a-4f424b-8d8782-b21d683ea94f</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9b4805ec-845b-46404f-afa9a6-5fe6cdb917a0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c659423a-d572-42404f-83848e-f74b92a531e6</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c8bf561e-be90-424448-838c85-d623901e8c5f</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ef07451b-a7c5-474c46-84838e-dcf9a350e2b7</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.x</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ef2963c7-ef67-4e4446-bab5b7-7e9d0431fa8c</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.y</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">f362a49c-10e7-4d4744-a1a0a6-4f9d2b73c0e5</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">f9b06cd4-62db-434748-bfbbba-5f0681e493b7</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.y</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>If there are more than one variable to review, pair-wise vectors can be used.</p>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_review</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/addindicators/reference/review_variables.html">review_variables</a></span><span class="op">(</span><span class="va">jittered_df</span>,</span>
+<span>  columns_to_review <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fsl_fcs_cat.x"</span>, <span class="st">"fsl_fcs_score.x"</span><span class="op">)</span>,</span>
+<span>  columns_to_compare_with <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"fsl_fcs_cat.y"</span>, <span class="st">"fsl_fcs_score.y"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_review</span><span class="op">$</span><span class="va">review_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">variable</span>, <span class="va">review_check</span>, <span class="va">review_comment</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">tally</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">variable</th>
+<th style="text-align: left;">review_check</th>
+<th style="text-align: left;">review_comment</th>
+<th style="text-align: right;">n</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">fsl_fcs_cat.x</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fsl_fcs_cat.x</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.x</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fsl_fcs_cat.x</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.y</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fsl_fcs_cat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fsl_fcs_score.x</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fsl_fcs_score.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+<td style="text-align: right;">76</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_review</span><span class="op">$</span><span class="va">dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">review_check_fsl_fcs_cat.x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">uuid</span>, <span class="va">fsl_fcs_cat.x</span>, <span class="va">fsl_fcs_cat.y</span>, <span class="va">review_comment_fsl_fcs_cat.x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 41%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 29%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">uuid</th>
+<th style="text-align: left;">fsl_fcs_cat.x</th>
+<th style="text-align: left;">fsl_fcs_cat.y</th>
+<th style="text-align: left;">review_comment_fsl_fcs_cat.x</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">205d37b1-5a6f-44484d-b3b1ba-4eafbdc50873</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3aef5849-5ca7-4c4841-8a8584-e64b1a8d0c92</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3b6948fe-3409-4f4143-b3bab2-86301b529fc7</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3e02914b-eb25-484243-909498-dcfa793514b2</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">492705a8-d2c4-4c4f48-acaea1-a6bf1239e5c4</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">4b038c2e-25a6-484641-aca6a7-cf387e4b29d1</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">58f3eb24-46bc-404f4e-82878b-df5413c0be2a</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">60d81329-6dc0-484e4b-9c9e99-7e34af59b61d</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">761c2a9e-6f40-454042-8d8184-79a5f36d8e12</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">7b4261fa-61a5-4a4948-999093-13bc7e9f0658</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">82ed0b7c-e364-4b4244-9e9594-e9d52104b7a6</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">98fdb3a2-2c1a-4f424b-8d8782-b21d683ea94f</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">9b4805ec-845b-46404f-afa9a6-5fe6cdb917a0</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">c659423a-d572-42404f-83848e-f74b92a531e6</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">c8bf561e-be90-424448-838c85-d623901e8c5f</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ef07451b-a7c5-474c46-84838e-dcf9a350e2b7</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.x</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ef2963c7-ef67-4e4446-bab5b7-7e9d0431fa8c</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.y</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">f362a49c-10e7-4d4744-a1a0a6-4f9d2b73c0e5</td>
+<td style="text-align: left;">Poor</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">f9b06cd4-62db-434748-bfbbba-5f0681e493b7</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Missing in fsl_fcs_cat.y</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_review</span><span class="op">$</span><span class="va">dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">review_check_fsl_fcs_score.x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">uuid</span>, <span class="va">fsl_fcs_score.x</span>, <span class="va">fsl_fcs_score.y</span>, <span class="va">review_comment_fsl_fcs_score.x</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 29%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">uuid</th>
+<th style="text-align: right;">fsl_fcs_score.x</th>
+<th style="text-align: right;">fsl_fcs_score.y</th>
+<th style="text-align: left;">review_comment_fsl_fcs_score.x</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1c92baf4-107e-474c46-a3a8a5-6b2e815ad30c</td>
+<td style="text-align: right;">22.5</td>
+<td style="text-align: right;">23.5</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3e02914b-eb25-484243-909498-dcfa793514b2</td>
+<td style="text-align: right;">40.0</td>
+<td style="text-align: right;">29.0</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5b04c362-1637-4c464d-9f9a97-ed918b7f0a43</td>
+<td style="text-align: right;">60.5</td>
+<td style="text-align: right;">12.0</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">65d0f41e-fb96-424b41-96919a-2de546c7f9a0</td>
+<td style="text-align: right;">92.5</td>
+<td style="text-align: right;">19.5</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">f09a3541-f9a5-4a4644-9c9895-90ea2cfd6548</td>
+<td style="text-align: right;">42.5</td>
+<td style="text-align: right;">27.5</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -5270,12 +5687,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copiado");
+    button.setAttribute("title", "Copied!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copiado");
+      button.setAttribute("data-bs-title", "Copied!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -5652,9 +6069,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 <footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/01-cleaning/01-cleaning-03-logical-with-lists.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/01-cleaning/01-cleaning-03-logical-with-lists.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/03-composition/03-composition-02-review.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/03-composition/03-composition-02-review.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li>
 </ul></div></div></div></footer>
 </body>
 </html>

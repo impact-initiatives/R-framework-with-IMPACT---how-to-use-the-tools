@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/01-cleaning/01-cleaning-03-logical-with-lists.html" />
-<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/01-cleaning/01-cleaning-03-logical-with-lists.es.html" />
-<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/01-cleaning/01-cleaning-03-logical-with-lists.fr.html" />
+<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/03-composition/03-composition-01-add.html" />
+<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/03-composition/03-composition-01-add.es.html" />
+<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/03-composition/03-composition-01-add.fr.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yann Say">
-<title>03 - verificación con lista de lógicas – Introduction au cadre R chez IMPACT Initiatives</title>
+<meta name="dcterms.date" content="2024-10-16">
+<title>01 - Add indicators – Intoduction to R framework at IMPACT Initiatives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4714,17 +4715,17 @@ vertical-align: -.125em;
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
-    "search-matching-documents-text": "documentos encontrados",
-    "search-copy-link-title": "Copiar el enlace en la búsqueda",
-    "search-hide-matches-text": "Ocultar resultados adicionales",
-    "search-more-match-text": "resultado adicional en este documento",
-    "search-more-matches-text": "resultados adicionales en este documento",
-    "search-clear-button-title": "Borrar",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar",
-    "search-label": "Buscar"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 </head>
@@ -4732,15 +4733,15 @@ vertical-align: -.125em;
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-01-checks.html">Cleaning - Checking a dataset</a></li>
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-03-logical-with-lists.html">03 - verificación con lista de lógicas</a></li>
-</ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+<li class="breadcrumb-item"><a href="../03-composition/03-composition-01-add.html">Composition - Add indicators</a></li>
+<li class="breadcrumb-item"><a href="../03-composition/03-composition-01-add.html">01 - Add indicators</a></li>
+</ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -4748,16 +4749,16 @@ vertical-align: -.125em;
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Introduction au cadre R chez IMPACT Initiatives</a> 
+      <a href="../">Intoduction to R framework at IMPACT Initiatives</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class title="Buscar"></div>
+        <div id="quarto-search" class title="Search"></div>
         </div>
         </div>
     <div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/01-cleaning/01-cleaning-03-logical-with-lists.html" id="language-link-en">Anglais</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/03-composition/03-composition-01-add.html" id="language-link-es">Español</a></li></ul>
 </div>
 <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
@@ -4769,35 +4770,35 @@ vertical-align: -.125em;
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Cleaning - Checking a dataset</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-01-checks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Verificaciones</span></a>
+ <span class="menu-text">01 - Checks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-02-add-duration-others.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Añadir, duracion y otros</span></a>
+ <span class="menu-text">02 - Add, durations and others</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01-cleaning/01-cleaning-03-logical-with-lists.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">03 - verificación con lista de lógicas</span></a>
+  <a href="../01-cleaning/01-cleaning-03-logical-with-lists.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03 - Checks with logical list</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-04-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - Práctica - session 1</span></a>
+ <span class="menu-text">04 - Practice - session 1</span></a>
   </div>
 </li>
       </ul>
@@ -4806,7 +4807,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Cleaning - Creating a clean dataset</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4814,66 +4815,66 @@ vertical-align: -.125em;
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Creando un registro de limpieza</span></a>
+ <span class="menu-text">01 - Create a cleaning log</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-02-create-clean-dataset.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Crear un conjunto de datos limpios</span></a>
+ <span class="menu-text">02 - Creating a clean dataset</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-03-review-cleaning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Revisar la limpieza</span></a>
+ <span class="menu-text">03 - Review cleaning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-04-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - Práctica (2)</span></a>
+ <span class="menu-text">04 - Practice (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-05-extra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">05 - Plantillas de revisión</span></a>
+ <span class="menu-text">05 - Review templates</span></a>
   </div>
 </li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Composition - Add indicators</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03-composition/03-composition-01-add.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Añadir indicadores</span></a>
+  <a href="../03-composition/03-composition-01-add.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">01 - Add indicators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-02-review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Verificar un indicador</span></a>
+ <span class="menu-text">02 - Review indicators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-03-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Práctica (3)</span></a>
+ <span class="menu-text">03 - Practice (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-04-extra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - impactR4PHU y humind</span></a>
+ <span class="menu-text">04 - impactR4PHU and humind</span></a>
   </div>
 </li>
       </ul>
@@ -4883,23 +4884,29 @@ vertical-align: -.125em;
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">En esta página</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#check_logical_with_list" id="toc-check_logical_with_list" class="nav-link active" data-scroll-target="#check_logical_with_list">check_logical_with_list</a></li>
+<li>
+<a href="#composition---adding-indicators" id="toc-composition---adding-indicators" class="nav-link active" data-scroll-target="#composition---adding-indicators">Composition - adding indicators</a>
+  <ul class="collapse">
+<li><a href="#add_fcs" id="toc-add_fcs" class="nav-link" data-scroll-target="#add_fcs">add_fcs</a></li>
+  <li><a href="#add_hhs" id="toc-add_hhs" class="nav-link" data-scroll-target="#add_hhs">add_hhs</a></li>
+  </ul>
+</li>
   </ul>
 <div class="toc-actions"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/01-cleaning/01-cleaning-03-logical-with-lists.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/01-cleaning/01-cleaning-03-logical-with-lists.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/03-composition/03-composition-01-add.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/03-composition/03-composition-01-add.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li>
 </ul></div></nav>
 </div>
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-01-checks.html">Cleaning - Checking a dataset</a></li>
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-03-logical-with-lists.html">03 - verificación con lista de lógicas</a></li>
+<li class="breadcrumb-item"><a href="../03-composition/03-composition-01-add.html">Composition - Add indicators</a></li>
+<li class="breadcrumb-item"><a href="../03-composition/03-composition-01-add.html">01 - Add indicators</a></li>
 </ol></nav><div class="quarto-title">
-<h1 class="title">03 - verificación con lista de lógicas</h1>
+<h1 class="title">01 - Add indicators</h1>
 </div>
 
 
@@ -4907,16 +4914,16 @@ vertical-align: -.125em;
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
              <p>Yann Say </p>
           </div>
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">16 de octubre de 2024</p>
+      <p class="date">October 16, 2024</p>
     </div>
   </div>
   
@@ -4925,295 +4932,157 @@ vertical-align: -.125em;
   
 
 
-</header><div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/">cleaningtools</a></span><span class="op">)</span></span>
+</header><section id="composition---adding-indicators" class="level1 page-columns page-full"><h1>Composition - adding indicators</h1>
+<p>The framework is built around 4 steps: cleaning, composition, analysis, outputs</p>
+<ul>
+<li>
+<em>Cleaning</em>: any manipulation to go from the raw data to the clean data</li>
+<li>
+<em>Composition</em>: any manipulation before the analysis e.g. adding indicators, adding information from loop or main, aok aggregation, etc.</li>
+<li>
+<em>Analysis</em>: any manipulation regarding only the analysis</li>
+<li>
+<em>Outputs</em>: any manipulation to format the outputs.</li>
+</ul>
+<p>The following section will present some introduction about the composition.</p>
+<p><img role="img" src="data:image/png;base64,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" class="img-fluid"></p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/impactR4PHU/">impactR4PHU</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">my_raw_dataset</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_raw_data.html">cleaningtools_raw_data</a></span></span>
-<span><span class="va">my_kobo_survey</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_survey.html">cleaningtools_survey</a></span></span>
-<span><span class="va">my_kobo_choice</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_choices.html">cleaningtools_choices</a></span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu">impactR4PHU</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/impactR4PHU_data_template.html">impactR4PHU_data_template</a></span> <span class="op">|&gt;</span>  </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">respondent_consent</span> <span class="op">!=</span> <span class="st">"no"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="check_logical_with_list" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="check_logical_with_list">check_logical_with_list</h2>
-<p>En otros casos, la verificación es específica y debe ser adaptada al conjunto de datos. Es el caso de la función <code>check_logical_with_list</code>, a la cual se le puede dar como entrada una tabla de Excel con las verificaciones lógicas por aplicar.</p>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+add_*
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img role="img" src="data:image/png;base64,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" class="img-fluid"></p>
+<p><strong>add_</strong>* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.</p>
+<p><strong>add_</strong>* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation).</p>
+<p>For example, to check the duration of a survey, there is only the start and end, but not the duration column.</p>
+<p>With <code>addindicators</code> some intermediate columns can be added if they are used to create the new indicator.</p>
+</div>
+</div>
+<section id="add_fcs" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="add_fcs">add_fcs</h2>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">logical_check_list</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/01 - example - check_list.xlsx"</span><span class="op">)</span></span>
-<span><span class="va">logical_check_list</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_data_with_fcs</span> <span class="op">&lt;-</span> <span class="va">my_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/add_fcs.html">add_fcs</a></span><span class="op">(</span></span>
+<span>  cutoffs <span class="op">=</span> <span class="st">"normal"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">my_data_with_fcs</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">my_data_with_fcs</span><span class="op">)</span>, <span class="fl">10</span><span class="op">)</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
-<col style="width: 4%">
-<col style="width: 31%">
-<col style="width: 38%">
-<col style="width: 26%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 10%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 8%">
+<col style="width: 7%">
 </colgroup>
 <thead><tr class="header">
-<th style="text-align: left;">check_id</th>
-<th style="text-align: left;">description</th>
-<th style="text-align: left;">check_to_perform</th>
-<th style="text-align: left;">columns_to_clean</th>
+<th style="text-align: right;">fcs_weight_cereal1</th>
+<th style="text-align: right;">fcs_weight_legume2</th>
+<th style="text-align: right;">fcs_weight_dairy3</th>
+<th style="text-align: right;">fcs_weight_meat4</th>
+<th style="text-align: right;">fcs_weight_veg5</th>
+<th style="text-align: right;">fcs_weight_fruit6</th>
+<th style="text-align: right;">fcs_weight_oil7</th>
+<th style="text-align: right;">fcs_weight_sugar8</th>
+<th style="text-align: right;">fsl_fcs_score</th>
+<th style="text-align: left;">fsl_fcs_cat</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">primary_livelihood.employment == 1 &amp; tot_expenses &lt; 200000</td>
-<td style="text-align: left;">primary_livelihood.employment,</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">tot_expenses</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">check_2</td>
-<td style="text-align: left;">acces water and tank emptied</td>
-<td style="text-align: left;">access_water_enough == “totally_insufficient” &amp; tank_emptied == “about_half”</td>
-<td style="text-align: left;">access_water_enough, tank_emptied</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<p>La entrada, es decir, la tabla de Excel con las verificaciones lógicas, debe tener 4 columnas:</p>
-<ul>
-<li>check_id : el nombre de la verificación</li>
-<li>description : la descripcion de la verificacion</li>
-<li>check_to_perform : la verificación por hacer. El formato de la verificación por hacer debe ser compatible con tidyverse. Se debe usar un formato similar al que se utilizaría en la función <code>mutate</code> para crear un nuevo indicador lógico (es decir, TRUE o FALSE). La verificación lógica debe estar escrita de manera que la salida TRUE corresponda a la encuesta que se quiera señalar.</li>
-<li>columns_to_clean : la lista de columnas utilizadas para la verificación lógica.</li>
-</ul>
-<p>Una tal lista se puede utilizar con <code>check_logical_with_list</code>.</p>
-<div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">example_logic</span> <span class="op">&lt;-</span> <span class="va">my_raw_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/check_logical_with_list.html">check_logical_with_list</a></span><span class="op">(</span>uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span>,</span>
-<span>                          list_of_check <span class="op">=</span> <span class="va">logical_check_list</span>,</span>
-<span>                          check_id_column <span class="op">=</span> <span class="st">"check_id"</span>,</span>
-<span>                          check_to_perform_column <span class="op">=</span> <span class="st">"check_to_perform"</span>,</span>
-<span>                          columns_to_clean_column <span class="op">=</span> <span class="st">"columns_to_clean"</span>,</span>
-<span>                          description_column <span class="op">=</span> <span class="st">"description"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">example_logic</span><span class="op">$</span><span class="va">logical_all</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 18%">
-<col style="width: 15%">
-<col style="width: 5%">
-<col style="width: 31%">
-<col style="width: 4%">
-<col style="width: 24%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">uuid</th>
-<th style="text-align: left;">question</th>
-<th style="text-align: left;">old_value</th>
-<th style="text-align: left;">issue</th>
-<th style="text-align: left;">check_id</th>
-<th style="text-align: left;">check_binding</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb</td>
-<td style="text-align: left;">primary_livelihood.employment</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb</td>
-<td style="text-align: left;">tot_expenses</td>
-<td style="text-align: left;">125000</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">e9f8b44c-c507-45a1-8d76-66d886437b8f</td>
-<td style="text-align: left;">primary_livelihood.employment</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> e9f8b44c-c507-45a1-8d76-66d886437b8f</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">e9f8b44c-c507-45a1-8d76-66d886437b8f</td>
-<td style="text-align: left;">tot_expenses</td>
-<td style="text-align: left;">175000</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> e9f8b44c-c507-45a1-8d76-66d886437b8f</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">994a60b8-e640-425c-9774-160651d7af04</td>
-<td style="text-align: left;">primary_livelihood.employment</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> 994a60b8-e640-425c-9774-160651d7af04</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">994a60b8-e640-425c-9774-160651d7af04</td>
-<td style="text-align: left;">tot_expenses</td>
-<td style="text-align: left;">175000</td>
-<td style="text-align: left;">primary_livelihood is employment but expenses less than 200000</td>
-<td style="text-align: left;">check_1</td>
-<td style="text-align: left;">check_1 <sub>/</sub> 994a60b8-e640-425c-9774-160651d7af04</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<p>El registro que se obtiene contiene las siguientes columnas:</p>
-<ul>
-<li>uuid: el identificador único de la encuesta</li>
-<li>question: el nombre de la columna señalada, sera un elemento de la lista <strong>columns_to_clean</strong>
-</li>
-<li>old value: el valor en la columna de <strong>columns_to_clean</strong> señalada</li>
-<li>issue: el problema señalado</li>
-<li>check_id: el identificador de la verificación lógica</li>
-<li>check_binding: una combinación del check_id y del uuid.</li>
-</ul>
-<p>Para una verificación dada, el registro tendrá varias líneas relativas al mismo señalamiento. En el ejemplo anterior, para cada uuid, los valores de las columnas primary_livelihood y tot_expenses son señalados (una línea por cada uuid por cada columna en columns_to_clean).</p>
-<p>El formato de la verificación por hacer debe ser compatible con tidyverse. Se debe usar un formato similar al que se utilizaría en la función <code>mutate</code> para crear un nuevo indicador lógico (es decir, TRUE o FALSE). La verificación lógica debe estar escrita de manera que la salida TRUE corresponda a la encuesta que se quiera señalar.</p>
-<div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_raw_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>xxx <span class="op">=</span>  <span class="va">primary_livelihood.employment</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">tot_expenses</span> <span class="op">&lt;</span> <span class="fl">200000</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">X_uuid</span>, <span class="va">xxx</span>, <span class="va">primary_livelihood.employment</span>, <span class="va">tot_expenses</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<colgroup>
-<col style="width: 43%">
-<col style="width: 6%">
-<col style="width: 34%">
-<col style="width: 15%">
-</colgroup>
-<thead><tr class="header">
-<th style="text-align: left;">X_uuid</th>
-<th style="text-align: left;">xxx</th>
-<th style="text-align: left;">primary_livelihood.employment</th>
-<th style="text-align: right;">tot_expenses</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">dcf2753a-6ea2-40f5-b493-3527931ef96c</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">250000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">8790ce5c-1c35-41a2-b3c0-538f937d5397</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: right;">750000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">bb818e04-9c40-408e-919f-6b40ff1fdbb3</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">250000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">28b90cbb-2cf0-41c5-9ee1-1c719c0d4c02</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: right;">600000</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">7f2a0c6a-529b-481f-963f-a96dca2ec034</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">TRUE</td>
-<td style="text-align: right;">500000</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">b4f92064-12ea-4970-b0f5-fd309de1dda3</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: right;">650000</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<p>El conjunto de datos verificado incluirá columnas adicionales. Estas columnas tendrán el nombre del check_id y contendrán valores lógicos.</p>
-<div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">example_logic</span><span class="op">$</span><span class="va">checked_dataset</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>,<span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">example_logic</span><span class="op">$</span><span class="va">checked_dataset</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="kable-table">
-<table class="caption-top table table-sm table-striped small">
-<thead><tr class="header">
-<th style="text-align: left;">X_notes</th>
-<th style="text-align: left;">X_status</th>
-<th style="text-align: left;">X_submitted_by</th>
-<th style="text-align: right;">X_index</th>
-<th style="text-align: left;">check_1</th>
-<th style="text-align: left;">check_2</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">[]</td>
-<td style="text-align: left;">submitted_via_web</td>
-<td style="text-align: left;">reach_irq</td>
 <td style="text-align: right;">6</td>
-<td style="text-align: left;">FALSE</td>
-<td style="text-align: left;">FALSE</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">32.5</td>
+<td style="text-align: left;">Borderline</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">23.0</td>
+<td style="text-align: left;">Borderline</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">23.5</td>
+<td style="text-align: left;">Borderline</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">3.5</td>
+<td style="text-align: right;">62.5</td>
+<td style="text-align: left;">Acceptable</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">29.5</td>
+<td style="text-align: left;">Borderline</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">40.0</td>
+<td style="text-align: left;">Acceptable</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-
-
 
 <div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -5221,13 +5090,176 @@ vertical-align: -.125em;
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Nota
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Si no se incluya la lista <strong>columns_to_clean</strong> la funcion <code>check_logical_with_list</code> intentará identificar las variables de forma automática. Sin embargo, no se puede garantizar que seleccione los nombres correctos.</p>
+<p>You can learn more about food security indicators <a href="https://fscluster.org/handbook/">here</a>.</p>
 </div>
-</div></div></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</div></div></section><section id="add_hhs" class="level2"><h2 class="anchored" data-anchor-id="add_hhs">add_hhs</h2>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Pipe-able
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The framework is built around 2 adjectives, <strong>pipe-able</strong> and <strong>independent</strong>. In the framework, functions of the same family should be pipe-able. In the following case, 2 <strong>add_</strong>* functions are piped.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_data_with_indicators</span> <span class="op">&lt;-</span> <span class="va">my_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/add_fcs.html">add_fcs</a></span><span class="op">(</span></span>
+<span>  cutoffs <span class="op">=</span> <span class="st">"normal"</span></span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/impactR4PHU/reference/add_hhs.html">add_hhs</a></span><span class="op">(</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">my_data_with_indicators</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">my_data_with_indicators</span><span class="op">)</span>, <span class="fl">14</span><span class="op">)</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 8%">
+<col style="width: 10%">
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 5%">
+<col style="width: 4%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: right;">fsl_fcs_score</th>
+<th style="text-align: left;">fsl_fcs_cat</th>
+<th style="text-align: right;">fsl_hhs_nofoodhh_recoded</th>
+<th style="text-align: right;">fsl_hhs_nofoodhh_freq_recoded</th>
+<th style="text-align: right;">fsl_hhs_sleephungry_recoded</th>
+<th style="text-align: right;">fsl_hhs_sleephungry_freq_recoded</th>
+<th style="text-align: right;">fsl_hhs_alldaynight_recoded</th>
+<th style="text-align: right;">fsl_hhs_alldaynight_freq_recoded</th>
+<th style="text-align: right;">fsl_hhs_comp1</th>
+<th style="text-align: right;">fsl_hhs_comp2</th>
+<th style="text-align: right;">fsl_hhs_comp3</th>
+<th style="text-align: right;">fsl_hhs_score</th>
+<th style="text-align: left;">fsl_hhs_cat_ipc</th>
+<th style="text-align: left;">fsl_hhs_cat</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">32.5</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Little to No</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">23.0</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Little to No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">23.5</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Little to No</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">62.5</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Little to No</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">29.5</td>
+<td style="text-align: left;">Borderline</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Little to No</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">40.0</td>
+<td style="text-align: left;">Acceptable</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">None</td>
+<td style="text-align: left;">Little to No</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -5270,12 +5302,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copiado");
+    button.setAttribute("title", "Copied!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copiado");
+      button.setAttribute("data-bs-title", "Copied!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -5652,9 +5684,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 <footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/01-cleaning/01-cleaning-03-logical-with-lists.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/01-cleaning/01-cleaning-03-logical-with-lists.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/03-composition/03-composition-01-add.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/03-composition/03-composition-01-add.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li>
 </ul></div></div></div></footer>
 </body>
 </html>
