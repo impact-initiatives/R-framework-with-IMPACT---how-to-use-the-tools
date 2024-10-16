@@ -1,16 +1,16 @@
 ---
-title: "04 - Exercises - session 1"
+title: "04 - Práctica - session 1"
 author: "Yann Say"
 date: last-modified
 
 ---
-# Exercises
+# Práctica
 
-## Exercise 1
+## Práctica 1
 
-Try the following with a dataset:
+Probar lo siguiente con un conjunto de datos:
 
--   Perform a check to spot personal identifiable information
+-   Realiza una verificación para detectar información de identificación personal.
 
 ```{r}
 library(cleaningtools)
@@ -22,13 +22,13 @@ my_kobo_choice <- cleaningtools::cleaningtools_choices
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para ver una pista.
 
-Try the function `check_pii`
+Pruebe con la función `check_pii`
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -37,24 +37,24 @@ my_raw_dataset %>%
 ```
 :::
 
-## Exercise 2
+## Práctica 2
 
--   Perform a check that will look at the percentages of missing value per observation and that will spot any observation that is *different*.
+-   Realize una verificación que examine los porcentajes de valores faltantes por encuesta y que señale cualquier observación *atípica*.
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para ver una pista.
 
-Try the function `check_percentage_missing`
+Pruebe con la función `check_percentage_missing`
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para ver una pista.
 
-Did you try to add a new column with `add_percentage_missing`
+¿Intento añadir una nueva columna con `add_percentage_missing` ? 
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -65,10 +65,11 @@ my_data_with_missing %>%
   check_percentage_missing(uuid_column = "X_uuid")
 ```
 
-Or if using a log already
+Si ya estás utilizando un registro 
 
 ```{r}
 #| output: false
+#| echo: false
 a_log <- my_raw_dataset %>% 
   check_pii(uuid_column = "X_uuid")
 a_log$checked_dataset <- a_log$checked_dataset %>% 
@@ -78,12 +79,12 @@ a_log %>%
 ```
 :::
 
-## Exercise 3
+## Práctica 3
 
--   Fill the excel checklist to do the following checks:
-    -   household number (variable: **num_hh_member**) is above 8.
-    -   the water source for drinking water is bottled (variable: **water_source_drinking**, value: **bottled**) and the household always treat the drinking water (variable: **treat_drink_water**, value: **always_treat**).
-    -   the water source for drinking water is bottled (variable: **water_source_drinking**, value: **bottled**) and one of the main reason for the the household to not meet its water needs is the water pressure (variable: **access_water_enough_why_not**, value: **water_pressure**, this is a select multiple)
+-   Complete una tabla Excel para realizar las siguientes verificaciones lógicas :
+    -   El número de miembros del hogar (variable: **num_hh_member**) es superior a 8.
+    -   La fuente de agua para beber es agua embotellada (variable: **water_source_drinking**, value: **bottled**) y el hogar siempre trata el agua (variable: **treat_drink_water**, value: **always_treat**).
+    -   La fuente de agua para beber es agua embotellada (variable: **water_source_drinking**, value: **bottled**) y una de las principales razones por las que el hogar no satisface sus nececidades de agua es la presión del agua (variable: **access_water_enough_why_not**, value: **water_pressure**, this is a select multiple)
     
 ```{r}
 #| echo: false
@@ -111,7 +112,7 @@ my_raw_dataset %>%
 ```
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta.
 
 ```{r}
 #| output: false
@@ -130,12 +131,13 @@ my_raw_dataset %>%
 ```
 :::
 
-## Extra
+## Práctica adicional
 
--   Try to add duration with audit files.
+-   Intente añadir la duración con los archivos de auditoría (es decir, los *audit files* de la herramienta KOBO).
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a tip
+### Haga clic para ver una clave.
 
-Try `create_audit_list()` and `add_duration_from_audit()`
+Pruebe usando las funciones `create_audit_list()` y `add_duration_from_audit()`
 :::
+

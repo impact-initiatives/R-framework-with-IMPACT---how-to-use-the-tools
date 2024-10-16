@@ -1,0 +1,196 @@
+---
+title: "03 - Practice (3)"
+author: "Yann Say"
+date: last-modified
+
+---
+# Practice 
+
+```{r}
+#| message: false
+library(impactR4PHU)
+library(addindicators)
+library(dplyr)
+```
+
+## Practice 1
+
+- Add the **food consumption matrix score** to the dataset. The food consumption matrix score is a food security indicator that uses the **food consumption score**, **household hunger score** and the **reduced coping strategy index**.
+
+```{r}
+#| echo: false
+names_to_keep <- grep("rCSI", analysistools::analysistools_MSNA_template_survey$name, value = T)
+analysistools::analysistools_MSNA_template_survey %>% 
+  filter(name %in% names_to_keep,
+         name != "rCSI_module") %>% 
+  select(name, `label::english`, type) 
+```
+
+```{r}
+#| eval: false
+library(impactR4PHU)
+library(addindicators)
+library(dplyr)
+```
+
+```{r}
+exercise_data <- addindicators::addindicators_MSNA_template_data %>%
+  add_fcs(
+  cutoffs = "normal",
+  fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
+  fsl_fcs_legumes = "fs_fcs_beans_nuts",
+  fsl_fcs_veg = "fs_fcs_vegetables_leaves",
+  fsl_fcs_fruit = "fs_fcs_fruit",
+  fsl_fcs_meat = "fs_fcs_meat_fish_eggs",
+  fsl_fcs_dairy = "fs_fcs_dairy",
+  fsl_fcs_sugar = "fs_fcs_sugar",
+  fsl_fcs_oil = "fs_fcs_oil_fat_butter"
+  ) %>%
+  add_hhs(
+  fsl_hhs_nofoodhh = "fs_hhs_nofood_yn",
+  fsl_hhs_nofoodhh_freq = "fs_hhs_nofood_freq",
+  fsl_hhs_sleephungry = "fs_hhs_sleephungry_yn",
+  fsl_hhs_sleephungry_freq = "fs_hhs_sleephungry_freq",
+  fsl_hhs_alldaynight = "fs_hhs_daynoteating_yn",
+  fsl_hhs_alldaynight_freq = "fs_hhs_daynoteating_freq",
+  yes_answer = "yes",
+  no_answer = "no",
+  rarely_answer = "rarely_1_2",
+  sometimes_answer = "sometimes_3_10",
+  often_answer = "often_10_times"
+  )
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you try the function `add_fcm_phase`?
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+The food consumption matrix needs 3 indicators, FCS, rCSI, HHS.
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Have you used the correct HHS category variable?
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+my_answer <- exercise_data %>% 
+  add_rcsi(
+    fsl_rcsi_lessquality = "rCSILessQlty",
+    fsl_rcsi_borrow = "rCSIBorrow",
+    fsl_rcsi_mealsize = "rCSIMealSize",
+    fsl_rcsi_mealadult = "rCSIMealAdult",
+    fsl_rcsi_mealnb = "rCSIMealNb"
+  ) %>%
+  add_fcm_phase(
+  )
+```
+:::
+
+## Practice 2
+
+- You receive a dataset, you need to review the following four indicators.
+
+  - Food Consumption Score: **fsl_fcs_score**, **fsl_fcs_cat**
+  - Household Hunger Score: **hhs_score**, **hhs_cat**
+  
+Don't forget to write the review.
+
+```{r}
+dataset_to_review <- read.csv("../inputs/06 - exercise - dataset_to_review.csv")
+
+dataset_without_indicators <- addindicators::addindicators_MSNA_template_data
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you try the function `review_variables`
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+How was the FSC created?
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+How was coded the category for the HHS? 
+Names in the dataset are: "hhs_cat", "hhs_score"
+Names created with `add_hhs` are: "fsl_hhs_cat", "fsl_hhs_score"
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+my_review <- dataset_without_indicators %>% 
+  add_fcs(
+  cutoffs = "normal",
+  fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
+  fsl_fcs_legumes = "fs_fcs_beans_nuts",
+  fsl_fcs_veg = "fs_fcs_vegetables_leaves",
+  fsl_fcs_fruit = "fs_fcs_fruit",
+  fsl_fcs_meat = "fs_fcs_meat_fish_eggs",
+  fsl_fcs_dairy = "fs_fcs_dairy",
+  fsl_fcs_sugar = "fs_fcs_sugar",
+  fsl_fcs_oil = "fs_fcs_oil_fat_butter"
+  ) %>%
+  add_hhs(
+  fsl_hhs_nofoodhh = "fs_hhs_nofood_yn",
+  fsl_hhs_nofoodhh_freq = "fs_hhs_nofood_freq",
+  fsl_hhs_sleephungry = "fs_hhs_sleephungry_yn",
+  fsl_hhs_sleephungry_freq = "fs_hhs_sleephungry_freq",
+  fsl_hhs_alldaynight = "fs_hhs_daynoteating_yn",
+  fsl_hhs_alldaynight_freq = "fs_hhs_daynoteating_freq",
+  yes_answer = "yes",
+  no_answer = "no",
+  rarely_answer = "rarely_1_2",
+  sometimes_answer = "sometimes_3_10",
+  often_answer = "often_10_times"
+  ) %>% 
+  select(uuid, fsl_fcs_cat, fsl_fcs_score, fsl_hhs_cat, fsl_hhs_score)
+dataset_to_review <- full_join(dataset_to_review, my_review, by = "uuid")
+
+review <- dataset_to_review %>% 
+  review_variables(columns_to_review = c("fsl_fcs_cat.x", "fsl_fcs_score.x", "hhs_cat", "hhs_score"),
+                   columns_to_compare_with = c("fsl_fcs_cat.y", "fsl_fcs_score.y", "fsl_hhs_cat", "fsl_hhs_score"))
+
+review$review_table %>% 
+  group_by(variable,review_check,review_comment) %>% 
+  tally()
+```
+
+- There are 10 fcs categories that are different.
+- There are 100 HHS categories that are different
+
+```{r}
+review$dataset %>% 
+  filter(!review_check_fsl_fcs_cat.x) %>% 
+  select(uuid, review_comment_fsl_fcs_cat.x, fsl_fcs_score.x, fsl_fcs_cat.x, fsl_fcs_cat.y)
+
+```
+- Food Consumption Score have different categories, what threshold were used to compute the FCS?  Maybe 28-42?
+
+
+```{r}
+review$dataset %>% 
+  filter(!review_check_hhs_cat) %>% 
+  select(hhs_cat, fsl_hhs_cat) %>% 
+  table(useNA = "ifany")
+```
+- HHS is fine. Labeling is different
+:::

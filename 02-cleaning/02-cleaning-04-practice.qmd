@@ -1,11 +1,11 @@
 ---
-title: "04 - Ejercicios (2)"
+title: "04 - Practice (2)"
 author: "Yann Say"
 date: last-modified
 
 ---
 
-# Ejercicios
+# Practice
 ```{r}
 #| warning: false
 library(cleaningtools)
@@ -16,9 +16,9 @@ my_kobo_survey <- cleaningtools::cleaningtools_survey
 my_kobo_choice <- cleaningtools::cleaningtools_choices
 ```
 
-## Ejercicio 1
+## Practice 1
 
-- Exporte el registro de limpieza creado previamente. El registro anterior ya esta cargado.
+- Export the cleaning log you have created previously. The previous log is loaded below.
 ```{r}
 previous_exercise_log <- readRDS("../inputs/03 - exercise - previous_log.RDS")
 
@@ -27,21 +27,19 @@ previous_exercise_log %>% names()
 
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Haga clic para obtener una pista.
+### Expand to get a hint.
 
-¿Intento usando la funcion `create_combined_log` ? 
-
+Did you try the function `create_combined_log`
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Haga clic para obtener una pista.
+### Expand to get a hint.
 
-¿Intento usando la funcion `create_xlsx_cleaning_log` ? 
-
+Did you try the function `create_xlsx_cleaning_log`
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Haga clic para ver la respuesta.
+### Expand to get the answer
 
 ```{r}
 #| output: false
@@ -56,30 +54,28 @@ previous_exercise_log %>%
 ```
 :::
 
+## Practice 2
 
-## Ejercicio 2
-
-- Cree los datos limpios a partir del conjunto de datos en bruto y del registro de limpieza completado.
+- Create the clean data from the raw dataset and the filled cleaning.
 
 ```{r}
 exercise_filled_log <- readxl::read_excel("../inputs/04 - exercise - cleaning_log - filled.xlsx", sheet = "cleaning_log")
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Haga clic para ver una pista.
+### Expand to get a hint
 
-¿Intento usando la funcion `create_clean_data` ?
+Did you try the function `create_clean_data`
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Haga clic para ver una pista.
+### Expand to get a hint
 
-¿Intento usando la funcion `recreate_parent_column` ?
-
+Did you try the function `recreate_parent_column`
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Haga clic para ver la respuesta.
+### Expand to get the answer
 
 ```{r}
 #| output: false
@@ -102,9 +98,9 @@ exercise_clean_dataset2 <- recreate_parent_column(exercise_clean_dataset,
 ```
 :::
 
-## Ejercicio 3
+## Practice 3
 
-- Revise la limpieza a continuación; si hay alguien más haciendo el ejercicio, puede intentar revisar la limpieza de esa persona.
+- Review the cleaning below, if there is someone else doing the exercise, you can try to review someone's cleaning.
 
 ```{r}
 exercise3_clean_dataset <- readxl::read_excel("../inputs/05 - exercise - clean dataset for review.xlsx")
@@ -114,20 +110,19 @@ exercise3_cleaning_log <- readxl::read_excel("../inputs/05 - exercise - clean da
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Haga clic para ver una pista.
+### Expand to get a hint
 
-¿Intento usando la funcion `review_cleaning` ?
-
+Did you try the function `review_cleaning`
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Haga clic para ver una pista.
+### Expand to get a hint
 
-¿ Separo el registro de limpieza ?
+Did you separate the cleaning log?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Haga clic para ver la respuesta.
+### Expand to get the answer
 
 ```{r}
 #| output: false

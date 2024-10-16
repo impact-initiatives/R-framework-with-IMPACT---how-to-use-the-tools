@@ -9,18 +9,26 @@ project:
     - 01-cleaning/01-cleaning-02-add-duration-others.es.qmd
     - 01-cleaning/01-cleaning-03-logical-with-lists.qmd
     - 01-cleaning/01-cleaning-03-logical-with-lists.es.qmd
-    - 01-cleaning/01-cleaning-04-exercise.qmd
-    - 01-cleaning/01-cleaning-04-exercise.es.qmd
+    - 01-cleaning/01-cleaning-04-practice.qmd
+    - 01-cleaning/01-cleaning-04-practice.es.qmd
     - 02-cleaning/02-cleaning-01-create-cleaning-log.qmd
     - 02-cleaning/02-cleaning-01-create-cleaning-log.es.qmd
     - 02-cleaning/02-cleaning-02-create-clean-dataset.qmd
     - 02-cleaning/02-cleaning-02-create-clean-dataset.es.qmd
     - 02-cleaning/02-cleaning-03-review-cleaning.qmd
     - 02-cleaning/02-cleaning-03-review-cleaning.es.qmd
-    - 02-cleaning/02-cleaning-04-exercise.qmd
-    - 02-cleaning/02-cleaning-04-exercise.es.qmd
+    - 02-cleaning/02-cleaning-04-practice.qmd
+    - 02-cleaning/02-cleaning-04-practice.es.qmd
     - 02-cleaning/02-cleaning-05-extra.qmd
     - 02-cleaning/02-cleaning-05-extra.es.qmd
+    - 03-composition/03-composition-01-add.qmd
+    - 03-composition/03-composition-01-add.es.qmd
+    - 03-composition/03-composition-02-review.qmd
+    - 03-composition/03-composition-02-review.es.qmd
+    - 03-composition/03-composition-03-practice.qmd
+    - 03-composition/03-composition-03-practice.es.qmd
+    - 03-composition/03-composition-04-extra.qmd
+    - 03-composition/03-composition-04-extra.es.qmd
 website:
   title: "Intoduction to R framework at IMPACT Initiatives"
   sidebar:
@@ -35,14 +43,20 @@ website:
           - 01-cleaning/01-cleaning-01-checks.qmd
           - 01-cleaning/01-cleaning-02-add-duration-others.qmd
           - 01-cleaning/01-cleaning-03-logical-with-lists.qmd
-          - 01-cleaning/01-cleaning-04-exercise.qmd
+          - 01-cleaning/01-cleaning-04-practice.qmd
       - section: "Cleaning - Creating a clean dataset"
         contents:
           - 02-cleaning/02-cleaning-01-create-cleaning-log.qmd
           - 02-cleaning/02-cleaning-02-create-clean-dataset.qmd
           - 02-cleaning/02-cleaning-03-review-cleaning.qmd
-          - 02-cleaning/02-cleaning-04-exercise.qmd
+          - 02-cleaning/02-cleaning-04-practice.qmd
           - 02-cleaning/02-cleaning-05-extra.qmd
+      - section: "Composition - Add indicators"
+        contents:
+          - 03-composition/03-composition-01-add.qmd
+          - 03-composition/03-composition-02-review.qmd
+          - 03-composition/03-composition-03-practice.qmd
+          - 03-composition/03-composition-04-extra.qmd
   repo-url: https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools
   repo-actions: [edit, source, issue]
 format:

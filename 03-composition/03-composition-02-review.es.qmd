@@ -1,0 +1,151 @@
+---
+title: "02 - Verificar un indicador"
+author: "Yann Say"
+date: last-modified
+
+---
+# Composición - verificar un indicador
+
+Las funciones de verificación de indicadores comparan dos indicadores entre si, no verifican cómo se creó el indicador ni buscan inconsistencias. Eso significa que, para revisar un indicador, es necesario crear uno y compararlo al otro.
+Para lo ultimo, se puede usar las funciones `review_one_variable` y `review_variables`.
+
+```{r}
+#| warning: false
+library(impactR4PHU)
+library(dplyr)
+
+my_data <- impactR4PHU::impactR4PHU_data_template |>  
+  filter(respondent_consent != "no") 
+my_data_with_indicators <- my_data %>%
+  add_fcs(
+  cutoffs = "normal"
+) %>%
+  add_hhs(
+  )
+```
+
+## review_variables
+
+Primero, creamos un nuevo conjunto de datos para la revisión.
+
+```{r}
+review_df <- my_data %>%
+  add_fcs(
+  cutoffs = "normal",
+  ) %>%
+  select(uuid, fsl_fcs_score, fsl_fcs_cat)
+```
+
+Luego, unimos los datos por revisar y el nuevo conjunto de datos.
+
+```{r}
+binded_df <- my_data_with_indicators %>%
+  full_join(review_df, by = "uuid")
+```
+
+::: {.callout-note .column-margin}
+Se recomienda usar un `full_join` en ligar de un `left/right_join`. De esa manera, se detectará si faltan valores.
+:::
+
+::: {.callout-note .column-margin}
+Al usar la función `join_*`, si hay dos columnas con el mismo nombre en los conjuntos de datos unidos, R añadira los prefijos ".x" y ".y" a dichas columnas.
+:::
+
+::: {.callout-tip appearance="minimal"}
+### review\_\*
+
+![](../config/images/verb - review.png)
+
+Las funciones**review_**\* revisan un objeto comparándolo con estándares u otro objeto y marcan las diferencias. Por ejemplo, revisando la limpiezo al comparar el conjunto de datos en bruto, el conjunto de datos limpio y el registro de limpieza o realizando un análisis y comparándolo con otro análisis.
+:::
+```{r}
+library(addindicators)
+```
+
+```{r}
+review_one_var <- review_variables(binded_df,
+  columns_to_review = "fsl_fcs_cat.x",
+  columns_to_compare_with = "fsl_fcs_cat.y")
+
+
+review_one_var %>% 
+  names()
+```
+La salida es una lista que contiene el conjunto de datos y una tabla de revisión.
+
+```{r}
+review_one_var$review_table %>% 
+  head()
+```
+
+Se puede hacer un resumen de la tabla de revisión para obtener una visión general mas rapidamente.
+
+```{r}
+review_one_var$review_table %>%
+  group_by(review_check, review_comment) %>%
+  tally()
+```
+
+Para ver cómo se muestran las diferencias, se introduce algo de ruido en el conjunto de datos.
+
+```{r}
+jittered_df <- binded_df
+set.seed(123)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_cat.x"] <- sample(unique(jittered_df$fsl_fcs_cat.y), 5, T)
+set.seed(124)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_cat.y"] <- sample(unique(jittered_df$fsl_fcs_cat.y), 5, T)
+set.seed(125)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_cat.x"] <- NA
+set.seed(1236)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_cat.y"] <- NA
+set.seed(1237)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_score.x"] <- sample(unique(jittered_df$fsl_fcs_score.x), 5, T)
+```
+
+```{r}
+review_one_variable_jittered <- review_variables(jittered_df,
+  columns_to_review = "fsl_fcs_cat.x",
+  columns_to_compare_with = "fsl_fcs_cat.y")
+
+review_one_variable_jittered$review_table %>%
+  group_by(review_check, review_comment) %>%
+  tally()
+```
+
+El conjunto de datos tiene nuevas columnas que ayudan a filtrar para una revisión más detallada.
+
+```{r}
+review_one_variable_jittered$dataset[, tail(names(review_one_variable_jittered$dataset), 5)] %>%
+  head()
+```
+```{r}
+review_one_variable_jittered$dataset %>%
+  filter(!review_check_fsl_fcs_cat.x) %>%
+  select(uuid, fsl_fcs_cat.x, fsl_fcs_cat.y, review_check_fsl_fcs_cat.x, review_comment_fsl_fcs_cat.x)
+```
+
+Si hay más de una variable por revisar, se puede usar vectores pareados.
+
+```{r}
+my_review <- review_variables(jittered_df,
+  columns_to_review = c("fsl_fcs_cat.x", "fsl_fcs_score.x"),
+  columns_to_compare_with = c("fsl_fcs_cat.y", "fsl_fcs_score.y")
+)
+```
+
+```{r}
+my_review$review_table %>%
+  group_by(variable, review_check, review_comment) %>%
+  tally()
+```
+```{r}
+my_review$dataset %>%
+  filter(!review_check_fsl_fcs_cat.x) %>%
+  select(uuid, fsl_fcs_cat.x, fsl_fcs_cat.y, review_comment_fsl_fcs_cat.x)
+```
+```{r}
+my_review$dataset %>%
+  filter(!review_check_fsl_fcs_score.x) %>%
+  select(uuid, fsl_fcs_score.x, fsl_fcs_score.y, review_comment_fsl_fcs_score.x)
+```
+

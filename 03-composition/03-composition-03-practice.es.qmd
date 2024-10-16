@@ -1,0 +1,203 @@
+---
+title: "03 - Práctica (3)"
+author: "Yann Say"
+date: last-modified
+
+---
+# Práctica 
+
+```{r}
+#| message: false
+library(impactR4PHU)
+library(addindicators)
+library(dplyr)
+```
+
+## Práctica 1
+
+- Añada la **matriz de puntaje de consumo de alimentos** al conjunto de datos. La matriz de consumo de alimentos es un indicador de seguridad alimentaria que utiliza el **puntaje de consumo de alimentos (FCS)**, el **puntaje de hambre en el hogar (HHS)** y el **índice reducido de estrategias de afrontamiento (rCSI)**.
+
+```{r}
+#| echo: false
+names_to_keep <- grep("rCSI", analysistools::analysistools_MSNA_template_survey$name, value = T)
+analysistools::analysistools_MSNA_template_survey %>% 
+  filter(name %in% names_to_keep,
+         name != "rCSI_module") %>% 
+  select(name, `label::english`, type) 
+```
+
+```{r}
+#| eval: false
+library(impactR4PHU)
+library(addindicators)
+library(dplyr)
+```
+
+```{r}
+exercise_data <- addindicators::addindicators_MSNA_template_data %>%
+  add_fcs(
+  cutoffs = "normal",
+  fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
+  fsl_fcs_legumes = "fs_fcs_beans_nuts",
+  fsl_fcs_veg = "fs_fcs_vegetables_leaves",
+  fsl_fcs_fruit = "fs_fcs_fruit",
+  fsl_fcs_meat = "fs_fcs_meat_fish_eggs",
+  fsl_fcs_dairy = "fs_fcs_dairy",
+  fsl_fcs_sugar = "fs_fcs_sugar",
+  fsl_fcs_oil = "fs_fcs_oil_fat_butter"
+  ) %>%
+  add_hhs(
+  fsl_hhs_nofoodhh = "fs_hhs_nofood_yn",
+  fsl_hhs_nofoodhh_freq = "fs_hhs_nofood_freq",
+  fsl_hhs_sleephungry = "fs_hhs_sleephungry_yn",
+  fsl_hhs_sleephungry_freq = "fs_hhs_sleephungry_freq",
+  fsl_hhs_alldaynight = "fs_hhs_daynoteating_yn",
+  fsl_hhs_alldaynight_freq = "fs_hhs_daynoteating_freq",
+  yes_answer = "yes",
+  no_answer = "no",
+  rarely_answer = "rarely_1_2",
+  sometimes_answer = "sometimes_3_10",
+  often_answer = "often_10_times"
+  )
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haga clic para ver una pista.
+
+¿Intento usar la función `add_fcm_phase` ?
+
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haga clic para ver una pista.
+
+La matriz de puntaje de consumo de alimentos necesita 3 indicadores: FCS, rCSI y HHS.
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haga clic para ver una pista.
+
+¿Ha utilizado la variable correcta de la categoría de HHS (puntaje de hambre en el hogar)?
+
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haga clic para ver la respuesta.
+
+```{r}
+#| output: false
+my_answer <- exercise_data %>% 
+  add_rcsi(
+    fsl_rcsi_lessquality = "rCSILessQlty",
+    fsl_rcsi_borrow = "rCSIBorrow",
+    fsl_rcsi_mealsize = "rCSIMealSize",
+    fsl_rcsi_mealadult = "rCSIMealAdult",
+    fsl_rcsi_mealnb = "rCSIMealNb"
+  ) %>%
+  add_fcm_phase(
+  )
+```
+:::
+
+## Práctica 2
+
+- En el siguiente conjunto de datos, debe revisar los siguientes indicadores.
+
+  - Puntaje de consumo de alimentos (Food Consumption Score) : **fcs_score**, **fcs_cat**
+  - Puntaje de hambre del hogar (Household Hunger Score) : **hhs_score**, **hhs_cat**
+  
+No olvide escribir la revisión.
+
+```{r}
+dataset_to_review <- read.csv("../inputs/06 - exercise - dataset_to_review.csv")
+
+dataset_without_indicators <- addindicators::addindicators_MSNA_template_data
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haga clic para ver una pista.
+
+¿Intento usando la funcion `review_variables` ?
+
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haga clic para ver una pista.
+
+¿Como fue definida la variable FCS ?
+
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Haga clic para ver una pista.
+
+¿Cómo se codificó la categoría para el HHS (puntaje de hambre en el hogar)?
+Nombres en el dataset son: "hhs_cat", "hhs_score"
+Nombres creados con `add_hhs` son: "fsl_hhs_cat", "fsl_hhs_score"
+
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haga clic para ver la respuesta.
+
+```{r}
+#| output: false
+my_review <- dataset_without_indicators %>% 
+  add_fcs(
+  cutoffs = "normal",
+  fsl_fcs_cereal = "fs_fcs_cereals_grains_roots_tubers",
+  fsl_fcs_legumes = "fs_fcs_beans_nuts",
+  fsl_fcs_veg = "fs_fcs_vegetables_leaves",
+  fsl_fcs_fruit = "fs_fcs_fruit",
+  fsl_fcs_meat = "fs_fcs_meat_fish_eggs",
+  fsl_fcs_dairy = "fs_fcs_dairy",
+  fsl_fcs_sugar = "fs_fcs_sugar",
+  fsl_fcs_oil = "fs_fcs_oil_fat_butter"
+  ) %>%
+  add_hhs(
+  fsl_hhs_nofoodhh = "fs_hhs_nofood_yn",
+  fsl_hhs_nofoodhh_freq = "fs_hhs_nofood_freq",
+  fsl_hhs_sleephungry = "fs_hhs_sleephungry_yn",
+  fsl_hhs_sleephungry_freq = "fs_hhs_sleephungry_freq",
+  fsl_hhs_alldaynight = "fs_hhs_daynoteating_yn",
+  fsl_hhs_alldaynight_freq = "fs_hhs_daynoteating_freq",
+  yes_answer = "yes",
+  no_answer = "no",
+  rarely_answer = "rarely_1_2",
+  sometimes_answer = "sometimes_3_10",
+  often_answer = "often_10_times"
+  ) %>% 
+  select(uuid, fsl_fcs_cat, fsl_fcs_score, fsl_hhs_cat, fsl_hhs_score)
+dataset_to_review <- full_join(dataset_to_review, my_review, by = "uuid")
+
+review <- dataset_to_review %>% 
+  review_variables(columns_to_review = c("fsl_fcs_cat.x", "fsl_fcs_score.x", "hhs_cat", "hhs_score"),
+                   columns_to_compare_with = c("fsl_fcs_cat.y", "fsl_fcs_score.y", "fsl_hhs_cat", "fsl_hhs_score"))
+
+review$review_table %>% 
+  group_by(variable,review_check,review_comment) %>% 
+  tally()
+```
+
+- Hay 10 categorías de FCS que son diferentes.
+- Hay 100 categorías de HHS que son diferentes.
+
+
+```{r}
+review$dataset %>% 
+  filter(!review_check_fsl_fcs_cat.x) %>% 
+  select(uuid, review_comment_fsl_fcs_cat.x, fsl_fcs_score.x, fsl_fcs_cat.x, fsl_fcs_cat.y)
+
+```
+- El puntaje de consumo de alimentos tiene diferentes categorías. ¿Qué umbrales se utilizaron para calcular el FCS? ¿Quizás 28-42?
+
+
+```{r}
+review$dataset %>% 
+  filter(!review_check_hhs_cat) %>% 
+  select(hhs_cat, fsl_hhs_cat) %>% 
+  table(useNA = "ifany")
+```
+
+- El HHS está bien. El etiquetado es diferente.
+:::
