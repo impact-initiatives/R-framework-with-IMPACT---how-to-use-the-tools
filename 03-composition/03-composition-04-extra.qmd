@@ -1,0 +1,10 @@
+---
+title: "04 - impactR4PHU and humind"
+author: "Yann Say"
+date: last-modified
+
+---
+# impactR4PHU and humind
+
+The functions about public health checks and indicators are more updated on the `impactR4PHU`. More information on [this repository](https://github.com/impact-initiatives/impactR4PHU).
+The functions about the Multi Sector Needs Index are in `humind`. More information on [this repository](https://github.com/impact-initiatives-hppu/humind).

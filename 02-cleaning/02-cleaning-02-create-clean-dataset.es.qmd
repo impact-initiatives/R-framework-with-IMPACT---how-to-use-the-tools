@@ -116,37 +116,3 @@ my_clean_data2$cleaning_log %>%
   select(uuid, question, old_value, new_value)
 ```
 
-## review_others
-
-En el registro de limpieza, algunos valores de texto abierto se cambian a vacío. Algunas preguntas de texto abierto están vinculadas a una lógica condicional, es decir, ¿qué es X? Otro, por favor especifique. En algunos casos, algunos valores deben ser cambiados.
-En el siguiente ejemplo, se cambio el valor de **water_supply_other_neighbourhoods_why*** de la encuesta **uuid 019bc718-c06a-46b8-bba8-c84f6c6efbd5**.
-
-```{r}
-my_filled_log %>% 
-  filter(question == "water_supply_other_neighbourhoods_why", 
-         change_type == "blank_response")
-```
-
-En la herramienta KOBO se puede notar una logical condicional basada en la variable **water_supply_other_neighbourhoods**.
-
-```{r}
-my_kobo_survey %>% 
-  filter(name == "water_supply_other_neighbourhoods_why") %>% 
-  select(type, name, relevant)
-```
-
-```{r}
-my_clean_data %>% 
-  filter(X_uuid == "019bc718-c06a-46b8-bba8-c84f6c6efbd5") %>% 
-  select(water_supply_other_neighbourhoods, water_supply_other_neighbourhoods_why	)
-```
-
-
-¿Debe cambiarse el valor de water_supply_other_neighbourhoods? Depende de la pregunta y de la lógica condicional, pero es importante señalarlos para que se pueda tomar una decisión.
-
-```{r}
-review_other_log <- review_others(dataset = my_clean_data2$data_with_fix_concat,
-                                  uuid_column = "X_uuid", 
-                                  kobo_survey = my_kobo_survey, 
-                                  columns_not_to_check = "consent_telephone_number")
-```
