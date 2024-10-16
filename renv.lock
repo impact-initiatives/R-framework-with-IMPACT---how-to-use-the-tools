@@ -563,7 +563,7 @@
       "Package": "curl",
       "Version": "5.2.3",
       "Source": "Repository",
-      "Repository": "https://cloud.r-project.org",
+      "Repository": "RSPM",
       "Requirements": [
         "R"
       ],
