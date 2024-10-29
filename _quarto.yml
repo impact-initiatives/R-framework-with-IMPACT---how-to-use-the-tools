@@ -29,6 +29,32 @@ project:
     - 03-composition/03-composition-03-practice.es.qmd
     - 03-composition/03-composition-04-extra.qmd
     - 03-composition/03-composition-04-extra.es.qmd
+    - 04-analysis/04-analysis-01-create-analysis.qmd
+    - 04-analysis/04-analysis-01-create-analysis.es.qmd
+    - 04-analysis/04-analysis-02-practice.qmd
+    - 04-analysis/04-analysis-02-practice.es.qmd
+    - 05-analysis-extended/05-analysis-01-loa.qmd
+    - 05-analysis-extended/05-analysis-01-loa.es.qmd
+    - 05-analysis-extended/05-analysis-02-ratio.qmd
+    - 05-analysis-extended/05-analysis-02-ratio.es.qmd
+    - 05-analysis-extended/05-analysis-03-review.qmd
+    - 05-analysis-extended/05-analysis-03-review.es.qmd
+    - 05-analysis-extended/05-analysis-04-practice.qmd
+    - 05-analysis-extended/05-analysis-04-practice.es.qmd
+    - 05-analysis-extended/05-analysis-05-extra.qmd
+    - 05-analysis-extended/05-analysis-05-extra.es.qmd
+    - 06-outputs/06-outputs-01-labels.qmd
+    - 06-outputs/06-outputs-01-labels.es.qmd
+    - 06-outputs/06-outputs-02-tables.qmd
+    - 06-outputs/06-outputs-02-tables.es.qmd
+    - 06-outputs/06-outputs-03-ggplot-theme.qmd
+    - 06-outputs/06-outputs-03-ggplot-theme.es.qmd
+    - 06-outputs/06-outputs-04-tables-for-maps.qmd
+    - 06-outputs/06-outputs-04-tables-for-maps.es.qmd
+    - 06-outputs/06-outputs-05-tabular-html.qmd
+    - 06-outputs/06-outputs-05-tabular-html.es.qmd
+    - 06-outputs/06-outputs-06-practice.qmd
+    - 06-outputs/06-outputs-06-practice.es.qmd
 website:
   title: "Intoduction to R framework at IMPACT Initiatives"
   sidebar:
@@ -57,6 +83,25 @@ website:
           - 03-composition/03-composition-02-review.qmd
           - 03-composition/03-composition-03-practice.qmd
           - 03-composition/03-composition-04-extra.qmd
+      - section: "Analysis - Simple analysis"
+        contents:
+          - 04-analysis/04-analysis-01-create-analysis.qmd
+          - 04-analysis/04-analysis-02-practice.qmd
+      - section: "Analysis - Extended analysis"
+        contents:
+          - 05-analysis-extended/05-analysis-01-loa.qmd
+          - 05-analysis-extended/05-analysis-02-ratio.qmd
+          - 05-analysis-extended/05-analysis-03-review.qmd
+          - 05-analysis-extended/05-analysis-04-practice.qmd
+          - 05-analysis-extended/05-analysis-05-extra.qmd
+      - section: "Outputs"
+        contents:
+          - 06-outputs/06-outputs-01-labels.qmd
+          - 06-outputs/06-outputs-02-tables.qmd
+          - 06-outputs/06-outputs-03-ggplot-theme.qmd
+          - 06-outputs/06-outputs-04-tables-for-maps.qmd
+          - 06-outputs/06-outputs-05-tabular-html.qmd
+          - 06-outputs/06-outputs-06-practice.qmd
   repo-url: https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools
   repo-actions: [edit, source, issue]
 format:
