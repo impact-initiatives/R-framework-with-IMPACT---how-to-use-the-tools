@@ -1,0 +1,133 @@
+---
+title: "04 - Practice (5)"
+author: "Yann Say"
+date: last-modified
+
+---
+# Practices
+
+## Practice 1
+
+```{r}
+#| message: false
+library(analysistools)
+library(dplyr)
+
+my_data <- analysistools::analysistools_MSNA_template_data
+
+sampling_frame <- data.frame(
+  strata = c("admin1a", "admin1b", "admin1c"),
+  population = c(100000, 200000, 300000)
+)
+```
+
+Create the analysis for the following indicators:
+
+- % of households having/had soap at home 
+- % of households by type of primary source of drinking water 
+- % of households by self-reported barriers to accessing health care	
+- Average household income over the 30 days prior to data collection (total)
+- Median household income over the 30 days prior to data collection (total)
+- Average household expenditures in the 6 months prior to data collection (health)
+- Median household expenditures in the 6 months prior to data collection (health)
+- Ratio household expenditures on health in the 6 months prior to data collection and the household income over the 30 days prior to data collection.
+- % of households per number of days when the household had to restrict consumption by adults in order for small children to eat to cope with a lack of food or money to buy it.
+
+The analysis should be at **admin1** level (the strata). 
+
+```{r}
+#| echo: false
+analysistools_MSNA_template_survey %>% 
+  filter(name %in% c("wash_soap", "wash_drinkingwatersource", "health_barriers", "income_v2_total", "expenditure_health", "rCSIMealAdult")) %>% 
+  select(name, `label::english`, type) %>% 
+  mutate(`label::english` = case_when(`label::english` == "${health_barriers_question_select}" ~ "What are your barriers to access health care?", 
+                                      TRUE ~ `label::english`))
+```
+```{r}
+exercise_data <- analysistools::analysistools_MSNA_template_data
+
+exercise_sampling_frame <- data.frame(
+  strata = c("admin1a", "admin1b", "admin1c"),
+  population = c(100000, 200000, 300000)
+)
+
+template_loa <- readxl::read_excel("../inputs/08 - exercise - template loa.xlsx")
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+*rCSIMealAdult* should be analysed as a categorical variable not a numerical variable to get the proportion per day.
+
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+exercise_data <- exercise_data %>%
+  add_weights(
+    exercise_sampling_frame,
+    "admin1", "strata", "population"
+  )
+
+exercise_design <- srvyr::as_survey_design(exercise_data, weights = "weights", strata = "admin1")
+
+exercise_loa <- readxl::read_excel("../inputs/09 - correction - loa.xlsx")
+
+exercise_results <- create_analysis(exercise_design, loa = exercise_loa, sm_separator = "/")
+
+```
+
+:::
+
+## Practice 2
+
+- Review this analysis 
+
+There is no weights. The strata are **admin1**
+```{r}
+analysis_to_review <- readxl::read_excel("../inputs/10 - exercise - analysis_to_review.xlsx")
+dataset_to_review <- readxl::read_excel("../inputs/10 - exercise - analysis_to_review.xlsx", sheet = "dataset")
+```
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+loa_for_review <- analysis_to_review %>% 
+  create_loa_from_results()
+
+review_design <- srvyr::as_survey_design(dataset_to_review, strata = "admin1")
+my_analysis_exercise <- create_analysis(review_design, loa = loa_for_review, sm_separator = "/")
+
+my_results_table_shorter <- my_analysis_exercise$results_table %>% 
+  select(analysis_key, stat)
+
+binded_results_table <- analysis_to_review %>% 
+  full_join(my_results_table_shorter, by = "analysis_key")
+
+exercise_review <- review_analysis(binded_results_table,
+                                   stat_columns_to_review = "stat.x",
+                                   stat_columns_to_compare_with = "stat.y", 
+                                   analysis_key_column = "analysis_key")
+
+exercise_review$review_table %>% 
+  group_by(review_check,review_comment) %>% 
+  tally()
+```
+
+:::
+
+## Extra
+
+How you would review an analysis that does not have an analysis key? (discussion)
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+- If the analysis is in long format, add the analysis key.
+- If the analysis is in a wide format, change to long format then add the analysis key.
+
+:::

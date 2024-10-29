@@ -1,0 +1,41 @@
+---
+title: "06 - Practice (6)"
+author: "Yann Say"
+date: last-modified
+---
+
+to be updated
+
+# Exercise
+
+## Exercise 1
+
+- Create an excel table with the strata in the rows and the variables in the columns.
+
+```{r}
+#| message: false
+library(presentresults)
+library(dplyr)
+```
+
+```{r}
+exercise_outputs <- readxl::read_excel("../inputs/10 - exercise - analysis_to_review.xlsx")
+
+```
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+exercise_outputs %>% 
+  create_table_group_x_variable() %>% 
+  create_xlsx_group_x_variable(file_path = "../outputs/06 - correction - group_x_variable_table.xlsx", overwrite = T) 
+  
+```
+:::
+
+## Exercise 2
+
+- Try the tabular html output. 
+- Try to edit the authors, RCID and the introduction.

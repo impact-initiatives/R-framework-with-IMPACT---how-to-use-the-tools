@@ -26,7 +26,7 @@ El marco se basa en :
     -   **Check**: (verificar) funciones que maracarán valores basándose en una verificación específica. Retornarán estos valores en un registro. Una función check_* devolverá una lista: el conjunto de datos verificado y el registro. La función toma un conjunto de datos como entrada y devuelve el conjunto de datos + el nuevo indicador (y cualquier paso intermedio utilizado para el cálculo).
     -   **Create**: (crear) funciones que crearán o transformaran algun objecto p.ej. functiones que crearán o transformarán algun objeto creando un registro de limpieza con las verificaciones por hacer, creando una tabla de resultados del análisis etc. Las salidas de las funciones **create\_**\* pueden tener formatos diversos.
     -   **Review**: (revisar) funciones que revisarán un objeto comparándolo con estándares u otro objeto y señalaran las diferencias. Por ejemplo, revisando la limpieza comparando el conjunto de datos original, el conjunto de datos limpio y el registro de limplieza o comparando los resultados de dos análisis.
--   ** 2 adjetivos**:
+-   **2 adjetivos**:
     - **Pipe-able**: (encadenable) En el marco, las funciones de la misma familia son encadenables (es decir, se pueden aplicar una después de la otra). En el siguiento ejemplo, se encadenan dos funciones **check\_**\*.
     - **Independiente**: En cualquier paso dado, el usuario puede cambiar de herramienta. Cada entrada y cada salida de un paso deben seguir el mismo formato y definición.
 
