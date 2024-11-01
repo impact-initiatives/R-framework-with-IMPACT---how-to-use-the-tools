@@ -4,6 +4,6 @@ author: "Yann Say"
 date: last-modified
 
 ---
-# Review templates
+# Plantillas de revisión
 
-There are some project templates that can be used to review the analysis. More information on [this repository](https://github.com/impact-initiatives/impacttemplates).
+Existen algunas plantillas de proyecto que pueden utilizarse para revisar el análisis. Más información en [este repositorio](https://github.com/impact-initiatives/impacttemplates).
