@@ -5000,7 +5000,7 @@ vertical-align: -.125em;
 <li>
 <a href="#create_analysis_ratio" id="toc-create_analysis_ratio" class="nav-link" data-scroll-target="#create_analysis_ratio"><code>create_analysis_ratio</code></a>
   <ul class="collapse">
-<li><a href="#arguments-of-create_analysis_ratio" id="toc-arguments-of-create_analysis_ratio" class="nav-link" data-scroll-target="#arguments-of-create_analysis_ratio">Arguments of <code>create_analysis_ratio</code></a></li>
+<li><a href="#argumentos-de-create_analysis_ratio" id="toc-argumentos-de-create_analysis_ratio" class="nav-link" data-scroll-target="#argumentos-de-create_analysis_ratio">Argumentos de <code>create_analysis_ratio</code></a></li>
   </ul>
 </li>
   </ul>
@@ -5034,7 +5034,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">29 de octubre de 2024</p>
+      <p class="date">4 de noviembre de 2024</p>
     </div>
   </div>
   
@@ -5067,7 +5067,7 @@ vertical-align: -.125em;
 <span></span>
 <span><span class="va">my_design</span> <span class="op">&lt;-</span> <span class="fu">srvyr</span><span class="fu">::</span><span class="fu"><a href="http://gdfe.co/srvyr/reference/as_survey_design.html">as_survey_design</a></span><span class="op">(</span><span class="va">my_data</span>, weights <span class="op">=</span> <span class="st">"weights"</span>, strata <span class="op">=</span> <span class="st">"admin1"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To calculate ratio, there are two functions <code>create_analysis_ratio</code> or <code>create_analysis</code> with a loa with more information.</p>
+<p>Para calcular un conciente, existen dos funciones: <code>create_analysis_ratio</code> o <code>create_analysis</code> con una loa que contiene más información.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_loa_with_ratio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"../inputs/07 - example - loa_with_ratio.csv"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -5217,14 +5217,14 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<section id="arguments-of-create_analysis_ratio" class="level3"><h3 class="anchored" data-anchor-id="arguments-of-create_analysis_ratio">Arguments of <code>create_analysis_ratio</code>
+<section id="argumentos-de-create_analysis_ratio" class="level3"><h3 class="anchored" data-anchor-id="argumentos-de-create_analysis_ratio">Argumentos de <code>create_analysis_ratio</code>
 </h3>
-<p><code>create_analysis_ratio</code> has two arguments: <code>numerator_NA_to_0</code> and <code>filter_denominator_0</code> that by default are set to TRUE.</p>
+<p><code>create_analysis_ratio</code> tiene dos argumentos: <code>numerator_NA_to_0</code> y <code>filter_denominator_0</code>, que por defecto están configurados como TRUE.</p>
 <ul>
-<li><p><code>numerator_NA_to_0</code> will turn all NA of the numerator into 0’s, default TRUE.</p></li>
-<li><p><code>filter_denominator_0</code> will remove all rows with 0’s in the denominator, default TRUE.</p></li>
+<li><p><code>numerator_NA_to_0</code> convertirá todos los valores NA del numerador en 0, con valor predeterminado TRUE.</p></li>
+<li><p><code>filter_denominator_0</code> eliminará todas las filas con 0 en el denominador, con valor predeterminado TRUE.</p></li>
 </ul>
-<p>The following example show a dataset with the number of children (<em>num_children</em>), the number of children enrolled to a school (<em>num_enrolled</em>) and the number of children attending school on a regular basis (<em>num_attending</em>).</p>
+<p>El siguiente ejemplo muestra un conjunto de datos con el número de niños (<em>num_children</em>), el número de niños inscritos en una escuela (<em>num_enrolled</em>) y el número de niños que asisten regularmente a la escuela (<em>num_attending</em>).</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">school_ex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  hh <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"hh1"</span>, <span class="st">"hh2"</span>, <span class="st">"hh3"</span>, <span class="st">"hh4"</span><span class="op">)</span>,</span>
@@ -5276,8 +5276,8 @@ vertical-align: -.125em;
 </div>
 </div>
 <ul>
-<li>What is the ratio between children attending school and the number of children ?</li>
-<li>How many households are included in the calculation?</li>
+<li>¿Cuál es la proporción entre los niños que asisten a la escuela y el número de niños?</li>
+<li>¿Cuántos hogares están incluidos en el cálculo?</li>
 </ul>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -5285,17 +5285,17 @@ vertical-align: -.125em;
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get the answer
+Haga clic para ver la respuesta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Default value will give a ratio of 0.2 as there are 1 child out of 5 attending school.</p>
-<p>numerator: 1 child from hh1 and 0 from hh3.</p>
-<p>denominator: 3 from hh1 and 2 from hh3. In the hh3, the num_attending is NA because there is a skip logic, there cannot be a child attending as none are enrolled.</p>
-<p>By default, the function has the argument <code>numerator_NA_to_0</code> set to TRUE to turn that NA into a 0.</p>
-<p>n and n_total are 2 as 2 households were included in the calculation. hh2 was not included in the calculation of totals. The argument <code>filter_denominator_0</code> set to TRUE removes that row.</p>
+<p>El valor predeterminado dará una proporción de 0.2, ya que hay 1 niño de cada 5 que asiste a la escuela.</p>
+<p>numerador: 1 niño del hogar hh1 y 0 del hogar hh3.</p>
+<p>denominador: 3 del hogar hh1 y 2 del hogar hh3. En el hogar hh3, el valor de num_attending es NA porque hay una lógica de omisión: no puede haber un niño asistiendo si ninguno está inscrito.</p>
+<p>Por defecto, la función tiene el argumento <code>numerator_NA_to_0</code> configurado en TRUE para convertir ese NA en un 0.</p>
+<p>n y n_total son 2, ya que se incluyeron 2 hogares en el cálculo. El hogar hh2 no fue incluido en el cálculo de los totales. El argumento <code>filter_denominator_0</code> configurado en TRUE elimina esa fila.</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/create_analysis_ratio.html">create_analysis_ratio</a></span><span class="op">(</span><span class="va">me_design</span>,</span>
 <span>  analysis_var_numerator <span class="op">=</span> <span class="st">"num_attending"</span>,</span>
@@ -5336,8 +5336,8 @@ Expand to get the answer
 </div>
 </div>
 <ul>
-<li>What will be the ratio if only <code>numerator_NA_to_0</code> is set to FALSE ?</li>
-<li>How many households are included in the calculation?</li>
+<li>¿Cuál será la proporción si solo <code>numerator_NA_to_0</code> se marca como FALSE?</li>
+<li>¿Cuántos hogares están incluidos en el cálculo?</li>
 </ul>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -5345,14 +5345,14 @@ Expand to get the answer
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get the answer
+Haga clic para ver la respuesta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Ratio will be 1/3, as hh3 with 2 children and NA for attending will be removed with the <code>na.rm = T</code> inside the <code>survey_ratio</code> calculation.</p>
-<p>n and n_total is 1 as only 1 household was used.</p>
+<p>La proporción será 1/3, ya que el hogar hh3 tiene 2 niños y NA para asistencia se eliminará con <code>na.rm = T</code> dentro del cálculo de <code>survey_ratio</code>.</p>
+<p>n y n_total es 1, ya que solo se utilizó 1 hogar.</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/create_analysis_ratio.html">create_analysis_ratio</a></span><span class="op">(</span><span class="va">me_design</span>,</span>
 <span>                      analysis_var_numerator <span class="op">=</span> <span class="st">"num_attending"</span>,</span>
@@ -5402,8 +5402,8 @@ Caused by warning in `qt()`:
 </div>
 </div>
 <ul>
-<li>What will be the ratio if only <code>filter_denominator_0</code> is set to FALSE ?</li>
-<li>How many households are included in the calculation?</li>
+<li>¿Cuál será la proporción si solo <code>filter_denominator_0</code> se marca como FALSE?</li>
+<li>¿Cuántos hogares están incluidos en el cálculo?</li>
 </ul>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -5411,13 +5411,14 @@ Caused by warning in `qt()`:
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get the answer
+Haga clic para ver la respuesta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>ratio will be 0.2 as there are 1 child out of 5 attending school. The number of household counted, n and n_total, is equal to 3 instead 2. The household with 0 child is counted in the totals. (01 + 0 + 0) / (3 + 0 + 2)</p>
+<p>La proporción será 0.2, ya que hay 1 niño de cada 5 que asiste a la escuela.<br>
+El número de hogares contados, n y n_total, es igual a 3 en lugar de 2. El hogar con 0 niños se cuenta en los totales. (01 + 0 + 0) / (3 + 0 + 2)</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/create_analysis_ratio.html">create_analysis_ratio</a></span><span class="op">(</span><span class="va">me_design</span>,</span>
 <span>                      analysis_var_numerator <span class="op">=</span> <span class="st">"num_attending"</span>,</span>

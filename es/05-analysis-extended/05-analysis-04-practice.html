@@ -4995,10 +4995,10 @@ vertical-align: -.125em;
    
   <ul>
 <li>
-<a href="#practices" id="toc-practices" class="nav-link active" data-scroll-target="#practices">Practices</a>
+<a href="#pr%C3%A1cticas" id="toc-prácticas" class="nav-link active" data-scroll-target="#pr%C3%A1cticas">Prácticas</a>
   <ul class="collapse">
-<li><a href="#practice-1" id="toc-practice-1" class="nav-link" data-scroll-target="#practice-1">Practice 1</a></li>
-  <li><a href="#practice-2" id="toc-practice-2" class="nav-link" data-scroll-target="#practice-2">Practice 2</a></li>
+<li><a href="#pr%C3%A1ctica-1" id="toc-práctica-1" class="nav-link" data-scroll-target="#pr%C3%A1ctica-1">Práctica 1</a></li>
+  <li><a href="#pr%C3%A1ctica-2" id="toc-práctica-2" class="nav-link" data-scroll-target="#pr%C3%A1ctica-2">Práctica 2</a></li>
   <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra">Extra</a></li>
   </ul>
 </li>
@@ -5031,7 +5031,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">29 de octubre de 2024</p>
+      <p class="date">4 de noviembre de 2024</p>
     </div>
   </div>
   
@@ -5040,8 +5040,8 @@ vertical-align: -.125em;
   
 
 
-</header><section id="practices" class="level1"><h1>Practices</h1>
-<section id="practice-1" class="level2"><h2 class="anchored" data-anchor-id="practice-1">Practice 1</h2>
+</header><section id="prácticas" class="level1"><h1>Prácticas</h1>
+<section id="práctica-1" class="level2"><h2 class="anchored" data-anchor-id="práctica-1">Práctica 1</h2>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/analysistools/">analysistools</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
@@ -5053,20 +5053,19 @@ vertical-align: -.125em;
 <span>  population <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100000</span>, <span class="fl">200000</span>, <span class="fl">300000</span><span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Create the analysis for the following indicators:</p>
+<p>Cree el análisis para los siguientes indicadores:</p>
 <ul>
-<li>% of households having/had soap at home</li>
-<li>% of households by type of primary source of drinking water</li>
-<li>% of households by self-reported barriers to accessing health care<br>
-</li>
-<li>Average household income over the 30 days prior to data collection (total)</li>
-<li>Median household income over the 30 days prior to data collection (total)</li>
-<li>Average household expenditures in the 6 months prior to data collection (health)</li>
-<li>Median household expenditures in the 6 months prior to data collection (health)</li>
-<li>Ratio household expenditures on health in the 6 months prior to data collection and the household income over the 30 days prior to data collection.</li>
-<li>% of households per number of days when the household had to restrict consumption by adults in order for small children to eat to cope with a lack of food or money to buy it.</li>
+<li>% de hogares que tienen/tenían jabón en casa</li>
+<li>% de hogares según el tipo de fuente principal de agua potable</li>
+<li>% de hogares según las barreras autodeclaradas para acceder a la atención médica</li>
+<li>Ingreso promedio del hogar durante los 30 días previos a la recolección de datos (total)</li>
+<li>Ingreso mediano del hogar durante los 30 días previos a la recolección de datos (total)</li>
+<li>Gastos promedio del hogar en los 6 meses previos a la recolección de datos (salud)</li>
+<li>Gastos medianos del hogar en los 6 meses previos a la recolección de datos (salud)</li>
+<li>Proporción de gastos del hogar en salud en los 6 meses previos a la recolección de datos y el ingreso del hogar durante los 30 días previos a la recolección de datos.</li>
+<li>% de hogares según el número de días en que el hogar tuvo que restringir el consumo de adultos para que los niños pequeños pudieran comer como una forma de afrontar la falta de alimentos o dinero para comprarlos.</li>
 </ul>
-<p>The analysis should be at <strong>admin1</strong> level (the strata).</p>
+<p>El análisis debe realizarse a nivel de <strong>admin1</strong> (la estratificación).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div class="kable-table">
@@ -5133,13 +5132,13 @@ vertical-align: -.125em;
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get a hint
+Haga clic para obtener una pista
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><em>rCSIMealAdult</em> should be analysed as a categorical variable not a numerical variable to get the proportion per day.</p>
+<p><em>rCSIMealAdult</em> debe analizarse como una variable categórica y no como una variable numérica para obtener la proporción por día.</p>
 </div>
 </div>
 </div>
@@ -5149,7 +5148,7 @@ Expand to get a hint
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get the answer
+Haga clic para ver la respuesta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -5171,11 +5170,11 @@ Expand to get the answer
 </div>
 </div>
 </div>
-</section><section id="practice-2" class="level2"><h2 class="anchored" data-anchor-id="practice-2">Practice 2</h2>
+</section><section id="práctica-2" class="level2"><h2 class="anchored" data-anchor-id="práctica-2">Práctica 2</h2>
 <ul>
-<li>Review this analysis</li>
+<li>Revise este análisis</li>
 </ul>
-<p>There is no weights. The strata are <strong>admin1</strong></p>
+<p>No hay ponderaciones. La estratificación es <strong>admin1</strong>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">analysis_to_review</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/10 - exercise - analysis_to_review.xlsx"</span><span class="op">)</span></span>
 <span><span class="va">dataset_to_review</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/10 - exercise - analysis_to_review.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"dataset"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5186,7 +5185,7 @@ Expand to get the answer
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get the answer
+Haga clic para ver la respuesta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -5245,22 +5244,22 @@ Joining with `by = join_by(admin1, hoh_age)`</code></pre>
 </div>
 </div>
 </section><section id="extra" class="level2"><h2 class="anchored" data-anchor-id="extra">Extra</h2>
-<p>How you would review an analysis that does not have an analysis key? (discussion)</p>
+<p>¿Cómo revisaría un análisis que no tiene una clave de análisis? (discusión)</p>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get the answer
+Haga clic para ver la respuesta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>If the analysis is in long format, add the analysis key.</li>
-<li>If the analysis is in a wide format, change to long format then add the analysis key.</li>
+<li>Si el análisis está en formato largo, agregue la clave de análisis.</li>
+<li>Si el análisis está en formato ancho, cambie al formato largo y luego agregue la clave de análisis.</li>
 </ul>
 </div>
 </div>

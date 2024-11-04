@@ -4995,9 +4995,9 @@ vertical-align: -.125em;
    
   <ul>
 <li>
-<a href="#analysis---list-of-analysis" id="toc-analysis---list-of-analysis" class="nav-link active" data-scroll-target="#analysis---list-of-analysis">Analysis - list of analysis</a>
+<a href="#an%C3%A1lisis---lista-de-an%C3%A1lisis" id="toc-análisis---lista-de-análisis" class="nav-link active" data-scroll-target="#an%C3%A1lisis---lista-de-an%C3%A1lisis">Análisis - lista de análisis</a>
   <ul class="collapse">
-<li><a href="#create_analysis-and-list-of-analysis-loa" id="toc-create_analysis-and-list-of-analysis-loa" class="nav-link" data-scroll-target="#create_analysis-and-list-of-analysis-loa"><code>create_analysis</code> and list of analysis (loa)</a></li>
+<li><a href="#create_analysis-y-lista-de-an%C3%A1lisis-loa---list-of-analysis" id="toc-create_analysis-y-lista-de-análisis-loa---list-of-analysis" class="nav-link" data-scroll-target="#create_analysis-y-lista-de-an%C3%A1lisis-loa---list-of-analysis"><code>create_analysis</code> y lista de análisis (loa - list of analysis)</a></li>
   </ul>
 </li>
   </ul>
@@ -5029,7 +5029,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">29 de octubre de 2024</p>
+      <p class="date">4 de noviembre de 2024</p>
     </div>
   </div>
   
@@ -5057,19 +5057,19 @@ vertical-align: -.125em;
 <span>                                                  <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">num_enrolled_school_children</span></span>
 <span>                                                  <span class="op">)</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="analysis---list-of-analysis" class="level1"><h1>Analysis - list of analysis</h1>
-<section id="create_analysis-and-list-of-analysis-loa" class="level2"><h2 class="anchored" data-anchor-id="create_analysis-and-list-of-analysis-loa">
-<code>create_analysis</code> and list of analysis (loa)</h2>
-<p>List of analysis (loa) is a list with all analysis to be performed. It takes the form of a data frame with minimum 4 columns:</p>
+<section id="análisis---lista-de-análisis" class="level1"><h1>Análisis - lista de análisis</h1>
+<section id="create_analysis-y-lista-de-análisis-loa---list-of-analysis" class="level2"><h2 class="anchored" data-anchor-id="create_analysis-y-lista-de-análisis-loa---list-of-analysis">
+<code>create_analysis</code> y lista de análisis (loa - list of analysis)</h2>
+<p>La lista de análisis (loa) es una lista con todos los análisis que deben realizarse. Toma la forma de un dataframe con un mínimo de 4 columnas:</p>
 <ul>
 <li>
-<em>analysis_type</em> : The analysis type that should be performed.</li>
+<em>analysis_type</em>: El tipo de análisis que debe realizarse.</li>
 <li>
-<em>analysis_var</em> : The analysis variable or dependent variable.</li>
+<em>analysis_var</em>: La variable de análisis o variable dependiente.</li>
 <li>
-<em>group_var</em> : The grouping variable or independent variable.</li>
+<em>group_var</em>: La variable de agrupación o variable independiente.</li>
 <li>
-<em>level</em> : The confidence level (expressed between 0 and 1).</li>
+<em>level</em>: El nivel de confianza (expresado entre 0 y 1).</li>
 </ul>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_loa</span> <span class="op">&lt;-</span> <span class="fu">analysistools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/analysistools/reference/analysistools_MSNA_template_loa.html">analysistools_MSNA_template_loa</a></span></span>
@@ -5174,7 +5174,7 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<p>The loa can be passed as argument to the <code>create_analysis</code> function.</p>
+<p>La loa puede pasarse como argumento a la función <code>create_analysis</code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="va">my_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/add_weights.html">add_weights</a></span><span class="op">(</span><span class="va">sampling_frame</span>, <span class="st">"admin1"</span>, <span class="st">"strata"</span>, <span class="st">"population"</span><span class="op">)</span></span>
@@ -5182,7 +5182,7 @@ vertical-align: -.125em;
 <span><span class="va">my_design</span> <span class="op">&lt;-</span> <span class="fu">srvyr</span><span class="fu">::</span><span class="fu"><a href="http://gdfe.co/srvyr/reference/as_survey_design.html">as_survey_design</a></span><span class="op">(</span><span class="va">my_data</span>, weights <span class="op">=</span> <span class="st">"weights"</span>, strata <span class="op">=</span> <span class="st">"admin1"</span><span class="op">)</span></span>
 <span><span class="va">my_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/create_analysis.html">create_analysis</a></span><span class="op">(</span><span class="va">my_design</span>, loa <span class="op">=</span> <span class="va">my_loa</span>, sm_separator <span class="op">=</span> <span class="st">"/"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The calculations are made only for the indicators in the loa. That way the analysis can be tailored to specific needs.</p>
+<p>Los cálculos se realizan solo para los indicadores en la loa. De esa manera, el análisis puede adaptarse a necesidades específicas.</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">head_results_table</span> <span class="op">&lt;-</span> <span class="va">my_results</span><span class="op">$</span><span class="va">results_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span>

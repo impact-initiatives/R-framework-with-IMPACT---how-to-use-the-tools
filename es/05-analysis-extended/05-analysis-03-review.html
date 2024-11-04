@@ -4995,7 +4995,7 @@ vertical-align: -.125em;
    
   <ul>
 <li>
-<a href="#analysis---reviewing-the-analysis" id="toc-analysis---reviewing-the-analysis" class="nav-link active" data-scroll-target="#analysis---reviewing-the-analysis">Analysis - Reviewing the analysis</a>
+<a href="#an%C3%A1lisis---revisando-el-an%C3%A1lisis" id="toc-análisis---revisando-el-análisis" class="nav-link active" data-scroll-target="#an%C3%A1lisis---revisando-el-an%C3%A1lisis">Análisis - Revisando el análisis</a>
   <ul class="collapse">
 <li><a href="#create_loa_from_results" id="toc-create_loa_from_results" class="nav-link" data-scroll-target="#create_loa_from_results"><code>create_loa_from_results</code></a></li>
   <li><a href="#review_analysis" id="toc-review_analysis" class="nav-link" data-scroll-target="#review_analysis"><code>review_analysis</code></a></li>
@@ -5030,7 +5030,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">29 de octubre de 2024</p>
+      <p class="date">4 de noviembre de 2024</p>
     </div>
   </div>
   
@@ -5039,7 +5039,7 @@ vertical-align: -.125em;
   
 
 
-</header><section id="analysis---reviewing-the-analysis" class="level1 page-columns page-full"><h1>Analysis - Reviewing the analysis</h1>
+</header><section id="análisis---revisando-el-análisis" class="level1 page-columns page-full"><h1>Análisis - Revisando el análisis</h1>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/analysistools/">analysistools</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
@@ -5048,7 +5048,7 @@ vertical-align: -.125em;
 <span><span class="va">my_results</span> <span class="op">&lt;-</span> <span class="fu">analysistools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/analysistools/reference/analysistools_MSNA_template_no_ratio_results_table.html">analysistools_MSNA_template_no_ratio_results_table</a></span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="create_loa_from_results" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="create_loa_from_results"><code>create_loa_from_results</code></h2>
-<p>If the loa that was used was shared, it can be re-used. Otherwise, with the results table and the analysis key, the function <code>create_loa_from_results</code> will generate a loa that can be used to create the analysis for the review.</p>
+<p>Si la loa utilizada fue compartida, se puede reutilizar. De lo contrario, con la tabla de resultados y la clave de análisis, la función <code>create_loa_from_results</code> generará una loa que se puede utilizar para crear el análisis para la revisión.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_loa_for_review</span> <span class="op">&lt;-</span> <span class="va">my_results</span><span class="op">$</span><span class="va">results_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/create_loa_from_results.html">create_loa_from_results</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -5164,8 +5164,8 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>create_loa_from_results will not guess the arguments for <code>numerator_NA_to_0</code> and <code>filter_denominator_0</code>, they will be set to TRUE by default.</p>
-<p>The confidence level will also be set to .95 by default.</p>
+<p><code>create_loa_from_results</code> no adivinará los argumentos para <code>numerator_NA_to_0</code> y <code>filter_denominator_0</code>; estos se marcarán como TRUE por defecto.</p>
+<p>El nivel de confianza también se pondrá como 0.95 por defecto.</p>
 </div>
 </div></div></section><section id="review_analysis" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="review_analysis"><code>review_analysis</code></h2>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
@@ -5179,10 +5179,10 @@ review_*
 </div>
 <div class="callout-body-container callout-body">
 <p><img role="img" src="data:image/png;base64,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" class="img-fluid"></p>
-<p><strong>review_</strong>* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis.</p>
+<p>Las funciones <strong>review_</strong>* revisarán un objeto comparándolo con estándares u otro objeto y señalarán las diferencias. Por ejemplo, revisar la limpieza comparando el conjunto de datos sin procesar, el conjunto de datos limpio y el registro de limpieza; o revisar el análisis comparándolo con otro análisis.</p>
 </div>
 </div>
-<p><code>review_analysis</code> will compare 2 results together and present the differences. It will not check how the analysis was created nor check for inconsistencies. That mean, to review an analysis, it is necessary to create one and compare them.</p>
+<p><code>review_analysis</code> comparará dos resultados y presentará las diferencias. No verificará cómo se creó el análisis ni buscará inconsistencias. Esto significa que, para revisar un análisis, es necesario crear uno y compararlos.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_design_for_review</span> <span class="op">&lt;-</span> <span class="fu">srvyr</span><span class="fu">::</span><span class="fu"><a href="http://gdfe.co/srvyr/reference/as_survey_design.html">as_survey_design</a></span><span class="op">(</span><span class="va">my_data</span><span class="op">)</span></span>
 <span><span class="va">analysis_for_review</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/create_analysis.html">create_analysis</a></span><span class="op">(</span><span class="va">my_design_for_review</span>, <span class="va">my_loa_for_review</span>, sm_separator <span class="op">=</span> <span class="st">"/"</span><span class="op">)</span></span>
@@ -5190,7 +5190,7 @@ review_*
 <span><span class="va">binded_table</span> <span class="op">&lt;-</span> <span class="va">my_results</span><span class="op">$</span><span class="va">results_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">analysis_for_review</span><span class="op">$</span><span class="va">results_table</span>, by <span class="op">=</span> <span class="st">"analysis_key"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The binded table, i.e. with both results columns, can then be used to compared the 2 results. It will give back the results table and a review table.</p>
+<p>La tabla combinada, es decir, con ambas columnas de resultados, puede luego utilizarse para comparar los dos resultados. Devolverá la tabla de resultados y una tabla de revisión.</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_review</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/review_analysis.html">review_analysis</a></span><span class="op">(</span><span class="va">binded_table</span><span class="op">)</span></span>
 <span></span>
@@ -5203,7 +5203,7 @@ review_*
 <pre><code>[1] "results_table" "review_table" </code></pre>
 </div>
 </div>
-<p>The review table will tell if there is any difference.</p>
+<p>La tabla de revisión indicará si existe alguna diferencia.</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_review</span><span class="op">$</span><span class="va">review_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5288,7 +5288,7 @@ review_*
 </div>
 </div>
 </div>
-<p>It can be summarise with the <code>group_by</code> and <code>tally</code> functions</p>
+<p>Se puede resumir usando las funciones <code>group_by</code> y <code>tally</code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_review</span><span class="op">$</span><span class="va">review_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">stat</span>, <span class="va">review_check</span>, <span class="va">review_comment</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -5323,10 +5323,10 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><em>analysis_key</em> are equivalent of an unique identifier. All analysis key should be unique.</p>
+<p>La <em>analysis_key</em> es equivalente a un identificador único. Todas las claves de análisis deben ser únicas.</p>
 </div>
 </div></div>
-<p>The following part adds some noise to show how difference would appear.</p>
+<p>La siguiente parte agrega algo de ruido para mostrar cómo aparecerían las diferencias.</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">jittered_results_table</span> <span class="op">&lt;-</span> <span class="va">binded_table</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
@@ -5384,7 +5384,7 @@ Nota
 </div>
 </div>
 </div>
-<p>The results table has new columns, in particular the review_check_* and review_comment_*. They can help to filter for the differences and explore.</p>
+<p>La tabla de resultados tiene nuevas columnas, en particular <em>review_check_</em> y <em>review_comment_</em>. Estas pueden ayudar a filtrar las diferencias y explorarlas.</p>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_jittered_review</span><span class="op">$</span><span class="va">results_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">review_check_stat.x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
