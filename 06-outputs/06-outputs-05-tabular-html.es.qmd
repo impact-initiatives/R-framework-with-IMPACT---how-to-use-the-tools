@@ -3,19 +3,21 @@ title: "05 - Tabular html"
 author: "Yann Say"
 date: last-modified
 ---
-# Outputs - Tabular HTML
+# Resultados - HTML Tabular
 
-The folders *05 - reach_tabular_html_\**  are example of Quarto projects. They can be used to produce some tables in the html format.
+Las carpetas *05 - reach_tabular_html_\** son ejemplos de proyectos Quarto. Pueden usarse para producir algunas tablas en formato HTML.
 
 ![](../config/images/tabular_html_folder.png)
 ![](../config/images/tabular_html_quarto_file.png)
 
-The params in the header can be change. Use *Render* after to create the html output.
+Los parámetros en el encabezado se pueden modificar. Use *Render* después para crear el resultado en formato HTML.
+
 
 ![](../config/images/tabular_html_output.png)
 
 
 ::: {.callout-note .column-margin}
-**The following is work in progress.** It will later become something like *create_html_variable_x_group*.
+**Lo siguiente está en desarrollo.** Más adelante se convertirá en algo como *create_html_variable_x_group*.
+
 :::
 
