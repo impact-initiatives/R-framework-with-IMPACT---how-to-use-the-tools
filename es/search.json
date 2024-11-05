@@ -312,7 +312,7 @@
     "href": "06-outputs/06-outputs-05-tabular-html.html",
     "title": "05 - Tabular html",
     "section": "",
-    "text": "Outputs - Tabular HTML\nThe folders 05 - reach_tabular_html_* are example of Quarto projects. They can be used to produce some tables in the html format.\n \nThe params in the header can be change. Use Render after to create the html output.\n\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nThe following is work in progress. It will later become something like create_html_variable_x_group.",
+    "text": "Resultados - HTML Tabular\nLas carpetas 05 - reach_tabular_html_* son ejemplos de proyectos Quarto. Pueden usarse para producir algunas tablas en formato HTML.\n \nLos parámetros en el encabezado se pueden modificar. Use Render después para crear el resultado en formato HTML.\n\n\n\n\n\n\n\n\n\n\nNota\n\n\n\nLo siguiente está en desarrollo. Más adelante se convertirá en algo como create_html_variable_x_group.",
     "crumbs": [
       "Outputs",
       "05 - Tabular html"
@@ -439,22 +439,22 @@
     ]
   },
   {
-    "objectID": "06-outputs/06-outputs-06-practice.html#exercise-1",
-    "href": "06-outputs/06-outputs-06-practice.html#exercise-1",
+    "objectID": "06-outputs/06-outputs-06-practice.html#ejercicio-1",
+    "href": "06-outputs/06-outputs-06-practice.html#ejercicio-1",
     "title": "06 - Practice (6)",
-    "section": "Exercise 1",
-    "text": "Exercise 1\n\nCreate an excel table with the strata in the rows and the variables in the columns.\n\n\nlibrary(presentresults)\nlibrary(dplyr)\n\n\nexercise_outputs &lt;- readxl::read_excel(\"../inputs/10 - exercise - analysis_to_review.xlsx\")\n\n\n\n\n\n\n\nExpand to get the answer\n\n\n\n\n\n\nexercise_outputs %&gt;% \n  create_table_group_x_variable() %&gt;% \n  create_xlsx_group_x_variable(file_path = \"../outputs/06 - correction - group_x_variable_table.xlsx\", overwrite = T)",
+    "section": "Ejercicio 1",
+    "text": "Ejercicio 1\n\nCree una tabla de Excel con la estratificación en las filas y las variables en las columnas.\n\n\nlibrary(presentresults)\nlibrary(dplyr)\n\n\nexercise_outputs &lt;- readxl::read_excel(\"../inputs/10 - exercise - analysis_to_review.xlsx\")\n\n\n\n\n\n\n\nHaga clic para ver la respuesta\n\n\n\n\n\n\nexercise_outputs %&gt;% \n  create_table_group_x_variable() %&gt;% \n  create_xlsx_group_x_variable(file_path = \"../outputs/06 - correction - group_x_variable_table.xlsx\", overwrite = T)",
     "crumbs": [
       "Outputs",
       "06 - Practice (6)"
     ]
   },
   {
-    "objectID": "06-outputs/06-outputs-06-practice.html#exercise-2",
-    "href": "06-outputs/06-outputs-06-practice.html#exercise-2",
+    "objectID": "06-outputs/06-outputs-06-practice.html#ejercicio-2",
+    "href": "06-outputs/06-outputs-06-practice.html#ejercicio-2",
     "title": "06 - Practice (6)",
-    "section": "Exercise 2",
-    "text": "Exercise 2\n\nTry the tabular html output.\nTry to edit the authors, RCID and the introduction.",
+    "section": "Ejercicio 2",
+    "text": "Ejercicio 2\n\nPruebe el resultado en formato HTML tabular.\nIntente editar los autores, RCID y la introducción.",
     "crumbs": [
       "Outputs",
       "06 - Practice (6)"
