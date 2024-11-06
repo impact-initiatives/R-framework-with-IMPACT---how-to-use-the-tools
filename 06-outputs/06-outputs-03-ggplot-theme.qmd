@@ -3,4 +3,116 @@ title: "03 - ggplot2 theme"
 author: "Yann Say"
 date: last-modified
 ---
-to be created
+```{r setup}
+library(presentresults)
+library(ggplot2)
+```
+
+The aim of the themes is to help giving an "IMPACT" touch to the graphs, not to create them. The graph should already be created, i.e. type of plots, and the correct aesthetics, labeling, etc. 
+
+The following example aims to plot the percentages of households by category of water sources, by gender of the head of households *(This a dummy dataset)*.
+
+## Barplot without formating
+```{r}
+data_to_plot <- presentresults::presentresults_MSNA2024_labelled_results_table |>
+  dplyr::filter(
+    analysis_var == "wash_drinking_water_source_cat",
+    group_var == "hoh_gender", 
+    group_var_value %in% c("male", "female")
+  ) |> 
+  dplyr::mutate(label_analysis_var_value = factor(label_analysis_var_value,
+                                                  levels = c("Improved",
+                                                             "Unimproved",
+                                                             "Surface water",
+                                                             "Undefined")))
+
+initialplot <- data_to_plot %>%
+  ggplot2::ggplot() +
+  ggplot2::geom_col(
+    ggplot2::aes(
+      x = label_analysis_var_value,
+      y = stat,
+      fill = label_group_var_value
+    ),
+    position = "dodge"
+  ) +
+  ggplot2::labs(
+    title = stringr::str_wrap(unique(data_to_plot$indicator), 50),
+    x = stringr::str_wrap(unique(data_to_plot$label_analysis_var), 50),
+    fill = stringr::str_wrap(unique(data_to_plot$label_group_var), 20)
+  )
+```
+
+
+```{r, fig.width=8, fig.height=4, fig.cap="Initial plot without theme."}
+initialplot
+```
+
+## `theme_barplot`
+
+`theme_barplot` will give REACH color palette to the bar plot, put the y-axis to 0 to 100%.
+```{r, fig.width=8, fig.height=4, fig.cap="Initial plot without `theme_barplot`"}
+initialplot + 
+  theme_barplot()
+```
+
+## `theme_impact`
+
+`theme_impact` will change the background and color of the title.
+
+```{r, fig.width=8, fig.height=4, fig.cap="Initial plot without `theme_barplot` and `theme_impact`"}
+initialplot + 
+  theme_barplot() +
+  theme_impact("reach")
+```
+
+## Other palettes
+
+```{r, fig.width=8, fig.height=4, fig.cap="Initial plot without `theme_barplot` and `theme_impact` set with IMPACT theme"}
+initialplot + 
+  theme_barplot(palette = impact_palettes$impact_palette) +
+  theme_impact("impact")
+```
+
+Some palettes are available in the `impact_palettes` object.
+```{r}
+impact_palettes
+```
+
+## Errors and number of colors
+
+The palette should have enough color to match the scale fill. The impact palette only has 3 colors while the graph needs 4.
+
+```{r, error=TRUE}
+data_to_plot <- presentresults::presentresults_MSNA2024_labelled_results_table |>
+  dplyr::filter(
+    analysis_var == "snfi_fds_cannot_cat",
+    group_var == "hoh_gender")
+
+initialplot <- data_to_plot %>%
+  ggplot2::ggplot() +
+  ggplot2::geom_col(
+    ggplot2::aes(
+      x = label_analysis_var_value,
+      y = stat,
+      fill = label_group_var_value
+    ),
+    position = "dodge"
+  ) +
+  ggplot2::labs(
+    title = stringr::str_wrap(unique(data_to_plot$indicator), 50),
+    x = stringr::str_wrap(unique(data_to_plot$label_analysis_var), 50),
+    fill = stringr::str_wrap(unique(data_to_plot$label_group_var), 20)
+  )
+initialplot + 
+  theme_barplot(palette = impact_palettes$impact_palette) +
+  theme_impact("impact")
+```
+
+If you need more colors, have a look at the `grDevices::colorRampPalette`
+```{r}
+function_couleur <- grDevices::colorRampPalette(impact_palettes$divergent_with_neutral)
+function_couleur(20)
+```
+
+This is section comes from this [vignette](https://impact-initiatives.github.io/presentresults/articles/IMPACT_ggplot2_theme.html). 

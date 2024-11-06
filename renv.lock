@@ -169,10 +169,10 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "impact-initiatives",
       "RemoteRepo": "addindicators",
-      "RemoteRef": "master",
-      "RemoteSha": "dfaaee4b75566b5c1617c62b4c101a764dc22772",
+      "RemoteUsername": "impact-initiatives",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "7b59b6bd0f4c220dd6fe826f45de3e4fb5b58c41",
       "Requirements": [
         "R",
         "dplyr",
@@ -182,19 +182,19 @@
         "rlang",
         "tidyr"
       ],
-      "Hash": "dc3ca81ae60fd6951fe8f98aa7990f0d"
+      "Hash": "dce388d878070642cab762f89449add6"
     },
     "analysistools": {
       "Package": "analysistools",
       "Version": "0.0.0.902",
       "Source": "GitHub",
+      "Remotes": "impact-initiatives/addindicators, impact-initiatives/cleaningtools",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "impact-initiatives",
       "RemoteRepo": "analysistools",
-      "RemoteRef": "main",
-      "RemoteSha": "c2314baa811ce588474cde6d2cdb0eb30518f3a3",
-      "Remotes": "impact-initiatives/addindicators, impact-initiatives/cleaningtools",
+      "RemoteUsername": "impact-initiatives",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "9083c6b5d271a9ca9b0930a48def7131e950cbb1",
       "Requirements": [
         "R",
         "addindicators",
@@ -209,7 +209,7 @@
         "tidyr",
         "tidyselect"
       ],
-      "Hash": "245e1c538d321dc9db52573800a2d387"
+      "Hash": "aa1f4be17c435026c1be78e2082a763b"
     },
     "apyramid": {
       "Package": "apyramid",
@@ -254,10 +254,10 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "ropensci-review-tools",
       "RemoteRepo": "babelquarto",
-      "RemoteRef": "main",
-      "RemoteSha": "fb62550a4aa69089372c69ed77541f515a794379",
+      "RemoteUsername": "ropensci-review-tools",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "f3f4ce6c9e3e1c6d5c2f57f471f0f78248f08853",
       "Requirements": [
         "brio",
         "cli",
@@ -271,7 +271,7 @@
         "xml2",
         "yaml"
       ],
-      "Hash": "b12851424eb4296750a5b3e3393a1643"
+      "Hash": "75d70f6a50549a8dcc6f44926ab2729e"
     },
     "backports": {
       "Package": "backports",
@@ -422,13 +422,13 @@
       "Package": "cleaningtools",
       "Version": "0.0.0.9003",
       "Source": "GitHub",
+      "Remotes": "edouard-legoupil/riddle",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "impact-initiatives",
       "RemoteRepo": "cleaningtools",
-      "RemoteRef": "master",
-      "RemoteSha": "8fbce5e66a0c5d79e4251429273f869688640f3a",
-      "Remotes": "edouard-legoupil/riddle",
+      "RemoteUsername": "impact-initiatives",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "0188a36a5feb5d6b87a9365e22c3cd8fe4c4b3b2",
       "Requirements": [
         "R",
         "assertthat",
@@ -453,7 +453,7 @@
         "tidyselect",
         "utils"
       ],
-      "Hash": "51a474728f8c0a248aef8764e56c01b5"
+      "Hash": "868d4cc33bcfbd7c8c8b62d9e1f18027"
     },
     "cli": {
       "Package": "cli",
@@ -1547,29 +1547,31 @@
     },
     "presentresults": {
       "Package": "presentresults",
-      "Version": "0.0.0.9001",
+      "Version": "0.0.0.9002",
       "Source": "GitHub",
+      "Remotes": "impact-initiatives/analysistools",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "impact-initiatives",
       "RemoteRepo": "presentresults",
-      "RemoteRef": "main",
-      "RemoteSha": "0f6f9dc90023b8dc046e28c25fcd5297c835b13c",
-      "Remotes": "impact-initiatives/analysistools",
+      "RemoteUsername": "impact-initiatives",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "6219392a2983db6c90b5e7cb557db5e052b76fed",
       "Requirements": [
         "R",
         "analysistools",
         "dplyr",
+        "ggplot2",
         "glue",
         "magrittr",
         "openxlsx",
         "purrr",
         "rlang",
+        "scales",
         "stringr",
         "tidyr",
         "tidyselect"
       ],
-      "Hash": "a2902a62cebf388eebb4600254af22d2"
+      "Hash": "0bf24171841784369e234ffa88304fa9"
     },
     "prettyunits": {
       "Package": "prettyunits",
