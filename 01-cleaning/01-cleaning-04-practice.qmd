@@ -33,7 +33,7 @@ Try the function `check_pii`
 ```{r}
 #| output: false
 my_raw_dataset %>% 
-  check_pii(uuid_column = "X_uuid", words_to_look = c("telefono", "ubicacion"))
+  check_pii(uuid_column = "X_uuid")
 ```
 :::
 

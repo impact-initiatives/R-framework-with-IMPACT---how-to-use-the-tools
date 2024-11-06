@@ -45,8 +45,8 @@ project:
     - 05-analysis-extended/05-analysis-05-extra.es.qmd
     - 06-outputs/06-outputs-01-labels.qmd
     - 06-outputs/06-outputs-01-labels.es.qmd
-    - 06-outputs/06-outputs-02-table.qmd
-    - 06-outputs/06-outputs-02-table.es.qmd
+    - 06-outputs/06-outputs-02-tables.qmd
+    - 06-outputs/06-outputs-02-tables.es.qmd
     - 06-outputs/06-outputs-03-ggplot-theme.qmd
     - 06-outputs/06-outputs-03-ggplot-theme.es.qmd
     - 06-outputs/06-outputs-04-tables-for-maps.qmd

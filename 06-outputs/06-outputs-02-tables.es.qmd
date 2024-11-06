@@ -1,5 +1,5 @@
 ---
-title: "02 - Table"
+title: "02 - Tables"
 author: "Yann Say"
 date: last-modified
 ---
