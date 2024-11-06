@@ -4,9 +4,9 @@ author: "Yann Say"
 date: last-modified
 
 ---
-# Practice
+# Práctica
 
-## Practice 1
+## Práctica 1
 
 ```{r}
 library(analysistools)
@@ -30,18 +30,18 @@ exercise_data_shorter <- exercise_data_shorter[,1:30]
 ```
 
 
-With the dataset *exercise_data*, please do the following:
+Utilizando del conjunto de datos *exercise_data*, please do the following:
 
-- Create a results table at the level **respondent_gender**. Keep the strata at **admin1**
+- Cree una table de resultados agrupando unsando la variable **respondent_gender** y con los resultados al nivel del **admin1**.
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para obtener una pista.
 
-Did you try the argument *group_var* in `create_analysis` ?
+¿Intento especificando el valor del argumento *group_var* de la función `create_analysis` ?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta.
 
 ```{r}
 #| eval: false
@@ -52,9 +52,9 @@ my_answer_analysis <- create_analysis(my_exercise_design, group_var = "responden
 ```
 :::
 
-## Practice 2
+## Práctica 2
 
-- The analysis should be weighted, this is the sampling frame. Re-do the analysis at the overall level.
+Se debio de haber hecho el análisis usando los pesos. Aquí tiene el marco de muestreo. Esta vez, haga el análisis al nivel global usando los pesos.
 
 ```{r}
 sampling_frame <- data.frame(
@@ -65,19 +65,22 @@ sampling_frame
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para obtener una pista.
 
-Did you try the function *add_weights* ?
+¿Intentó usar la función *add_weights*?
+
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para obtener una pista
 
-Did you modify your design object?
+¿Modificó su objeto de diseño?
+
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta
+
 
 ```{r}
 #| eval: false

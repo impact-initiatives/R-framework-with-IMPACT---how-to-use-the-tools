@@ -6,53 +6,52 @@ date: last-modified
 ---
 # Analysis - Introduction
 
-The framework is built around 4 steps: cleaning, composition, analysis, outputs
+El marco se basa en 4 pasos: limpieza, composición, análisis, resultados.
 
--   *Cleaning*: any manipulation to go from the raw data to the clean data
--   *Composition*: any manipulation before the analysis e.g. adding indicators, adding information from loop or main, aok aggregation, etc.
--   *Analysis*: any manipulation regarding only the analysis
--   *Outputs*: any manipulation to format the outputs.
+-   *Limpieza*: cualquier manipulación para pasar de los datos en bruto a los datos limpios
+-   *Composición*:  cualquier manipulación antes del análisis, por ejemplo, agregar indicadores, agregar información del bucle o principal, agregación de aok, etc.
+-   *Análisis*: cualquier manipulación que se refiere únicamente al análisis
+-   *Resultados*: cualquier manipulación para formatear los resultados.
 
-The following section will present some introduction about the analysis.
+La siguiente sección presentará una introducción sobre el análisis.
 
 ![](../config/images/step - analysis.png)
 
-The third step of the framework is the analysis. The analysis step aims to create a long table with one result per line and an **analysis key**. That table is not made for a human to read it but to store some information. Analysis stops at the results table: long format, stat + analysis key
+El tercer paso del marco es el análisis. El paso de análisis tiene como objetivo crear una tabla larga con un resultado por línea y una **clave de análisis**. Esa tabla no está hecha para que un humano la lea, sino para almacenar información. El análisis se detiene al producir la tabla de resultados: formato largo, estadística + clave de análisis.
 
-The analysis key format is currently :
 
-- analysis type @/@ analysis variable %/% analysis variable value @/@ grouping variable %/% grouping variable value
+- tipo de análisis @/@ variable de análisis %/% valor de la variable de análisis @/@ variable de agrupamiento %/% valor de la variable de agrupamiento
 
-- analysis type @/@ dependent variable %/% dependent variable value @/@ independent variable %/% independent variable value
+- tipo de análisis @/@ variable dependiente %/% valor de la variable dependiente @/@ variable independiente %/% valor de la variable independiente
 
-If there are two or more grouping variables it would look like that
+Si hay dos o más variables de agrupamiento, se vería así:
 
-- analysis type @/@ analysis variable %/% analysis variable value @/@ grouping variable 1 %/% grouping variable value 1 -/-  grouping variable 2 %/% grouping variable value 2
+- tipo de análisis @/@ variable de análisis %/% valor de la variable de análisis @/@ variable de agrupamiento 1 %/% valor de la variable de agrupamiento 1 -/- variable de agrupamiento 2 %/% valor de la variable de agrupamiento 2
 
-Same would apply for analysis variable in case of a ratio.
+Lo mismo se aplicaría en el caso de una proporción.
 
-The current analysis types are :
+Los tipos de análisis actuales son:
 
-- mean
-- median
-- prop_select_one: proportion for select one
-- prop_select_multiple: proportion for select multiple
-- ratio
+- media
+- mediana
+- prop_select_one: proporción par las preguntas de selección única
+- prop_select_multiple: proporción para las preguntas de selección múltiple
+- cociente (ratio)
 
 ## create_analysis
 
-Any **create_analysis_*** function will need a survey to be used, not a dataset. A survey object will be defined with the weights, strata and cluster information if they exists. 
+Cualquier función **create_analysis_*** necesitará una encuesta (survey objects) para ser utilizada, no un conjunto de datos. Se definirá un objeto de encuesta con la información de pesos, estratos y clúster, si existen.
 
 ::: {.callout-tip appearance="minimal"}
 ### create\_\*
 
 ![](../config/images/verb - create.png)
 
-**create_**\* functions will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output.
+Las funciones **create_**\*  crearán o transformarán algo, por ejemplo, crearán un registro de limpieza con las verificaciones que deben completarse, crearán una tabla de resultados de análisis, crearán un output.
 
-Outputs from **create_**\* functions outputs can be in different shape, format, etc. 
+Las salidas de las funciones **create_**\*  pueden tener diferentes formas, formatos, etc.
 
-**create_**\* function is catch-all.
+La función **create_**\* es un término general que abarca diversas operaciones.
 :::
 
 ```{r}
@@ -74,7 +73,8 @@ my_data_shorter <- analysistools_MSNA_template_data[, !only_nas] %>%
 ```
 
 ::: {.callout-note .column-margin}
-At the moment, `create_analysis` breaks where a column only have missing values. They need to be removed beforehand.
+
+Al momento, la función `create_analysis` falla cuando una columna contiene solo valores faltantes. Es necerario eliminarlos de antemano (reemplazándolos con una cadena de caracteres, por ejemplo.).
 :::
 
 ```{r}
@@ -85,15 +85,15 @@ my_analysis <- create_analysis(my_design, sm_separator = "/")
 ```
 
 ::: {.callout-note .column-margin}
-`create_analysis` uses a survey design, not a dataset. Survey design object contains the information on the design of the survey, such as stratas, cluster, weights. It is built with **srvyr** package which is a wrapper around [**survey** package](http://r-survey.r-forge.r-project.org/survey/).
+La función `create_analysis` toma como entrada un objeto de tipo "survey design" (diseño de encuesta), no un conjunto de datos. Un diseño de encuesta contiene la información sobre el diseño de la encuesta, como estratos, clústeres y pesos. Se construye con el paquete srvyr, que es un envoltorio alrededor del [paquete **survey**](http://r-survey.r-forge.r-project.org/survey/).
 
 :::
 
-`create_analysis` returns a list with:
+La función `create_analysis` retorna una lista que contiene:
 
-- Results table: a long table with summary statistics per line
-- Dataset: the dataset used with the survey design
-- List of analysis: all the analysis that were performed 
+- Tabla de resultados: una tabla larga con un valor por línea;
+- Conjunto de datos: el conjunto de datos utilizado en el diseño de encuesta;
+- Lista de análisis: todos los análisis que se realizaron
 
 ```{r}
 my_analysis %>%

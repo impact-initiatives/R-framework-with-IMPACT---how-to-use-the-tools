@@ -4,9 +4,9 @@ author: "Yann Say"
 date: last-modified
 
 ---
-# Practices
+# Prácticas
 
-## Practice 1
+## Práctica 1
 
 ```{r}
 #| message: false
@@ -21,19 +21,20 @@ sampling_frame <- data.frame(
 )
 ```
 
-Create the analysis for the following indicators:
+Cree el análisis para los siguientes indicadores:
 
-- % of households having/had soap at home 
-- % of households by type of primary source of drinking water 
-- % of households by self-reported barriers to accessing health care	
-- Average household income over the 30 days prior to data collection (total)
-- Median household income over the 30 days prior to data collection (total)
-- Average household expenditures in the 6 months prior to data collection (health)
-- Median household expenditures in the 6 months prior to data collection (health)
-- Ratio household expenditures on health in the 6 months prior to data collection and the household income over the 30 days prior to data collection.
-- % of households per number of days when the household had to restrict consumption by adults in order for small children to eat to cope with a lack of food or money to buy it.
+- % de hogares que tienen/tenían jabón en casa
+- % de hogares según el tipo de fuente principal de agua potable
+- % de hogares según las barreras autodeclaradas para acceder a la atención médica
+- Ingreso promedio del hogar durante los 30 días previos a la recolección de datos (total)
+- Ingreso mediano del hogar durante los 30 días previos a la recolección de datos (total)
+- Gastos promedio del hogar en los 6 meses previos a la recolección de datos (salud)
+- Gastos medianos del hogar en los 6 meses previos a la recolección de datos (salud)
+- Proporción de gastos del hogar en salud en los 6 meses previos a la recolección de datos y el ingreso del hogar durante los 30 días previos a la recolección de datos.
+- % de hogares según el número de días en que el hogar tuvo que restringir el consumo de adultos para que los niños pequeños pudieran comer como una forma de afrontar la falta de alimentos o dinero para comprarlos.
 
-The analysis should be at **admin1** level (the strata). 
+El análisis debe realizarse a nivel de **admin1** (la estratificación).
+
 
 ```{r}
 #| echo: false
@@ -55,14 +56,15 @@ template_loa <- readxl::read_excel("../inputs/08 - exercise - template loa.xlsx"
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para obtener una pista
 
-*rCSIMealAdult* should be analysed as a categorical variable not a numerical variable to get the proportion per day.
+*rCSIMealAdult* debe analizarse como una variable categórica y no como una variable numérica para obtener la proporción por día.
 
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta
+
 
 ```{r}
 #| output: false
@@ -82,18 +84,20 @@ exercise_results <- create_analysis(exercise_design, loa = exercise_loa, sm_sepa
 
 :::
 
-## Practice 2
+## Práctica 2
 
-- Review this analysis 
+- Revise este análisis
 
-There is no weights. The strata are **admin1**
+No hay ponderaciones. La estratificación es **admin1**.
+
 ```{r}
 analysis_to_review <- readxl::read_excel("../inputs/10 - exercise - analysis_to_review.xlsx")
 dataset_to_review <- readxl::read_excel("../inputs/10 - exercise - analysis_to_review.xlsx", sheet = "dataset")
 ```
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta
+
 
 ```{r}
 loa_for_review <- analysis_to_review %>% 
@@ -122,12 +126,13 @@ exercise_review$review_table %>%
 
 ## Extra
 
-How you would review an analysis that does not have an analysis key? (discussion)
+¿Cómo revisaría un análisis que no tiene una clave de análisis? (discusión)
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta
 
-- If the analysis is in long format, add the analysis key.
-- If the analysis is in a wide format, change to long format then add the analysis key.
+- Si el análisis está en formato largo, agregue la clave de análisis.
+- Si el análisis está en formato ancho, cambie al formato largo y luego agregue la clave de análisis.
+
 
 :::
