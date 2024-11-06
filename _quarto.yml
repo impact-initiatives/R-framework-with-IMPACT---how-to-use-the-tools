@@ -45,8 +45,8 @@ project:
     - 05-analysis-extended/05-analysis-05-extra.es.qmd
     - 06-outputs/06-outputs-01-labels.qmd
     - 06-outputs/06-outputs-01-labels.es.qmd
-    - 06-outputs/06-outputs-02-tables.qmd
-    - 06-outputs/06-outputs-02-tables.es.qmd
+    - 06-outputs/06-outputs-02-table.qmd
+    - 06-outputs/06-outputs-02-table.es.qmd
     - 06-outputs/06-outputs-03-ggplot-theme.qmd
     - 06-outputs/06-outputs-03-ggplot-theme.es.qmd
     - 06-outputs/06-outputs-04-tables-for-maps.qmd
@@ -97,7 +97,7 @@ website:
       - section: "Outputs"
         contents:
           - 06-outputs/06-outputs-01-labels.qmd
-          - 06-outputs/06-outputs-02-tables.qmd
+          - 06-outputs/06-outputs-02-table.qmd
           - 06-outputs/06-outputs-03-ggplot-theme.qmd
           - 06-outputs/06-outputs-04-tables-for-maps.qmd
           - 06-outputs/06-outputs-05-tabular-html.qmd
@@ -125,8 +125,8 @@ babelquarto:
     text: "Anglais"
   mainlanguage: 'en'
   languages: ['es', 'fr']
-title-es: Introduction au cadre R chez IMPACT Initiatives
-title-fr: Intoducciòn al Marco R en IMPACT Initiatives
+title-es: Intoducciòn al Marco R en IMPACT Initiatives
+title-fr: Introduction au cadre R chez IMPACT Initiatives
 description-es: description in es
 description-fr: description in fr
 author-es: author in es

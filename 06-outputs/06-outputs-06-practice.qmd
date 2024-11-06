@@ -6,9 +6,11 @@ date: last-modified
 
 to be updated
 
-# Exercise
+# Practice
 
-## Exercise 1
+## Practice 1
+
+## Practice 2
 
 - Create an excel table with the strata in the rows and the variables in the columns.
 
@@ -35,7 +37,11 @@ exercise_outputs %>%
 ```
 :::
 
-## Exercise 2
+## Practice 3
+
+## Practice 4
+
+## Practice 5
 
 - Try the tabular html output. 
 - Try to edit the authors, RCID and the introduction.
