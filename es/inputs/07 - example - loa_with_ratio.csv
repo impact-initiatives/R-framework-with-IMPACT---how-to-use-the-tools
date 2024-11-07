@@ -1,0 +1,16 @@
+analysis_type,analysis_var,group_var,level,analysis_var_numerator,analysis_var_denominator,numerator_NA_to_0,filter_denominator_0
+prop_select_one,admin1,NA,0.95,NA,NA,NA,NA
+mean,income_v1_salaried_work,NA,0.95,NA,NA,NA,NA
+median,income_v1_salaried_work,NA,0.95,NA,NA,NA,NA
+mean,expenditure_debt,NA,0.95,NA,NA,NA,NA
+median,expenditure_debt,NA,0.95,NA,NA,NA,NA
+ratio,NA,NA,0.95,num_enrolled_school_children,num_aged_school_children,TRUE,TRUE
+prop_select_one,wash_drinkingwatersource,NA,0.95,NA,NA,NA,NA
+prop_select_multiple,edu_learning_conditions_reasons_v1,NA,0.95,NA,NA,NA,NA
+mean,income_v1_salaried_work,admin1,0.95,NA,NA,NA,NA
+median,income_v1_salaried_work,admin1,0.95,NA,NA,NA,NA
+mean,expenditure_debt,admin1,0.95,NA,NA,NA,NA
+median,expenditure_debt,admin1,0.95,NA,NA,NA,NA
+ratio,NA,admin1,0.95,num_enrolled_school_children,num_aged_school_children,TRUE,TRUE
+prop_select_one,wash_drinkingwatersource,admin1,0.95,NA,NA,NA,NA
+prop_select_multiple,edu_learning_conditions_reasons_v1,admin1,0.95,NA,NA,NA,NA
