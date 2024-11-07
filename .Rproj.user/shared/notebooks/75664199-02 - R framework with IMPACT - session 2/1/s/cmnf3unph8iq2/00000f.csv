@@ -1,4 +1,0 @@
-"0","my_filled_log %>% "
-"0","  filter(question == ""primary_livelihood.employment"", "
-"0","         change_type == ""change_response"") %>% "
-"0","  select(uuid, question, old_value, new_value)"

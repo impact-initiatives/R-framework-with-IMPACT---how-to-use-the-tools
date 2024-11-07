@@ -1,3 +1,0 @@
-"0","my_clean_data %>% "
-"0","  filter(X_uuid == ""019bc718-c06a-46b8-bba8-c84f6c6efbd5"") %>% "
-"0","  select(water_supply_other_neighbourhoods, water_supply_other_neighbourhoods_why	)"

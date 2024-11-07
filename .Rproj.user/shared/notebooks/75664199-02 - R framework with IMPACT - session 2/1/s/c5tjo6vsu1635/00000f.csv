@@ -1,4 +1,0 @@
-"0","#| output: false"
-"0","create_xlsx_cleaning_log(my_combined_log,"
-"0","                         sm_dropdown_type = ""logical"","
-"0","                         output_path =  ""outputs/01 - example - cleaning-log-no-kobo.xlsx"")"

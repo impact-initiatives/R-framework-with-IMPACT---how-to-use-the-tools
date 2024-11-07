@@ -1,0 +1,163 @@
+---
+title: "01 - Creando un registro de limpieza"
+author: "Yann Say"
+date: last-modified
+
+---
+
+```{r}
+#| warning: false
+library(cleaningtools)
+library(dplyr)
+
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+```
+
+
+En esta sección continuamos con el paso de limpieza.
+![](../config/images/step - cleaning.png)
+
+# Resumen
+
+
+```{r}
+#| output: false
+more_logs <- my_raw_dataset %>% 
+  check_duplicate(uuid_column = "X_uuid") %>% 
+  check_soft_duplicates(uuid_column = "X_uuid", kobo_survey = my_kobo_survey, sm_separator = ".") %>%
+  check_outliers(uuid_column = "X_uuid") %>%
+  check_value(uuid_column = "X_uuid") 
+more_logs$checked_dataset <- more_logs$checked_dataset %>% 
+  add_duration(uuid_column = "X_uuid", start_column = "X.U.FEFF.start", end_column = "end")
+more_logs <- more_logs %>% 
+  check_duration(column_to_check = "duration", uuid_column = "X_uuid")
+other_columns_to_check <- my_kobo_survey %>% 
+  filter(type == "text") %>% 
+  filter(name %in% names(my_raw_dataset)) %>%
+  pull(name) 
+
+more_logs <- more_logs %>% 
+  check_others(uuid_column = "X_uuid", columns_to_check = other_columns_to_check) 
+logical_check_list <- readxl::read_excel("../inputs/01 - example - check_list.xlsx")
+more_logs <- more_logs %>% 
+  check_logical_with_list(uuid_column = "X_uuid",
+                          list_of_check = logical_check_list,
+                          check_id_column = "check_id",
+                          check_to_perform_column = "check_to_perform",
+                          columns_to_clean_column = "columns_to_clean",
+                          description_column = "description")
+
+```
+
+
+
+# Limpieza - Creando un registro de limpieza
+
+::: {.callout-tip appearance="minimal"}
+### create\_\*
+
+![](../config/images/verb - create.png)
+
+Las funciones **create_**\* crean o transforman algo, p.ej. creación un registro de limpieza incluyendo las verificaciones por completar, creación de una table de resultados de analisis, creación de una salida.
+
+Las salidas de las funciones **create_**\* pueden tener diferentes formatos, formas, especificaciones, etc. 
+
+Las funciones **create_**\* son funciones generales que pueden servir para varias tareas.
+:::
+
+## create_combined_log
+
+La función `create_combined_log` combina todos los registros de una lista en uno. La función añade también dos columnas necesarias durante el proceso de limpieza.
+
+
+```{r}
+names(more_logs)
+my_combined_log <- create_combined_log(more_logs)
+
+typeof(my_combined_log)
+names(my_combined_log)
+
+my_combined_log$cleaning_log %>% 
+  head()
+```
+
+
+El registro de limpieza contiene todas las columnas de todos los registros en `more_logs` y ademas contiene las siguientes columnas:
+
+-   check_binding : esta columna se rellena automáticamente.
+-   change_type (vacía)
+-   new_value (vacía)
+
+## add_info_to_cleaning_log
+
+Si se desea añadir mas información al registro de limpieza, se puede usar la función `add_info_to_cleaning_log`.
+
+::: {.callout-tip appearance="minimal"}
+### add\_\*
+
+![](../config/images/verb - add.png)
+
+Las funciones **add_**\* añaden una variable (columna) al conjunto de datos. Por ejemplo, se puede añadir la duración de la encuesta o la categoría de puntaje de consumo de alimentos (FCS)...
+
+Una función **add_**\* toma a un conjunto de datos como entrada y retorna el conjunto de datos incluyendo el nuevo indicador (tambien añadira todos las columnas necesarias para el calculo del nuevo indicador). 
+
+Por ejemplo, para comprobar la duración de una encuesta teniendo las variables de inicio y fin de la encuesta.
+:::
+
+
+```{r}
+my_combined_log <- my_combined_log %>% 
+  add_info_to_cleaning_log(dataset_uuid_column = "X_uuid", 
+                           information_to_add = "enumerator_num")
+
+my_combined_log$cleaning_log %>% 
+  head()
+```
+
+
+## create_xlsx_cleaning_log
+
+
+```{r}
+#| output: false
+create_xlsx_cleaning_log(my_combined_log,
+                         sm_dropdown_type = "logical",
+                         output_path =  "../outputs/01 - example - cleaning-log-no-kobo.xlsx")
+```
+
+
+La función `create_xlsx_cleaning_log` crea una tabla Excel que contiene:
+
+-   checked_dataset: la pestaña con el conjunto de datos verificado y las columnas añadidas si hay.
+-   cleaning_log: la pestaña con los registros combinados y la columna **change_type** que describe las posibles modificaciones.
+-   readme tab: la pestaña con la definición de las opciones para la columna change_type (en inglés).
+
+Hay 4 acciones posibles:
+
+-   change_response: cambiar al valor especificado en la columna new.value,
+-   blank_response: remplazar el valor por NA,
+-   remove_survey: borrar la encuesta,
+-   no_action: no hacer nada.
+
+En el registro se debe indicar la acción por hacer y, si necesario, el nuevo valor.
+
+
+```{r}
+#| output: false
+create_xlsx_cleaning_log(my_combined_log,
+                         kobo_survey = my_kobo_survey,
+                         kobo_choices = my_kobo_choice,
+                         use_dropdown = T,
+                         sm_dropdown_type = "logical",
+                         output_path =  "../outputs/02 - example - cleaning-log-with-kobo.xlsx")
+```
+
+
+En las entradas de la función, se puede especificar la herramienta KOBO. Si se específica la herramienta y que el argumento **use_dropdown** está configurado como TRUE, **new_value** tendrá una regla de validación de datos basada en las opciones de la herramienta KOBO.
+
+::: callout-note
+En el caso de variables de opción multiple, se señalan las columnas ficticias (TRUE/FALSE o 0/1 i.e. dummy columns)  y son esas las columnas usadas durante el proceso de limpieza, no la columna principal.
+:::
+

@@ -1,5 +1,0 @@
-"0","my_log2 <- my_raw_dataset %>% "
-"0","  check_duplicate(uuid_column = ""X_uuid"")"
-"0",""
-"0","my_log2$duplicate_log %>% "
-"0","  head()"

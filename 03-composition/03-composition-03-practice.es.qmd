@@ -201,3 +201,7 @@ review$dataset %>%
 
 - El HHS está bien. El etiquetado es diferente.
 :::
+
+## Descargas
+
+[dataset_to_review](../inputs/06 - exercise - dataset_to_review.csv)
