@@ -1,3 +1,0 @@
-"0","my_clean_data %>% "
-"0","  filter(X_uuid %in% c(""eb3b9935-fa0b-4d54-8058-3b629f1421ad"", ""eec1f630-15d5-475e-a344-32bba74b32ea"", ""f1175d29-ce1f-43a7-b3d1-ee26cd1b8cdb"")) %>% "
-"0","  select(X_uuid,primary_livelihood, primary_livelihood.employment)"

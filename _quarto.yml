@@ -1,5 +1,6 @@
 project:
   type: website
+  resources: inputs/
   render:
     - 00-intro.qmd
     - 00-intro.es.qmd
@@ -97,7 +98,7 @@ website:
       - section: "Outputs"
         contents:
           - 06-outputs/06-outputs-01-labels.qmd
-          - 06-outputs/06-outputs-02-table.qmd
+          - 06-outputs/06-outputs-02-tables.qmd
           - 06-outputs/06-outputs-03-ggplot-theme.qmd
           - 06-outputs/06-outputs-04-tables-for-maps.qmd
           - 06-outputs/06-outputs-05-tabular-html.qmd

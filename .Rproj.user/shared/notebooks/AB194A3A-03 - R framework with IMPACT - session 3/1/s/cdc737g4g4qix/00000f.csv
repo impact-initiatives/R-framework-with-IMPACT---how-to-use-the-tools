@@ -1,5 +1,0 @@
-"0","#| warning: false"
-"0","library(addindicators)"
-"0","library(dplyr)"
-"0",""
-"0","my_data <- addindicators::addindicators_MSNA_template_data"

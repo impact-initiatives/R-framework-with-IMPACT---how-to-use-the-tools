@@ -1,6 +1,0 @@
-"0","my_combined_log <- my_combined_log %>% "
-"0","  add_info_to_cleaning_log(dataset_uuid_column = ""X_uuid"", "
-"0","                           information_to_add = ""enumerator_num"")"
-"0",""
-"0","my_combined_log$cleaning_log %>% "
-"0","  head()"
