@@ -78,3 +78,6 @@ example_logic$checked_dataset[1:6,tail(names(example_logic$checked_dataset))]
 If you don't include **columns_to_clean** the `check_logical_with_list` function will try to guess the variables. Not guarantee it will read or pick the correct names.
 :::
 
+## Downloads
+
+- [01 - example - check_list](../inputs/01 - example - check_list.xlsx)

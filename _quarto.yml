@@ -1,6 +1,10 @@
 project:
   type: website
-  resources: inputs/
+  resources:
+    - inputs/
+    - outputs/
+    - 07 - reach_tabular_html_example1.zip
+    - 07 - reach_tabular_html_example2.zip
   render:
     - 00-intro.qmd
     - 00-intro.es.qmd

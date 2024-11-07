@@ -141,3 +141,6 @@ my_raw_dataset %>%
 Pruebe usando las funciones `create_audit_list()` y `add_duration_from_audit()`
 :::
 
+## Descargas
+
+- [01 - example - check_list](../inputs/01 - example - check_list.xlsx)
