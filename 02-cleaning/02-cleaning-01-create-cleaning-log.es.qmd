@@ -149,3 +149,9 @@ En las entradas de la función, se puede especificar la herramienta KOBO. Si se 
 ::: callout-note
 En el caso de variables de opción multiple, se señalan las columnas ficticias (TRUE/FALSE o 0/1 i.e. dummy columns)  y son esas las columnas usadas durante el proceso de limpieza, no la columna principal.
 :::
+
+## Descargas
+
+- [01 - example - check_list](../inputs/01 - example - check_list.xlsx)
+- [01 - example - cleaning-log-no-kobo.xlsx](../outputs/01 - example - cleaning-log-no-kobo.xlsx)
+- [02 - example - cleaning-log-with-kobo.xlsx](../outputs/02 - example - cleaning-log-with-kobo.xlsx)

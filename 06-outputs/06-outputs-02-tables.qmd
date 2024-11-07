@@ -68,5 +68,7 @@ my_results_table %>%
 
 ![](../config/images/table variables x group.png)
 
+## Downloads
 
-
+- [04 - example - group_x_variable](../outputs/04 - example - group_x_variable.xlsx)
+- [05 - example - variable_x_group](../outputs/05 - example - variable_x_group.xlsx)

@@ -116,3 +116,6 @@ my_clean_data2$cleaning_log %>%
   select(uuid, question, old_value, new_value)
 ```
 
+## Descargas
+
+- [02 - example - cleaning-log-with-kobo - filled](../inputs/02 - example - cleaning-log-with-kobo - filled.xlsx)

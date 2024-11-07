@@ -75,3 +75,7 @@ example_logic$checked_dataset[1:6,tail(names(example_logic$checked_dataset))]
 ::: {.callout-note .column-margin}
 Si no se incluya la lista **columns_to_clean** la funcion `check_logical_with_list` intentará identificar las variables de forma automática. Sin embargo, no se puede garantizar que seleccione los nombres correctos.
 :::
+
+## Descargas
+
+- [01 - example - check_list](../inputs/01 - example - check_list.xlsx)

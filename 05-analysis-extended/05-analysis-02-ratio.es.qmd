@@ -145,3 +145,7 @@ create_analysis_ratio(me_design,
 ```
 
 :::
+
+## Descargas
+
+- [07 - example - loa_with_ratio.csv](../inputs/07 - example - loa_with_ratio.csv)

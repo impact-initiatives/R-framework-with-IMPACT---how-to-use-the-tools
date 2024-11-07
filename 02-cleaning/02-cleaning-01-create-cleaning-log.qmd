@@ -149,3 +149,9 @@ If the KOBO information are provided and the **use_dropdown** argument is set to
 ::: callout-note
 Select multiple dummy columns (TRUE/FALSE or 1/0) are flagged and used later for the cleaning, not the parent column.
 :::
+
+## Downloads
+
+- [01 - example - check_list](../inputs/01 - example - check_list.xlsx)
+- [01 - example - cleaning-log-no-kobo.xlsx](../outputs/01 - example - cleaning-log-no-kobo.xlsx)
+- [02 - example - cleaning-log-with-kobo.xlsx](../outputs/02 - example - cleaning-log-with-kobo.xlsx)

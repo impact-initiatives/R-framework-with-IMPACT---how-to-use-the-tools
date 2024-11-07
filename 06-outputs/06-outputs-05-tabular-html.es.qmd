@@ -21,3 +21,7 @@ Los parámetros en el encabezado se pueden modificar. Use *Render* después para
 
 :::
 
+## Descargas
+
+- [07 - reach_tabular_html_example1](../07 - reach_tabular_html_example1.zip)
+- [07 - reach_tabular_html_example2](../07 - reach_tabular_html_example2.zip)

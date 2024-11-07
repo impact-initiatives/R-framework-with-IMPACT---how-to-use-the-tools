@@ -96,3 +96,6 @@ review_of_cleaning <- review_cleaning(raw_dataset = my_raw_dataset,
 review_of_cleaning
 ```
 
+## Descargas
+
+- [02 - example - cleaning-log-with-kobo - filled](../inputs/02 - example - cleaning-log-with-kobo - filled.xlsx)
