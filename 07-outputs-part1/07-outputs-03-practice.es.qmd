@@ -1,18 +1,17 @@
 ---
-title: "06 - Practice (6)"
+title: "03 - Practice (7)"
 author: "Yann Say"
 date: last-modified
 ---
 
-to be updated
-
-# Practice
+# Ejercicio
 
 ## Practice 1
 
 ## Practice 2
 
-- Create an excel table with the strata in the rows and the variables in the columns.
+- Cree una tabla de Excel con la estratificación en las filas y las variables en las columnas.
+
 
 ```{r}
 #| message: false
@@ -26,7 +25,8 @@ exercise_outputs <- readxl::read_excel("../inputs/10 - exercise - analysis_to_re
 ```
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta
+
 
 ```{r}
 #| output: false
@@ -37,11 +37,7 @@ exercise_outputs %>%
 ```
 :::
 
-## Practice 3
+## Descargas
 
-## Practice 4
-
-## Practice 5
-
-- Try the tabular html output. 
-- Try to edit the authors, RCID and the introduction.
+- [10 - exercise - analysis_to_review](../inputs/10 - exercise - analysis_to_review.xlsx)
+- [06 - correction - group_x_variable_table](../outputs/06 - correction - group_x_variable_table.xlsx)

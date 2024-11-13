@@ -1,0 +1,68 @@
+---
+title: "02 - Practice (6)"
+author: "Yann Say"
+date: last-modified
+
+---
+# Prácticas
+
+## Práctica 1
+
+- Revise este análisis
+
+No hay ponderaciones. La estratificación es **admin1**.
+
+```{r}
+#| message: false
+library(analysistools)
+library(dplyr) 
+
+analysis_to_review <- readxl::read_excel("../inputs/10 - exercise - analysis_to_review.xlsx")
+dataset_to_review <- readxl::read_excel("../inputs/10 - exercise - analysis_to_review.xlsx", sheet = "dataset")
+```
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haga clic para ver la respuesta
+
+
+```{r}
+loa_for_review <- analysis_to_review %>% 
+  create_loa_from_results()
+
+review_design <- srvyr::as_survey_design(dataset_to_review, strata = "admin1")
+my_analysis_exercise <- create_analysis(review_design, loa = loa_for_review, sm_separator = "/")
+
+my_results_table_shorter <- my_analysis_exercise$results_table %>% 
+  select(analysis_key, stat)
+
+binded_results_table <- analysis_to_review %>% 
+  full_join(my_results_table_shorter, by = "analysis_key")
+
+exercise_review <- review_analysis(binded_results_table,
+                                   stat_columns_to_review = "stat.x",
+                                   stat_columns_to_compare_with = "stat.y", 
+                                   analysis_key_column = "analysis_key")
+
+exercise_review$review_table %>% 
+  group_by(review_check,review_comment) %>% 
+  tally()
+```
+
+:::
+
+## Extra
+
+¿Cómo revisaría un análisis que no tiene una clave de análisis? (discusión)
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haga clic para ver la respuesta
+
+- Si el análisis está en formato largo, agregue la clave de análisis.
+- Si el análisis está en formato ancho, cambie al formato largo y luego agregue la clave de análisis.
+
+:::
+
+## Descargas
+
+- [10 - exercise - analysis_to_review](../inputs/10 - exercise - analysis_to_review.xlsx)
+

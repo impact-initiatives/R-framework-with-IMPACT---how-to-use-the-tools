@@ -1,5 +1,5 @@
 ---
-title: "06 - Practice (6)"
+title: "04 - Practice (8)"
 author: "Yann Say"
 date: last-modified
 ---
@@ -36,8 +36,9 @@ exercise_outputs %>%
   
 ```
 :::
-
 ## Ejercicio 2
+
+## Ejercicio 3
 
 - Pruebe el resultado en formato HTML tabular.
 - Intente editar los autores, RCID y la introducción.

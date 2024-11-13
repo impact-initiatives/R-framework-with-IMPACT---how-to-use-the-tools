@@ -1,9 +1,0 @@
----
-title: "05 - Review template"
-author: "Yann Say"
-date: last-modified
-
----
-# Plantillas de revisión
-
-Existen algunas plantillas de proyecto que pueden utilizarse para revisar el análisis. Más información en [este repositorio](https://github.com/impact-initiatives/impacttemplates).

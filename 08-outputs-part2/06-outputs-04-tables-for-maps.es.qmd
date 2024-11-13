@@ -1,7 +1,0 @@
----
-title: "05 - Tables for maps"
-author: "Yann Say"
-date: last-modified
----
-
-to be created

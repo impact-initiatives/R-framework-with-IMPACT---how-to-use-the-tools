@@ -1,5 +1,5 @@
 ---
-title: "05 - Tables for maps"
+title: "02 - Tables for maps"
 author: "Yann Say"
 date: last-modified
 ---
@@ -93,9 +93,6 @@ There can be 5 or 6 classes as follow:
 :::
 
 ::::
-
-
-
 
 ## Troubleshooting
 
