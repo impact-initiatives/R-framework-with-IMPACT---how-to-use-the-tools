@@ -3,63 +3,7 @@ project:
   resources:
     - inputs/
     - outputs/
-    - 07 - reach_tabular_html_example1.zip
-    - 07 - reach_tabular_html_example2.zip
-  render:
-    - 00-intro.qmd
-    - 00-intro.es.qmd
-    - 01-cleaning/01-cleaning-01-checks.qmd
-    - 01-cleaning/01-cleaning-01-checks.qmd
-    - 01-cleaning/01-cleaning-02-add-duration-others.qmd
-    - 01-cleaning/01-cleaning-02-add-duration-others.es.qmd
-    - 01-cleaning/01-cleaning-03-logical-with-lists.qmd
-    - 01-cleaning/01-cleaning-03-logical-with-lists.es.qmd
-    - 01-cleaning/01-cleaning-04-practice.qmd
-    - 01-cleaning/01-cleaning-04-practice.es.qmd
-    - 02-cleaning/02-cleaning-01-create-cleaning-log.qmd
-    - 02-cleaning/02-cleaning-01-create-cleaning-log.es.qmd
-    - 02-cleaning/02-cleaning-02-create-clean-dataset.qmd
-    - 02-cleaning/02-cleaning-02-create-clean-dataset.es.qmd
-    - 02-cleaning/02-cleaning-03-review-cleaning.qmd
-    - 02-cleaning/02-cleaning-03-review-cleaning.es.qmd
-    - 02-cleaning/02-cleaning-04-practice.qmd
-    - 02-cleaning/02-cleaning-04-practice.es.qmd
-    - 02-cleaning/02-cleaning-05-extra.qmd
-    - 02-cleaning/02-cleaning-05-extra.es.qmd
-    - 03-composition/03-composition-01-add.qmd
-    - 03-composition/03-composition-01-add.es.qmd
-    - 03-composition/03-composition-02-review.qmd
-    - 03-composition/03-composition-02-review.es.qmd
-    - 03-composition/03-composition-03-practice.qmd
-    - 03-composition/03-composition-03-practice.es.qmd
-    - 03-composition/03-composition-04-extra.qmd
-    - 03-composition/03-composition-04-extra.es.qmd
-    - 04-analysis/04-analysis-01-create-analysis.qmd
-    - 04-analysis/04-analysis-01-create-analysis.es.qmd
-    - 04-analysis/04-analysis-02-practice.qmd
-    - 04-analysis/04-analysis-02-practice.es.qmd
-    - 05-analysis-extended/05-analysis-01-loa.qmd
-    - 05-analysis-extended/05-analysis-01-loa.es.qmd
-    - 05-analysis-extended/05-analysis-02-ratio.qmd
-    - 05-analysis-extended/05-analysis-02-ratio.es.qmd
-    - 05-analysis-extended/05-analysis-03-review.qmd
-    - 05-analysis-extended/05-analysis-03-review.es.qmd
-    - 05-analysis-extended/05-analysis-04-practice.qmd
-    - 05-analysis-extended/05-analysis-04-practice.es.qmd
-    - 05-analysis-extended/05-analysis-05-extra.qmd
-    - 05-analysis-extended/05-analysis-05-extra.es.qmd
-    - 06-outputs/06-outputs-01-labels.qmd
-    - 06-outputs/06-outputs-01-labels.es.qmd
-    - 06-outputs/06-outputs-02-tables.qmd
-    - 06-outputs/06-outputs-02-tables.es.qmd
-    - 06-outputs/06-outputs-03-ggplot-theme.qmd
-    - 06-outputs/06-outputs-03-ggplot-theme.es.qmd
-    - 06-outputs/06-outputs-04-tables-for-maps.qmd
-    - 06-outputs/06-outputs-04-tables-for-maps.es.qmd
-    - 06-outputs/06-outputs-05-tabular-html.qmd
-    - 06-outputs/06-outputs-05-tabular-html.es.qmd
-    - 06-outputs/06-outputs-06-practice.qmd
-    - 06-outputs/06-outputs-06-practice.es.qmd
+    - templates-quarto/
 website:
   title: "Intoduction to R framework at IMPACT Initiatives"
   sidebar:
@@ -82,7 +26,7 @@ website:
           - 02-cleaning/02-cleaning-03-review-cleaning.qmd
           - 02-cleaning/02-cleaning-04-practice.qmd
           - 02-cleaning/02-cleaning-05-extra.qmd
-      - section: "Composition - Add indicators"
+      - section: "Composition - Adding indicators"
         contents:
           - 03-composition/03-composition-01-add.qmd
           - 03-composition/03-composition-02-review.qmd
@@ -96,17 +40,23 @@ website:
         contents:
           - 05-analysis-extended/05-analysis-01-loa.qmd
           - 05-analysis-extended/05-analysis-02-ratio.qmd
-          - 05-analysis-extended/05-analysis-03-review.qmd
-          - 05-analysis-extended/05-analysis-04-practice.qmd
-          - 05-analysis-extended/05-analysis-05-extra.qmd
-      - section: "Outputs"
+          - 05-analysis-extended/05-analysis-03-practice.qmd
+      - section: "Analysis - Reviewing an analysis"
         contents:
-          - 06-outputs/06-outputs-01-labels.qmd
-          - 06-outputs/06-outputs-02-tables.qmd
-          - 06-outputs/06-outputs-03-ggplot-theme.qmd
-          - 06-outputs/06-outputs-04-tables-for-maps.qmd
-          - 06-outputs/06-outputs-05-tabular-html.qmd
-          - 06-outputs/06-outputs-06-practice.qmd
+          - 06-analysis-review/06-analysis-01-review.qmd
+          - 06-analysis-review/06-analysis-02-practice.qmd
+          - 06-analysis-review/06-analysis-03-extra.qmd
+      - section: "Outputs - part 1"
+        contents:
+          - 07-outputs-part1/07-outputs-01-labels.qmd
+          - 07-outputs-part1/07-outputs-02-tables.qmd
+          - 07-outputs-part1/07-outputs-03-practice.qmd
+      - section: "Outputs - part 2"
+        contents:
+          - 08-outputs-part2/08-outputs-01-ggplot-theme.qmd
+          - 08-outputs-part2/08-outputs-02-tables-for-maps.qmd
+          - 08-outputs-part2/08-outputs-03-tabular-html.qmd
+          - 08-outputs-part2/08-outputs-04-practice.qmd
   repo-url: https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools
   repo-actions: [edit, source, issue]
 format:
@@ -127,7 +77,7 @@ babelquarto:
   - name: fr
     text: "Francais"
   - name: en
-    text: "Anglais"
+    text: "English"
   mainlanguage: 'en'
   languages: ['es', 'fr']
 title-es: Intoducciòn al Marco R en IMPACT Initiatives

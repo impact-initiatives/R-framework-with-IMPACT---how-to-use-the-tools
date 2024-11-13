@@ -16,13 +16,6 @@ sampling_frame <- data.frame(
   population = c(100000, 200000, 300000)
 )
 
-set.seed(1323)
-my_data <- my_data |>
-  mutate(num_aged_school_children = round(runif(100, min = 0, max = 5)),
-         num_enrolled_school_children = round(runif(100, min = 0, max = 5)),
-         num_enrolled_school_children = case_when(num_aged_school_children == 0 ~ NA, num_aged_school_children < num_enrolled_school_children ~ num_aged_school_children,
-                                                  TRUE ~ num_enrolled_school_children
-                                                  ))
 ```
 
 # Analysis - list of analysis

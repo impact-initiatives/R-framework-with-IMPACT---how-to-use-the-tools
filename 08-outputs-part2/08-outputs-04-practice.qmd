@@ -1,5 +1,5 @@
 ---
-title: "06 - Practice (6)"
+title: "04 - Practice (8)"
 author: "Yann Say"
 date: last-modified
 ---
@@ -9,8 +9,6 @@ to be updated
 # Practice
 
 ## Practice 1
-
-## Practice 2
 
 - Create an excel table with the strata in the rows and the variables in the columns.
 
@@ -37,11 +35,9 @@ exercise_outputs %>%
 ```
 :::
 
+## Practice 2
+
 ## Practice 3
-
-## Practice 4
-
-## Practice 5
 
 - Try the tabular html output. 
 - Try to edit the authors, RCID and the introduction.

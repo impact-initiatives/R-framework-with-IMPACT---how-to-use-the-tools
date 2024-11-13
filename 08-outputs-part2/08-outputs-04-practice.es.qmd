@@ -1,0 +1,45 @@
+---
+title: "04 - Practice (8)"
+author: "Yann Say"
+date: last-modified
+---
+
+to be updated
+
+# Ejercicio
+
+## Ejercicio 1
+
+- Cree una tabla de Excel con la estratificación en las filas y las variables en las columnas.
+
+
+```{r}
+#| message: false
+library(presentresults)
+library(dplyr)
+```
+
+```{r}
+exercise_outputs <- readxl::read_excel("../inputs/10 - exercise - analysis_to_review.xlsx")
+
+```
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haga clic para ver la respuesta
+
+
+```{r}
+#| output: false
+exercise_outputs %>% 
+  create_table_group_x_variable() %>% 
+  create_xlsx_group_x_variable(file_path = "../outputs/06 - correction - group_x_variable_table.xlsx", overwrite = T) 
+  
+```
+:::
+## Ejercicio 2
+
+## Ejercicio 3
+
+- Pruebe el resultado en formato HTML tabular.
+- Intente editar los autores, RCID y la introducción.
+

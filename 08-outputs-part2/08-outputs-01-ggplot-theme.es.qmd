@@ -1,5 +1,5 @@
 ---
-title: "03 - ggplot2 theme"
+title: "01 - ggplot2 theme"
 author: "Yann Say"
 date: last-modified
 ---

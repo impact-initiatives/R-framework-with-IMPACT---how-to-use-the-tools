@@ -1,14 +1,14 @@
 ---
-title: "06 - Practice (6)"
+title: "03 - Practice (7)"
 author: "Yann Say"
 date: last-modified
 ---
 
-to be updated
-
 # Ejercicio
 
-## Ejercicio 1
+## Practice 1
+
+## Practice 2
 
 - Cree una tabla de Excel con la estratificación en las filas y las variables en las columnas.
 
@@ -37,8 +37,7 @@ exercise_outputs %>%
 ```
 :::
 
-## Ejercicio 2
+## Descargas
 
-- Pruebe el resultado en formato HTML tabular.
-- Intente editar los autores, RCID y la introducción.
-
+- [10 - exercise - analysis_to_review](../inputs/10 - exercise - analysis_to_review.xlsx)
+- [06 - correction - group_x_variable_table](../outputs/06 - correction - group_x_variable_table.xlsx)
