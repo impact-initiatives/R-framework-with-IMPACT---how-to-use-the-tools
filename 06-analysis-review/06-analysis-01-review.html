@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/02-cleaning/02-cleaning-05-extra.html" />
-<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/02-cleaning/02-cleaning-05-extra.es.html" />
-<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/02-cleaning/02-cleaning-05-extra.fr.html" />
+<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/06-analysis-review/06-analysis-01-review.html" />
+<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/06-analysis-review/06-analysis-01-review.es.html" />
+<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/06-analysis-review/06-analysis-01-review.fr.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yann Say">
-<title>05 - Plantillas de revisión – Intoducciòn al Marco R en IMPACT Initiatives</title>
+<meta name="dcterms.date" content="2024-11-13">
+<title>01 - Review an analysis – Intoduction to R framework at IMPACT Initiatives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +21,40 @@ ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
+}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 <script>const headroomChanged = new CustomEvent("quarto-hrChanged", {
@@ -4680,33 +4715,33 @@ vertical-align: -.125em;
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
-    "search-matching-documents-text": "documentos encontrados",
-    "search-copy-link-title": "Copiar el enlace en la búsqueda",
-    "search-hide-matches-text": "Ocultar resultados adicionales",
-    "search-more-match-text": "resultado adicional en este documento",
-    "search-more-matches-text": "resultados adicionales en este documento",
-    "search-clear-button-title": "Borrar",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar",
-    "search-label": "Buscar"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 </head>
-<body class="nav-sidebar docked">
+<body class="nav-sidebar docked slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html">Cleaning - Creating a clean dataset</a></li>
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-05-extra.html">05 - Plantillas de revisión</a></li>
-</ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+<li class="breadcrumb-item"><a href="../06-analysis-review/06-analysis-01-review.html">Analysis - Reviewing an analysis</a></li>
+<li class="breadcrumb-item"><a href="../06-analysis-review/06-analysis-01-review.html">01 - Review an analysis</a></li>
+</ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -4714,16 +4749,16 @@ vertical-align: -.125em;
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Intoducciòn al Marco R en IMPACT Initiatives</a> 
+      <a href="../">Intoduction to R framework at IMPACT Initiatives</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class title="Buscar"></div>
+        <div id="quarto-search" class title="Search"></div>
         </div>
         </div>
     <div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/02-cleaning/02-cleaning-05-extra.html" id="language-link-en">English</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/06-analysis-review/06-analysis-01-review.html" id="language-link-es">Español</a></li></ul>
 </div>
 <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
@@ -4737,7 +4772,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Cleaning - Checking a dataset</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4745,66 +4780,66 @@ vertical-align: -.125em;
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-01-checks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Verificaciones</span></a>
+ <span class="menu-text">01 - Checks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-02-add-duration-others.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Añadir, duracion y otros</span></a>
+ <span class="menu-text">02 - Add, durations and others</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-03-logical-with-lists.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - verificación con lista de lógicas</span></a>
+ <span class="menu-text">03 - Checks with logical list</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-04-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - Práctica - session 1</span></a>
+ <span class="menu-text">04 - Practice - session 1</span></a>
   </div>
 </li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Cleaning - Creating a clean dataset</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Creando un registro de limpieza</span></a>
+ <span class="menu-text">01 - Create a cleaning log</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-02-create-clean-dataset.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Crear un conjunto de datos limpios</span></a>
+ <span class="menu-text">02 - Creating a clean dataset</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-03-review-cleaning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Revisar la limpieza</span></a>
+ <span class="menu-text">03 - Review cleaning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-04-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - Práctica (2)</span></a>
+ <span class="menu-text">04 - Practice (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02-cleaning/02-cleaning-05-extra.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">05 - Plantillas de revisión</span></a>
+  <a href="../02-cleaning/02-cleaning-05-extra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05 - Review templates</span></a>
   </div>
 </li>
       </ul>
@@ -4813,7 +4848,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Composition - Adding indicators</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4821,25 +4856,25 @@ vertical-align: -.125em;
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-01-add.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Añadir indicadores</span></a>
+ <span class="menu-text">01 - Add indicators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-02-review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Verificar un indicador</span></a>
+ <span class="menu-text">02 - Review indicators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-03-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Práctica (3)</span></a>
+ <span class="menu-text">03 - Practice (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-04-extra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - impactR4PHU y humind</span></a>
+ <span class="menu-text">04 - impactR4PHU and humind</span></a>
   </div>
 </li>
       </ul>
@@ -4848,7 +4883,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">Analysis - Simple analysis</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4871,7 +4906,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Analysis - Extended analysis</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4898,16 +4933,16 @@ vertical-align: -.125em;
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Analysis - Reviewing an analysis</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../06-analysis-review/06-analysis-01-review.html" class="sidebar-item-text sidebar-link">
+  <a href="../06-analysis-review/06-analysis-01-review.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">01 - Review an analysis</span></a>
   </div>
 </li>
@@ -4929,7 +4964,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
  <span class="menu-text">Outputs - part 1</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4958,7 +4993,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
  <span class="menu-text">Outputs - part 2</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4994,23 +5029,29 @@ vertical-align: -.125em;
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">En esta página</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#plantillas-de-revisi%C3%B3n" id="toc-plantillas-de-revisión" class="nav-link active" data-scroll-target="#plantillas-de-revisión">Plantillas de revisión</a></li>
+<li>
+<a href="#analysis---reviewing-the-analysis" id="toc-analysis---reviewing-the-analysis" class="nav-link active" data-scroll-target="#analysis---reviewing-the-analysis">Analysis - Reviewing the analysis</a>
+  <ul class="collapse">
+<li><a href="#create_loa_from_results" id="toc-create_loa_from_results" class="nav-link" data-scroll-target="#create_loa_from_results"><code>create_loa_from_results</code></a></li>
+  <li><a href="#review_analysis" id="toc-review_analysis" class="nav-link" data-scroll-target="#review_analysis"><code>review_analysis</code></a></li>
+  </ul>
+</li>
   </ul>
 <div class="toc-actions"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/02-cleaning/02-cleaning-05-extra.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/02-cleaning/02-cleaning-05-extra.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/06-analysis-review/06-analysis-01-review.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/06-analysis-review/06-analysis-01-review.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li>
 </ul></div></nav>
 </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html">Cleaning - Creating a clean dataset</a></li>
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-05-extra.html">05 - Plantillas de revisión</a></li>
+<main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb">
+<li class="breadcrumb-item"><a href="../06-analysis-review/06-analysis-01-review.html">Analysis - Reviewing an analysis</a></li>
+<li class="breadcrumb-item"><a href="../06-analysis-review/06-analysis-01-review.html">01 - Review an analysis</a></li>
 </ol></nav><div class="quarto-title">
-<h1 class="title">05 - Plantillas de revisión</h1>
+<h1 class="title">01 - Review an analysis</h1>
 </div>
 
 
@@ -5018,16 +5059,16 @@ vertical-align: -.125em;
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
              <p>Yann Say </p>
           </div>
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">13 de noviembre de 2024</p>
+      <p class="date">November 13, 2024</p>
     </div>
   </div>
   
@@ -5036,11 +5077,716 @@ vertical-align: -.125em;
   
 
 
-</header><section id="plantillas-de-revisión" class="level1"><h1>Plantillas de revisión</h1>
-<p>Hay algunas plantillas de proyecto que se pueden utilizar para revisar la limpieza. Más información en <a href="https://github.com/impact-initiatives/impacttemplates">este repositorio Github.</a>.</p>
+</header><section id="analysis---reviewing-the-analysis" class="level1 page-columns page-full"><h1>Analysis - Reviewing the analysis</h1>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/analysistools/">analysistools</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="va">analysistools_MSNA_template_data</span></span>
+<span><span class="va">my_results</span> <span class="op">&lt;-</span> <span class="fu">analysistools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/analysistools/reference/analysistools_MSNA_template_no_ratio_results_table.html">analysistools_MSNA_template_no_ratio_results_table</a></span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="create_loa_from_results" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="create_loa_from_results"><code>create_loa_from_results</code></h2>
+<p>If the loa that was used was shared, it can be re-used. Otherwise, with the results table and the analysis key, the function <code>create_loa_from_results</code> will generate a loa that can be used to create the analysis for the review.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_loa_for_review</span> <span class="op">&lt;-</span> <span class="va">my_results</span><span class="op">$</span><span class="va">results_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/create_loa_from_results.html">create_loa_from_results</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">my_loa_for_review</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 48%">
+<col style="width: 13%">
+<col style="width: 8%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">analysis_type</th>
+<th style="text-align: left;">analysis_var</th>
+<th style="text-align: left;">group_var</th>
+<th style="text-align: right;">level</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.95</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mean</td>
+<td style="text-align: left;">income_v1_salaried_work</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">median</td>
+<td style="text-align: left;">income_v1_salaried_work</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.95</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mean</td>
+<td style="text-align: left;">expenditure_debt</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">median</td>
+<td style="text-align: left;">expenditure_debt</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.95</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">prop_select_multiple</td>
+<td style="text-align: left;">edu_learning_conditions_reasons_v1</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.95</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mean</td>
+<td style="text-align: left;">income_v1_salaried_work</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: right;">0.95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">median</td>
+<td style="text-align: left;">income_v1_salaried_work</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: right;">0.95</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mean</td>
+<td style="text-align: left;">expenditure_debt</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: right;">0.95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">median</td>
+<td style="text-align: left;">expenditure_debt</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: right;">0.95</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: right;">0.95</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">prop_select_multiple</td>
+<td style="text-align: left;">edu_learning_conditions_reasons_v1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: right;">0.95</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>create_loa_from_results will not guess the arguments for <code>numerator_NA_to_0</code> and <code>filter_denominator_0</code>, they will be set to TRUE by default.</p>
+<p>The confidence level will also be set to .95 by default.</p>
+</div>
+</div></div></section><section id="review_analysis" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="review_analysis"><code>review_analysis</code></h2>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+review_*
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img role="img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKwAAABPCAYAAAB24S70AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAABBjSURBVHhe7Z0JVFRXmsf/StiKHQQEZJNdBSLpDuKaPqZbjWKMWehMxq1JInE6tp10nzlzZuZMes6Z7jMnnaTjnNFoqxntaGK64wIxmk6cdkM0E1EWEQrZZd8pKAoIOPe73NIKKaJCQb0H9+d55737veJVlff/vvt999X73pTbDEgkKmGqWEskqkAKVqIqpGAlqkIKVqIqZNJ1D6qrq6HValFfXw+dTofOzk6+0HZTczPfbu/QoUPXAb1eD10HW3d1se1udOu7+DEcNU7QaByhcXKCi6sr29bA1cUVbq4ucHZ2xjQvL7i4DG7TQtu+vr6IjIxEQEAAP4ZkEClYRnt7OxclLcXFxbiWlwdtURHKy8pga28PD28f2Dg6wM7eAbenTuXLQ3Z2fLGhte3g9kN2toO2O207fvxvenv50t83uP6mt29wzdr9Yh8tUwYG+NLbY0B/twGtjQ3o6+lBSGgoIqOi8HBsLCIiIriQaXFzc+PHn0xMKsGSMLOyspCTm4vc/HwUFpIoS7lH9GQezcXTE7bOLrBjXtCJbTt7sLaDg/hr69BnMKCztQVdLS3oZV69j3lyHdtuYR6fPHZI6ExER0chbs4cxMfFISkpaUILeUILtox5SBLo2XPncPb8eZTevAm/kBA4MCE6uLtzQZIwHdkQrEa6mYBJyCRoQ1sbDGxdW16OmeHheGzxYixetIgLOJR56InChBJsf38/Tp06hc9OnkTGp5+ig8WTPsHBsPP0gqd/ADwmSTzYyuLulppq9LY0o6GiAq5sxFi1ciVWPvEEli9fDhsbG/FK9aF6wVJSlJ6RgU+OHsW5M2cQGBYG98AguDBxuvn4ildNbtobWMLI/p9aqypxq6QEi5YswTNr12J1crLqkjpVCraHJSKHDx/G+/sPIOtiJoJnzeYC9Z45E3YOjuJVEnP0GrrRWFrKBVxRcB3zFyzExvXrkJKSAnuWYCodVQn2JBvqd+/bhxPp6QiNiYFzUDAComMwhWXtkgfn9sAAqgtvoLOyEmU3CrCSedyXU1OxYsUK8QrloQrB7tq1C3/Yvh3tej28wiO4SO1ZhiyxHD1dXVy8TVot3J2d8ItXX0VaWprYqxwUK9iqqiq88+527Nu7B9NZlusRHgkfNuRLxp4GFjK0FBehniVsGzZtwq+2bUNgYKDYa10UJ9i2tjb8x29/i9+/+Sai5yXBbzaLT6d5i72S8UTX1Ijq/DxoL1/Ga6//Cv/6L/8Md3d3sdc6KEawNCX1b7/5Dd55+21EzE2AT2wcHF1dxV6JNenu6EBdbg5uXs3GL197Df/+xhtWmxpThGAPHDiA13/9a7gHzEBgQoL0qAqFPG7llStor6nGW2wEXL9+vdgzflhVsOXl5di85R9wo6gQgYlJmBYUJPZIlExTZSWqLmchOjIKu3fuQEhIiNgz9lhtPujNt97iP+hoZqHA3GdTpFhVBPUV9VnrwADvQ+rL8WLcPWxfXx/+7oUXcOlaDsIWLISbr7wapWba6+tRknkB8x6Ox6GDB2Frayv2jA3jKticnBw899OfQuPjg6CkBcIqmQhUZmVC39CAjz/6CPHx8cJqecYtJDh06BAeTUyEe0SEFOsEhPqU+pb6mPp6rBgXD3vgT39C2iuvYO7qJ1n8EyyskolIU2UFrqYfx3s7d2L9unXCajnGXLAk1s1paXjkqbXwmqGMqyWSsaX5VhWuHD2CXe+9Z3HRjqlgaWhIfeklKdZJiFG0+/bswfPPPy+so2fMBFtQUICEhARELl6M0IQfCKtkMtFcVYmvP/kLsrOzMWvWLGEdHWMm2Li5CbD384N/3NhljBLlU5Obg57aWuRezRaW0TEmswQbUlNx28FeilXCNUBa2PCzVGEZHRYX7MWLF5Fx/DhCFi4WFslkh7SQkX6ca2O0WDwkeGzp4+jWaDB99hxhmbx0NDTgzPt7kfjMc/ANCxPWyUltfh403d04c/pLYRkZFvWwdAtLkbZIilVAhTR8QuWPzgm/ObFcG6SR0WBRD7ti5UrcqKlF/LLlwiKR3CX381OI9vfDyRMnhOXBsZhgDQYDrwv1k1e3wtbeutVSJMqkr8eAv/7Xdl6PzGGEFXUsFhJkZGRg5qzZUqySYSFtkEZIKyPF5g2G2B4VdB9Wq40N3P38hEUZXPr4MDRu7rCxtcW1kyfw9bGjKL3yNXxnht2587aXJQNl2Vdw9cSnyD/9BYoyL6CzpZmXMjK9O/fc/v/BbfbPffrw3zH3r5+jvqSEJVnhvJ3+n7+Dd0io2dt9qm8U4NpnJ5DzOYv92XvS3zlQFUNPT/EK4Er6Mf4TPu/g7/5IWt/Whi937UTEvCRhuQt9pxNv/x6BLHa0dn0wU7qYd22urMTTTz8tLA+GxTxsSVkZnFgHKxUSrldQMFb/4z9hyYZNdyoLUsfSvvb6OvzwqbV8/+ObX4Gb73RkfniQZ/pGguLjUZmTI1rmIRHOYF7kXpCwS776ClELF/H3XL51G8IefRTZn6bzYxiZHhGJmhs3ROvbNJSX8WJxpp/RSGtNDT+xNFa+aXAopBHSykixmGDr6uqYd3AWLWVxq+A6F1vIw3N5mzrR2JHZGel8VHhk9Rq4+vhwG+0LT5yHkLkJKDjzN24j/KOi0VZXyz2bOUhoVHnGc8YMYTHPzcuX0FZbi3nPpdyZ7rJzdERAzCwkrFrNxUwnEkHeuaut1ex7NldW8FmIhrJSYblLfclN+EdHi5ZyII2QVkaKxQTbyIYtB2dlVgFsZGe0Uaym0BDcWluD6EXmL3KE/fBRLgajWAZFFYOaokLeHkpdsRZhiYmiZR4SIp0Ec5Y+zo83FBKwk7sHGpn3JOg15CnJm5pCx2lg3yv0kR+gqaJCWO9C31mJU2qkEdLKSLHoPOxUhZYM8mciMwd5IfJq5oRDkJ06nURthIboimvXROsuJKBqNnT7MI/4fZAQSZDf54XJMzZXVYmWaDNvagodx4cKjPj785PK6JEJY4hgHDEmEhZTmLevL69XqkSoirY5yHPeT6fSfflGSOBUUG1o3Ehel7zvvWJGOpa733TRGh7TEGBw2P+2hyVB08lz56RiMasRKrXprdCasIZOHdfKSLHYPOy8BQtgw5KaaWayWWtCCVXk/AVmPRrtMxf/DWXWYz/iMa0RijGJuJ8s42uCZhAoaSJBm0KzBAtfWHfn/Sl+NY2Lh4NESDGukZPvvoPEp5+9cxxqL305jQuWjkml5WMWL+H76HtRqKDEy8GN5eUYqKrApcxMYXkwLCZYuhP2elMzT1SUxL0EO9y+74O8K80grPjFL822TTEnWML0BLgf6CSh6SkSJcXet67n8USRoPf/v6NHsHRzGg8NTm3/A595UCLlV7Mxe5oXv8N2JFgsJHhqzRp0s8xXTdg62KOjqVG07h8KI2g2gIRDUNW/+z1RH2LhCU2hPShegYE8kSJaqm/xKToj9HkoTKEwgkIDCk2UCmmEtDJSLCbY5ORklBZc55ff1ALFgHVarWg9GDQbQEkbQfOkVAL0fqCkjOJR0yTpfqDpLeOUGr3f0OSOQhFKDukz0fdSIqQN0ghpZaRYTLB0bfjHy5bhxpkzwqJ8+Bxna+u3JuqHYvSiQyHB0PBGf0tD9f1m5JSUUXZfeP6csHwXGuJNky7CmFxV5Obw9xua3JEHpmk1+jwefv7CqiwKmDZIIyP9HQFh0XmorT//OQwjGGKtBYmArm5RfEixpTHzJ+9HQqUYN//LL7htKCQYGnrpahUlWw9C7I+X8QsHdNm15dYtYWVDPdumz0LxMD23ayjTIyP5SWLuggCJtK22jk+Z3Wumwlr0MG2QRkaDxZIuI0uWLoWexXf+sXHCYl3uJ7Eib3bzq8vcO9GlToK8WWBs7HeyflPo9VfSj/PLqiR+cwxNuozQSVHJvCXN6dKVLIIuEJAYg+LizR6PTij6Qfhjm1LNenSaqaC/f9CEbjyoycuFhsXZZ0+fFpaRYXHB0m0QK5NXY+HPUjFVxY/XkViOgf5+XNi3Fycy0jF//nxhHRkWDQkI+kCrViej7NxZYZFMdkgLpInRipWwuIc1Ejd3LuxZXCXvnJ3c0G3ehtoa5F29Kiyjw+Ie1shHBw8i739Poyz7a2GRTDaokAZp4PAILxKYY8wES5U+3tu9G8WZmbxsjWRywUsVHTvKNWCpqi/EmAmW2Lh+PXbu3MlrLEnRTh6MdbWo70kDlmTMYlhT3t+/H1u2bEHCk2tkuc0JDpXbzD5+DDt27MCmDRuE1XKMi2CJAx98gJdefBFxSx9XzBytxLJQsYycL7/AH/+4B+vX/b2wWpZxEyxBJeOfpZLx3j4Ini+rcE8kKi5mQt/YgD9PlJLxBH2R67m5iJjui+wjn/C7QSXqhvqQ+pL6lPp2LMVKjKtgCXrKyJ8//hhbN7+Mi4c+QI2FyjBKxp9q1nfUh9SX1Kdj/QQZYlxDgqHQg+VefmULCrVF8sFyKsL4YLmYqGjs2vHf4/pgOasK1oh8dKc6UMKjO8c9JDAHffG6mhqkrFqJyx99yAL4C9+68U9iXagvyi6cx6UPD/E+or6yhlgJRXhYU+Tj55XD4OPn86G9fEk+fv5eVFVV4Z13t2Pf3j3wZTGSZ0QUfGbKWqvjQUNpKVqKi1BfUYGNmzbh9W3bEBiojKcAKVawpuzevZuJ91206/XwCo/g90+ZFmmTjJ6eri5+M2WTVgs3Jw22bd2KtLQ0sVc5qEKwRqh68+699EPgDITExMAlKJiLd4pCK84ondsDA1ykHRXlqCgsxBOrkrH5xVSsWLFCvEJ5qEqwRnp6enD48GHs278fly5e5EXaPIOC4M1CBrr9WjI8dDt4Iw35lZW8Wk1iUhJSN25ESkoK7IepkKMkVClYU6qrq/GXI0dw9NgxZJ4/jwAmWteAGfAMDoabj3y0PdHeUI8WFo92VN9CNRPrwsVLsObJ1Xhm7VoEBASIV6kD1QvWlP7+fpw6dQrHWcjwGQsfdDodPFmHODHhevoHwENlnTNSWtlJTPW1uhoaeNENFxcXPMGG+SeTk7F8+XLYqPheuwkl2KGUlZUhKysLfzt7FueZ9y25eRP+oaFw8PCEg7s7r7Dt5OkJR9ahaoSK73W1tKCztQWGtjYY2LqGfeew8HAsWrQIP1qyBElsyA9VaGG4kTChBTuU9vZ2LuCc3Fzk5uejsLAI5VT/lWXInr6+cGHitXVxhR0TMAmZBG3tcut02zkJkoTZ29GBvk4ddGy7pb4eGicnhITORHR0FOLmzEF8XBwXqJubm/jricekEuxwkJC1Wi1fiouLcS0vD9oiEnMZL9Xp4e0DG0cH2Nk74PbUqXyhkvO02NDadnD7ITvbQdud9mBZeiqKQUt/3+D6m96+wTVr94t9tExhWTstvT0G9Hcb0NrYwKsShjAPGRkVhYdjYxEREYHIyEi+TGRhDocU7D2gpI6EXM88GsXE9MgeWmi7qbmZb7d36NCh64Ber4eOeUHy2Hp9N7r1XfwYjhonaDSO3CO6uLqybQ1cmSd3c3Xhj4qa5uXF40zapoW2fZnHJ1GqLSkaa6RgJapCzrhLVIUUrERVSMFKVIUUrERVSMFKVATw/+PViU0pqXvfAAAAAElFTkSuQmCC" class="img-fluid"></p>
+<p><strong>review_</strong>* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis.</p>
+</div>
+</div>
+<p><code>review_analysis</code> will compare 2 results together and present the differences. It will not check how the analysis was created nor check for inconsistencies. That mean, to review an analysis, it is necessary to create one and compare them.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_design_for_review</span> <span class="op">&lt;-</span> <span class="fu">srvyr</span><span class="fu">::</span><span class="fu"><a href="http://gdfe.co/srvyr/reference/as_survey_design.html">as_survey_design</a></span><span class="op">(</span><span class="va">my_data</span><span class="op">)</span></span>
+<span><span class="va">analysis_for_review</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/create_analysis.html">create_analysis</a></span><span class="op">(</span><span class="va">my_design_for_review</span>, <span class="va">my_loa_for_review</span>, sm_separator <span class="op">=</span> <span class="st">"/"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">binded_table</span> <span class="op">&lt;-</span> <span class="va">my_results</span><span class="op">$</span><span class="va">results_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">analysis_for_review</span><span class="op">$</span><span class="va">results_table</span>, by <span class="op">=</span> <span class="st">"analysis_key"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The binded table, i.e. with both results columns, can then be used to compared the 2 results. It will give back the results table and a review table.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_review</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/review_analysis.html">review_analysis</a></span><span class="op">(</span><span class="va">binded_table</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="va">my_review</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">my_review</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "results_table" "review_table" </code></pre>
+</div>
+</div>
+<p>The review table will tell if there is any difference.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_review</span><span class="op">$</span><span class="va">review_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 4%">
+<col style="width: 9%">
+<col style="width: 10%">
+<col style="width: 11%">
+<col style="width: 17%">
+<col style="width: 7%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">analysis_key</th>
+<th style="text-align: left;">stat</th>
+<th style="text-align: left;">review_check</th>
+<th style="text-align: left;">review_comment</th>
+<th style="text-align: left;">analysis_type</th>
+<th style="text-align: left;">analysis_var</th>
+<th style="text-align: left;">group_var</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">prop_select_one @/@ admin1 %/% admin1a @/@ NA %/% NA</td>
+<td style="text-align: left;">stat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">prop_select_one @/@ admin1 %/% admin1b @/@ NA %/% NA</td>
+<td style="text-align: left;">stat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">prop_select_one @/@ admin1 %/% admin1c @/@ NA %/% NA</td>
+<td style="text-align: left;">stat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mean @/@ income_v1_salaried_work %/% NA @/@ NA %/% NA</td>
+<td style="text-align: left;">stat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+<td style="text-align: left;">mean</td>
+<td style="text-align: left;">income_v1_salaried_work</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">median @/@ income_v1_salaried_work %/% NA @/@ NA %/% NA</td>
+<td style="text-align: left;">stat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+<td style="text-align: left;">median</td>
+<td style="text-align: left;">income_v1_salaried_work</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">mean @/@ expenditure_debt %/% NA @/@ NA %/% NA</td>
+<td style="text-align: left;">stat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+<td style="text-align: left;">mean</td>
+<td style="text-align: left;">expenditure_debt</td>
+<td style="text-align: left;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>It can be summarise with the <code>group_by</code> and <code>tally</code> functions</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_review</span><span class="op">$</span><span class="va">review_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">stat</span>, <span class="va">review_check</span>, <span class="va">review_comment</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">tally</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">stat</th>
+<th style="text-align: left;">review_check</th>
+<th style="text-align: left;">review_comment</th>
+<th style="text-align: right;">n</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td style="text-align: left;">stat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+<td style="text-align: right;">143</td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><em>analysis_key</em> are equivalent of an unique identifier. All analysis key should be unique.</p>
+</div>
+</div></div>
+<p>The following part adds some noise to show how difference would appear.</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">jittered_results_table</span> <span class="op">&lt;-</span> <span class="va">binded_table</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">jittered_results_table</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">jittered_results_table</span><span class="op">)</span>, <span class="fl">5</span><span class="op">)</span>, <span class="st">"stat.x"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">jittered_results_table</span><span class="op">$</span><span class="va">stat.x</span><span class="op">)</span>, <span class="fl">5</span>, <span class="cn">T</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">124</span><span class="op">)</span></span>
+<span><span class="va">jittered_results_table</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">jittered_results_table</span><span class="op">)</span>, <span class="fl">5</span><span class="op">)</span>, <span class="st">"stat.y"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="va">jittered_results_table</span><span class="op">$</span><span class="va">stat.y</span><span class="op">)</span>, <span class="fl">5</span>, <span class="cn">T</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">125</span><span class="op">)</span></span>
+<span><span class="va">jittered_results_table</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">jittered_results_table</span><span class="op">)</span>, <span class="fl">5</span><span class="op">)</span>, <span class="st">"stat.x"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1236</span><span class="op">)</span></span>
+<span><span class="va">jittered_results_table</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">jittered_results_table</span><span class="op">)</span>, <span class="fl">5</span><span class="op">)</span>, <span class="st">"stat.y"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_jittered_review</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/review_analysis.html">review_analysis</a></span><span class="op">(</span><span class="va">jittered_results_table</span>, </span>
+<span>                                      stat_columns_to_review <span class="op">=</span> <span class="st">"stat.x"</span>,</span>
+<span>                                      stat_columns_to_compare_with <span class="op">=</span> <span class="st">"stat.y"</span><span class="op">)</span></span>
+<span><span class="va">my_jittered_review</span><span class="op">$</span><span class="va">review_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">stat</span>, <span class="va">review_check</span>, <span class="va">review_comment</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">tally</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">stat</th>
+<th style="text-align: left;">review_check</th>
+<th style="text-align: left;">review_comment</th>
+<th style="text-align: right;">n</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">stat.x</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stat.x</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in stat.x</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">stat.x</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in stat.y</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">stat.x</td>
+<td style="text-align: left;">TRUE</td>
+<td style="text-align: left;">Same results</td>
+<td style="text-align: right;">123</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>The results table has new columns, in particular the review_check_* and review_comment_*. They can help to filter for the differences and explore.</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_jittered_review</span><span class="op">$</span><span class="va">results_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">review_check_stat.x</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 0%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 19%">
+<col style="width: 4%">
+<col style="width: 7%">
+<col style="width: 4%">
+<col style="width: 2%">
+<col style="width: 3%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 2%">
+<col style="width: 0%">
+<col style="width: 2%">
+<col style="width: 1%">
+<col style="width: 2%">
+<col style="width: 4%">
+<col style="width: 4%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">analysis_type.x</th>
+<th style="text-align: left;">analysis_var.x</th>
+<th style="text-align: left;">analysis_var_value.x</th>
+<th style="text-align: left;">group_var.x</th>
+<th style="text-align: left;">group_var_value.x</th>
+<th style="text-align: right;">stat.x</th>
+<th style="text-align: right;">stat_low.x</th>
+<th style="text-align: right;">stat_upp.x</th>
+<th style="text-align: right;">n.x</th>
+<th style="text-align: right;">n_total.x</th>
+<th style="text-align: right;">n_w.x</th>
+<th style="text-align: right;">n_w_total.x</th>
+<th style="text-align: left;">analysis_key</th>
+<th style="text-align: left;">analysis_type.y</th>
+<th style="text-align: left;">analysis_var.y</th>
+<th style="text-align: left;">analysis_var_value.y</th>
+<th style="text-align: left;">group_var.y</th>
+<th style="text-align: left;">group_var_value.y</th>
+<th style="text-align: right;">stat.y</th>
+<th style="text-align: right;">stat_low.y</th>
+<th style="text-align: right;">stat_upp.y</th>
+<th style="text-align: right;">n.y</th>
+<th style="text-align: right;">n_total.y</th>
+<th style="text-align: right;">n_w.y</th>
+<th style="text-align: right;">n_w_total.y</th>
+<th style="text-align: left;">review_check_stat.x</th>
+<th style="text-align: left;">review_comment_stat.x</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">bottled_water</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.0258984</td>
+<td style="text-align: right;">0.1341016</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">prop_select_one @/@ wash_drinkingwatersource %/% bottled_water @/@ NA %/% NA</td>
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">bottled_water</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.0800000</td>
+<td style="text-align: right;">0.0258984</td>
+<td style="text-align: right;">0.1341016</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in stat.x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">piped_into_dwelling</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.3809524</td>
+<td style="text-align: right;">0.0126401</td>
+<td style="text-align: right;">0.1073599</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">prop_select_one @/@ wash_drinkingwatersource %/% piped_into_dwelling @/@ NA %/% NA</td>
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">piped_into_dwelling</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.0600000</td>
+<td style="text-align: right;">0.0126401</td>
+<td style="text-align: right;">0.1073599</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">sachet_water</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.0600000</td>
+<td style="text-align: right;">0.0126401</td>
+<td style="text-align: right;">0.1073599</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">prop_select_one @/@ wash_drinkingwatersource %/% sachet_water @/@ NA %/% NA</td>
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">sachet_water</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">20.1290323</td>
+<td style="text-align: right;">0.0126401</td>
+<td style="text-align: right;">0.1073599</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">tanker_trucks</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.0700000</td>
+<td style="text-align: right;">0.0191182</td>
+<td style="text-align: right;">0.1208818</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">prop_select_one @/@ wash_drinkingwatersource %/% tanker_trucks @/@ NA %/% NA</td>
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">tanker_trucks</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">20.0000000</td>
+<td style="text-align: right;">0.0191182</td>
+<td style="text-align: right;">0.1208818</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">unprotected_well</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.0040187</td>
+<td style="text-align: right;">0.0640187</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">prop_select_one @/@ wash_drinkingwatersource %/% unprotected_well @/@ NA %/% NA</td>
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">unprotected_well</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.0300000</td>
+<td style="text-align: right;">-0.0040187</td>
+<td style="text-align: right;">0.0640187</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in stat.x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">prop_select_multiple</td>
+<td style="text-align: left;">edu_learning_conditions_reasons_v1</td>
+<td style="text-align: left;">lack_materials</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">0.3903093</td>
+<td style="text-align: right;">0.5896907</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">prop_select_multiple @/@ edu_learning_conditions_reasons_v1 %/% lack_materials @/@ NA %/% NA</td>
+<td style="text-align: left;">prop_select_multiple</td>
+<td style="text-align: left;">edu_learning_conditions_reasons_v1</td>
+<td style="text-align: left;">lack_materials</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">0.4900000</td>
+<td style="text-align: right;">0.3903093</td>
+<td style="text-align: right;">0.5896907</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in stat.x</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">mean</td>
+<td style="text-align: left;">income_v1_salaried_work</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">admin1c</td>
+<td style="text-align: right;">0.4900000</td>
+<td style="text-align: right;">19.6729090</td>
+<td style="text-align: right;">20.8985196</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: left;">mean @/@ income_v1_salaried_work %/% NA @/@ admin1 %/% admin1c</td>
+<td style="text-align: left;">mean</td>
+<td style="text-align: left;">income_v1_salaried_work</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">admin1c</td>
+<td style="text-align: right;">20.2857143</td>
+<td style="text-align: right;">19.6729090</td>
+<td style="text-align: right;">20.8985196</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">median</td>
+<td style="text-align: left;">expenditure_debt</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">admin1a</td>
+<td style="text-align: right;">19.0000000</td>
+<td style="text-align: right;">21.0000000</td>
+<td style="text-align: right;">23.0000000</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: left;">median @/@ expenditure_debt %/% NA @/@ admin1 %/% admin1a</td>
+<td style="text-align: left;">median</td>
+<td style="text-align: left;">expenditure_debt</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">admin1a</td>
+<td style="text-align: right;">21.0000000</td>
+<td style="text-align: right;">21.0000000</td>
+<td style="text-align: right;">23.0000000</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">dont_know</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">admin1b</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">-0.0354420</td>
+<td style="text-align: right;">0.1095161</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: left;">prop_select_one @/@ wash_drinkingwatersource %/% dont_know @/@ admin1 %/% admin1b</td>
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">dont_know</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">admin1b</td>
+<td style="text-align: right;">0.0370370</td>
+<td style="text-align: right;">-0.0354420</td>
+<td style="text-align: right;">0.1095161</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Missing in stat.x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">piped_into_compound</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">admin1b</td>
+<td style="text-align: right;">0.0740741</td>
+<td style="text-align: right;">-0.0264363</td>
+<td style="text-align: right;">0.1745845</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: left;">prop_select_one @/@ wash_drinkingwatersource %/% piped_into_compound @/@ admin1 %/% admin1b</td>
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">piped_into_compound</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">admin1b</td>
+<td style="text-align: right;">0.5238095</td>
+<td style="text-align: right;">-0.0264363</td>
+<td style="text-align: right;">0.1745845</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: left;">FALSE</td>
+<td style="text-align: left;">Different results</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -5083,12 +5829,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copiado");
+    button.setAttribute("title", "Copied!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copiado");
+      button.setAttribute("data-bs-title", "Copied!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -5464,11 +6210,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-
 <footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/02-cleaning/02-cleaning-05-extra.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/02-cleaning/02-cleaning-05-extra.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/06-analysis-review/06-analysis-01-review.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/06-analysis-review/06-analysis-01-review.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li>
 </ul></div></div></div></footer>
 </body>
 </html>

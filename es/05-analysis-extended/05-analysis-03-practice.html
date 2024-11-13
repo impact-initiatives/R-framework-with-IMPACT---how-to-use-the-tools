@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
 <head>
-<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/02-cleaning/02-cleaning-05-extra.html" />
-<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/02-cleaning/02-cleaning-05-extra.es.html" />
-<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/02-cleaning/02-cleaning-05-extra.fr.html" />
+<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/05-analysis-extended/05-analysis-03-practice.html" />
+<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/05-analysis-extended/05-analysis-03-practice.es.html" />
+<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/05-analysis-extended/05-analysis-03-practice.fr.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yann Say">
-<title>05 - Plantillas de revisión – Intoducciòn al Marco R en IMPACT Initiatives</title>
+<title>03 - Practice (5) – Intoducciòn al Marco R en IMPACT Initiatives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
+}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 <script>const headroomChanged = new CustomEvent("quarto-hrChanged", {
@@ -4702,8 +4736,8 @@ vertical-align: -.125em;
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html">Cleaning - Creating a clean dataset</a></li>
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-05-extra.html">05 - Plantillas de revisión</a></li>
+<li class="breadcrumb-item"><a href="../05-analysis-extended/05-analysis-01-loa.html">Analysis - Extended analysis</a></li>
+<li class="breadcrumb-item"><a href="../05-analysis-extended/05-analysis-03-practice.html">03 - Practice (5)</a></li>
 </ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -4723,7 +4757,7 @@ vertical-align: -.125em;
         </div>
         </div>
     <div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/02-cleaning/02-cleaning-05-extra.html" id="language-link-en">English</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/05-analysis-extended/05-analysis-03-practice.html" id="language-link-en">English</a></li></ul>
 </div>
 <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
@@ -4770,13 +4804,13 @@ vertical-align: -.125em;
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Cleaning - Creating a clean dataset</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html" class="sidebar-item-text sidebar-link">
@@ -4803,7 +4837,7 @@ vertical-align: -.125em;
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02-cleaning/02-cleaning-05-extra.html" class="sidebar-item-text sidebar-link active">
+  <a href="../02-cleaning/02-cleaning-05-extra.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">05 - Plantillas de revisión</span></a>
   </div>
 </li>
@@ -4869,13 +4903,13 @@ vertical-align: -.125em;
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Analysis - Extended analysis</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Alternar sección">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../05-analysis-extended/05-analysis-01-loa.html" class="sidebar-item-text sidebar-link">
@@ -4890,7 +4924,7 @@ vertical-align: -.125em;
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05-analysis-extended/05-analysis-03-practice.html" class="sidebar-item-text sidebar-link">
+  <a href="../05-analysis-extended/05-analysis-03-practice.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">03 - Practice (5)</span></a>
   </div>
 </li>
@@ -4997,20 +5031,26 @@ vertical-align: -.125em;
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">En esta página</h2>
    
   <ul>
-<li><a href="#plantillas-de-revisi%C3%B3n" id="toc-plantillas-de-revisión" class="nav-link active" data-scroll-target="#plantillas-de-revisión">Plantillas de revisión</a></li>
+<li>
+<a href="#pr%C3%A1cticas" id="toc-prácticas" class="nav-link active" data-scroll-target="#pr%C3%A1cticas">Prácticas</a>
+  <ul class="collapse">
+<li><a href="#pr%C3%A1ctica-1" id="toc-práctica-1" class="nav-link" data-scroll-target="#pr%C3%A1ctica-1">Práctica 1</a></li>
+  <li><a href="#descargas" id="toc-descargas" class="nav-link" data-scroll-target="#descargas">Descargas</a></li>
+  </ul>
+</li>
   </ul>
 <div class="toc-actions"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/02-cleaning/02-cleaning-05-extra.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/02-cleaning/02-cleaning-05-extra.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/05-analysis-extended/05-analysis-03-practice.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/05-analysis-extended/05-analysis-03-practice.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
 <li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
 </ul></div></nav>
 </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html">Cleaning - Creating a clean dataset</a></li>
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-05-extra.html">05 - Plantillas de revisión</a></li>
+<li class="breadcrumb-item"><a href="../05-analysis-extended/05-analysis-01-loa.html">Analysis - Extended analysis</a></li>
+<li class="breadcrumb-item"><a href="../05-analysis-extended/05-analysis-03-practice.html">03 - Practice (5)</a></li>
 </ol></nav><div class="quarto-title">
-<h1 class="title">05 - Plantillas de revisión</h1>
+<h1 class="title">03 - Practice (5)</h1>
 </div>
 
 
@@ -5036,11 +5076,141 @@ vertical-align: -.125em;
   
 
 
-</header><section id="plantillas-de-revisión" class="level1"><h1>Plantillas de revisión</h1>
-<p>Hay algunas plantillas de proyecto que se pueden utilizar para revisar la limpieza. Más información en <a href="https://github.com/impact-initiatives/impacttemplates">este repositorio Github.</a>.</p>
-
-
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</header><section id="prácticas" class="level1"><h1>Prácticas</h1>
+<section id="práctica-1" class="level2"><h2 class="anchored" data-anchor-id="práctica-1">Práctica 1</h2>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/analysistools/">analysistools</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">my_data</span> <span class="op">&lt;-</span> <span class="fu">analysistools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/analysistools/reference/analysistools_MSNA_template_data.html">analysistools_MSNA_template_data</a></span></span>
+<span></span>
+<span><span class="va">sampling_frame</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  strata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"admin1a"</span>, <span class="st">"admin1b"</span>, <span class="st">"admin1c"</span><span class="op">)</span>,</span>
+<span>  population <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100000</span>, <span class="fl">200000</span>, <span class="fl">300000</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Cree el análisis para los siguientes indicadores:</p>
+<ul>
+<li>% de hogares que tienen/tenían jabón en casa</li>
+<li>% de hogares según el tipo de fuente principal de agua potable</li>
+<li>% de hogares según las barreras autodeclaradas para acceder a la atención médica</li>
+<li>Ingreso promedio del hogar durante los 30 días previos a la recolección de datos (total)</li>
+<li>Ingreso mediano del hogar durante los 30 días previos a la recolección de datos (total)</li>
+<li>Gastos promedio del hogar en los 6 meses previos a la recolección de datos (salud)</li>
+<li>Gastos medianos del hogar en los 6 meses previos a la recolección de datos (salud)</li>
+<li>Proporción de gastos del hogar en salud en los 6 meses previos a la recolección de datos y el ingreso del hogar durante los 30 días previos a la recolección de datos.</li>
+<li>% de hogares según el número de días en que el hogar tuvo que restringir el consumo de adultos para que los niños pequeños pudieran comer como una forma de afrontar la falta de alimentos o dinero para comprarlos.</li>
+</ul>
+<p>El análisis debe realizarse a nivel de <strong>admin1</strong> (la estratificación).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 76%">
+<col style="width: 13%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">label::english</th>
+<th style="text-align: left;">type</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">income_v2_total</td>
+<td style="text-align: left;">Can you estimate your household’s total income (in local currency) over the last 30 days from all sources? Please only report income received in the form of money, not items or services.</td>
+<td style="text-align: left;">integer</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">expenditure_health</td>
+<td style="text-align: left;">3. Health-related expenditures (healthcare, medicine, etc.)</td>
+<td style="text-align: left;">integer</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">rCSIMealAdult</td>
+<td style="text-align: left;">During the last 7 days, were there days (and, if so, how many) when your household had to restrict consumption by adults in order for small children to eat to cope with a lack of food or money to buy it?</td>
+<td style="text-align: left;">integer</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">wash_drinkingwatersource</td>
+<td style="text-align: left;">What is the main source of drinking water for members of your household?</td>
+<td style="text-align: left;">select_one wash_drinkingwatersource</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">wash_soap</td>
+<td style="text-align: left;">Do you have soap or detergent in your household for washing hands? [if not remote] Can you show it to me?</td>
+<td style="text-align: left;">select_one wash_soap</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">health_barriers</td>
+<td style="text-align: left;">What are your barriers to access health care?</td>
+<td style="text-align: left;">select_multiple health_barriers</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise_data</span> <span class="op">&lt;-</span> <span class="fu">analysistools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/analysistools/reference/analysistools_MSNA_template_data.html">analysistools_MSNA_template_data</a></span></span>
+<span></span>
+<span><span class="va">exercise_sampling_frame</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  strata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"admin1a"</span>, <span class="st">"admin1b"</span>, <span class="st">"admin1c"</span><span class="op">)</span>,</span>
+<span>  population <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100000</span>, <span class="fl">200000</span>, <span class="fl">300000</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">template_loa</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/08 - exercise - template loa.xlsx"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Haga clic para obtener una pista
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><em>rCSIMealAdult</em> debe analizarse como una variable categórica y no como una variable numérica para obtener la proporción por día.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Haga clic para ver la respuesta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise_data</span> <span class="op">&lt;-</span> <span class="va">exercise_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/add_weights.html">add_weights</a></span><span class="op">(</span></span>
+<span>    <span class="va">exercise_sampling_frame</span>,</span>
+<span>    <span class="st">"admin1"</span>, <span class="st">"strata"</span>, <span class="st">"population"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">exercise_design</span> <span class="op">&lt;-</span> <span class="fu">srvyr</span><span class="fu">::</span><span class="fu"><a href="http://gdfe.co/srvyr/reference/as_survey_design.html">as_survey_design</a></span><span class="op">(</span><span class="va">exercise_data</span>, weights <span class="op">=</span> <span class="st">"weights"</span>, strata <span class="op">=</span> <span class="st">"admin1"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">exercise_loa</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/09 - correction - loa.xlsx"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">exercise_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/create_analysis.html">create_analysis</a></span><span class="op">(</span><span class="va">exercise_design</span>, loa <span class="op">=</span> <span class="va">exercise_loa</span>, sm_separator <span class="op">=</span> <span class="st">"/"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="descargas" class="level2"><h2 class="anchored" data-anchor-id="descargas">Descargas</h2>
+<ul>
+<li><a href="../inputs/08%20-%20exercise%20-%20template%20loa.xlsx">08 - exercise - template loa</a></li>
+<li><a href="../inputs/09%20-%20correction%20-%20loa.xlsx">09 - correction - loa</a></li>
+</ul></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -5464,10 +5634,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-
 <footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/02-cleaning/02-cleaning-05-extra.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/02-cleaning/02-cleaning-05-extra.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/05-analysis-extended/05-analysis-03-practice.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/05-analysis-extended/05-analysis-03-practice.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
 <li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
 </ul></div></div></div></footer>
 </body>

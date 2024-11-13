@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/02-cleaning/02-cleaning-05-extra.html" />
-<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/02-cleaning/02-cleaning-05-extra.es.html" />
-<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/02-cleaning/02-cleaning-05-extra.fr.html" />
+<link rel="alternate" hreflang="en" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/08-outputs-part2/08-outputs-02-tables-for-maps.html" />
+<link rel="alternate" hreflang="es" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/08-outputs-part2/08-outputs-02-tables-for-maps.es.html" />
+<link rel="alternate" hreflang="fr" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/fr/08-outputs-part2/08-outputs-02-tables-for-maps.fr.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yann Say">
-<title>05 - Plantillas de revisión – Intoducciòn al Marco R en IMPACT Initiatives</title>
+<meta name="dcterms.date" content="2024-11-13">
+<title>02 - Tables for maps – Intoduction to R framework at IMPACT Initiatives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +21,40 @@ ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
+}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 <script>const headroomChanged = new CustomEvent("quarto-hrChanged", {
@@ -4680,17 +4715,17 @@ vertical-align: -.125em;
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Sin resultados",
-    "search-matching-documents-text": "documentos encontrados",
-    "search-copy-link-title": "Copiar el enlace en la búsqueda",
-    "search-hide-matches-text": "Ocultar resultados adicionales",
-    "search-more-match-text": "resultado adicional en este documento",
-    "search-more-matches-text": "resultados adicionales en este documento",
-    "search-clear-button-title": "Borrar",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar",
-    "search-label": "Buscar"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 </head>
@@ -4698,15 +4733,15 @@ vertical-align: -.125em;
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html">Cleaning - Creating a clean dataset</a></li>
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-05-extra.html">05 - Plantillas de revisión</a></li>
-</ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+<li class="breadcrumb-item"><a href="../08-outputs-part2/08-outputs-01-ggplot-theme.html">Outputs - part 2</a></li>
+<li class="breadcrumb-item"><a href="../08-outputs-part2/08-outputs-02-tables-for-maps.html">02 - Tables for maps</a></li>
+</ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -4714,16 +4749,16 @@ vertical-align: -.125em;
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Intoducciòn al Marco R en IMPACT Initiatives</a> 
+      <a href="../">Intoduction to R framework at IMPACT Initiatives</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
-        <div id="quarto-search" class title="Buscar"></div>
+        <div id="quarto-search" class title="Search"></div>
         </div>
         </div>
     <div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/02-cleaning/02-cleaning-05-extra.html" id="language-link-en">English</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i></button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://impact-initiatives.github.io/R-framework-with-IMPACT---how-to-use-the-tools/es/08-outputs-part2/08-outputs-02-tables-for-maps.html" id="language-link-es">Español</a></li></ul>
 </div>
 <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
@@ -4737,7 +4772,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Cleaning - Checking a dataset</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4745,66 +4780,66 @@ vertical-align: -.125em;
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-01-checks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Verificaciones</span></a>
+ <span class="menu-text">01 - Checks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-02-add-duration-others.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Añadir, duracion y otros</span></a>
+ <span class="menu-text">02 - Add, durations and others</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-03-logical-with-lists.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - verificación con lista de lógicas</span></a>
+ <span class="menu-text">03 - Checks with logical list</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-04-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - Práctica - session 1</span></a>
+ <span class="menu-text">04 - Practice - session 1</span></a>
   </div>
 </li>
       </ul>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Cleaning - Creating a clean dataset</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Creando un registro de limpieza</span></a>
+ <span class="menu-text">01 - Create a cleaning log</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-02-create-clean-dataset.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Crear un conjunto de datos limpios</span></a>
+ <span class="menu-text">02 - Creating a clean dataset</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-03-review-cleaning.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Revisar la limpieza</span></a>
+ <span class="menu-text">03 - Review cleaning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-cleaning/02-cleaning-04-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - Práctica (2)</span></a>
+ <span class="menu-text">04 - Practice (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02-cleaning/02-cleaning-05-extra.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">05 - Plantillas de revisión</span></a>
+  <a href="../02-cleaning/02-cleaning-05-extra.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05 - Review templates</span></a>
   </div>
 </li>
       </ul>
@@ -4813,7 +4848,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Composition - Adding indicators</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4821,25 +4856,25 @@ vertical-align: -.125em;
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-01-add.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Añadir indicadores</span></a>
+ <span class="menu-text">01 - Add indicators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-02-review.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Verificar un indicador</span></a>
+ <span class="menu-text">02 - Review indicators</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-03-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Práctica (3)</span></a>
+ <span class="menu-text">03 - Practice (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../03-composition/03-composition-04-extra.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - impactR4PHU y humind</span></a>
+ <span class="menu-text">04 - impactR4PHU and humind</span></a>
   </div>
 </li>
       </ul>
@@ -4848,7 +4883,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">Analysis - Simple analysis</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4871,7 +4906,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Analysis - Extended analysis</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4900,7 +4935,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">Analysis - Reviewing an analysis</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4929,7 +4964,7 @@ vertical-align: -.125em;
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
  <span class="menu-text">Outputs - part 1</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -4956,13 +4991,13 @@ vertical-align: -.125em;
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
  <span class="menu-text">Outputs - part 2</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Alternar sección">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../08-outputs-part2/08-outputs-01-ggplot-theme.html" class="sidebar-item-text sidebar-link">
@@ -4971,7 +5006,7 @@ vertical-align: -.125em;
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../08-outputs-part2/08-outputs-02-tables-for-maps.html" class="sidebar-item-text sidebar-link">
+  <a href="../08-outputs-part2/08-outputs-02-tables-for-maps.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">02 - Tables for maps</span></a>
   </div>
 </li>
@@ -4994,23 +5029,24 @@ vertical-align: -.125em;
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">En esta página</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#plantillas-de-revisi%C3%B3n" id="toc-plantillas-de-revisión" class="nav-link active" data-scroll-target="#plantillas-de-revisión">Plantillas de revisión</a></li>
+<li><a href="#create_table_for_map" id="toc-create_table_for_map" class="nav-link active" data-scroll-target="#create_table_for_map"><code>create_table_for_map</code></a></li>
+  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a></li>
   </ul>
 <div class="toc-actions"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/02-cleaning/02-cleaning-05-extra.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/02-cleaning/02-cleaning-05-extra.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/08-outputs-part2/08-outputs-02-tables-for-maps.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/08-outputs-part2/08-outputs-02-tables-for-maps.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li>
 </ul></div></nav>
 </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb">
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-01-create-cleaning-log.html">Cleaning - Creating a clean dataset</a></li>
-<li class="breadcrumb-item"><a href="../02-cleaning/02-cleaning-05-extra.html">05 - Plantillas de revisión</a></li>
+<li class="breadcrumb-item"><a href="../08-outputs-part2/08-outputs-01-ggplot-theme.html">Outputs - part 2</a></li>
+<li class="breadcrumb-item"><a href="../08-outputs-part2/08-outputs-02-tables-for-maps.html">02 - Tables for maps</a></li>
 </ol></nav><div class="quarto-title">
-<h1 class="title">05 - Plantillas de revisión</h1>
+<h1 class="title">02 - Tables for maps</h1>
 </div>
 
 
@@ -5018,16 +5054,16 @@ vertical-align: -.125em;
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
              <p>Yann Say </p>
           </div>
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">13 de noviembre de 2024</p>
+      <p class="date">November 13, 2024</p>
     </div>
   </div>
   
@@ -5036,8 +5072,484 @@ vertical-align: -.125em;
   
 
 
-</header><section id="plantillas-de-revisión" class="level1"><h1>Plantillas de revisión</h1>
-<p>Hay algunas plantillas de proyecto que se pueden utilizar para revisar la limpieza. Más información en <a href="https://github.com/impact-initiatives/impacttemplates">este repositorio Github.</a>.</p>
+</header><div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/presentresults/">presentresults</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="va">results_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span>analysis_var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"msni_in_need"</span>, <span class="st">"comp_health_in_need"</span>, <span class="st">"comp_prot_in_need"</span>, <span class="st">"comp_edu_in_need"</span>, <span class="st">"comp_foodsec_in_need"</span>,<span class="st">"comp_wash_in_need"</span>,        <span class="st">"comp_snfi_in_need"</span><span class="op">)</span>,</span>
+<span>                             analysis_var_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span><span class="op">)</span>,</span>
+<span>                             group_var <span class="op">=</span> <span class="st">"admin1"</span>,</span>
+<span>                             group_var_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"PCODE1"</span>, <span class="st">"PCODE2"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">12344</span><span class="op">)</span></span>
+<span><span class="va">results_table</span><span class="op">$</span><span class="va">stat</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">results_table</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This vignette will show an example how to create a table for the MSNA Indicator Maps 1.2 tool.</p>
+<section id="create_table_for_map" class="level2"><h2 class="anchored" data-anchor-id="create_table_for_map"><code>create_table_for_map</code></h2>
+<p>The results table (randomly generated) shown below present the results in a long format for 7 indicators and at the admin 1 :</p>
+<ul>
+<li>msni_in_need: Multi Sector Need Index score</li>
+<li>comp_health_in_need: Health sectoral composite score</li>
+<li>comp_prot_in_need: Protection sectoral composite score</li>
+<li>comp_edu_in_need: Education sectoral composite score</li>
+<li>comp_foodsec_in_need: Food Security sectoral composite score</li>
+<li>comp_wash_in_need: Water, Sanitation and Hygiene sectoral composite score</li>
+<li>comp_snfi_in_need: Shelter and Non Food Items sectoral composite score</li>
+<li>admin1: PCODE1 and PCODE2.</li>
+</ul>
+<p><code>stat</code> column represent the percentages.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">results_table</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 25%">
+<col style="width: 13%">
+<col style="width: 21%">
+<col style="width: 13%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">analysis_var</th>
+<th style="text-align: right;">analysis_var_value</th>
+<th style="text-align: left;">group_var</th>
+<th style="text-align: left;">group_var_value</th>
+<th style="text-align: right;">stat</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">msni_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.0647109</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">comp_health_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.9305904</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">comp_prot_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.0554359</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">comp_edu_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.0628720</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">comp_foodsec_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.1882063</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">comp_wash_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.7435970</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Maps can only show one information per admin level. First thing is to filter the results table for the information to get the information to be map. In the example, the analysis variable value can be 1 or 0, where 1 means “in need”, and 0 means “not in need”. The map will show the percentages of household in needs, the results will be filtered for 1. Then the function <code>create_table_for_map</code> can be used.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_table_filtered</span> <span class="op">&lt;-</span> <span class="va">results_table</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">analysis_var_value</span> <span class="op">==</span> <span class="st">"1"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">results_table_recoded_5_classes</span> <span class="op">&lt;-</span> <span class="va">results_table_filtered</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/create_table_for_map.html">create_table_for_map</a></span><span class="op">(</span>number_classes <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">results_table_recoded_5_classes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">group_var_value</th>
+<th style="text-align: left;">msni_in_need</th>
+<th style="text-align: left;">comp_health_in_need</th>
+<th style="text-align: left;">comp_prot_in_need</th>
+<th style="text-align: left;">comp_edu_in_need</th>
+<th style="text-align: left;">comp_foodsec_in_need</th>
+<th style="text-align: left;">comp_wash_in_need</th>
+<th style="text-align: left;">comp_snfi_in_need</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>If you want to use 6 classes, set the argument <code>number_classes</code> to 6.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_table_filtered</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/create_table_for_map.html">create_table_for_map</a></span><span class="op">(</span>number_classes <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">group_var_value</th>
+<th style="text-align: left;">msni_in_need</th>
+<th style="text-align: left;">comp_health_in_need</th>
+<th style="text-align: left;">comp_prot_in_need</th>
+<th style="text-align: left;">comp_edu_in_need</th>
+<th style="text-align: left;">comp_foodsec_in_need</th>
+<th style="text-align: left;">comp_wash_in_need</th>
+<th style="text-align: left;">comp_snfi_in_need</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>There can be 5 or 6 classes as follow:</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<section id="classes" class="level3"><h3 class="anchored" data-anchor-id="classes">5 classes</h3>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Class</th>
+<th>Value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>&lt;= 25%</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>&lt;= 50%</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>&lt;= 75%</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>&lt;= 100%</td>
+</tr>
+<tr class="even">
+<td>empty</td>
+<td>Anything else</td>
+</tr>
+</tbody>
+</table></section>
+</div>
+<div class="column" style="width:10%;">
+<!-- empty column to create gap -->
+</div>
+<div class="column" style="width:45%;">
+<section id="classes-1" class="level3"><h3 class="anchored" data-anchor-id="classes-1">6 classes</h3>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Class</th>
+<th>Value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>&lt;= 20%</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>&lt;= 40%</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>&lt;= 60%</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>&lt;= 80%</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>&lt;= 100%</td>
+</tr>
+<tr class="odd">
+<td>empty</td>
+<td>Anything else</td>
+</tr>
+</tbody>
+</table></section>
+</div>
+</div>
+</section><section id="troubleshooting" class="level2"><h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
+<p>If you have more than one value per indicator and admin level, you should get a warning from tidyr. You can use it to explore where the problem lies.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/create_table_for_map.html">create_table_for_map</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Values from `stat_recoded` are not uniquely identified; output will contain
+list-cols.
+• Use `values_fn = list` to suppress this warning.
+• Use `values_fn = {summary_fun}` to summarise duplicates.
+• Use the following dplyr code to identify duplicates.
+  {data} |&gt;
+  dplyr::summarise(n = dplyr::n(), .by = c(group_var_value, analysis_var)) |&gt;
+  dplyr::filter(n &gt; 1L)</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">group_var_value</th>
+<th style="text-align: left;">msni_in_need</th>
+<th style="text-align: left;">comp_health_in_need</th>
+<th style="text-align: left;">comp_prot_in_need</th>
+<th style="text-align: left;">comp_edu_in_need</th>
+<th style="text-align: left;">comp_foodsec_in_need</th>
+<th style="text-align: left;">comp_wash_in_need</th>
+<th style="text-align: left;">comp_snfi_in_need</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">2, 4</td>
+<td style="text-align: left;">5, 3</td>
+<td style="text-align: left;">2, 5</td>
+<td style="text-align: left;">2, 5</td>
+<td style="text-align: left;">2, 3</td>
+<td style="text-align: left;">4, 4</td>
+<td style="text-align: left;">4, 4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">3, 5</td>
+<td style="text-align: left;">2, 2</td>
+<td style="text-align: left;">3, 3</td>
+<td style="text-align: left;">3, 5</td>
+<td style="text-align: left;">3, 4</td>
+<td style="text-align: left;">5, 3</td>
+<td style="text-align: left;">2, 3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_table</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, .by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">group_var_value</span>, <span class="va">analysis_var</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">1L</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">group_var_value</th>
+<th style="text-align: left;">analysis_var</th>
+<th style="text-align: right;">n</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">msni_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">comp_health_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">comp_prot_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">comp_edu_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">comp_foodsec_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">comp_wash_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">comp_snfi_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">msni_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">comp_health_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">comp_prot_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">comp_edu_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">comp_foodsec_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">comp_wash_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">comp_snfi_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>In this case there are 2 values for each combination of <em>group_var_value</em> and <em>analysis_var</em>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_table</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">group_var_value</span> <span class="op">==</span> <span class="st">"PCODE1"</span> <span class="op">&amp;</span> <span class="va">analysis_var</span> <span class="op">==</span> <span class="st">"msni_in_need"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 27%">
+<col style="width: 14%">
+<col style="width: 23%">
+<col style="width: 14%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">analysis_var</th>
+<th style="text-align: right;">analysis_var_value</th>
+<th style="text-align: left;">group_var</th>
+<th style="text-align: left;">group_var_value</th>
+<th style="text-align: right;">stat</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">msni_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.0647109</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">msni_in_need</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.6411115</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>There are two values, maps can only show one. The results table should be filtered to one value only.</p>
+<p>This is section comes from this <a href="https://impact-initiatives.github.io/presentresults/articles/create-table-for-map.html">vignette</a>.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -5083,12 +5595,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // flash "checked"
     button.classList.add('code-copy-button-checked');
     var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copiado");
+    button.setAttribute("title", "Copied!");
     let tooltip;
     if (window.bootstrap) {
       button.setAttribute("data-bs-toggle", "tooltip");
       button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copiado");
+      button.setAttribute("data-bs-title", "Copied!");
       tooltip = new bootstrap.Tooltip(button, 
         { trigger: "manual", 
           customClass: "code-copy-button-tooltip",
@@ -5464,11 +5976,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-
 <footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/02-cleaning/02-cleaning-05-extra.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/02-cleaning/02-cleaning-05-extra.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
-<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/08-outputs-part2/08-outputs-02-tables-for-maps.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/08-outputs-part2/08-outputs-02-tables-for-maps.qmd" class="toc-action"><i class="bi empty"></i>View source</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li>
 </ul></div></div></div></footer>
 </body>
 </html>
