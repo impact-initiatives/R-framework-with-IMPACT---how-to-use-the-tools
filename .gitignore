@@ -2,12 +2,9 @@
 .RData
 .Ruserdata
 /.quarto/
-.Rproj.user
+.Rproj.user/
 .Rdata
 .httr-oauth
 .DS_Store
 .quarto
 _site/
-.Rproj.user
-.Rproj.user/
-/.Rproj.user

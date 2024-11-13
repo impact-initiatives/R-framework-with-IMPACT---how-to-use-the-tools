@@ -131,3 +131,9 @@ How you would review an analysis that does not have an analysis key? (discussion
 - If the analysis is in a wide format, change to long format then add the analysis key.
 
 :::
+
+## Downloads
+
+- [08 - exercise - template loa](../inputs/08 - exercise - template loa.xlsx)
+- [09 - correction - loa](../inputs/09 - correction - loa.xlsx)
+- [10 - exercise - analysis_to_review](../inputs/10 - exercise - analysis_to_review.xlsx)

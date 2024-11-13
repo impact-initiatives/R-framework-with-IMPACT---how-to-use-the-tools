@@ -154,3 +154,10 @@ review_of_cleaning <- review_cleaning(raw_dataset = my_raw_dataset,
 ```
 
 :::
+
+## Descargas
+
+- [03 - exercise - previous_log](../inputs/03 - exercise - previous_log.RDS)
+- [03 - correction - cleaning_log.xlsx](../outputs/03 - correction - cleaning_log.xlsx)
+- [04 - exercise - cleaning_log - filled.xlsx](../inputs/04 - exercise - cleaning_log - filled.xlsx)
+- [05 - exercise - clean dataset for review](../inputs/05 - exercise - clean dataset for review.xlsx)

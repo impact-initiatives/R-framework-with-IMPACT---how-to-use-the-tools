@@ -134,5 +134,11 @@ exercise_review$review_table %>%
 - Si el análisis está en formato largo, agregue la clave de análisis.
 - Si el análisis está en formato ancho, cambie al formato largo y luego agregue la clave de análisis.
 
-
 :::
+
+## Descargas
+
+- [08 - exercise - template loa](../inputs/08 - exercise - template loa.xlsx)
+- [09 - correction - loa](../inputs/09 - correction - loa.xlsx)
+- [10 - exercise - analysis_to_review](../inputs/10 - exercise - analysis_to_review.xlsx)
+

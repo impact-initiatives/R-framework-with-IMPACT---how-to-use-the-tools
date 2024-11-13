@@ -19,3 +19,7 @@ The params in the header can be change. Use *Render* after to create the html ou
 **The following is work in progress.** It will later become something like *create_html_variable_x_group*.
 :::
 
+## Downloads
+
+- [07 - reach_tabular_html_example1](../07 - reach_tabular_html_example1.zip)
+- [07 - reach_tabular_html_example2](../07 - reach_tabular_html_example2.zip)
