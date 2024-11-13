@@ -1,2 +1,0 @@
-"0","binded_df <- my_data_with_indicators %>%"
-"0","  full_join(review_df, by = ""uuid"")"

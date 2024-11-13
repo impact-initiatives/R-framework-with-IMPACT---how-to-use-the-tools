@@ -1,0 +1,122 @@
+---
+title: "05 - Tables for maps"
+author: "Yann Say"
+date: last-modified
+---
+
+```{r setup, message=FALSE}
+library(presentresults)
+library(dplyr)
+results_table <- expand.grid(analysis_var = c("msni_in_need", "comp_health_in_need", "comp_prot_in_need", "comp_edu_in_need", "comp_foodsec_in_need","comp_wash_in_need",        "comp_snfi_in_need"),
+                             analysis_var_value = c(1,0),
+                             group_var = "admin1",
+                             group_var_value = c("PCODE1", "PCODE2"))
+
+set.seed(12344)
+results_table$stat <-runif(nrow(results_table))
+```
+
+This vignette will show an example how to create a table for the MSNA Indicator Maps 1.2 tool.
+
+## `create_table_for_map`
+
+The results table (randomly generated) shown below present the results in a long format for 7 indicators and at the admin 1 :
+
+- msni_in_need: Multi Sector Need Index score 
+- comp_health_in_need: Health sectoral composite score
+- comp_prot_in_need: Protection sectoral composite score 
+- comp_edu_in_need: Education sectoral composite score
+- comp_foodsec_in_need: Food Security sectoral composite score
+- comp_wash_in_need: Water, Sanitation and Hygiene sectoral composite score 
+- comp_snfi_in_need: Shelter and Non Food Items sectoral composite score
+- admin1: PCODE1 and PCODE2. 
+
+`stat` column represent the percentages.
+
+```{r}
+head(results_table)
+```
+
+Maps can only show one information per admin level. First thing is to filter the results table for the information to get the information to be map. In the example, the analysis variable value can be 1 or 0, where 1 means "in need", and 0 means "not in need". The map will show the percentages of household in needs, the results will be filtered for 1. Then the function `create_table_for_map` can be used.
+
+```{r}
+results_table_filtered <- results_table |> 
+  filter(analysis_var_value == "1")
+
+results_table_recoded_5_classes <- results_table_filtered %>% 
+  create_table_for_map(number_classes = 5)
+
+results_table_recoded_5_classes
+```
+
+If you want to use 6 classes, set the argument `number_classes` to 6.
+
+```{r}
+results_table_filtered %>% 
+  create_table_for_map(number_classes = 6)
+```
+
+
+There can be 5 or 6 classes as follow:
+
+:::: {.columns}
+
+::: {.column width="45%"}
+### 5 classes
+
+| Class | Value         |
+|-------|---------------|
+| 1     | 0             |
+| 2     | \<= 25%       |
+| 3     | \<= 50%       |
+| 4     | \<= 75%       |
+| 5     | \<= 100%      |
+| empty | Anything else |
+:::
+
+::: {.column width="10%"}
+<!-- empty column to create gap -->
+:::
+
+::: {.column width="45%"}
+### 6 classes
+
+| Class | Value         |
+|-------|---------------|
+| 1     | 0             |
+| 2     | \<= 20%       |
+| 3     | \<= 40%       |
+| 4     | \<= 60%       |
+| 5     | \<= 80%       |
+| 6     | \<= 100%      |
+| empty | Anything else |
+:::
+
+::::
+
+
+
+
+## Troubleshooting
+
+If you have more than one value per indicator and admin level, you should get a warning from tidyr. You can use it to explore where the problem lies.
+
+```{r}
+results_table %>% 
+  create_table_for_map()
+```
+```{r}
+results_table |>
+  dplyr::summarise(n = dplyr::n(), .by = c(group_var_value, analysis_var)) |>
+  dplyr::filter(n > 1L)
+```
+
+In this case there are 2 values for each combination of *group_var_value* and *analysis_var*.
+
+```{r}
+results_table |>
+  filter(group_var_value == "PCODE1" & analysis_var == "msni_in_need")
+```
+There are two values, maps can only show one. The results table should be filtered to one value only.
+
+This is section comes from this [vignette](https://impact-initiatives.github.io/presentresults/articles/create-table-for-map.html). 

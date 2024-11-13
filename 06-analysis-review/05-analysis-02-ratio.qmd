@@ -1,0 +1,147 @@
+---
+title: "02 - Ratio"
+author: "Yann Say"
+date: last-modified
+
+---
+# Analysis - ratio
+
+## `create_analysis_ratio`
+
+```{r}
+#| warning: false
+#| output: false
+
+library(analysistools)
+library(dplyr)
+
+my_data <- analysistools::analysistools_MSNA_template_data
+set.seed(1323)
+my_data <- my_data |>
+  mutate(num_aged_school_children = round(runif(100, min = 0, max = 5)),
+         num_enrolled_school_children = round(runif(100, min = 0, max = 5)),
+         num_enrolled_school_children = case_when(num_aged_school_children == 0 ~ NA, num_aged_school_children < num_enrolled_school_children ~ num_aged_school_children,
+                                                  TRUE ~ num_enrolled_school_children
+                                                  ))
+sampling_frame <- data.frame(
+  strata = c("admin1a", "admin1b", "admin1c"),
+  population = c(100000, 200000, 300000)
+)
+
+my_data <- my_data %>% 
+  add_weights(sampling_frame, "admin1", "strata", "population")
+
+my_design <- srvyr::as_survey_design(my_data, weights = "weights", strata = "admin1")
+```
+
+To calculate ratio, there are two functions `create_analysis_ratio` or `create_analysis` with a loa with more information. 
+
+```{r}
+my_loa_with_ratio <- read.csv("../inputs/07 - example - loa_with_ratio.csv")
+
+```
+```{r}
+my_loa_with_ratio %>% 
+  filter(analysis_type == "ratio") |>
+  select(analysis_type, analysis_var, group_var, analysis_var_numerator, analysis_var_denominator)
+```
+
+```{r}
+#| output: false
+my_results_with_ratio <- create_analysis(my_design, loa = my_loa_with_ratio, sm_separator = "/")
+```
+
+```{r}
+my_results_with_ratio$results_table %>% 
+  filter(analysis_type == "ratio")
+```
+
+### Arguments of `create_analysis_ratio`
+
+`create_analysis_ratio` has two arguments: `numerator_NA_to_0 ` and `filter_denominator_0 ` that by default are set to TRUE. 
+
+- `numerator_NA_to_0` will turn all NA of the numerator into 0's, default TRUE.
+
+- `filter_denominator_0` will remove all rows with 0's in the denominator, default TRUE.
+
+The following example show a dataset with the number of children (*num_children*), the number of children enrolled to a school (*num_enrolled*) and the number of children attending school on a regular basis (*num_attending*).
+
+```{r}
+school_ex <- data.frame(
+  hh = c("hh1", "hh2", "hh3", "hh4"),
+  num_children = c(3, 0, 2, NA),
+  num_enrolled = c(3, NA, 0, NA),
+  num_attending = c(1, NA, NA, NA)
+  )
+
+me_design <- srvyr::as_survey(school_ex)
+
+school_ex
+```
+
+- What is the ratio between children attending school and the number of children ?
+- How many households are included in the calculation?
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+###  Expand to get the answer
+
+Default value will give a ratio of 0.2 as there are 1 child out of 5 attending school.
+
+numerator: 1 child from hh1 and 0 from hh3. 
+
+denominator: 3 from hh1 and 2 from hh3. In the hh3, the num_attending is NA because there is a skip logic, there cannot be a child attending as none are enrolled. 
+
+By default, the function has the argument `numerator_NA_to_0` set to TRUE to turn that NA into a 0.
+
+n and n_total are 2 as 2 households were included in the calculation. hh2 was not included in the calculation of totals. The argument `filter_denominator_0` set to TRUE removes that row.
+
+
+``` {r}
+create_analysis_ratio(me_design,
+  analysis_var_numerator = "num_attending",
+  analysis_var_denominator = "num_children") %>%
+  select(analysis_type, analysis_var, stat, n, n_total, analysis_key)
+```
+:::
+
+- What will be the ratio if only `numerator_NA_to_0` is set to FALSE ?
+- How many households are included in the calculation?
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+###  Expand to get the answer
+
+Ratio will be 1/3, as hh3 with 2 children and NA for attending will be removed with the `na.rm = T` inside the `survey_ratio` calculation.
+
+n and n_total is 1 as only 1 household was used.
+
+``` {r}
+create_analysis_ratio(me_design,
+                      analysis_var_numerator = "num_attending",
+                      analysis_var_denominator = "num_children",
+                      numerator_NA_to_0 = FALSE) %>% 
+  select(analysis_type, analysis_var, stat, n, n_total, analysis_key)
+```
+:::
+
+- What will be the ratio if only `filter_denominator_0` is set to FALSE ?
+- How many households are included in the calculation?
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+###  Expand to get the answer
+
+ratio will be 0.2 as there are 1 child out of 5 attending school.
+The number of household counted, n and n_total, is equal to 3 instead 2. The household with 0 child is counted in the totals. (01 + 0 + 0) / (3 + 0 + 2)
+
+```{r}
+create_analysis_ratio(me_design,
+                      analysis_var_numerator = "num_attending",
+                      analysis_var_denominator = "num_children",
+                      filter_denominator_0 = FALSE)  %>% 
+  select(analysis_type, analysis_var, stat, n, n_total, analysis_key)
+```
+
+:::
+
+## Downloads
+
+- [07 - example - loa_with_ratio.csv](../inputs/07 - example - loa_with_ratio.csv)

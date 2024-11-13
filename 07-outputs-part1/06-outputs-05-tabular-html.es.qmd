@@ -1,0 +1,27 @@
+---
+title: "05 - Tabular html"
+author: "Yann Say"
+date: last-modified
+---
+# Resultados - HTML Tabular
+
+Las carpetas *05 - reach_tabular_html_\** son ejemplos de proyectos Quarto. Pueden usarse para producir algunas tablas en formato HTML.
+
+![](../config/images/tabular_html_folder.png)
+![](../config/images/tabular_html_quarto_file.png)
+
+Los parámetros en el encabezado se pueden modificar. Use *Render* después para crear el resultado en formato HTML.
+
+
+![](../config/images/tabular_html_output.png)
+
+
+::: {.callout-note .column-margin}
+**Lo siguiente está en desarrollo.** Más adelante se convertirá en algo como *create_html_variable_x_group*.
+
+:::
+
+## Descargas
+
+- [07 - reach_tabular_html_example1](../07 - reach_tabular_html_example1.zip)
+- [07 - reach_tabular_html_example2](../07 - reach_tabular_html_example2.zip)

@@ -1,219 +1,0 @@
-"0","my_answer_analysis_weighted <- create_analysis(my_exercise_design_weigthed, sm_separator = ""/"", 
-                                               group_var = ""admin1, respondent_gender"")
-"
-"2","Joining with `by = join_by(type)`"
-"2","Joining with `by = join_by(enum_gender)`"
-"2","Joining with `by = join_by(hoh)`"
-"2","Joining with `by = join_by(respondent_able_to_answer)`"
-"2"," [32m■                               [39m   1% |  ETA:  3m"
-"2"," [32m■                               [39m   1% |  ETA:  2m"
-"2","Joining with `by = join_by(respondent_gender)`"
-"2"," [32m■                               [39m   1% |  ETA:  3m"
-"2"," [32m■                               [39m   1% |  ETA:  3m"
-"2"," [32m■                               [39m   1% |  ETA:  2m"
-"2","Joining with `by = join_by(hoh_gender)`"
-"2"," [32m■                               [39m   2% |  ETA:  3m"
-"2","Joining with `by = join_by(hoh_civil_status)`"
-"2"," [32m■■                              [39m   2% |  ETA:  3m"
-"2","Joining with `by = join_by(admin1)`"
-"2"," [32m■■                              [39m   2% |  ETA:  3m"
-"2","Joining with `by = join_by(admin2)`"
-"2"," [32m■■                              [39m   2% |  ETA:  3m"
-"2","Joining with `by = join_by(admin3)`"
-"2"," [32m■■                              [39m   2% |  ETA:  3m"
-"2","Joining with `by = join_by(admin4)`"
-"2"," [32m■■                              [39m   2% |  ETA:  3m"
-"2","Joining with `by = join_by(cluster_id)`"
-"2"," [32m■■                              [39m   3% |  ETA:  3m"
-"2"," [32m■■                              [39m   3% |  ETA:  3m"
-"2"," [32m■■                              [39m   3% |  ETA:  3m"
-"2","Joining with `by = join_by(ind_gender)`"
-"2"," [32m■■                              [39m   3% |  ETA:  3m"
-"2"," [32m■■                              [39m   3% |  ETA:  3m"
-"2","Joining with `by = join_by(ind_relationship_hoh)`"
-"2"," [32m■■                              [39m   4% |  ETA:  3m"
-"2"," [32m■■                              [39m   4% |  ETA:  3m"
-"2"," [32m■■                              [39m   4% |  ETA:  3m"
-"2"," [32m■■                              [39m   4% |  ETA:  3m"
-"2"," [32m■■                              [39m   4% |  ETA:  3m"
-"2"," [32m■■                              [39m   5% |  ETA:  3m"
-"2"," [32m■■                              [39m   5% |  ETA:  3m"
-"2"," [32m■■■                             [39m   5% |  ETA:  3m"
-"2"," [32m■■■                             [39m   5% |  ETA:  3m"
-"2"," [32m■■■                             [39m   5% |  ETA:  3m"
-"2"," [32m■■■                             [39m   6% |  ETA:  3m"
-"2"," [32m■■■                             [39m   6% |  ETA:  3m"
-"2"," [32m■■■                             [39m   6% |  ETA:  3m"
-"2","Joining with `by = join_by(ind_available)`"
-"2"," [32m■■■                             [39m   6% |  ETA:  3m"
-"2","Joining with `by = join_by(caregiver_available)`"
-"2"," [32m■■■                             [39m   6% |  ETA:  3m"
-"2","Joining with `by = join_by(proxy_resp_gender)`"
-"2"," [32m■■■                             [39m   6% |  ETA:  3m"
-"2"," [32m■■■                             [39m   7% |  ETA:  3m"
-"2"," [32m■■■                             [39m   7% |  ETA:  3m"
-"2","Joining with `by = join_by(proxy_resp_gender_final)`"
-"2"," [32m■■■                             [39m   7% |  ETA:  3m"
-"2","Joining with `by = join_by(proxy_resp_age_final)`"
-"2"," [32m■■■                             [39m   7% |  ETA:  3m"
-"2","Joining with `by = join_by(difficulty_seeing_question_select)`"
-"2"," [32m■■■                             [39m   7% |  ETA:  3m"
-"2","Joining with `by = join_by(difficulty_hearing_question_select)`"
-"2"," [32m■■■                             [39m   8% |  ETA:  3m"
-"2","Joining with `by = join_by(difficulty_walking_question_select)`"
-"2"," [32m■■■                             [39m   8% |  ETA:  3m"
-"2","Joining with `by = join_by(difficulty_remembering_question_select)`"
-"2"," [32m■■■                             [39m   8% |  ETA:  3m"
-"2","Joining with `by = join_by(difficulty_self_care_question_select)`"
-"2"," [32m■■■                             [39m   8% |  ETA:  3m"
-"2","Joining with `by = join_by(difficulty_communicating_question_select)`"
-"2"," [32m■■■                             [39m   8% |  ETA:  3m"
-"2","Joining with `by = join_by(difficulty_seeing)`"
-"2"," [32m■■■■                            [39m   8% |  ETA:  3m"
-"2","Joining with `by = join_by(difficulty_hearing)`"
-"2"," [32m■■■■                            [39m   9% |  ETA:  3m"
-"2","Joining with `by = join_by(difficulty_walking)`"
-"2"," [32m■■■■                            [39m   9% |  ETA:  3m"
-"2","Joining with `by = join_by(difficulty_remembering)`"
-"2"," [32m■■■■                            [39m   9% |  ETA:  3m"
-"2","Joining with `by = join_by(difficulty_self_care)`"
-"2"," [32m■■■■                            [39m   9% |  ETA:  3m"
-"2","Joining with `by = join_by(difficulty_communicating)`"
-"2"," [32m■■■■                            [39m   9% |  ETA:  3m"
-"2","Joining with `by = join_by(prot_civil_status)`"
-"2"," [32m■■■■                            [39m   9% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_pre_primary)`"
-"2"," [32m■■■■                            [39m  10% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_enrolment)`"
-"2"," [32m■■■■                            [39m  10% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_attendance_v1)`"
-"2"," [32m■■■■                            [39m  10% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_non_access_reason_v1)`"
-"2"," [32m■■■■                            [39m  10% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_safe_environment_v1)`"
-"2"," [32m■■■■                            [39m  10% |  ETA:  3m"
-"2"," [32m■■■■                            [39m  11% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_learning_conditions_v1)`"
-"2"," [32m■■■■                            [39m  11% |  ETA:  3m"
-"2"," [32m■■■■                            [39m  11% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_modality_v2)`"
-"2"," [32m■■■■                            [39m  11% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_attendance_v2)`"
-"2"," [32m■■■■                            [39m  11% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_attendance_remote_v2)`"
-"2"," [32m■■■■                            [39m  11% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_non_access_reason_v2)`"
-"2"," [32m■■■■                            [39m  12% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_safe_environment_v2)`"
-"2"," [32m■■■■■                           [39m  12% |  ETA:  3m"
-"2"," [32m■■■■■                           [39m  12% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_learning_conditions_v2)`"
-"2"," [32m■■■■■                           [39m  12% |  ETA:  3m"
-"2"," [32m■■■■■                           [39m  12% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_attendance_v3)`"
-"2"," [32m■■■■■                           [39m  12% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_non_access_reason_v3)`"
-"2"," [32m■■■■■                           [39m  13% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_nonformal_v3)`"
-"2"," [32m■■■■■                           [39m  13% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_safe_environment_v3)`"
-"2"," [32m■■■■■                           [39m  13% |  ETA:  3m"
-"2"," [32m■■■■■                           [39m  13% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_learning_conditions_v3)`"
-"2"," [32m■■■■■                           [39m  13% |  ETA:  3m"
-"2"," [32m■■■■■                           [39m  14% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_nonformal_v4)`"
-"2"," [32m■■■■■                           [39m  14% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_modality_v4)`"
-"2"," [32m■■■■■                           [39m  14% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_attendance_v4)`"
-"2"," [32m■■■■■                           [39m  14% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_attendance_remote_v4)`"
-"2"," [32m■■■■■                           [39m  14% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_safe_environment_v4)`"
-"2"," [32m■■■■■                           [39m  14% |  ETA:  3m"
-"2"," [32m■■■■■                           [39m  15% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_learning_conditions_v4)`"
-"2"," [32m■■■■■                           [39m  15% |  ETA:  3m"
-"2"," [32m■■■■■                           [39m  15% |  ETA:  3m"
-"2","Joining with `by = join_by(edu_non_access_reason_v4)`"
-"2"," [32m■■■■■■                          [39m  15% |  ETA:  3m"
-"2","Joining with `by = join_by(health_needed_healthcare)`"
-"2"," [32m■■■■■■                          [39m  15% |  ETA:  3m"
-"2","Joining with `by = join_by(health_received_healthcare)`"
-"2"," [32m■■■■■■                          [39m  16% |  ETA:  3m"
-"2"," [32m■■■■■■                          [39m  16% |  ETA:  3m"
-"2"," [32m■■■■■■                          [39m  16% |  ETA:  3m"
-"2"," [32m■■■■■■                          [39m  16% |  ETA:  3m"
-"2"," [32m■■■■■■                          [39m  16% |  ETA:  3m"
-"2"," [32m■■■■■■                          [39m  16% |  ETA:  3m"
-"2"," [32m■■■■■■                          [39m  17% |  ETA:  3m"
-"2"," [32m■■■■■■                          [39m  17% |  ETA:  3m"
-"2"," [32m■■■■■■                          [39m  17% |  ETA:  3m"
-"2"," [32m■■■■■■                          [39m  17% |  ETA:  3m"
-"2"," [32m■■■■■■                          [39m  18% |  ETA:  3m"
-"2"," [32m■■■■■■                          [39m  18% |  ETA:  3m"
-"2"," [32m■■■■■■                          [39m  18% |  ETA:  3m"
-"2"," [32m■■■■■■                          [39m  18% |  ETA:  3m"
-"2"," [32m■■■■■■■                         [39m  18% |  ETA:  3m"
-"2"," [32m■■■■■■■                         [39m  19% |  ETA:  3m"
-"2"," [32m■■■■■■■                         [39m  19% |  ETA:  3m"
-"2"," [32m■■■■■■■                         [39m  19% |  ETA:  3m"
-"2"," [32m■■■■■■■                         [39m  19% |  ETA:  3m"
-"2"," [32m■■■■■■■                         [39m  19% |  ETA:  3m"
-"2"," [32m■■■■■■■                         [39m  19% |  ETA:  3m"
-"2"," [32m■■■■■■■                         [39m  20% |  ETA:  3m"
-"2"," [32m■■■■■■■                         [39m  20% |  ETA:  3m"
-"2"," [32m■■■■■■■                         [39m  20% |  ETA:  3m"
-"2","Joining with `by = join_by(prot_children_away_yn)`"
-"2"," [32m■■■■■■■                         [39m  20% |  ETA:  3m"
-"2"," [32m■■■■■■■                         [39m  21% |  ETA:  3m"
-"2"," [32m■■■■■■■                         [39m  21% |  ETA:  3m"
-"2"," [32m■■■■■■■                         [39m  21% |  ETA:  3m"
-"2"," [32m■■■■■■■■                        [39m  22% |  ETA:  3m"
-"2"," [32m■■■■■■■■                        [39m  22% |  ETA:  3m"
-"2"," [32m■■■■■■■■                        [39m  22% |  ETA:  3m"
-"2"," [32m■■■■■■■■                        [39m  22% |  ETA:  3m"
-"2"," [32m■■■■■■■■                        [39m  22% |  ETA:  3m"
-"2"," [32m■■■■■■■■                        [39m  23% |  ETA:  3m"
-"2"," [32m■■■■■■■■                        [39m  23% |  ETA:  3m"
-"2"," [32m■■■■■■■■                        [39m  23% |  ETA:  3m"
-"2"," [32m■■■■■■■■                        [39m  23% |  ETA:  3m"
-"2"," [32m■■■■■■■■                        [39m  24% |  ETA:  3m"
-"2"," [32m■■■■■■■■                        [39m  24% |  ETA:  3m"
-"2"," [32m■■■■■■■■                        [39m  24% |  ETA:  3m"
-"2"," [32m■■■■■■■■                        [39m  24% |  ETA:  2m"
-"2"," [32m■■■■■■■■                        [39m  24% |  ETA:  2m"
-"2"," [32m■■■■■■■■                        [39m  24% |  ETA:  2m"
-"2"," [32m■■■■■■■■                        [39m  25% |  ETA:  2m"
-"2"," [32m■■■■■■■■                        [39m  25% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  25% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  25% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  25% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  26% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  26% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  26% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  26% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  27% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  27% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  27% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  27% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  28% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  28% |  ETA:  2m"
-"2"," [32m■■■■■■■■■                       [39m  28% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  29% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  29% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  29% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  29% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  29% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  29% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  30% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  30% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  30% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  30% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  31% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  31% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  31% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  31% |  ETA:  2m"
-"2"," [32m■■■■■■■■■■                      [39m  31% |  ETA:  2m"
-"2","                                                   "

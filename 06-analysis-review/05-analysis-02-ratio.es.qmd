@@ -1,0 +1,151 @@
+---
+title: "02 - Ratio"
+author: "Yann Say"
+date: last-modified
+
+---
+# Analysis - ratio
+
+## `create_analysis_ratio`
+
+```{r}
+#| warning: false
+#| output: false
+
+library(analysistools)
+library(dplyr)
+
+my_data <- analysistools::analysistools_MSNA_template_data
+set.seed(1323)
+my_data <- my_data |>
+  mutate(num_aged_school_children = round(runif(100, min = 0, max = 5)),
+         num_enrolled_school_children = round(runif(100, min = 0, max = 5)),
+         num_enrolled_school_children = case_when(num_aged_school_children == 0 ~ NA, num_aged_school_children < num_enrolled_school_children ~ num_aged_school_children,
+                                                  TRUE ~ num_enrolled_school_children
+                                                  ))
+sampling_frame <- data.frame(
+  strata = c("admin1a", "admin1b", "admin1c"),
+  population = c(100000, 200000, 300000)
+)
+
+my_data <- my_data %>% 
+  add_weights(sampling_frame, "admin1", "strata", "population")
+
+my_design <- srvyr::as_survey_design(my_data, weights = "weights", strata = "admin1")
+```
+
+Para calcular un conciente, existen dos funciones: `create_analysis_ratio` o `create_analysis` con una loa que contiene más información.
+
+```{r}
+my_loa_with_ratio <- read.csv("../inputs/07 - example - loa_with_ratio.csv")
+
+```
+```{r}
+my_loa_with_ratio %>% 
+  filter(analysis_type == "ratio") |>
+  select(analysis_type, analysis_var, group_var, analysis_var_numerator, analysis_var_denominator)
+```
+
+```{r}
+#| output: false
+my_results_with_ratio <- create_analysis(my_design, loa = my_loa_with_ratio, sm_separator = "/")
+```
+
+```{r}
+my_results_with_ratio$results_table %>% 
+  filter(analysis_type == "ratio")
+```
+
+### Argumentos de `create_analysis_ratio`
+
+`create_analysis_ratio` tiene dos argumentos: `numerator_NA_to_0` y `filter_denominator_0`, que por defecto están configurados como TRUE.
+
+- `numerator_NA_to_0` convertirá todos los valores NA del numerador en 0, con valor predeterminado TRUE.
+
+- `filter_denominator_0` eliminará todas las filas con 0 en el denominador, con valor predeterminado TRUE.
+
+El siguiente ejemplo muestra un conjunto de datos con el número de niños (*num_children*), el número de niños inscritos en una escuela (*num_enrolled*) y el número de niños que asisten regularmente a la escuela (*num_attending*).
+
+```{r}
+school_ex <- data.frame(
+  hh = c("hh1", "hh2", "hh3", "hh4"),
+  num_children = c(3, 0, 2, NA),
+  num_enrolled = c(3, NA, 0, NA),
+  num_attending = c(1, NA, NA, NA)
+  )
+
+me_design <- srvyr::as_survey(school_ex)
+
+school_ex
+```
+
+- ¿Cuál es la proporción entre los niños que asisten a la escuela y el número de niños?
+- ¿Cuántos hogares están incluidos en el cálculo?
+
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haga clic para ver la respuesta
+
+El valor predeterminado dará una proporción de 0.2, ya que hay 1 niño de cada 5 que asiste a la escuela.
+
+numerador: 1 niño del hogar hh1 y 0 del hogar hh3.
+
+denominador: 3 del hogar hh1 y 2 del hogar hh3. En el hogar hh3, el valor de num_attending es NA porque hay una lógica de omisión: no puede haber un niño asistiendo si ninguno está inscrito.
+
+Por defecto, la función tiene el argumento `numerator_NA_to_0` configurado en TRUE para convertir ese NA en un 0.
+
+n y n_total son 2, ya que se incluyeron 2 hogares en el cálculo. El hogar hh2 no fue incluido en el cálculo de los totales. El argumento `filter_denominator_0` configurado en TRUE elimina esa fila.
+
+
+``` {r}
+create_analysis_ratio(me_design,
+  analysis_var_numerator = "num_attending",
+  analysis_var_denominator = "num_children") %>%
+  select(analysis_type, analysis_var, stat, n, n_total, analysis_key)
+```
+:::
+
+- ¿Cuál será la proporción si solo `numerator_NA_to_0` se marca como FALSE?
+- ¿Cuántos hogares están incluidos en el cálculo?
+
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haga clic para ver la respuesta
+
+La proporción será 1/3, ya que el hogar hh3 tiene 2 niños y NA para asistencia se eliminará con `na.rm = T` dentro del cálculo de `survey_ratio`.
+
+n y n_total es 1, ya que solo se utilizó 1 hogar.
+
+
+``` {r}
+create_analysis_ratio(me_design,
+                      analysis_var_numerator = "num_attending",
+                      analysis_var_denominator = "num_children",
+                      numerator_NA_to_0 = FALSE) %>% 
+  select(analysis_type, analysis_var, stat, n, n_total, analysis_key)
+```
+:::
+
+- ¿Cuál será la proporción si solo `filter_denominator_0` se marca como FALSE?
+- ¿Cuántos hogares están incluidos en el cálculo?
+
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Haga clic para ver la respuesta
+
+La proporción será 0.2, ya que hay 1 niño de cada 5 que asiste a la escuela.  
+El número de hogares contados, n y n_total, es igual a 3 en lugar de 2. El hogar con 0 niños se cuenta en los totales. (01 + 0 + 0) / (3 + 0 + 2)
+
+```{r}
+create_analysis_ratio(me_design,
+                      analysis_var_numerator = "num_attending",
+                      analysis_var_denominator = "num_children",
+                      filter_denominator_0 = FALSE)  %>% 
+  select(analysis_type, analysis_var, stat, n, n_total, analysis_key)
+```
+
+:::
+
+## Descargas
+
+- [07 - example - loa_with_ratio.csv](../inputs/07 - example - loa_with_ratio.csv)
