@@ -3,40 +3,71 @@ title: "04 - Practice (8)"
 author: "Yann Say"
 date: last-modified
 ---
-
-to be updated
-
 # Ejercicio
 
 ## Ejercicio 1
 
-- Cree una tabla de Excel con la estratificación en las filas y las variables en las columnas.
-
-
-```{r}
-#| message: false
-library(presentresults)
-library(dplyr)
-```
+- Add IMPACT theme to the following barplot `initialplot`
 
 ```{r}
-exercise_outputs <- readxl::read_excel("../inputs/10 - exercise - analysis_to_review.xlsx")
-
+data_to_plot <- presentresults::presentresults_MSNA2024_labelled_results_table |>
+  dplyr::filter(
+    analysis_var == "wash_sanitation_facility_cat",
+    group_var == "admin1") |> 
+  dplyr::mutate(label_analysis_var_value = factor(label_analysis_var_value,
+                                                  levels = c("Improved",
+                                                             "Unimproved",
+                                                             "None",
+                                                             "Undefined")))
+initialplot <- data_to_plot %>%
+  ggplot2::ggplot() +
+  ggplot2::geom_col(
+    ggplot2::aes(
+      x = label_analysis_var_value,
+      y = stat,
+      fill = label_group_var_value
+    ),
+    position = "dodge"
+  ) +
+  ggplot2::labs(
+    title = stringr::str_wrap(unique(data_to_plot$indicator), 50),
+    x = stringr::str_wrap(unique(data_to_plot$label_analysis_var), 50),
+    fill = stringr::str_wrap(unique(data_to_plot$label_group_var), 20)
+  )
 ```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you try the argument *palette* in `theme_barplot`?
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Have you looked at the object `impact_palettes`?
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you try the argument *initiative* in `theme_impact`?
+:::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Haga clic para ver la respuesta
-
+### Expand to get the answer
 
 ```{r}
 #| output: false
-exercise_outputs %>% 
-  create_table_group_x_variable() %>% 
-  create_xlsx_group_x_variable(file_path = "../outputs/06 - correction - group_x_variable_table.xlsx", overwrite = T) 
-  
+initialplot + 
+  theme_barplot(palette = impact_palettes$impact_palette) +
+  theme_impact("impact")
 ```
 :::
+
 ## Ejercicio 2
+
+- tablas para la mapas
 
 ## Ejercicio 3
 
