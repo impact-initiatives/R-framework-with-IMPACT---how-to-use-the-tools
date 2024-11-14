@@ -116,3 +116,7 @@ results_table_recoded_5_classes
 - Pruebe el resultado en formato HTML tabular.
 - Intente editar los autores, RCID y la introducción.
 
+## Descargas
+
+- [reach_tabular_html_example1](../templates-quarto/reach_tabular_html_example1.zip)
+- [reach_tabular_html_example2](../templates-quarto/reach_tabular_html_example2.zip)

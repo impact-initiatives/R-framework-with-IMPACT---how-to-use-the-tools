@@ -115,3 +115,10 @@ results_table_recoded_5_classes
 
 - Try the tabular html output. 
 - Try to edit the authors, RCID and the introduction.
+
+## Downloads
+
+- [reach_tabular_html_example1](../templates-quarto/reach_tabular_html_example1.zip)
+- [reach_tabular_html_example2](../templates-quarto/reach_tabular_html_example2.zip)
+
+
