@@ -10,6 +10,10 @@ date: last-modified
 - Add IMPACT theme to the following barplot `initialplot`
 
 ```{r}
+#| message: false
+library(presentresults)
+library(dplyr)
+
 data_to_plot <- presentresults::presentresults_MSNA2024_labelled_results_table |>
   dplyr::filter(
     analysis_var == "wash_sanitation_facility_cat",
@@ -34,6 +38,8 @@ initialplot <- data_to_plot %>%
     x = stringr::str_wrap(unique(data_to_plot$label_analysis_var), 50),
     fill = stringr::str_wrap(unique(data_to_plot$label_group_var), 20)
   )
+
+initialplot
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
@@ -67,7 +73,43 @@ initialplot +
 
 ## Ejercicio 2
 
-- tablas para la mapas
+- You have the following results table. You want to create a map that shows the percentages of households using surface water (`surface_water`, **Surface water**) as main drinking water source (`wash_drinking_water_source_cat`, **Category of the drinking water source**) per admin level 1 (`admin1`, **Admin 1**). 
+
+- Create the table that should be share to the GIS team, the table should have 5 classes (0, less than 20%, less than 40%, less than 60%, less than 80% and less than 100%).
+
+```{r}
+library(presentresults)
+library(dplyr)
+data_to_map <- presentresults::presentresults_MSNA2024_labelled_results_table
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you filter `data_to_map` for only *surface_water* in *wash_drinking_water_source_cat*?
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you filter `data_to_map` for only *admin1*?
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+```{r}
+data_filtered <- data_to_map |> 
+  filter(
+        analysis_var == "wash_drinking_water_source_cat",
+        analysis_var_value == "surface_water",
+        group_var == "admin1"
+)
+results_table_recoded_5_classes <- data_filtered |> 
+  create_table_for_map(number_classes = 5)
+
+results_table_recoded_5_classes
+```
+:::
 
 ## Ejercicio 3
 
