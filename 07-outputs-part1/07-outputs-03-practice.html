@@ -9,7 +9,7 @@
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yann Say">
-<meta name="dcterms.date" content="2024-11-13">
+<meta name="dcterms.date" content="2024-11-14">
 <title>03 - Practice (7) – Intoduction to R framework at IMPACT Initiatives</title>
 <style>
 code{white-space: pre-wrap;}
@@ -5069,7 +5069,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 13, 2024</p>
+      <p class="date">November 14, 2024</p>
     </div>
   </div>
   
@@ -5080,19 +5080,261 @@ vertical-align: -.125em;
 
 </header><section id="practice" class="level1"><h1>Practice</h1>
 <section id="practice-1" class="level2"><h2 class="anchored" data-anchor-id="practice-1">Practice 1</h2>
-</section><section id="practice-2" class="level2"><h2 class="anchored" data-anchor-id="practice-2">Practice 2</h2>
 <ul>
-<li>Create an excel table with the strata in the rows and the variables in the columns.</li>
+<li>Add labels to the following results table.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/presentresults/">presentresults</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/presentresults/">presentresults</a></span><span class="op">)</span></span>
+<span><span class="va">label_exercise_results</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/11 - exercise - label.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"results_table"</span><span class="op">)</span></span>
+<span><span class="va">label_exercise_kobo_survey</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/11 - exercise - label.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"kobo_survey"</span><span class="op">)</span></span>
+<span><span class="va">label_exercise_kobo_choices</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/11 - exercise - label.xlsx"</span>, sheet <span class="op">=</span> <span class="st">"kobo_choices"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise_outputs</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/10 - exercise - analysis_to_review.xlsx"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">label_exercise_results</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 3%">
+<col style="width: 1%">
+<col style="width: 3%">
+<col style="width: 1%">
+<col style="width: 3%">
+<col style="width: 38%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">analysis_type</th>
+<th style="text-align: left;">analysis_var</th>
+<th style="text-align: left;">analysis_var_value</th>
+<th style="text-align: left;">group_var</th>
+<th style="text-align: left;">group_var_value</th>
+<th style="text-align: right;">stat</th>
+<th style="text-align: right;">stat_low</th>
+<th style="text-align: right;">stat_upp</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">n_total</th>
+<th style="text-align: right;">n_w</th>
+<th style="text-align: right;">n_w_total</th>
+<th style="text-align: left;">analysis_key</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">fcs_cat</td>
+<td style="text-align: left;">low</td>
+<td style="text-align: left;">location %/% population</td>
+<td style="text-align: left;">locationA %/% displaced</td>
+<td style="text-align: right;">0.2580645</td>
+<td style="text-align: right;">0.1006681</td>
+<td style="text-align: right;">0.4154609</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: left;">prop_select_one @/@ fcs_cat %/% low @/@ location %/% locationA -/- population %/% displaced</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">fcs_cat</td>
+<td style="text-align: left;">medium</td>
+<td style="text-align: left;">location %/% population</td>
+<td style="text-align: left;">locationA %/% displaced</td>
+<td style="text-align: right;">0.3225806</td>
+<td style="text-align: right;">0.1544312</td>
+<td style="text-align: right;">0.4907301</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: left;">prop_select_one @/@ fcs_cat %/% medium @/@ location %/% locationA -/- population %/% displaced</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">fcs_cat</td>
+<td style="text-align: left;">high</td>
+<td style="text-align: left;">location %/% population</td>
+<td style="text-align: left;">locationA %/% displaced</td>
+<td style="text-align: right;">0.4193548</td>
+<td style="text-align: right;">0.2418567</td>
+<td style="text-align: right;">0.5968530</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: left;">prop_select_one @/@ fcs_cat %/% high @/@ location %/% locationA -/- population %/% displaced</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">fcs_cat</td>
+<td style="text-align: left;">low</td>
+<td style="text-align: left;">location %/% population</td>
+<td style="text-align: left;">locationA %/% non-displaced</td>
+<td style="text-align: right;">0.2500000</td>
+<td style="text-align: right;">0.0729795</td>
+<td style="text-align: right;">0.4270205</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">prop_select_one @/@ fcs_cat %/% low @/@ location %/% locationA -/- population %/% non-displaced</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">fcs_cat</td>
+<td style="text-align: left;">medium</td>
+<td style="text-align: left;">location %/% population</td>
+<td style="text-align: left;">locationA %/% non-displaced</td>
+<td style="text-align: right;">0.3750000</td>
+<td style="text-align: right;">0.1770851</td>
+<td style="text-align: right;">0.5729149</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">prop_select_one @/@ fcs_cat %/% medium @/@ location %/% locationA -/- population %/% non-displaced</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">prop_select_one</td>
+<td style="text-align: left;">fcs_cat</td>
+<td style="text-align: left;">high</td>
+<td style="text-align: left;">location %/% population</td>
+<td style="text-align: left;">locationA %/% non-displaced</td>
+<td style="text-align: right;">0.3750000</td>
+<td style="text-align: right;">0.1770851</td>
+<td style="text-align: right;">0.5729149</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">prop_select_one @/@ fcs_cat %/% high @/@ location %/% locationA -/- population %/% non-displaced</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">label_exercise_kobo_survey</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">type</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">label</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">select_one fcs_cat</td>
+<td style="text-align: left;">fcs_cat</td>
+<td style="text-align: left;">Food Consumption Score</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">select_one lcs_cat</td>
+<td style="text-align: left;">lcs_cat</td>
+<td style="text-align: left;">Living Coping Strategy Index</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">select_one location</td>
+<td style="text-align: left;">location</td>
+<td style="text-align: left;">Location</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">select_one population</td>
+<td style="text-align: left;">population</td>
+<td style="text-align: left;">Population Group</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">label_exercise_kobo_choices</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">list_name</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">label</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">fcs_cat</td>
+<td style="text-align: left;">low</td>
+<td style="text-align: left;">Poor</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">fcs_cat</td>
+<td style="text-align: left;">medium</td>
+<td style="text-align: left;">Borderline</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fcs_cat</td>
+<td style="text-align: left;">high</td>
+<td style="text-align: left;">Acceptable</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lcs_cat</td>
+<td style="text-align: left;">none</td>
+<td style="text-align: left;">None</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">lcs_cat</td>
+<td style="text-align: left;">stress</td>
+<td style="text-align: left;">Stress</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lcs_cat</td>
+<td style="text-align: left;">emergency</td>
+<td style="text-align: left;">Emergency</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Expand to get a hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Did you try the argument <em>label_column</em> in <code>review_kobo_labels</code> and <code>create_label_dictionary</code> ?</p>
+</div>
+</div>
 </div>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -5101,10 +5343,53 @@ Expand to get the answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise_outputs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">review_kobo_labels_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/review_kobo_labels.html">review_kobo_labels</a></span><span class="op">(</span><span class="va">label_exercise_kobo_survey</span>,</span>
+<span>                                                 <span class="va">label_exercise_kobo_choices</span>,</span>
+<span>                                                 results_table <span class="op">=</span> <span class="va">label_exercise_results</span>, </span>
+<span>                                                 label_column <span class="op">=</span> <span class="st">"label"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">label_dictionary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/create_label_dictionary.html">create_label_dictionary</a></span><span class="op">(</span><span class="va">label_exercise_kobo_survey</span>, </span>
+<span>                                            <span class="va">label_exercise_kobo_choices</span>, </span>
+<span>                                            results_table <span class="op">=</span> <span class="va">label_exercise_results</span>, </span>
+<span>                                            label_column <span class="op">=</span> <span class="st">"label"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">results_table_labeled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/add_label_columns_to_results_table.html">add_label_columns_to_results_table</a></span><span class="op">(</span></span>
+<span>  <span class="va">label_exercise_results</span>,</span>
+<span>  <span class="va">label_dictionary</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
+</section><section id="practice-2" class="level2"><h2 class="anchored" data-anchor-id="practice-2">Practice 2</h2>
+<ul>
+<li>Create an excel table with the strata in the rows and the variables in the columns.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/presentresults/">presentresults</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise_outputs</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/10 - exercise - analysis_to_review.xlsx"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Expand to get the answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise_outputs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/create_table_group_x_variable.html">create_table_group_x_variable</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/create_xlsx_group_x_variable.html">create_xlsx_group_x_variable</a></span><span class="op">(</span>file_path <span class="op">=</span> <span class="st">"../outputs/06 - correction - group_x_variable_table.xlsx"</span>, overwrite <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -5113,6 +5398,7 @@ Expand to get the answer
 </div>
 </section><section id="downloads" class="level2"><h2 class="anchored" data-anchor-id="downloads">Downloads</h2>
 <ul>
+<li><a href="../inputs/11%20-%20exercise%20-%20label.xlsx">11 - exercise - analysis_to_review</a></li>
 <li><a href="../inputs/10%20-%20exercise%20-%20analysis_to_review.xlsx">10 - exercise - analysis_to_review</a></li>
 <li><a href="../outputs/06%20-%20correction%20-%20group_x_variable_table.xlsx">06 - correction - group_x_variable_table</a></li>
 </ul></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
