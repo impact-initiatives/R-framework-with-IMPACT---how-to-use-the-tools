@@ -3,11 +3,11 @@ title: "04 - Practice (8)"
 author: "Yann Say"
 date: last-modified
 ---
-# Ejercicio
+# Practica
 
-## Ejercicio 1
+## Practica 1
 
-- Add IMPACT theme to the following barplot `initialplot`
+- Agregue el tema **IMPACT** al siguiente gráfico de barras `initialplot`.
 
 ```{r}
 #| message: false
@@ -43,25 +43,26 @@ initialplot
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para obtener una pista
 
-Did you try the argument *palette* in `theme_barplot`?
+¿Probó el argumento *palette* en `theme_barplot`?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para obtener una pista
 
-Have you looked at the object `impact_palettes`?
+¿Ha consultado el objeto `impact_palettes`?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para obtener una pista
 
-Did you try the argument *initiative* in `theme_impact`?
+¿Probó el argumento *initiative* en `theme_impact`?
+
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta
 
 ```{r}
 #| output: false
@@ -71,11 +72,11 @@ initialplot +
 ```
 :::
 
-## Ejercicio 2
+## Practica 2
 
-- You have the following results table. You want to create a map that shows the percentages of households using surface water (`surface_water`, **Surface water**) as main drinking water source (`wash_drinking_water_source_cat`, **Category of the drinking water source**) per admin level 1 (`admin1`, **Admin 1**). 
+- Usted tiene la siguiente tabla de resultados y desea crear un mapa que muestre los porcentajes de hogares que utilizan agua superficial (`surface_water`, **Agua superficial**) como principal fuente de agua para beber (`wash_drinking_water_source_cat`, **Categoría de la fuente de agua para beber**) por nivel administrativo 1 (`admin1`, **Admin 1**).  
 
-- Create the table that should be share to the GIS team, the table should have 5 classes (0, less than 20%, less than 40%, less than 60%, less than 80% and less than 100%).
+- Cree la tabla que debe compartirse con el equipo de SIG. La tabla debe tener 5 clases (0, menos del 20 %, menos del 40 %, menos del 60 %, menos del 80 % y menos del 100 %).
 
 ```{r}
 library(presentresults)
@@ -84,19 +85,20 @@ data_to_map <- presentresults::presentresults_MSNA2024_labelled_results_table
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para obtener una pista
 
-Did you filter `data_to_map` for only *surface_water* in *wash_drinking_water_source_cat*?
+¿Filtró `data_to_map` para incluir solo **surface_water** en **wash_drinking_water_source_cat**?
+
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para obtener una pista
 
-Did you filter `data_to_map` for only *admin1*?
+¿Filtró `data_to_map` para incluir solo **admin1**?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta
 ```{r}
 data_filtered <- data_to_map |> 
   filter(
@@ -111,7 +113,7 @@ results_table_recoded_5_classes
 ```
 :::
 
-## Ejercicio 3
+## Practica 3
 
 - Pruebe el resultado en formato HTML tabular.
 - Intente editar los autores, RCID y la introducción.
