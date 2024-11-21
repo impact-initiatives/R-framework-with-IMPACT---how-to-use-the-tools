@@ -32,7 +32,7 @@ exercise_data_shorter <- exercise_data_shorter[,1:30]
 
 Utilizando del conjunto de datos *exercise_data*, please do the following:
 
-- Cree una table de resultados agrupando unsando la variable **respondent_gender** y con los resultados al nivel del **admin1**.
+- Cree una table de resultados agrupando usando la variable **respondent_gender** y con los resultados al nivel del **admin1**.
 
 ::: {.callout-note collapse="true" appearance="minimal"}
 ### Haga clic para obtener una pista.

@@ -4,11 +4,12 @@ author: "Yann Say"
 date: last-modified
 ---
 
-# Practice
+# Práctica
 
-## Practice 1
+## Práctica 1
 
-- Add labels to the following results table. 
+- Agregue etiquetas a la siguiente tabla de resultados.
+
 ```{r}
 library(dplyr)
 library(presentresults)
@@ -31,13 +32,13 @@ head(label_exercise_kobo_choices)
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Haga clic para obtener una pista
 
-Did you try the argument *label_column* in `review_kobo_labels` and `create_label_dictionary` ?
+¿Probó el argumento *label_column* en `review_kobo_labels` y `create_label_dictionary`?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta
 
 ```{r}
 #| output: false
@@ -60,9 +61,9 @@ results_table_labeled <- add_label_columns_to_results_table(
 ```
 :::
 
-## Practice 2
+## Práctica 2
 
-- Create an excel table with the strata in the rows and the variables in the columns.
+- Cree una tabla en Excel con los **estratos** en las filas y las **variables** en las columnas.
 
 ```{r}
 #| message: false
@@ -76,7 +77,7 @@ exercise_outputs <- readxl::read_excel("../inputs/10 - exercise - analysis_to_re
 ```
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Haga clic para ver la respuesta
 
 ```{r}
 #| output: false

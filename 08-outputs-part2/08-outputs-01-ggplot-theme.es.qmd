@@ -7,12 +7,12 @@ date: last-modified
 library(presentresults)
 library(ggplot2)
 ```
+El objetivo de los temas es ayudar a dar un toque "IMPACT" a los gráficos, no crearlos. El gráfico ya debería estar creado, es decir, con el tipo de gráfico, las estéticas correctas, el etiquetado, etc.
 
-The aim of the themes is to help giving an "IMPACT" touch to the graphs, not to create them. The graph should already be created, i.e. type of plots, and the correct aesthetics, labeling, etc. 
+El siguiente ejemplo tiene como objetivo graficar los porcentajes de hogares por categoría de fuentes de agua, según el género del jefe de hogar *(Este es un conjunto de datos ficticio)*.
 
-The following example aims to plot the percentages of households by category of water sources, by gender of the head of households *(This a dummy dataset)*.
+## Gráfico de barras sin formateo
 
-## Barplot without formating
 ```{r}
 data_to_plot <- presentresults::presentresults_MSNA2024_labelled_results_table |>
   dplyr::filter(
@@ -50,7 +50,8 @@ initialplot
 
 ## `theme_barplot`
 
-`theme_barplot` will give REACH color palette to the bar plot, put the y-axis to 0 to 100%.
+El `theme_barplot` aplicará la paleta de colores de REACH al gráfico de barras y ajustará el eje y de 0 a 100%.
+
 ```{r, fig.width=8, fig.height=4, fig.cap="Initial plot without `theme_barplot`"}
 initialplot + 
   theme_barplot()
@@ -58,7 +59,7 @@ initialplot +
 
 ## `theme_impact`
 
-`theme_impact` will change the background and color of the title.
+El `theme_impact` cambiará el fondo y el color del título.
 
 ```{r, fig.width=8, fig.height=4, fig.cap="Initial plot without `theme_barplot` and `theme_impact`"}
 initialplot + 
@@ -66,7 +67,7 @@ initialplot +
   theme_impact("reach")
 ```
 
-## Other palettes
+## Otras paletas
 
 ```{r, fig.width=8, fig.height=4, fig.cap="Initial plot without `theme_barplot` and `theme_impact` set with IMPACT theme"}
 initialplot + 
@@ -74,14 +75,15 @@ initialplot +
   theme_impact("impact")
 ```
 
-Some palettes are available in the `impact_palettes` object.
+Algunas paletas están disponibles en el objeto `impact_palettes`.
+
 ```{r}
 impact_palettes
 ```
 
-## Errors and number of colors
+## Errores y número de colores
 
-The palette should have enough color to match the scale fill. The impact palette only has 3 colors while the graph needs 4.
+La paleta debe tener suficientes colores para coincidir con la escala de relleno. La paleta de impacto solo tiene 3 colores, mientras que el gráfico necesita 4.
 
 ```{r, error=TRUE}
 data_to_plot <- presentresults::presentresults_MSNA2024_labelled_results_table |>
@@ -109,10 +111,11 @@ initialplot +
   theme_impact("impact")
 ```
 
-If you need more colors, have a look at the `grDevices::colorRampPalette`
+Si necesita más colores, consulte `grDevices::colorRampPalette`.
+
 ```{r}
 function_couleur <- grDevices::colorRampPalette(impact_palettes$divergent_with_neutral)
 function_couleur(20)
 ```
 
-This is section comes from this [vignette](https://impact-initiatives.github.io/presentresults/articles/IMPACT_ggplot2_theme.html). 
+Esta sección proviene de esta [viñeta](https://impact-initiatives.github.io/presentresults/articles/IMPACT_ggplot2_theme.html).
