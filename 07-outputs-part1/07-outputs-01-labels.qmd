@@ -43,7 +43,7 @@ If the labels should be changed to be better suited, you can add a new label col
 
 Adding the labels to the results table will be done in three steps:
 
-- reviewing the KOBO tool: to make sure there is no duplicated label,
+- reviewing the KOBO tool: to make sure there is no duplicated label (in particular in the question labels),
 - creating the label dictionary: to reduce the KOBO tool to only the information needed,
 - adding labels to the results table: to add columns with the label to the results table.
 

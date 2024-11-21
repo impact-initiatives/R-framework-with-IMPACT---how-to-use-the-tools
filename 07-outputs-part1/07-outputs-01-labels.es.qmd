@@ -14,13 +14,16 @@ results_table <- presentresults_MSNA2024_results_table
 kobo_survey <- presentresults_MSNA2024_kobotool_template$kobo_survey
 kobo_choices <- presentresults_MSNA2024_kobotool_template$kobo_choices
 ```
-Most of the time, the information in a dataset will be using coding label, not very easy to read by a human. For example, in the following results table.
+
+La mayor parte del tiempo, la información en un conjunto de datos estará descrita como en el codigo, lo que no será muy fácil de leer para una persona. Por ejemplo, en la siguiente tabla de resultados:
 
 ```{r}
 results_table[c(1,9), c("analysis_var", "group_var", "group_var_value")]
 
 ```
-With KOBO tool, the survey and choices sheets always always have at least one column label to show how the questions and choices should be read. It can be used to label the results table.
+
+Con la herramienta KOBO, las hojas de encuesta (survey) y opciones (choices) siempre tienen al menos una columna de etiqueta (típicamente, label::Spanish) que muestra cómo deben leerse las preguntas y opciones. Esta columna puede utilizarse para etiquetar la tabla de resultados.
+
 ```{r}
 kobo_survey |>
   tail() |>
@@ -34,25 +37,26 @@ kobo_choices |>
 ```
 
 ::: {.callout-note .column-margin}
-If there are new variables added to the dataset, they should also be added in the KOBO tool.
+Si se añaden nuevas variables al conjunto de datos, también deben agregarse en la herramienta KOBO.
 :::
 
 ::: {.callout-note .column-margin}
-If the labels should be changed to be better suited, you can add a new label column to the KOBO tool. It should be added to the survey and choice tab.
+Si las etiquetas deben modificarse para adaptarse mejor, puede añadir una nueva columna de etiquetas en la herramienta KOBO. Esta columna debe añadirse en las pestañas de **survey** y **choice**.
 :::
 
-Adding the labels to the results table will be done in three steps:
+Agregar las etiquetas a la tabla de resultados se realizará en tres pasos:
 
-- reviewing the KOBO tool: to make sure there is no duplicated label,
-- creating the label dictionary: to reduce the KOBO tool to only the information needed,
-- adding labels to the results table: to add columns with the label to the results table.
+- **Revisión de la herramienta KOBO**: asegurarse de que no haya etiquetas duplicadas (en particular, en las etiquetas de las preguntas.).  
+- **Creación del diccionario de etiquetas**: reducir la herramienta KOBO a solo la información necesaria.  
+- **Adición de etiquetas a la tabla de resultados**: agregar columnas con las etiquetas a la tabla de resultados.
 
-## Review KOBO tool
 
-First the KOBO tool should be review to see if there is any duplicated label, names, etc. This will cause issues later one. In the following example, using `review_kobo_labels` with passing the results table will look at the variables names presents in the results, not all variables
+## Revisión de la herramienta KOBO
+
+Primero, se debe revisar la herramienta KOBO para verificar si hay etiquetas, nombres, etc., duplicados. Esto podría generar problemas más adelante. En el siguiente ejemplo, al usar `review_kobo_labels` pasando la tabla de resultados, se analizarán los nombres de las variables presentes en los resultados, no todas las variables.
 
 ::: {.callout-note .column-margin}
-Current version looks for all choices, instead of just the one present in the table. It will be ammended later.
+La versión actual busca todas las opciones, en lugar de solo aquellas presentes en la tabla. Esto se modificará más adelante.
 :::
 
 ```{r}
@@ -63,7 +67,7 @@ review_kobo_labels_results <- review_kobo_labels(kobo_survey,
 review_kobo_labels_results
 ```
 
-In this case we have the HHS frequency question repeated, to remove the duplication, I will add which one they are referring to.
+En este caso, tenemos la pregunta de frecuencia de HHS repetida. Para eliminar la duplicación, se agrega una especificación sobre a cuál se esta refiriendo.
 
 ```{r}
 kobo_survey_fixed <- kobo_survey
@@ -81,12 +85,13 @@ kobo_survey_fixed[
 ```
 
 
-In the choices sheet, there are 2 flags:
+Para la hoja de opciones (**choices sheet**), hay dos banderas de advertencia:
 
-- Kobo choices sheet has duplicated names in the same list_name.	
-- Kobo choices sheet has duplicated labels in the same list_name.	
+- La hoja de opciones de KOBO tiene nombres duplicados en el mismo **list_name**.  
+- La hoja de opciones de KOBO tiene etiquetas duplicadas en el mismo **list_name**.  
 
-For the duplicated names in the same list name, these were added with the composite indicators. I will just keep one.
+Para los nombres duplicados dentro del mismo **list_name**, estos se añadieron con los indicadores compuestos. Solo se conserva uno.
+
 ```{r}
 kobo_choices_fixed <- kobo_choices |>
   filter(!`label::english` %in% c(
@@ -97,7 +102,8 @@ kobo_choices_fixed <- kobo_choices |>
 duplicated_listname_label <- review_kobo_labels_results |> filter(comments == "Kobo choices sheet has duplicated labels in the same list_name.")
 ```
 
-For the duplicated labels, these are because of the template. I will just add a number based on their order.
+Para las etiquetas duplicadas, estas se deben a la plantilla. Simplemente se agrega un número según su orden.
+
 ```{r}
 kobo_choices_fixed <- kobo_choices_fixed |>
   group_by(list_name)  |> 
@@ -108,47 +114,47 @@ kobo_choices_fixed <- kobo_choices_fixed |>
   ungroup()
 ```
 
-I can review again.
+Se puede revisar nuevamente.
+
 ```{r}
 review_kobo_labels(kobo_survey_fixed, kobo_choices_fixed, results_table = results_table)
 ```
 
-## Label dictionary
+## Diccionario de etiquetas
 
-I can now create a dictionary that will be used to create labels.
+Ahora se puede crear un diccionario que se utilizará para generar las etiquetas.
 ```{r}
 label_dictionary <- create_label_dictionary(kobo_survey_fixed, kobo_choices_fixed, results_table = results_table)
 
 label_dictionary |>  names()
 ```
-It will return a list with:
+Devolverá una lista con:
 
-- dictionary_survey: the dictionary to be used for the names of variables
+- **dictionary_survey**: el diccionario que se utilizará para los nombres de las variables.
 ```{r}
 label_dictionary$dictionary_survey |> head(10)
 ```
-- dictionary_choices: the dictionary to be used for the value of the variables,
 
-
-
+- **dictionary_choices**: el diccionario que se utilizará para los valores de las variables.
 ```{r}
 label_dictionary$dictionary_choices |> head(10)
 
 ```
-- analysis_type_dictionary: the dictionary to be used for the analysis_type column.
 
+- **analysis_type_dictionary**: el diccionario que se utilizará para la columna **analysis_type**.
 ```{r}
 label_dictionary$analysis_type_dictionary |> head(10)
 
 ```
 
 ::: {.callout-note .column-margin}
-`analysis_type_dictionary` will always come in English, if you want to modify it please check the example of the function.
+El `analysis_type_dictionary` siempre estará en inglés; si desea modificarlo, consulte el ejemplo de la función.
 :::
 
-## Add the label
+## Agregar la etiqueta
 
-Finally, using `add_label_columns_to_results_table` will add the label columns to the results table.
+Finalmente, al usar `add_label_columns_to_results_table`, se añadirán las columnas de etiquetas a la tabla de resultados.
+
 ```{r}
 results_table_labeled <- add_label_columns_to_results_table(
   results_table,
@@ -160,4 +166,4 @@ results_table_labeled [1,] |>
 ```
 
 
-This is section comes from this [vignette](https://impact-initiatives.github.io/presentresults/). 
+Esta sección proviene de esta [viñeta](https://impact-initiatives.github.io/presentresults/).

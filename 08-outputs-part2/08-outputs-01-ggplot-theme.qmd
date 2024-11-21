@@ -115,4 +115,4 @@ function_couleur <- grDevices::colorRampPalette(impact_palettes$divergent_with_n
 function_couleur(20)
 ```
 
-This is section comes from this [vignette](https://impact-initiatives.github.io/presentresults/articles/IMPACT_ggplot2_theme.html). 
+This section comes from this [vignette](https://impact-initiatives.github.io/presentresults/articles/IMPACT_ggplot2_theme.html). 

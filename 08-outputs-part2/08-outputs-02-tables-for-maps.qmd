@@ -16,22 +16,22 @@ set.seed(12344)
 results_table$stat <-runif(nrow(results_table))
 ```
 
-This vignette will show an example how to create a table for the MSNA Indicator Maps 1.2 tool.
+This vignette will show an example of how to create a table for the MSNA Indicator Maps 1.2 tool.
 
 ## `create_table_for_map`
 
-The results table (randomly generated) shown below present the results in a long format for 7 indicators and at the admin 1 :
+La tabla de resultados (generada aleatoriamente) que se muestra a continuación presenta los resultados en formato largo para 7 indicadores y a nivel administrativo 1:
 
-- msni_in_need: Multi Sector Need Index score 
-- comp_health_in_need: Health sectoral composite score
-- comp_prot_in_need: Protection sectoral composite score 
-- comp_edu_in_need: Education sectoral composite score
-- comp_foodsec_in_need: Food Security sectoral composite score
-- comp_wash_in_need: Water, Sanitation and Hygiene sectoral composite score 
-- comp_snfi_in_need: Shelter and Non Food Items sectoral composite score
-- admin1: PCODE1 and PCODE2. 
+- **msni_in_need**: Puntaje del Índice de Necesidades Multisectoriales  
+- **comp_health_in_need**: Puntaje compuesto sectorial de Salud  
+- **comp_prot_in_need**: Puntaje compuesto sectorial de Protección  
+- **comp_edu_in_need**: Puntaje compuesto sectorial de Educación  
+- **comp_foodsec_in_need**: Puntaje compuesto sectorial de Seguridad Alimentaria  
+- **comp_wash_in_need**: Puntaje compuesto sectorial de Agua, Saneamiento e Higiene  
+- **comp_snfi_in_need**: Puntaje compuesto sectorial de Refugio y Artículos No Alimentarios  
+- **admin1**: **PCODE1** y **PCODE2**.  
 
-`stat` column represent the percentages.
+La columna **stat** representa los porcentajes.
 
 ```{r}
 head(results_table)
