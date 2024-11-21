@@ -9,7 +9,7 @@
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yann Say">
-<meta name="dcterms.date" content="2024-11-14">
+<meta name="dcterms.date" content="2024-11-21">
 <title>02 - Tables for maps – Intoduction to R framework at IMPACT Initiatives</title>
 <style>
 code{white-space: pre-wrap;}
@@ -5063,7 +5063,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 14, 2024</p>
+      <p class="date">November 21, 2024</p>
     </div>
   </div>
   
@@ -5083,20 +5083,35 @@ vertical-align: -.125em;
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">12344</span><span class="op">)</span></span>
 <span><span class="va">results_table</span><span class="op">$</span><span class="va">stat</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">results_table</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>This vignette will show an example how to create a table for the MSNA Indicator Maps 1.2 tool.</p>
+<p>This vignette will show an example of how to create a table for the MSNA Indicator Maps 1.2 tool.</p>
 <section id="create_table_for_map" class="level2"><h2 class="anchored" data-anchor-id="create_table_for_map"><code>create_table_for_map</code></h2>
-<p>The results table (randomly generated) shown below present the results in a long format for 7 indicators and at the admin 1 :</p>
+<p>La tabla de resultados (generada aleatoriamente) que se muestra a continuación presenta los resultados en formato largo para 7 indicadores y a nivel administrativo 1:</p>
 <ul>
-<li>msni_in_need: Multi Sector Need Index score</li>
-<li>comp_health_in_need: Health sectoral composite score</li>
-<li>comp_prot_in_need: Protection sectoral composite score</li>
-<li>comp_edu_in_need: Education sectoral composite score</li>
-<li>comp_foodsec_in_need: Food Security sectoral composite score</li>
-<li>comp_wash_in_need: Water, Sanitation and Hygiene sectoral composite score</li>
-<li>comp_snfi_in_need: Shelter and Non Food Items sectoral composite score</li>
-<li>admin1: PCODE1 and PCODE2.</li>
+<li>
+<strong>msni_in_need</strong>: Puntaje del Índice de Necesidades Multisectoriales<br>
+</li>
+<li>
+<strong>comp_health_in_need</strong>: Puntaje compuesto sectorial de Salud<br>
+</li>
+<li>
+<strong>comp_prot_in_need</strong>: Puntaje compuesto sectorial de Protección<br>
+</li>
+<li>
+<strong>comp_edu_in_need</strong>: Puntaje compuesto sectorial de Educación<br>
+</li>
+<li>
+<strong>comp_foodsec_in_need</strong>: Puntaje compuesto sectorial de Seguridad Alimentaria<br>
+</li>
+<li>
+<strong>comp_wash_in_need</strong>: Puntaje compuesto sectorial de Agua, Saneamiento e Higiene<br>
+</li>
+<li>
+<strong>comp_snfi_in_need</strong>: Puntaje compuesto sectorial de Refugio y Artículos No Alimentarios<br>
+</li>
+<li>
+<strong>admin1</strong>: <strong>PCODE1</strong> y <strong>PCODE2</strong>.</li>
 </ul>
-<p><code>stat</code> column represent the percentages.</p>
+<p>La columna <strong>stat</strong> representa los porcentajes.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">results_table</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">

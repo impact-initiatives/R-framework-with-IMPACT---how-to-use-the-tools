@@ -5031,9 +5031,9 @@ vertical-align: -.125em;
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">En esta página</h2>
    
   <ul>
-<li><a href="#review-kobo-tool" id="toc-review-kobo-tool" class="nav-link active" data-scroll-target="#review-kobo-tool">Review KOBO tool</a></li>
-  <li><a href="#label-dictionary" id="toc-label-dictionary" class="nav-link" data-scroll-target="#label-dictionary">Label dictionary</a></li>
-  <li><a href="#add-the-label" id="toc-add-the-label" class="nav-link" data-scroll-target="#add-the-label">Add the label</a></li>
+<li><a href="#revisi%C3%B3n-de-la-herramienta-kobo" id="toc-revisión-de-la-herramienta-kobo" class="nav-link active" data-scroll-target="#revisi%C3%B3n-de-la-herramienta-kobo">Revisión de la herramienta KOBO</a></li>
+  <li><a href="#diccionario-de-etiquetas" id="toc-diccionario-de-etiquetas" class="nav-link" data-scroll-target="#diccionario-de-etiquetas">Diccionario de etiquetas</a></li>
+  <li><a href="#agregar-la-etiqueta" id="toc-agregar-la-etiqueta" class="nav-link" data-scroll-target="#agregar-la-etiqueta">Agregar la etiqueta</a></li>
   </ul>
 <div class="toc-actions"><ul>
 <li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/07-outputs-part1/07-outputs-01-labels.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
@@ -5063,7 +5063,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 de noviembre de 2024</p>
+      <p class="date">21 de noviembre de 2024</p>
     </div>
   </div>
   
@@ -5081,7 +5081,7 @@ vertical-align: -.125em;
 <span><span class="va">kobo_survey</span> <span class="op">&lt;-</span> <span class="va">presentresults_MSNA2024_kobotool_template</span><span class="op">$</span><span class="va">kobo_survey</span></span>
 <span><span class="va">kobo_choices</span> <span class="op">&lt;-</span> <span class="va">presentresults_MSNA2024_kobotool_template</span><span class="op">$</span><span class="va">kobo_choices</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Most of the time, the information in a dataset will be using coding label, not very easy to read by a human. For example, in the following results table.</p>
+<p>La mayor parte del tiempo, la información en un conjunto de datos estará descrita como en el codigo, lo que no será muy fácil de leer para una persona. Por ejemplo, en la siguiente tabla de resultados:</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_table</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">9</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"analysis_var"</span>, <span class="st">"group_var"</span>, <span class="st">"group_var_value"</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -5108,7 +5108,7 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<p>With KOBO tool, the survey and choices sheets always always have at least one column label to show how the questions and choices should be read. It can be used to label the results table.</p>
+<p>Con la herramienta KOBO, las hojas de encuesta (survey) y opciones (choices) siempre tienen al menos una columna de etiqueta (típicamente, label::Spanish) que muestra cómo deben leerse las preguntas y opciones. Esta columna puede utilizarse para etiquetar la tabla de resultados.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">kobo_survey</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -5217,7 +5217,7 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If there are new variables added to the dataset, they should also be added in the KOBO tool.</p>
+<p>Si se añaden nuevas variables al conjunto de datos, también deben agregarse en la herramienta KOBO.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -5230,18 +5230,23 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If the labels should be changed to be better suited, you can add a new label column to the KOBO tool. It should be added to the survey and choice tab.</p>
+<p>Si las etiquetas deben modificarse para adaptarse mejor, puede añadir una nueva columna de etiquetas en la herramienta KOBO. Esta columna debe añadirse en las pestañas de <strong>survey</strong> y <strong>choice</strong>.</p>
 </div>
 </div>
 </div>
-<p>Adding the labels to the results table will be done in three steps:</p>
+<p>Agregar las etiquetas a la tabla de resultados se realizará en tres pasos:</p>
 <ul>
-<li>reviewing the KOBO tool: to make sure there is no duplicated label,</li>
-<li>creating the label dictionary: to reduce the KOBO tool to only the information needed,</li>
-<li>adding labels to the results table: to add columns with the label to the results table.</li>
+<li>
+<strong>Revisión de la herramienta KOBO</strong>: asegurarse de que no haya etiquetas duplicadas (en particular, en las etiquetas de las preguntas.).<br>
+</li>
+<li>
+<strong>Creación del diccionario de etiquetas</strong>: reducir la herramienta KOBO a solo la información necesaria.<br>
+</li>
+<li>
+<strong>Adición de etiquetas a la tabla de resultados</strong>: agregar columnas con las etiquetas a la tabla de resultados.</li>
 </ul>
-<section id="review-kobo-tool" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="review-kobo-tool">Review KOBO tool</h2>
-<p>First the KOBO tool should be review to see if there is any duplicated label, names, etc. This will cause issues later one. In the following example, using <code>review_kobo_labels</code> with passing the results table will look at the variables names presents in the results, not all variables</p>
+<section id="revisión-de-la-herramienta-kobo" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="revisión-de-la-herramienta-kobo">Revisión de la herramienta KOBO</h2>
+<p>Primero, se debe revisar la herramienta KOBO para verificar si hay etiquetas, nombres, etc., duplicados. Esto podría generar problemas más adelante. En el siguiente ejemplo, al usar <code>review_kobo_labels</code> pasando la tabla de resultados, se analizarán los nombres de las variables presentes en los resultados, no todas las variables.</p>
 
 <div class="no-row-height column-margin column-container"><div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -5253,7 +5258,7 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Current version looks for all choices, instead of just the one present in the table. It will be ammended later.</p>
+<p>La versión actual busca todas las opciones, en lugar de solo aquellas presentes en la tabla. Esto se modificará más adelante.</p>
 </div>
 </div></div>
 <div class="cell">
@@ -5348,7 +5353,7 @@ Nota
 </div>
 </div>
 </div>
-<p>In this case we have the HHS frequency question repeated, to remove the duplication, I will add which one they are referring to.</p>
+<p>En este caso, tenemos la pregunta de frecuencia de HHS repetida. Para eliminar la duplicación, se agrega una especificación sobre a cuál se esta refiriendo.</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">kobo_survey_fixed</span> <span class="op">&lt;-</span> <span class="va">kobo_survey</span></span>
 <span><span class="va">kobo_survey_fixed</span><span class="op">[</span></span>
@@ -5363,13 +5368,13 @@ Nota
 <span>  <span class="op">)</span></span>
 <span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In the choices sheet, there are 2 flags:</p>
+<p>Para la hoja de opciones (<strong>choices sheet</strong>), hay dos banderas de advertencia:</p>
 <ul>
-<li>Kobo choices sheet has duplicated names in the same list_name.<br>
+<li>La hoja de opciones de KOBO tiene nombres duplicados en el mismo <strong>list_name</strong>.<br>
 </li>
-<li>Kobo choices sheet has duplicated labels in the same list_name.</li>
+<li>La hoja de opciones de KOBO tiene etiquetas duplicadas en el mismo <strong>list_name</strong>.</li>
 </ul>
-<p>For the duplicated names in the same list name, these were added with the composite indicators. I will just keep one.</p>
+<p>Para los nombres duplicados dentro del mismo <strong>list_name</strong>, estos se añadieron con los indicadores compuestos. Solo se conserva uno.</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">kobo_choices_fixed</span> <span class="op">&lt;-</span> <span class="va">kobo_choices</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">`label::english`</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
@@ -5379,7 +5384,7 @@ Nota
 <span></span>
 <span><span class="va">duplicated_listname_label</span> <span class="op">&lt;-</span> <span class="va">review_kobo_labels_results</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">comments</span> <span class="op">==</span> <span class="st">"Kobo choices sheet has duplicated labels in the same list_name."</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>For the duplicated labels, these are because of the template. I will just add a number based on their order.</p>
+<p>Para las etiquetas duplicadas, estas se deben a la plantilla. Simplemente se agrega un número según su orden.</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">kobo_choices_fixed</span> <span class="op">&lt;-</span> <span class="va">kobo_choices_fixed</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">list_name</span><span class="op">)</span>  <span class="op">|&gt;</span> </span>
@@ -5389,7 +5394,7 @@ Nota
 <span>  <span class="op">)</span><span class="op">)</span>  <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>I can review again.</p>
+<p>Se puede revisar nuevamente.</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/review_kobo_labels.html">review_kobo_labels</a></span><span class="op">(</span><span class="va">kobo_survey_fixed</span>, <span class="va">kobo_choices_fixed</span>, results_table <span class="op">=</span> <span class="va">results_table</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -5407,8 +5412,8 @@ Nota
 </div>
 </div>
 </div>
-</section><section id="label-dictionary" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="label-dictionary">Label dictionary</h2>
-<p>I can now create a dictionary that will be used to create labels.</p>
+</section><section id="diccionario-de-etiquetas" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="diccionario-de-etiquetas">Diccionario de etiquetas</h2>
+<p>Ahora se puede crear un diccionario que se utilizará para generar las etiquetas.</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">label_dictionary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/create_label_dictionary.html">create_label_dictionary</a></span><span class="op">(</span><span class="va">kobo_survey_fixed</span>, <span class="va">kobo_choices_fixed</span>, results_table <span class="op">=</span> <span class="va">results_table</span><span class="op">)</span></span>
 <span></span>
@@ -5418,9 +5423,10 @@ Nota
 [3] "analysis_type_dictionary"</code></pre>
 </div>
 </div>
-<p>It will return a list with:</p>
+<p>Devolverá una lista con:</p>
 <ul>
-<li>dictionary_survey: the dictionary to be used for the names of variables</li>
+<li>
+<strong>dictionary_survey</strong>: el diccionario que se utilizará para los nombres de las variables.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">label_dictionary</span><span class="op">$</span><span class="va">dictionary_survey</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5478,7 +5484,8 @@ Nota
 </div>
 </div>
 <ul>
-<li>dictionary_choices: the dictionary to be used for the value of the variables,</li>
+<li>
+<strong>dictionary_choices</strong>: el diccionario que se utilizará para los valores de las variables.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">label_dictionary</span><span class="op">$</span><span class="va">dictionary_choices</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5547,7 +5554,8 @@ Nota
 </div>
 </div>
 <ul>
-<li>analysis_type_dictionary: the dictionary to be used for the analysis_type column.</li>
+<li>
+<strong>analysis_type_dictionary</strong>: el diccionario que se utilizará para la columna <strong>analysis_type</strong>.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">label_dictionary</span><span class="op">$</span><span class="va">analysis_type_dictionary</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5595,10 +5603,10 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><code>analysis_type_dictionary</code> will always come in English, if you want to modify it please check the example of the function.</p>
+<p>El <code>analysis_type_dictionary</code> siempre estará en inglés; si desea modificarlo, consulte el ejemplo de la función.</p>
 </div>
-</div></div></section><section id="add-the-label" class="level2"><h2 class="anchored" data-anchor-id="add-the-label">Add the label</h2>
-<p>Finally, using <code>add_label_columns_to_results_table</code> will add the label columns to the results table.</p>
+</div></div></section><section id="agregar-la-etiqueta" class="level2"><h2 class="anchored" data-anchor-id="agregar-la-etiqueta">Agregar la etiqueta</h2>
+<p>Finalmente, al usar <code>add_label_columns_to_results_table</code>, se añadirán las columnas de etiquetas a la tabla de resultados.</p>
 <div class="cell">
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_table_labeled</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/add_label_columns_to_results_table.html">add_label_columns_to_results_table</a></span><span class="op">(</span></span>
 <span>  <span class="va">results_table</span>,</span>
@@ -5636,7 +5644,7 @@ label_analysis_type      "Proportion (single choice)"
 label_analysis_key       "Proportion (single choice) @/@ Number of domestic tasks that cannot be performed %/% 1 @/@ Admin 1 %/% To be updated by country 1"</code></pre>
 </div>
 </div>
-<p>This is section comes from this <a href="https://impact-initiatives.github.io/presentresults/">vignette</a>.</p>
+<p>Esta sección proviene de esta <a href="https://impact-initiatives.github.io/presentresults/">viñeta</a>.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

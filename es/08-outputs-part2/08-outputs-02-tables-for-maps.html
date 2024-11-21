@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
 }
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 <script>const headroomChanged = new CustomEvent("quarto-hrChanged", {
   detail: {},
@@ -4993,9 +5027,19 @@ vertical-align: -.125em;
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+<li><a href="#create_table_for_map" id="toc-create_table_for_map" class="nav-link active" data-scroll-target="#create_table_for_map"><code>create_table_for_map</code></a></li>
+  <li><a href="#soluci%C3%B3n-de-problemas" id="toc-solución-de-problemas" class="nav-link" data-scroll-target="#soluci%C3%B3n-de-problemas">Solución de problemas</a></li>
+  </ul>
+<div class="toc-actions"><ul>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/08-outputs-part2/08-outputs-02-tables-for-maps.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/08-outputs-part2/08-outputs-02-tables-for-maps.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
+<li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>
+</ul></div></nav>
+</div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb">
 <li class="breadcrumb-item"><a href="../08-outputs-part2/08-outputs-01-ggplot-theme.html">Outputs - part 2</a></li>
@@ -5018,7 +5062,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 de noviembre de 2024</p>
+      <p class="date">21 de noviembre de 2024</p>
     </div>
   </div>
   
@@ -5027,11 +5071,502 @@ vertical-align: -.125em;
   
 
 
-</header><p>to be created</p>
+</header><div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/presentresults/">presentresults</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="va">results_table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span>analysis_var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"msni_in_need"</span>, <span class="st">"comp_health_in_need"</span>, <span class="st">"comp_prot_in_need"</span>, <span class="st">"comp_edu_in_need"</span>, <span class="st">"comp_foodsec_in_need"</span>,<span class="st">"comp_wash_in_need"</span>,        <span class="st">"comp_snfi_in_need"</span><span class="op">)</span>,</span>
+<span>                             analysis_var_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span><span class="op">)</span>,</span>
+<span>                             group_var <span class="op">=</span> <span class="st">"admin1"</span>,</span>
+<span>                             group_var_value <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"PCODE1"</span>, <span class="st">"PCODE2"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">12344</span><span class="op">)</span></span>
+<span><span class="va">results_table</span><span class="op">$</span><span class="va">stat</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">results_table</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Esta viñeta mostrará un ejemplo de cómo crear una tabla para la herramienta <strong>MSNA Indicator Maps 1.2</strong>.</p>
+<section id="create_table_for_map" class="level2"><h2 class="anchored" data-anchor-id="create_table_for_map"><code>create_table_for_map</code></h2>
+<p>La tabla de resultados (generada aleatoriamente) que se muestra a continuación presenta los resultados en formato largo para 7 indicadores y a nivel administrativo 1:</p>
+<ul>
+<li>
+<strong>msni_in_need</strong>: Puntaje del Índice de Necesidades Multisectoriales<br>
+</li>
+<li>
+<strong>comp_health_in_need</strong>: Puntaje compuesto sectorial de Salud<br>
+</li>
+<li>
+<strong>comp_prot_in_need</strong>: Puntaje compuesto sectorial de Protección<br>
+</li>
+<li>
+<strong>comp_edu_in_need</strong>: Puntaje compuesto sectorial de Educación<br>
+</li>
+<li>
+<strong>comp_foodsec_in_need</strong>: Puntaje compuesto sectorial de Seguridad Alimentaria<br>
+</li>
+<li>
+<strong>comp_wash_in_need</strong>: Puntaje compuesto sectorial de Agua, Saneamiento e Higiene<br>
+</li>
+<li>
+<strong>comp_snfi_in_need</strong>: Puntaje compuesto sectorial de Refugio y Artículos No Alimentarios<br>
+</li>
+<li>
+<strong>admin1</strong>: <strong>PCODE1</strong> y <strong>PCODE2</strong>.</li>
+</ul>
+<p>La columna <strong>stat</strong> representa los porcentajes.</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">results_table</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 25%">
+<col style="width: 13%">
+<col style="width: 21%">
+<col style="width: 13%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">analysis_var</th>
+<th style="text-align: right;">analysis_var_value</th>
+<th style="text-align: left;">group_var</th>
+<th style="text-align: left;">group_var_value</th>
+<th style="text-align: right;">stat</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">msni_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.0647109</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">comp_health_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.9305904</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">comp_prot_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.0554359</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">comp_edu_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.0628720</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">comp_foodsec_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.1882063</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">comp_wash_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.7435970</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Los mapas solo pueden mostrar una información por nivel administrativo. El primer paso es filtrar la tabla de resultados para obtener la información que se va a mapear. En el ejemplo, el valor de la variable de análisis puede ser 1 o 0, donde 1 significa “en necesidad” y 0 significa “no en necesidad”. El mapa mostrará los porcentajes de hogares en necesidad, por lo que los resultados se filtrarán para el valor 1. Luego se puede utilizar la función <code>create_table_for_map</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_table_filtered</span> <span class="op">&lt;-</span> <span class="va">results_table</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">analysis_var_value</span> <span class="op">==</span> <span class="st">"1"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">results_table_recoded_5_classes</span> <span class="op">&lt;-</span> <span class="va">results_table_filtered</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/create_table_for_map.html">create_table_for_map</a></span><span class="op">(</span>number_classes <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">results_table_recoded_5_classes</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">group_var_value</th>
+<th style="text-align: left;">msni_in_need</th>
+<th style="text-align: left;">comp_health_in_need</th>
+<th style="text-align: left;">comp_prot_in_need</th>
+<th style="text-align: left;">comp_edu_in_need</th>
+<th style="text-align: left;">comp_foodsec_in_need</th>
+<th style="text-align: left;">comp_wash_in_need</th>
+<th style="text-align: left;">comp_snfi_in_need</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Si desea usar 6 clases, establezca el argumento <code>number_classes</code> en 6.</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_table_filtered</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/create_table_for_map.html">create_table_for_map</a></span><span class="op">(</span>number_classes <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">group_var_value</th>
+<th style="text-align: left;">msni_in_need</th>
+<th style="text-align: left;">comp_health_in_need</th>
+<th style="text-align: left;">comp_prot_in_need</th>
+<th style="text-align: left;">comp_edu_in_need</th>
+<th style="text-align: left;">comp_foodsec_in_need</th>
+<th style="text-align: left;">comp_wash_in_need</th>
+<th style="text-align: left;">comp_snfi_in_need</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Puede haber 5 o 6 clases, como se indica a continuación:</p>
+<div class="columns">
+<div class="column" style="width:45%;">
+<section id="clases" class="level3"><h3 class="anchored" data-anchor-id="clases">5 clases</h3>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Class</th>
+<th>Value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>&lt;= 25%</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>&lt;= 50%</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>&lt;= 75%</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>&lt;= 100%</td>
+</tr>
+<tr class="even">
+<td>empty</td>
+<td>Anything else</td>
+</tr>
+</tbody>
+</table></section>
+</div>
+<div class="column" style="width:10%;">
+<!-- empty column to create gap -->
+</div>
+<div class="column" style="width:45%;">
+<section id="clases-1" class="level3"><h3 class="anchored" data-anchor-id="clases-1">6 clases</h3>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Class</th>
+<th>Value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>&lt;= 20%</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>&lt;= 40%</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>&lt;= 60%</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>&lt;= 80%</td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td>&lt;= 100%</td>
+</tr>
+<tr class="odd">
+<td>empty</td>
+<td>Anything else</td>
+</tr>
+</tbody>
+</table></section>
+</div>
+</div>
+</section><section id="solución-de-problemas" class="level2"><h2 class="anchored" data-anchor-id="solución-de-problemas">Solución de problemas</h2>
+<p>Si tiene más de un valor por indicador y nivel administrativo, debería recibir una advertencia de <strong>tidyr</strong>. Puede usar esta advertencia para explorar dónde está el problema.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_table</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/create_table_for_map.html">create_table_for_map</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Values from `stat_recoded` are not uniquely identified; output will contain
+list-cols.
+• Use `values_fn = list` to suppress this warning.
+• Use `values_fn = {summary_fun}` to summarise duplicates.
+• Use the following dplyr code to identify duplicates.
+  {data} |&gt;
+  dplyr::summarise(n = dplyr::n(), .by = c(group_var_value, analysis_var)) |&gt;
+  dplyr::filter(n &gt; 1L)</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 9%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+<col style="width: 14%">
+<col style="width: 12%">
+<col style="width: 12%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">group_var_value</th>
+<th style="text-align: left;">msni_in_need</th>
+<th style="text-align: left;">comp_health_in_need</th>
+<th style="text-align: left;">comp_prot_in_need</th>
+<th style="text-align: left;">comp_edu_in_need</th>
+<th style="text-align: left;">comp_foodsec_in_need</th>
+<th style="text-align: left;">comp_wash_in_need</th>
+<th style="text-align: left;">comp_snfi_in_need</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">2, 4</td>
+<td style="text-align: left;">5, 3</td>
+<td style="text-align: left;">2, 5</td>
+<td style="text-align: left;">2, 5</td>
+<td style="text-align: left;">2, 3</td>
+<td style="text-align: left;">4, 4</td>
+<td style="text-align: left;">4, 4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">3, 5</td>
+<td style="text-align: left;">2, 2</td>
+<td style="text-align: left;">3, 3</td>
+<td style="text-align: left;">3, 5</td>
+<td style="text-align: left;">3, 4</td>
+<td style="text-align: left;">5, 3</td>
+<td style="text-align: left;">2, 3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_table</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, .by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">group_var_value</span>, <span class="va">analysis_var</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">1L</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead><tr class="header">
+<th style="text-align: left;">group_var_value</th>
+<th style="text-align: left;">analysis_var</th>
+<th style="text-align: right;">n</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">msni_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">comp_health_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">comp_prot_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">comp_edu_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">comp_foodsec_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">comp_wash_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: left;">comp_snfi_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">msni_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">comp_health_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">comp_prot_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">comp_edu_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">comp_foodsec_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">comp_wash_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PCODE2</td>
+<td style="text-align: left;">comp_snfi_in_need</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>En este caso, hay 2 valores para cada combinación de <strong>group_var_value</strong> y <strong>analysis_var</strong>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">results_table</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">group_var_value</span> <span class="op">==</span> <span class="st">"PCODE1"</span> <span class="op">&amp;</span> <span class="va">analysis_var</span> <span class="op">==</span> <span class="st">"msni_in_need"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 27%">
+<col style="width: 14%">
+<col style="width: 23%">
+<col style="width: 14%">
+</colgroup>
+<thead><tr class="header">
+<th style="text-align: left;">analysis_var</th>
+<th style="text-align: right;">analysis_var_value</th>
+<th style="text-align: left;">group_var</th>
+<th style="text-align: left;">group_var_value</th>
+<th style="text-align: right;">stat</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">msni_in_need</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.0647109</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">msni_in_need</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">admin1</td>
+<td style="text-align: left;">PCODE1</td>
+<td style="text-align: right;">0.6411115</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p>Hay dos valores; los mapas solo pueden mostrar uno. La tabla de resultados debe filtrarse para incluir únicamente un valor.</p>
+<p>Esta sección proviene de esta <a href="https://impact-initiatives.github.io/presentresults/articles/create-table-for-map.html">viñeta</a>.</p>
 
 
-
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -5455,8 +5990,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul>
 <li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/08-outputs-part2/08-outputs-02-tables-for-maps.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
 <li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/blob/main/08-outputs-part2/08-outputs-02-tables-for-maps.qmd" class="toc-action"><i class="bi empty"></i>Ver el código</a></li>
 <li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/issues/new" class="toc-action"><i class="bi empty"></i>Informar de un problema</a></li>

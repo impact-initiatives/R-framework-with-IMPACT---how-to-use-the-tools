@@ -5031,11 +5031,11 @@ vertical-align: -.125em;
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">En esta página</h2>
    
   <ul>
-<li><a href="#barplot-without-formating" id="toc-barplot-without-formating" class="nav-link active" data-scroll-target="#barplot-without-formating">Barplot without formating</a></li>
+<li><a href="#gr%C3%A1fico-de-barras-sin-formateo" id="toc-gráfico-de-barras-sin-formateo" class="nav-link active" data-scroll-target="#gr%C3%A1fico-de-barras-sin-formateo">Gráfico de barras sin formateo</a></li>
   <li><a href="#theme_barplot" id="toc-theme_barplot" class="nav-link" data-scroll-target="#theme_barplot"><code>theme_barplot</code></a></li>
   <li><a href="#theme_impact" id="toc-theme_impact" class="nav-link" data-scroll-target="#theme_impact"><code>theme_impact</code></a></li>
-  <li><a href="#other-palettes" id="toc-other-palettes" class="nav-link" data-scroll-target="#other-palettes">Other palettes</a></li>
-  <li><a href="#errors-and-number-of-colors" id="toc-errors-and-number-of-colors" class="nav-link" data-scroll-target="#errors-and-number-of-colors">Errors and number of colors</a></li>
+  <li><a href="#otras-paletas" id="toc-otras-paletas" class="nav-link" data-scroll-target="#otras-paletas">Otras paletas</a></li>
+  <li><a href="#errores-y-n%C3%BAmero-de-colores" id="toc-errores-y-número-de-colores" class="nav-link" data-scroll-target="#errores-y-n%C3%BAmero-de-colores">Errores y número de colores</a></li>
   </ul>
 <div class="toc-actions"><ul>
 <li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/08-outputs-part2/08-outputs-01-ggplot-theme.qmd" class="toc-action"><i class="bi bi-github"></i>Editar esta página</a></li>
@@ -5065,7 +5065,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 de noviembre de 2024</p>
+      <p class="date">21 de noviembre de 2024</p>
     </div>
   </div>
   
@@ -5078,9 +5078,9 @@ vertical-align: -.125em;
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/presentresults/">presentresults</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The aim of the themes is to help giving an “IMPACT” touch to the graphs, not to create them. The graph should already be created, i.e. type of plots, and the correct aesthetics, labeling, etc.</p>
-<p>The following example aims to plot the percentages of households by category of water sources, by gender of the head of households <em>(This a dummy dataset)</em>.</p>
-<section id="barplot-without-formating" class="level2"><h2 class="anchored" data-anchor-id="barplot-without-formating">Barplot without formating</h2>
+<p>El objetivo de los temas es ayudar a dar un toque “IMPACT” a los gráficos, no crearlos. El gráfico ya debería estar creado, es decir, con el tipo de gráfico, las estéticas correctas, el etiquetado, etc.</p>
+<p>El siguiente ejemplo tiene como objetivo graficar los porcentajes de hogares por categoría de fuentes de agua, según el género del jefe de hogar <em>(Este es un conjunto de datos ficticio)</em>.</p>
+<section id="gráfico-de-barras-sin-formateo" class="level2"><h2 class="anchored" data-anchor-id="gráfico-de-barras-sin-formateo">Gráfico de barras sin formateo</h2>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_to_plot</span> <span class="op">&lt;-</span> <span class="fu">presentresults</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/presentresults/reference/presentresults_MSNA2024_labelled_results_table.html">presentresults_MSNA2024_labelled_results_table</a></span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span></span>
@@ -5120,7 +5120,7 @@ vertical-align: -.125em;
 </div>
 </div>
 </section><section id="theme_barplot" class="level2"><h2 class="anchored" data-anchor-id="theme_barplot"><code>theme_barplot</code></h2>
-<p><code>theme_barplot</code> will give REACH color palette to the bar plot, put the y-axis to 0 to 100%.</p>
+<p>El <code>theme_barplot</code> aplicará la paleta de colores de REACH al gráfico de barras y ajustará el eje y de 0 a 100%.</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">initialplot</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/theme_barplot.html">theme_barplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5132,7 +5132,7 @@ vertical-align: -.125em;
 </div>
 </div>
 </section><section id="theme_impact" class="level2"><h2 class="anchored" data-anchor-id="theme_impact"><code>theme_impact</code></h2>
-<p><code>theme_impact</code> will change the background and color of the title.</p>
+<p>El <code>theme_impact</code> cambiará el fondo y el color del título.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">initialplot</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/theme_barplot.html">theme_barplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -5144,7 +5144,7 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-</section><section id="other-palettes" class="level2"><h2 class="anchored" data-anchor-id="other-palettes">Other palettes</h2>
+</section><section id="otras-paletas" class="level2"><h2 class="anchored" data-anchor-id="otras-paletas">Otras paletas</h2>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">initialplot</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://impact-initiatives.github.io/presentresults/reference/theme_barplot.html">theme_barplot</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="va">impact_palettes</span><span class="op">$</span><span class="va">impact_palette</span><span class="op">)</span> <span class="op">+</span></span>
@@ -5156,7 +5156,7 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<p>Some palettes are available in the <code>impact_palettes</code> object.</p>
+<p>Algunas paletas están disponibles en el objeto <code>impact_palettes</code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">impact_palettes</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -5187,8 +5187,8 @@ $divergent_with_neutral
 [1] "#721621" "#D7191C" "#FDAE61" "#FFFFBF" "#97D3C3" "#209EA0" "#016060"</code></pre>
 </div>
 </div>
-</section><section id="errors-and-number-of-colors" class="level2"><h2 class="anchored" data-anchor-id="errors-and-number-of-colors">Errors and number of colors</h2>
-<p>The palette should have enough color to match the scale fill. The impact palette only has 3 colors while the graph needs 4.</p>
+</section><section id="errores-y-número-de-colores" class="level2"><h2 class="anchored" data-anchor-id="errores-y-número-de-colores">Errores y número de colores</h2>
+<p>La paleta debe tener suficientes colores para coincidir con la escala de relleno. La paleta de impacto solo tiene 3 colores, mientras que el gráfico necesita 4.</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data_to_plot</span> <span class="op">&lt;-</span> <span class="fu">presentresults</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/presentresults/reference/presentresults_MSNA2024_labelled_results_table.html">presentresults_MSNA2024_labelled_results_table</a></span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span></span>
@@ -5218,7 +5218,7 @@ $divergent_with_neutral
 ! Insufficient values in manual scale. 4 needed but only 3 provided.</code></pre>
 </div>
 </div>
-<p>If you need more colors, have a look at the <code><a href="https://rdrr.io/r/grDevices/colorRamp.html">grDevices::colorRampPalette</a></code></p>
+<p>Si necesita más colores, consulte <code><a href="https://rdrr.io/r/grDevices/colorRamp.html">grDevices::colorRampPalette</a></code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">function_couleur</span> <span class="op">&lt;-</span> <span class="fu">grDevices</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span><span class="op">(</span><span class="va">impact_palettes</span><span class="op">$</span><span class="va">divergent_with_neutral</span><span class="op">)</span></span>
 <span><span class="fu">function_couleur</span><span class="op">(</span><span class="fl">20</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5228,7 +5228,7 @@ $divergent_with_neutral
 [15] "#64BCB4" "#3FABA9" "#1E9A9C" "#148788" "#0A7374" "#016060"</code></pre>
 </div>
 </div>
-<p>This is section comes from this <a href="https://impact-initiatives.github.io/presentresults/articles/IMPACT_ggplot2_theme.html">vignette</a>.</p>
+<p>Esta sección proviene de esta <a href="https://impact-initiatives.github.io/presentresults/articles/IMPACT_ggplot2_theme.html">viñeta</a>.</p>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
