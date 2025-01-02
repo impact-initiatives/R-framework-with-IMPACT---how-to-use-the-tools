@@ -1,0 +1,94 @@
+---
+title: "03 - Practice (7)"
+author: "Yann Say"
+date: last-modified
+---
+
+# Practice
+
+## Practice 1
+
+- Add labels to the following results table. 
+```{r}
+library(dplyr)
+library(presentresults)
+label_exercise_results <- readxl::read_excel("../inputs/11 - exercise - label.xlsx", sheet = "results_table")
+label_exercise_kobo_survey <- readxl::read_excel("../inputs/11 - exercise - label.xlsx", sheet = "kobo_survey")
+label_exercise_kobo_choices <- readxl::read_excel("../inputs/11 - exercise - label.xlsx", sheet = "kobo_choices")
+
+```
+
+```{r}
+head(label_exercise_results)
+```
+
+```{r}
+head(label_exercise_kobo_survey)
+```
+
+```{r}
+head(label_exercise_kobo_choices)
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you try the argument *label_column* in `review_kobo_labels` and `create_label_dictionary` ?
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+review_kobo_labels_results <- review_kobo_labels(label_exercise_kobo_survey,
+                                                 label_exercise_kobo_choices,
+                                                 results_table = label_exercise_results, 
+                                                 label_column = "label"
+)
+
+label_dictionary <- create_label_dictionary(label_exercise_kobo_survey, 
+                                            label_exercise_kobo_choices, 
+                                            results_table = label_exercise_results, 
+                                            label_column = "label")
+
+results_table_labeled <- add_label_columns_to_results_table(
+  label_exercise_results,
+  label_dictionary
+)
+  
+```
+:::
+
+## Practice 2
+
+- Create an excel table with the strata in the rows and the variables in the columns.
+
+```{r}
+#| message: false
+library(presentresults)
+library(dplyr)
+```
+
+```{r}
+exercise_outputs <- readxl::read_excel("../inputs/10 - exercise - analysis_to_review.xlsx")
+
+```
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| output: false
+exercise_outputs %>% 
+  create_table_group_x_variable() %>% 
+  create_xlsx_group_x_variable(file_path = "../outputs/06 - correction - group_x_variable_table.xlsx", overwrite = T) 
+  
+```
+:::
+
+## Downloads
+
+- [11 - exercise - analysis_to_review](../inputs/11 - exercise - label.xlsx)
+- [10 - exercise - analysis_to_review](../inputs/10 - exercise - analysis_to_review.xlsx)
+- [06 - correction - group_x_variable_table](../outputs/06 - correction - group_x_variable_table.xlsx)

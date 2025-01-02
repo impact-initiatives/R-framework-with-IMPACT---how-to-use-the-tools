@@ -1,0 +1,157 @@
+---
+title: "01 - Create a cleaning log"
+author: "Yann Say"
+date: last-modified
+
+---
+
+```{r}
+#| warning: false
+library(cleaningtools)
+library(dplyr)
+
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+```
+
+This section continues with the cleaning step.
+![](../config/images/step - cleaning.png)
+
+# Recap
+
+```{r}
+#| output: false
+more_logs <- my_raw_dataset %>% 
+  check_duplicate(uuid_column = "X_uuid") %>% 
+  check_soft_duplicates(uuid_column = "X_uuid", kobo_survey = my_kobo_survey, sm_separator = ".") %>%
+  check_outliers(uuid_column = "X_uuid") %>%
+  check_value(uuid_column = "X_uuid") 
+more_logs$checked_dataset <- more_logs$checked_dataset %>% 
+  add_duration(uuid_column = "X_uuid", start_column = "X.U.FEFF.start", end_column = "end")
+more_logs <- more_logs %>% 
+  check_duration(column_to_check = "duration", uuid_column = "X_uuid")
+other_columns_to_check <- my_kobo_survey %>% 
+  filter(type == "text") %>% 
+  filter(name %in% names(my_raw_dataset)) %>%
+  pull(name) 
+
+more_logs <- more_logs %>% 
+  check_others(uuid_column = "X_uuid", columns_to_check = other_columns_to_check) 
+logical_check_list <- readxl::read_excel("../inputs/01 - example - check_list.xlsx")
+more_logs <- more_logs %>% 
+  check_logical_with_list(uuid_column = "X_uuid",
+                          list_of_check = logical_check_list,
+                          check_id_column = "check_id",
+                          check_to_perform_column = "check_to_perform",
+                          columns_to_clean_column = "columns_to_clean",
+                          description_column = "description")
+
+```
+
+
+# Cleaning - Creating a cleaning log
+
+::: {.callout-tip appearance="minimal"}
+### create\_\*
+
+![](../config/images/verb - create.png)
+
+**create_**\* functions will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output.
+
+Outputs from **create_**\* functions outputs can be in different shape, format, etc. 
+
+**create_**\* function is catch-all.
+:::
+
+## create_combined_log
+
+`create_combined_log` will combined all the logs from a list into one. It will also add 2 columns that will be used for the cleaning.
+
+```{r}
+names(more_logs)
+my_combined_log <- create_combined_log(more_logs)
+
+typeof(my_combined_log)
+names(my_combined_log)
+
+my_combined_log$cleaning_log %>% 
+  head()
+```
+
+The cleaning log contains all the columns from all the logs from `more_logs` with in addition:
+
+-   check_binding is filled for all rows.
+-   change_type (empty)
+-   new_value (empty)
+
+## add_info_to_cleaning_log
+
+If more information from the dataset should be added, the function `add_info_to_cleaning_log` can help.
+
+::: {.callout-tip appearance="minimal"}
+### add\_\*
+
+![](../config/images/verb - add.png)
+
+**add_**\* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.
+
+**add_**\* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation). 
+
+For example, to check the duration of a survey, there is only the start and end, but not the duration column.
+:::
+
+```{r}
+my_combined_log <- my_combined_log %>% 
+  add_info_to_cleaning_log(dataset_uuid_column = "X_uuid", 
+                           information_to_add = "enumerator_num")
+
+my_combined_log$cleaning_log %>% 
+  head()
+```
+
+## create_xlsx_cleaning_log
+
+```{r}
+#| output: false
+create_xlsx_cleaning_log(my_combined_log,
+                         sm_dropdown_type = "logical",
+                         output_path =  "../outputs/01 - example - cleaning-log-no-kobo.xlsx")
+```
+
+`create_xlsx_cleaning_log` will write an excel file with:
+
+-   checked_dataset tab: the checked dataset, with additional columns if any.
+-   cleaning_log tab: the combined log with the **change_type** column with a data validation rules.
+-   readme tab: change_type values definition.
+
+There are 4 actions possible:
+
+-   change_response: Change the response to new.value
+-   blank_response: Remove and NA the response
+-   remove_survey: Delete the survey
+-   no_action: No action to take.
+
+This log will have to be filled in with actions to take and new value if needed.
+
+```{r}
+#| output: false
+create_xlsx_cleaning_log(my_combined_log,
+                         kobo_survey = my_kobo_survey,
+                         kobo_choices = my_kobo_choice,
+                         use_dropdown = T,
+                         sm_dropdown_type = "logical",
+                         output_path =  "../outputs/02 - example - cleaning-log-with-kobo.xlsx")
+```
+
+If the KOBO information are provided and the **use_dropdown** argument is set to TRUE, **new_value** will have a data validation rule based on the KOBO options.
+
+::: callout-note
+Select multiple dummy columns (TRUE/FALSE or 1/0) are flagged and used later for the cleaning, not the parent column.
+:::
+
+## Downloads
+
+- [01 - example - check_list](../inputs/01 - example - check_list.xlsx)
+- [01 - example - cleaning-log-no-kobo.xlsx](../outputs/01 - example - cleaning-log-no-kobo.xlsx)
+- [02 - example - cleaning-log-with-kobo.xlsx](../outputs/02 - example - cleaning-log-with-kobo.xlsx)

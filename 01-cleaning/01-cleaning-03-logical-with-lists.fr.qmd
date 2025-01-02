@@ -1,0 +1,83 @@
+---
+title: "03 - Checks with logical list"
+author: "Yann Say"
+date: last-modified
+
+---
+```{r}
+#| warning: false
+library(cleaningtools)
+library(dplyr)
+
+my_raw_dataset <- cleaningtools::cleaningtools_raw_data
+my_kobo_survey <- cleaningtools::cleaningtools_survey
+my_kobo_choice <- cleaningtools::cleaningtools_choices
+```
+
+## check_logical_with_list
+
+In other cases, the check is specific and should be tailored to the dataset, for example, `check_logical_with_list`. All the logical checks can be recorded in an excel file.
+
+```{r}
+logical_check_list <- readxl::read_excel("../inputs/01 - example - check_list.xlsx")
+logical_check_list
+```
+
+The check list has 4 columns:
+
+-   check_id : the name of the check
+-   description: the description of the check
+-   check_to_perform: the check to perform. The format for the check to be performed should take the format based on tidyverse. That format is as if a new indicator is create with a mutate. That new indicator should be a logical (i.e. TRUE or FALSE) with TRUE being the value to flag.
+-   columns_to_clean: the list of column names that are used for the logical check.
+
+This list can then be used with `check_logical_with_list`.
+
+```{r}
+example_logic <- my_raw_dataset %>% 
+  check_logical_with_list(uuid_column = "X_uuid",
+                          list_of_check = logical_check_list,
+                          check_id_column = "check_id",
+                          check_to_perform_column = "check_to_perform",
+                          columns_to_clean_column = "columns_to_clean",
+                          description_column = "description")
+```
+
+```{r}
+
+example_logic$logical_all %>% 
+  head()
+```
+
+The log returns :
+
+-   uuid
+-   question: for all variables in **columns_to_clean**
+-   old value: for all variables in **columns_to_clean**
+-   issue
+-   check_id: logical check identifier
+-   check_binding: the combination of the check_id and the uuid.
+
+One check can be flagged in several rows, in the example above, for each uuid, the primary_livelihood and tot_expenses are flagged.
+
+Format for the **check_to_perform** should take the format based on *tidyverse*. That format is as if a new indicator is create with a `mutate`. That new indicator should be a logical (i.e. TRUE or FALSE) with TRUE being the value to flag.
+
+```{r}
+my_raw_dataset %>% 
+  dplyr::mutate(xxx =  primary_livelihood.employment == 1 & tot_expenses < 200000) %>% 
+  dplyr::select(X_uuid, xxx, primary_livelihood.employment, tot_expenses) %>% 
+  head()
+```
+
+The checked dataset will be return with extra columns, i.e. a logical variable with the name of the **check_id**.
+
+```{r}
+example_logic$checked_dataset[1:6,tail(names(example_logic$checked_dataset))]
+```
+
+::: {.callout-note .column-margin}
+If you don't include **columns_to_clean** the `check_logical_with_list` function will try to guess the variables. Not guarantee it will read or pick the correct names.
+:::
+
+## Downloads
+
+- [01 - example - check_list](../inputs/01 - example - check_list.xlsx)

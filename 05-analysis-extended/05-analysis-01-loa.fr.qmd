@@ -1,0 +1,58 @@
+---
+title: "01 - List of analysis"
+author: "Yann Say"
+date: last-modified
+
+---
+```{r}
+#| warning: false
+library(analysistools)
+library(dplyr)
+
+my_data <- analysistools::analysistools_MSNA_template_data
+
+sampling_frame <- data.frame(
+  strata = c("admin1a", "admin1b", "admin1c"),
+  population = c(100000, 200000, 300000)
+)
+
+```
+
+# Analysis - list of analysis
+
+## `create_analysis` and list of analysis (loa)
+
+List of analysis (loa) is a list with all analysis to be performed. It takes the form of a data frame with minimum 4 columns:
+
+- *analysis_type* : The analysis type that should be performed.
+- *analysis_var* : The analysis variable or dependent variable.
+- *group_var* : The grouping variable or independent variable.
+- *level* : The confidence level (expressed between 0 and 1).
+
+```{r}
+my_loa <- analysistools::analysistools_MSNA_template_loa
+
+my_loa
+```
+
+The loa can be passed as argument to the `create_analysis` function. 
+
+```{r}
+#| output: false
+my_data <- my_data %>% 
+  add_weights(sampling_frame, "admin1", "strata", "population")
+
+my_design <- srvyr::as_survey_design(my_data, weights = "weights", strata = "admin1")
+my_results <- create_analysis(my_design, loa = my_loa, sm_separator = "/")
+```
+
+The calculations are made only for the indicators in the loa. That way the analysis can be tailored to specific needs.
+```{r}
+head_results_table <- my_results$results_table %>% 
+  head(5)
+
+tail_results_table <- my_results$results_table %>% 
+  tail(5)
+
+rbind(head_results_table,tail_results_table)
+```
