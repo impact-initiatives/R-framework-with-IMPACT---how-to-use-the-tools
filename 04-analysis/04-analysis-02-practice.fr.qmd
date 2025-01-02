@@ -1,0 +1,93 @@
+---
+title: "02 - Practice (4)"
+author: "Yann Say"
+date: last-modified
+
+---
+# Practice
+
+## Practice 1
+
+```{r}
+library(analysistools)
+library(dplyr)
+```
+
+
+```{r}
+exercise_data <- analysistools_MSNA_template_data
+
+only_nas <- exercise_data %>%
+  summarise(across(.cols = everything(), .fns = function(x) {
+    sum(is.na(x)) == nrow(exercise_data)
+  })) %>%
+  do.call(c, .)
+
+exercise_data_shorter <- exercise_data[, !only_nas] %>%
+  select(!grep("other", names(exercise_data), value = T))
+
+exercise_data_shorter <- exercise_data_shorter[,1:30]
+```
+
+
+With the dataset *exercise_data*, please do the following:
+
+- Create a results table at the level **respondent_gender**. Keep the strata at **admin1**
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you try the argument *group_var* in `create_analysis` ?
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| eval: false
+my_exercise_design <- srvyr::as_survey_design(exercise_data_shorter, strata = "admin1") 
+
+my_answer_analysis <- create_analysis(my_exercise_design, group_var = "respondent_gender", sm_separator = "/")
+
+```
+:::
+
+## Practice 2
+
+- The analysis should be weighted, this is the sampling frame. Re-do the analysis at the overall level.
+
+```{r}
+sampling_frame <- data.frame(
+  strata = c("admin1a", "admin1b", "admin1c"),
+  population = c(100000, 200000, 300000)
+)
+sampling_frame
+```
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you try the function *add_weights* ?
+:::
+
+::: {.callout-note collapse="true" appearance="minimal"}
+### Expand to get a hint
+
+Did you modify your design object?
+:::
+
+::: {.callout-tip collapse="true" appearance="minimal"}
+### Expand to get the answer
+
+```{r}
+#| eval: false
+
+exercise_data_shorter_weigthed <- exercise_data_shorter %>% 
+  add_weights(sample_data = sampling_frame, strata_column_dataset = "admin1", strata_column_sample = "strata", population_column = "population")
+
+my_exercise_design_weigthed <- srvyr::as_survey_design(exercise_data_shorter_weigthed, strata = "admin1", weights = "weights") 
+
+my_answer_analysis_weighted <- create_analysis(my_exercise_design_weigthed, sm_separator = "/")
+
+```
+:::

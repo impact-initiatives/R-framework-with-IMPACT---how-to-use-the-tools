@@ -1,0 +1,76 @@
+---
+title: "01 - Add indicators"
+author: "Yann Say"
+date: last-modified
+
+---
+# Composition - adding indicators
+
+The framework is built around 4 steps: cleaning, composition, analysis, outputs
+
+-   *Cleaning*: any manipulation to go from the raw data to the clean data
+-   *Composition*: any manipulation before the analysis e.g. adding indicators, adding information from loop or main, aok aggregation, etc.
+-   *Analysis*: any manipulation regarding only the analysis
+-   *Outputs*: any manipulation to format the outputs.
+
+The following section will present some introduction about the composition.
+
+![](../config/images/step - composition.png)
+
+```{r}
+#| warning: false
+library(impactR4PHU)
+library(dplyr)
+
+my_data <- impactR4PHU::impactR4PHU_data_template |>  
+  filter(respondent_consent != "no") 
+```
+
+::: {.callout-tip appearance="minimal"}
+### add\_\*
+
+![](../config/images/verb - add.png)
+
+**add_**\* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.
+
+**add_**\* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation). 
+
+For example, to check the duration of a survey, there is only the start and end, but not the duration column.
+
+With `addindicators` some intermediate columns can be added if they are used to create the new indicator.
+:::
+
+## add_fcs
+
+```{r}
+my_data_with_fcs <- my_data %>% add_fcs(
+  cutoffs = "normal"
+)
+
+my_data_with_fcs[, tail(names(my_data_with_fcs), 10)] %>%
+  head()
+```
+::: {.callout-note .column-margin}
+You can learn more about food security indicators [here](https://fscluster.org/handbook/).
+:::
+
+## add_hhs
+
+::: {.callout-tip appearance="minimal"}
+### Pipe-able
+
+The framework is built around 2 adjectives, **pipe-able** and **independent**. In the framework, functions of the same family should be pipe-able. In the following case, 2 **add\_**\* functions are piped.
+:::
+
+
+```{r}
+my_data_with_indicators <- my_data %>%
+  add_fcs(
+  cutoffs = "normal"
+) %>%
+  add_hhs(
+  )
+
+my_data_with_indicators[, tail(names(my_data_with_indicators), 14)] %>%
+  head()
+```

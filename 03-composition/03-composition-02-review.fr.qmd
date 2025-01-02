@@ -1,0 +1,150 @@
+---
+title: "02 - Review indicators"
+author: "Yann Say"
+date: last-modified
+
+---
+# Composition - reviewing indicators
+
+Reviewing indicators will compare 2 indicators together and present the differences. It will not check how the indicator was created nor check for inconsistencies. That mean, to review an indicator, it is necessary to create one and compare them. The functions `review_one_variable` and `review_variables` will focus on the latter.
+
+```{r}
+#| warning: false
+library(impactR4PHU)
+library(dplyr)
+
+my_data <- impactR4PHU::impactR4PHU_data_template |>  
+  filter(respondent_consent != "no") 
+my_data_with_indicators <- my_data %>%
+  add_fcs(
+  cutoffs = "normal"
+) %>%
+  add_hhs(
+  )
+```
+
+## review_variables
+
+First, a new dataset can be created for the review.
+```{r}
+review_df <- my_data %>%
+  add_fcs(
+  cutoffs = "normal",
+  ) %>%
+  select(uuid, fsl_fcs_score, fsl_fcs_cat)
+```
+
+Then the dataset to be reviewed and the new dataset can be binded together.
+
+```{r}
+binded_df <- my_data_with_indicators %>%
+  full_join(review_df, by = "uuid")
+```
+
+::: {.callout-note .column-margin}
+I would advice to use a `full_join` rather than a `left/right_join`. That way if any computation has missing value they will be spotted.
+:::
+
+::: {.callout-note .column-margin}
+With the `join_*` if the names are the same .x and .y will added to the names.
+:::
+
+::: {.callout-tip appearance="minimal"}
+### review\_\*
+
+![](../config/images/verb - review.png)
+
+**review_**\* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis. 
+:::
+
+```{r}
+library(addindicators)
+```
+
+```{r}
+review_one_var <- review_variables(binded_df,
+  columns_to_review = "fsl_fcs_cat.x",
+  columns_to_compare_with = "fsl_fcs_cat.y")
+
+
+review_one_var %>% 
+  names()
+```
+It is a list with the dataset and a review table.
+
+```{r}
+review_one_var$review_table %>% 
+  head()
+```
+
+The review table can be summarised to have a quicker overview.
+
+```{r}
+review_one_var$review_table %>%
+  group_by(review_check, review_comment) %>%
+  tally()
+```
+
+To see how differences are shown, some noise is introduced to the dataset.
+
+```{r}
+jittered_df <- binded_df
+set.seed(123)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_cat.x"] <- sample(unique(jittered_df$fsl_fcs_cat.y), 5, T)
+set.seed(124)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_cat.y"] <- sample(unique(jittered_df$fsl_fcs_cat.y), 5, T)
+set.seed(125)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_cat.x"] <- NA
+set.seed(1236)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_cat.y"] <- NA
+set.seed(1237)
+jittered_df[sample(1:nrow(jittered_df), 5), "fsl_fcs_score.x"] <- sample(unique(jittered_df$fsl_fcs_score.x), 5, T)
+```
+
+```{r}
+review_one_variable_jittered <- review_variables(jittered_df,
+  columns_to_review = "fsl_fcs_cat.x",
+  columns_to_compare_with = "fsl_fcs_cat.y")
+
+review_one_variable_jittered$review_table %>%
+  group_by(review_check, review_comment) %>%
+  tally()
+```
+
+The dataset has new columns to help filtering for further investigation.
+
+```{r}
+review_one_variable_jittered$dataset[, tail(names(review_one_variable_jittered$dataset), 5)] %>%
+  head()
+```
+```{r}
+review_one_variable_jittered$dataset %>%
+  filter(!review_check_fsl_fcs_cat.x) %>%
+  select(uuid, fsl_fcs_cat.x, fsl_fcs_cat.y, review_check_fsl_fcs_cat.x, review_comment_fsl_fcs_cat.x)
+```
+
+
+If there are more than one variable to review, pair-wise vectors can be used.
+
+```{r}
+my_review <- review_variables(jittered_df,
+  columns_to_review = c("fsl_fcs_cat.x", "fsl_fcs_score.x"),
+  columns_to_compare_with = c("fsl_fcs_cat.y", "fsl_fcs_score.y")
+)
+```
+
+```{r}
+my_review$review_table %>%
+  group_by(variable, review_check, review_comment) %>%
+  tally()
+```
+```{r}
+my_review$dataset %>%
+  filter(!review_check_fsl_fcs_cat.x) %>%
+  select(uuid, fsl_fcs_cat.x, fsl_fcs_cat.y, review_comment_fsl_fcs_cat.x)
+```
+```{r}
+my_review$dataset %>%
+  filter(!review_check_fsl_fcs_score.x) %>%
+  select(uuid, fsl_fcs_score.x, fsl_fcs_score.y, review_comment_fsl_fcs_score.x)
+```

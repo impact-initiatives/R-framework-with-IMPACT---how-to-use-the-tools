@@ -1,0 +1,110 @@
+---
+title: "01 - Review an analysis"
+author: "Yann Say"
+date: last-modified
+
+---
+# Analysis - Reviewing the analysis
+```{r}
+#| warning: false
+#| output: false
+
+library(analysistools)
+library(dplyr)
+
+my_data <- analysistools_MSNA_template_data
+my_results <- analysistools::analysistools_MSNA_template_no_ratio_results_table
+```
+
+## `create_loa_from_results`
+
+If the loa that was used was shared, it can be re-used. Otherwise, with the results table and the analysis key, the function `create_loa_from_results` will generate a loa that can be used to create the analysis for the review. 
+
+```{r}
+my_loa_for_review <- my_results$results_table %>% 
+  create_loa_from_results()
+
+my_loa_for_review
+```
+
+::: {.callout-note .column-margin}
+create_loa_from_results will not guess the arguments for `numerator_NA_to_0 ` and `filter_denominator_0 `, they will be set to TRUE by default.
+
+The confidence level will also be set to .95 by default.
+:::
+
+## `review_analysis`
+
+::: {.callout-tip appearance="minimal"}
+### review\_\*
+
+![](../config/images/verb - review.png)
+
+**review\_**\* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis. 
+
+:::
+
+`review_analysis` will compare 2 results together and present the differences. It will not check how the analysis was created nor check for inconsistencies. That mean, to review an analysis, it is necessary to create one and compare them. 
+
+```{r}
+#| output: false
+my_design_for_review <- srvyr::as_survey_design(my_data)
+analysis_for_review <- create_analysis(my_design_for_review, my_loa_for_review, sm_separator = "/")
+
+binded_table <- my_results$results_table %>% 
+  left_join(analysis_for_review$results_table, by = "analysis_key")
+```
+The binded table, i.e. with both results columns, can then be used to compared the 2 results. It will give back the results table and a review table.
+```{r}
+my_review <- review_analysis(binded_table)
+
+typeof(my_review)
+names(my_review)
+```
+The review table will tell if there is any difference.
+
+```{r}
+my_review$review_table %>%
+  head()
+```
+It can be summarise with the `group_by` and `tally` functions
+```{r}
+my_review$review_table %>%
+  group_by(stat, review_check, review_comment) %>%
+  tally()
+```
+
+::: {.callout-note .column-margin}
+*analysis_key* are equivalent of an unique identifier. All analysis key should be unique.
+:::
+
+The following part adds some noise to show how difference would appear.
+```{r}
+jittered_results_table <- binded_table
+set.seed(123)
+jittered_results_table[sample(1:nrow(jittered_results_table), 5), "stat.x"] <- sample(unique(jittered_results_table$stat.x), 5, T)
+set.seed(124)
+jittered_results_table[sample(1:nrow(jittered_results_table), 5), "stat.y"] <- sample(unique(jittered_results_table$stat.y), 5, T)
+set.seed(125)
+jittered_results_table[sample(1:nrow(jittered_results_table), 5), "stat.x"] <- NA
+set.seed(1236)
+jittered_results_table[sample(1:nrow(jittered_results_table), 5), "stat.y"] <- NA
+
+```
+
+```{r}
+my_jittered_review <- review_analysis(jittered_results_table, 
+                                      stat_columns_to_review = "stat.x",
+                                      stat_columns_to_compare_with = "stat.y")
+my_jittered_review$review_table %>%
+  group_by(stat, review_check, review_comment) %>%
+  tally()
+```
+
+The results table has new columns, in particular the review_check_* and review_comment_*. They can help to filter for the differences and explore.
+
+```{r}
+my_jittered_review$results_table %>%
+  filter(!review_check_stat.x) %>% 
+  head(10)
+```
