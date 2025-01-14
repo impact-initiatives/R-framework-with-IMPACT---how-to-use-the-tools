@@ -12,7 +12,7 @@ website:
     collapse-level: 1
     contents:
       - text: "Introduction"
-        href: 00-intro.qmd
+        href: index.qmd
       - section: "Cleaning - Checking a dataset"
         contents:
           - 01-cleaning/01-cleaning-01-checks.qmd
