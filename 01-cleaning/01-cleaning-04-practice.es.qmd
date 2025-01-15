@@ -1,5 +1,5 @@
 ---
-title: "04 - Práctica - session 1"
+title: "04 - Práctica - sesiòn 1"
 author: "Yann Say"
 date: last-modified
 

@@ -1,16 +1,16 @@
 ---
-title: "04 - Practice - session 1"
+title: "04 - Pratique - session 1"
 author: "Yann Say"
 date: last-modified
 
 ---
-# Practice
+# Pratique
 
-## Practice 1
+## Pratique 1
 
-Try the following with a dataset:
+Essayer les vérifications suivantes:
 
--   Perform a check to spot personal identifiable information
+- Effectuez une vérification pour repérer les informations personnelles identifiables (PII)
 
 ```{r}
 library(cleaningtools)
@@ -22,13 +22,13 @@ my_kobo_choice <- cleaningtools::cleaningtools_choices
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Cliquez pour obtenir un indice
 
-Try the function `check_pii`
+Essayez la fonction `check_pii`.
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Cliquez pour obtenir la réponse
 
 ```{r}
 #| output: false
@@ -37,24 +37,25 @@ my_raw_dataset %>%
 ```
 :::
 
-## Practice 2
+## Pratique 2
 
--   Perform a check that will look at the percentages of missing value per observation and that will spot any observation that is *different*.
+-   Effectuez une vérification qui examinera les pourcentages de valeur manquante par observation et qui repérera toute observation qui est *différente*.
+
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Cliquez pour obtenir un indice
 
-Try the function `check_percentage_missing`
+Essayez la fonction `check_percentage_missing`.
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Cliquez pour obtenir un indice
 
-Did you try to add a new column with `add_percentage_missing`
+Avez vous essayer d'ajouter une colonne avec `add_percentage_missing`?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Cliquez pour obtenir la réponse
 
 ```{r}
 #| output: false
@@ -65,7 +66,7 @@ my_data_with_missing %>%
   check_percentage_missing(uuid_column = "X_uuid")
 ```
 
-Or if using a log already
+Ou si vous utilisez déjà un journal / registre.
 
 ```{r}
 #| output: false
@@ -78,13 +79,12 @@ a_log %>%
 ```
 :::
 
-## Practice 3
+## Pratique 3
+-   Remplissez la liste de vérification Excel avec les vérications suivantes:
+    -   le nombre de membre du ménage est supérieur à 8 (variable: **num_hh_member**).
+    -   la source d'eau pour la consomation est en bouteille (variable: **water_source_drinking**, value: **bottled**) et le ménage traite toujours son eau pour la consommation (variable: **treat_drink_water**, value: **always_treat**).
+    -   la source d'eau pour la consomation est en bouteille (variable: **water_source_drinking**, value: **bottled**) et une des raisons principales pour laquelle le ménage n'a pas assez d'eau est la pression de l'eau (variable: **access_water_enough_why_not**, value: **water_pressure**, c'est un choix multiple)
 
--   Fill the excel checklist to do the following checks:
-    -   household number (variable: **num_hh_member**) is above 8.
-    -   the water source for drinking water is bottled (variable: **water_source_drinking**, value: **bottled**) and the household always treat the drinking water (variable: **treat_drink_water**, value: **always_treat**).
-    -   the water source for drinking water is bottled (variable: **water_source_drinking**, value: **bottled**) and one of the main reason for the the household to not meet its water needs is the water pressure (variable: **access_water_enough_why_not**, value: **water_pressure**, this is a select multiple)
-    
 ```{r}
 #| echo: false
 my_kobo_survey %>% 
@@ -111,7 +111,7 @@ my_raw_dataset %>%
 ```
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Cliquez pour obtenir la réponse
 
 ```{r}
 #| output: false
@@ -132,14 +132,14 @@ my_raw_dataset %>%
 
 ## Extra
 
--   Try to add duration with audit files.
+-   Essayaer d'ajouter la durée à des fichiers audits.
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a tip
+### Cliquez pour obtenir un indice
 
-Try `create_audit_list()` and `add_duration_from_audit()`
+Essayez `create_audit_list()` et `add_duration_from_audit()`
 :::
 
-## Downloads
+## Télechargement
 
 - [01 - example - check_list](../inputs/01 - example - check_list.xlsx)

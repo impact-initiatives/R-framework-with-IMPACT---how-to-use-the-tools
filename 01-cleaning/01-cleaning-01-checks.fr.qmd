@@ -1,12 +1,12 @@
 ---
-title: "01 - Checks"
+title: "01 - Vérifications"
 author: "Yann Say"
 date: last-modified
 
 ---
-# Cleaning - Checking a dataset
+# Nettoyage - Vérifier un ensemble de données
 
-The following section will present some introduction about the composition.
+La section suivante présentera une introduction à l'étape de nettoyage.
 
 ![](../config/images/step%20-%20cleaning.png)
 
@@ -21,13 +21,13 @@ my_kobo_choice <- cleaningtools::cleaningtools_choices
 ```
 
 ::: {.callout-tip appearance="minimal"}
-### check\_\*
+### check\_\* (vérifier)
 
 ![](../config/images/verb%20-%20check.png)
 
-**check\_**\* functions will flag values based on a specific check. It will return them in a log. A \*check\_\*\* will return a list: the checked dataset, and the log.
+Les fonctions **check\_**\* (vérifier) onctions qui  signalent des valeurs sur la base d'une vérification spécifique. Elles renvoient ces valeurs dans un registre (ou journal). Une fonction \*check\_\*\* renvoie une liste : l'ensemble de données vérifié et le registre(journal). 
 
-**check\_**\* functions are used only in the cleaning step.
+Les fonctions **check\_**\* sont utilisées uniquement dans l'étape de nettoyage.
 :::
 
 ## check_outliers
@@ -38,10 +38,10 @@ my_log1 <- my_raw_dataset %>%
   check_outliers(uuid_column = "X_uuid")
 ```
 
-In this example, there are:
+Dans cet exemple, il y a :
 
--   `checked_dataset`: the raw dataset (with extra variables if needed)
--   `potential_outliers`: a log of potential outliers
+-   `checked_dataset`: l'ensemble de données brutes (avec des variables supplémentaires si nécessaire)
+-   `potential_outliers`: un journal des valeurs aberrantes potentielles
 
 ```{r}
 typeof(my_log1)
@@ -50,12 +50,12 @@ my_log1 %>%
   names()
 ```
 
-The log has at least 4 columns:
+Le journal comporte au moins 4 colonnes :
 
--   `uuid`: the unique identifier
--   `issue`: the issue being flagged
--   `question`: the name of the question
--   `old_value`: the value being flagged
+- `uuid` : l'identifiant unique
+- `issue` : le problème signalé
+- `question` : le nom de la question
+- `old_value` : la valeur signalée
 
 ```{r}
 my_log1$potential_outliers %>% 
@@ -63,12 +63,12 @@ my_log1$potential_outliers %>%
 ```
 
 ::: {.callout-note .column-margin}
-Outliers are defined as +/- 3 standard deviation from the mean.
+Les valeurs aberrantes sont définies comme  +/- 3 écart type par rapport à la moyenne.
 
-For log outliers, log(x + 1) is used.
+Pour les valeurs aberrantes logarithmiques, on utilise log(x + 1).
 :::
 
-## check_duplicate
+## check_duplicate (doublons)
 
 ```{r}
 my_log2 <- my_raw_dataset %>% 
@@ -78,14 +78,14 @@ my_log2$duplicate_log %>%
   head()
 ```
 
-There is no duplicate. The log is empty.
+Il n'y a pas de doublon. Le journal est vide.
 
 ## Pipe-able
 
 ::: {.callout-tip appearance="minimal"}
 ### Pipe-able
 
-The framework is built around 2 adjectives, **pipe-able** and **independent**. In the framework, functions of the same family should be pipe-able. In the following case, 2 **check\_**\* functions are piped.
+Le framework est construit autour de 2 adjectifs, **pipe-able** et **indépendant**. Dans le cadre d'analyse, les fonctions de la même famille sont "pipe-pable" (c'est-à-dire qu'elles peuvent être utilisée l'une après l'autre). Dans l'exemple suivant, deux fonctions **check\_**\* sont "pipe-ées".
 :::
 
 ```{r}
@@ -109,9 +109,9 @@ my_log3$duplicate_log %>%
   head()
 ```
 
-## More checks
+## Plus de vérifications
 
-This an example of more checks that exist.
+Ceci est un exemple d'autres vérifications existantes.
 
 ```{r}
 #| output: false

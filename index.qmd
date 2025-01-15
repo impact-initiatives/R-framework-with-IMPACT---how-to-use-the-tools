@@ -22,12 +22,12 @@ The framework is built around:
     -   **Analysis**: any manipulation regarding only the analysis
     -   **Outputs**: any manipulation to format the outputs.
 -   **4 verbs**: 
-    -   **Add**: functions that will add a variable (column) to the dataset.
-    -   **Check**: functions that will flag values based on a specific check. It will return them in a log. A **check\_**\* will return a list: the checked dataset, and the log. The function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation).
+    -   **Add**: functions that will add a variable (column) to the dataset. The function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation).
+    -   **Check**: functions that will flag values based on a specific check. It will return them in a log. A **check\_**\* will return a list: the checked dataset, and the log.
     -   **Create**: functions that will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output. Outputs from **create\_**\* functions outputs can be in different shape, format, etc.
     -   **Review**: functions that will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis.
 -   **2 adjectives**: 
-    -   **Pipe-able**: In the framework, functions of the same family should be pipe-able. In the following case, 2 **check\_**\* functions are piped.
+    -   **Pipe-able**: In the framework, functions of the same family should be pipe-able. For example, 2 **check\_**\* functions are piped and can be used one after the other one, in any order.
     -   **Independent**: At any given step, the user can change tool. Each input and each output of a step should follow the same format and definition.
 
 These elements will help to improve cooperation and collaboration between different teams while allowing modularity to adapt to each context and assessment.

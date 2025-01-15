@@ -57,11 +57,11 @@ more_logs <- more_logs %>%
   check_duration(column_to_check = "duration", uuid_column = "X_uuid")
 ```
 
-As much as possible, **check\_**\* functions take default argument or the functions will be able to guess some information, e.g. the `check_outliers` function guesses some numerical values. Some functions need more information.
+Autant que possible, les fonctions **check\_**\* prennent des arguments par défaut ou les fonctions tentent deviner certaines informations, par exmple, la fonction `check_outliers` devine quelles colonnes contiennent des valeurs numériques. Certaines fonctions ont besoin de plus d'informations.
 
-## other/text columns
+## autres/colonne texte
 
-`check_other` needs the list of columns to be checked. It currently, it cannot detect the open text question. KOBO tool can be used.
+`check_other` nécessite la liste des colonnes à vérifier. Actuellement, elle ne peut pas détecter les questions ouvertes. L'outil KOBO peut être utilisé.
 
 ```{r}
 other_columns_to_check <- my_kobo_survey %>% 
