@@ -9,7 +9,7 @@
 <meta name="generator" content="quarto-1.6.40">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yann Say">
-<meta name="dcterms.date" content="2025-01-14">
+<meta name="dcterms.date" content="2025-01-16">
 <title>01 - R framework with IMPACT Initiatives – Intoduction to R framework at IMPACT Initiatives</title>
 <style>
 code{white-space: pre-wrap;}
@@ -5028,7 +5028,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 14, 2025</p>
+      <p class="date">January 16, 2025</p>
     </div>
   </div>
   
@@ -5063,9 +5063,9 @@ vertical-align: -.125em;
 <strong>4 verbs</strong>:
 <ul>
 <li>
-<strong>Add</strong>: functions that will add a variable (column) to the dataset.</li>
+<strong>Add</strong>: functions that will add a variable (column) to the dataset. The function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation).</li>
 <li>
-<strong>Check</strong>: functions that will flag values based on a specific check. It will return them in a log. A <strong>check_</strong>* will return a list: the checked dataset, and the log. The function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation).</li>
+<strong>Check</strong>: functions that will flag values based on a specific check. It will return them in a log. A <strong>check_</strong>* will return a list: the checked dataset, and the log.</li>
 <li>
 <strong>Create</strong>: functions that will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output. Outputs from <strong>create_</strong>* functions outputs can be in different shape, format, etc.</li>
 <li>
@@ -5076,7 +5076,7 @@ vertical-align: -.125em;
 <strong>2 adjectives</strong>:
 <ul>
 <li>
-<strong>Pipe-able</strong>: In the framework, functions of the same family should be pipe-able. In the following case, 2 <strong>check_</strong>* functions are piped.</li>
+<strong>Pipe-able</strong>: In the framework, functions of the same family should be pipe-able. For example, 2 <strong>check_</strong>* functions are piped and can be used one after the other one, in any order.</li>
 <li>
 <strong>Independent</strong>: At any given step, the user can change tool. Each input and each output of a step should follow the same format and definition.</li>
 </ul>

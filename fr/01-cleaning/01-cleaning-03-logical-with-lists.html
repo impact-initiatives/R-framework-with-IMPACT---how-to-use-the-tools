@@ -9,7 +9,7 @@
 <meta name="generator" content="quarto-1.6.40">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yann Say">
-<title>03 - Checks with logical list – Introduction au cadre R chez IMPACT Initiatives</title>
+<title>03 - Vérification logique avec liste – Introduction au cadre R chez IMPACT Initiatives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4740,7 +4740,7 @@ vertical-align: -.125em;
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb">
 <li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-01-checks.html">Cleaning - Checking a dataset</a></li>
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-03-logical-with-lists.html">03 - Checks with logical list</a></li>
+<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-03-logical-with-lists.html">03 - Vérification logique avec liste</a></li>
 </ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
@@ -4785,25 +4785,25 @@ vertical-align: -.125em;
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-01-checks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Checks</span></a>
+ <span class="menu-text">01 - Vérifications</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-02-add-duration-others.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Add, durations and others</span></a>
+ <span class="menu-text">02 - Ajouter, durée, et autres</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-03-logical-with-lists.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">03 - Checks with logical list</span></a>
+ <span class="menu-text">03 - Vérification logique avec liste</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-04-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - Practice - session 1</span></a>
+ <span class="menu-text">04 - Pratique - session 1</span></a>
   </div>
 </li>
       </ul>
@@ -5038,7 +5038,7 @@ vertical-align: -.125em;
    
   <ul>
 <li><a href="#check_logical_with_list" id="toc-check_logical_with_list" class="nav-link active" data-scroll-target="#check_logical_with_list">check_logical_with_list</a></li>
-  <li><a href="#downloads" id="toc-downloads" class="nav-link" data-scroll-target="#downloads">Downloads</a></li>
+  <li><a href="#t%C3%A9lechargement" id="toc-télechargement" class="nav-link" data-scroll-target="#t%C3%A9lechargement">Télechargement</a></li>
   </ul>
 <div class="toc-actions"><ul>
 <li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/01-cleaning/01-cleaning-03-logical-with-lists.qmd" class="toc-action"><i class="bi bi-github"></i>Modifier cette page</a></li>
@@ -5049,9 +5049,9 @@ vertical-align: -.125em;
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb">
 <li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-01-checks.html">Cleaning - Checking a dataset</a></li>
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-03-logical-with-lists.html">03 - Checks with logical list</a></li>
+<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-03-logical-with-lists.html">03 - Vérification logique avec liste</a></li>
 </ol></nav><div class="quarto-title">
-<h1 class="title">03 - Checks with logical list</h1>
+<h1 class="title">03 - Vérification logique avec liste</h1>
 </div>
 
 
@@ -5068,7 +5068,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 janvier 2025</p>
+      <p class="date">16 janvier 2025</p>
     </div>
   </div>
   
@@ -5086,7 +5086,7 @@ vertical-align: -.125em;
 <span><span class="va">my_kobo_choice</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_choices.html">cleaningtools_choices</a></span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="check_logical_with_list" class="level2 page-columns page-full"><h2 class="anchored" data-anchor-id="check_logical_with_list">check_logical_with_list</h2>
-<p>In other cases, the check is specific and should be tailored to the dataset, for example, <code>check_logical_with_list</code>. All the logical checks can be recorded in an excel file.</p>
+<p>Dans d’autres cas, la vérfication est spécifique et devrait être adapté à l’ensemble de données, par exemple, <code>check_logical_with_list</code>. Tout les vérifications logiques peut-ête écrites dans un fichier excel.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">logical_check_list</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/01 - example - check_list.xlsx"</span><span class="op">)</span></span>
 <span><span class="va">logical_check_list</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -5129,14 +5129,14 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<p>The check list has 4 columns:</p>
+<p>La liste de vérifications à 4 colonnes:</p>
 <ul>
-<li>check_id : the name of the check</li>
-<li>description: the description of the check</li>
-<li>check_to_perform: the check to perform. The format for the check to be performed should take the format based on tidyverse. That format is as if a new indicator is create with a mutate. That new indicator should be a logical (i.e. TRUE or FALSE) with TRUE being the value to flag.</li>
-<li>columns_to_clean: the list of column names that are used for the logical check.</li>
+<li>check_id : le nom de la vérification</li>
+<li>description: la description de la vérification</li>
+<li>check_to_perform: la vérfication à effectuer. Le format pour la vérification à effectuer doit prendre une forme basé sur <em>tidyverse</em>. Ce format est comme si un nouvel indicateur est créer avec un <code>mutate</code>. Ce nouvel indicateur doit être logique (c’est à dire, VRAI ou FAUX) avec VRAI quand la valeur doit être signalée.</li>
+<li>columns_to_clean: les noms des colonnes qui sont utilisée pour la vérification (et aideront au nettoyage).</li>
 </ul>
-<p>This list can then be used with <code>check_logical_with_list</code>.</p>
+<p>Cette liste peut être utlisée avec <code>check_logical_with_list</code>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">example_logic</span> <span class="op">&lt;-</span> <span class="va">my_raw_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/check_logical_with_list.html">check_logical_with_list</a></span><span class="op">(</span>uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span>,</span>
@@ -5222,19 +5222,19 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<p>The log returns :</p>
+<p>The registre(journal) renvoie :</p>
 <ul>
 <li>uuid</li>
-<li>question: for all variables in <strong>columns_to_clean</strong>
+<li>question: pour toutes les variables présentes dans <strong>columns_to_clean</strong>
 </li>
-<li>old value: for all variables in <strong>columns_to_clean</strong>
+<li>old value: pour toutes les variables présentes dans <strong>columns_to_clean</strong>
 </li>
 <li>issue</li>
-<li>check_id: logical check identifier</li>
-<li>check_binding: the combination of the check_id and the uuid.</li>
+<li>check_id: identifiant pour la vérification logique</li>
+<li>check_binding: la combinaison de check_id et uuid.</li>
 </ul>
-<p>One check can be flagged in several rows, in the example above, for each uuid, the primary_livelihood and tot_expenses are flagged.</p>
-<p>Format for the <strong>check_to_perform</strong> should take the format based on <em>tidyverse</em>. That format is as if a new indicator is create with a <code>mutate</code>. That new indicator should be a logical (i.e. TRUE or FALSE) with TRUE being the value to flag.</p>
+<p>Une vérification peut être signalée sur plusieurs lignes, dans l’exemple au-dessus, pour chaque uuid, primary_livelihood et tot_expenses sont présents.</p>
+<p>Le format pour la vérification à effectuer doit prendre une forme basé sur <em>tidyverse</em>. Ce format est comme si un nouvel indicateur est créer avec un <code>mutate</code>. Ce nouvel indicateur doit être logique (c’est à dire, VRAI ou FAUX) avec VRAI quand la valeur doit être signalée.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_raw_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>xxx <span class="op">=</span>  <span class="va">primary_livelihood.employment</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">tot_expenses</span> <span class="op">&lt;</span> <span class="fl">200000</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -5297,7 +5297,7 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<p>The checked dataset will be return with extra columns, i.e. a logical variable with the name of the <strong>check_id</strong>.</p>
+<p>L’ensemble de donnée vérifié sera retourné avec des colonnes en plus, c’est à dire, une variable logique avec le nom de <strong>check_id</strong>.</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">example_logic</span><span class="op">$</span><span class="va">checked_dataset</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">6</span>,<span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">example_logic</span><span class="op">$</span><span class="va">checked_dataset</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -5376,9 +5376,9 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>If you don’t include <strong>columns_to_clean</strong> the <code>check_logical_with_list</code> function will try to guess the variables. Not guarantee it will read or pick the correct names.</p>
+<p>Si vous ne rajoutez pas <strong>columns_to_clean</strong>, la fonction <code>check_logical_with_list</code> essayera de deviner les variables. Il n’y a aucune garantie qu’elle lira ou choisira les bonnes variables.</p>
 </div>
-</div></div></section><section id="downloads" class="level2"><h2 class="anchored" data-anchor-id="downloads">Downloads</h2>
+</div></div></section><section id="télechargement" class="level2"><h2 class="anchored" data-anchor-id="télechargement">Télechargement</h2>
 <ul>
 <li><a href="../inputs/01%20-%20example%20-%20check_list.xlsx">01 - example - check_list</a></li>
 </ul></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

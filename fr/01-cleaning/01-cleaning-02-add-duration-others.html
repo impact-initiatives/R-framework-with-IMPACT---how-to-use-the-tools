@@ -9,7 +9,7 @@
 <meta name="generator" content="quarto-1.6.40">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yann Say">
-<title>02 - Add, durations and others – Introduction au cadre R chez IMPACT Initiatives</title>
+<title>02 - Ajouter, durée, et autres – Introduction au cadre R chez IMPACT Initiatives</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4740,7 +4740,7 @@ vertical-align: -.125em;
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb">
 <li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-01-checks.html">Cleaning - Checking a dataset</a></li>
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-02-add-duration-others.html">02 - Add, durations and others</a></li>
+<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-02-add-duration-others.html">02 - Ajouter, durée, et autres</a></li>
 </ol></nav><a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Basculer la barre latérale" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Recherche" onclick="window.quartoOpenSearch();">
@@ -4785,25 +4785,25 @@ vertical-align: -.125em;
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-01-checks.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Checks</span></a>
+ <span class="menu-text">01 - Vérifications</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-02-add-duration-others.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">02 - Add, durations and others</span></a>
+ <span class="menu-text">02 - Ajouter, durée, et autres</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-03-logical-with-lists.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Checks with logical list</span></a>
+ <span class="menu-text">03 - Vérification logique avec liste</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01-cleaning/01-cleaning-04-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04 - Practice - session 1</span></a>
+ <span class="menu-text">04 - Pratique - session 1</span></a>
   </div>
 </li>
       </ul>
@@ -5049,9 +5049,9 @@ vertical-align: -.125em;
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb">
 <li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-01-checks.html">Cleaning - Checking a dataset</a></li>
-<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-02-add-duration-others.html">02 - Add, durations and others</a></li>
+<li class="breadcrumb-item"><a href="../01-cleaning/01-cleaning-02-add-duration-others.html">02 - Ajouter, durée, et autres</a></li>
 </ol></nav><div class="quarto-title">
-<h1 class="title">02 - Add, durations and others</h1>
+<h1 class="title">02 - Ajouter, durée, et autres</h1>
 </div>
 
 
@@ -5068,7 +5068,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 janvier 2025</p>
+      <p class="date">16 janvier 2025</p>
     </div>
   </div>
   
@@ -5098,14 +5098,14 @@ vertical-align: -.125em;
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-add_*
+add_* (ajouter)
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p><img role="img" src="data:image/png;base64,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" class="img-fluid"></p>
-<p><strong>add_</strong>* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.</p>
-<p><strong>add_</strong>* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation).</p>
-<p>For example, to check the duration of a survey, there is only the start and end, but not the duration column.</p>
+<p>Les fonctions <strong>add_</strong>* ajouteront une variable (colonne) à l’ensemble de données. Par exemple, pour ajouter la durée d’une enquête, pour ajouter la catégorie de score de consommation alimentaire, etc.</p>
+<p>Les fonctions <strong>add_</strong>* prennent un ensemble de données en entrée et renvoient l’ensemble de données + le nouvel indicateur (et toutes les étapes intermédiaires utilisées pour le calcul).</p>
+<p>Par exemple, pour vérifier la durée d’une enquête, il n’y a que les colonnes <em>start</em> et <em>end</em>, mais pas la colonne durée.</p>
 </div>
 </div>
 <div class="cell">
@@ -5197,7 +5197,7 @@ Avertissement
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The duration is added to the <code>checked_dataset</code> in the list, not in the <code>my_raw_dataset</code> dataframe. The <strong>check_</strong>* functions are used in a pipe, so it needs the current dataset to be modified.</p>
+<p>La colonne <em>duration</em> est ajoutée au dataframe <code>checked_dataset</code> dans la liste, pas dans le dataframe <code>my_raw_dataset</code>. Les fonctions <strong>check_</strong>* sont utilisées dans une chaîne, donc il faut modifier l’ensemble de données utilisé.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -5210,11 +5210,11 @@ Avertissement
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>At the moment, <code>add_duration</code> takes very specific format. It will change in the future to become more robust and using <strong>lubridate</strong>.</p>
+<p>Pour l’instant, <code>add_duration</code> prend un format très spécifique. Elle deviendra plus robuste avec <strong>lubridate</strong> dans le futur.</p>
 </div>
 </div>
 </div>
-<p><code>check_duration</code> can now be used with the previous checks.</p>
+<p><code>check_duration</code> peut maintenant être utilisé avec les autres vérifications.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">more_logs</span> <span class="op">&lt;-</span> <span class="va">more_logs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/check_duration.html">check_duration</a></span><span class="op">(</span>column_to_check <span class="op">=</span> <span class="st">"duration"</span>, uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>

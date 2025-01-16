@@ -9,7 +9,7 @@
 <meta name="generator" content="quarto-1.6.40">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yann Say">
-<meta name="dcterms.date" content="2025-01-14">
+<meta name="dcterms.date" content="2025-01-16">
 <title>02 - Add, durations and others – Intoduction to R framework at IMPACT Initiatives</title>
 <style>
 code{white-space: pre-wrap;}
@@ -5039,7 +5039,7 @@ vertical-align: -.125em;
    
   <ul>
 <li><a href="#add_duration" id="toc-add_duration" class="nav-link active" data-scroll-target="#add_duration">add_duration</a></li>
-  <li><a href="#othertext-columns" id="toc-othertext-columns" class="nav-link" data-scroll-target="#othertext-columns">other/text columns</a></li>
+  <li><a href="#autrescolonne-texte" id="toc-autrescolonne-texte" class="nav-link" data-scroll-target="#autrescolonne-texte">autres/colonne texte</a></li>
   </ul>
 <div class="toc-actions"><ul>
 <li><a href="https://github.com/impact-initiatives/R-framework-with-IMPACT---how-to-use-the-tools/edit/main/01-cleaning/01-cleaning-02-add-duration-others.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li>
@@ -5069,7 +5069,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 14, 2025</p>
+      <p class="date">January 16, 2025</p>
     </div>
   </div>
   
@@ -5220,9 +5220,9 @@ Warning
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">more_logs</span> <span class="op">&lt;-</span> <span class="va">more_logs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/check_duration.html">check_duration</a></span><span class="op">(</span>column_to_check <span class="op">=</span> <span class="st">"duration"</span>, uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>As much as possible, <strong>check_</strong>* functions take default argument or the functions will be able to guess some information, e.g. the <code>check_outliers</code> function guesses some numerical values. Some functions need more information.</p>
-</section><section id="othertext-columns" class="level2"><h2 class="anchored" data-anchor-id="othertext-columns">other/text columns</h2>
-<p><code>check_other</code> needs the list of columns to be checked. It currently, it cannot detect the open text question. KOBO tool can be used.</p>
+<p>Autant que possible, les fonctions <strong>check_</strong>* prennent des arguments par défaut ou les fonctions tentent deviner certaines informations, par exmple, la fonction <code>check_outliers</code> devine quelles colonnes contiennent des valeurs numériques. Certaines fonctions ont besoin de plus d’informations.</p>
+</section><section id="autrescolonne-texte" class="level2"><h2 class="anchored" data-anchor-id="autrescolonne-texte">autres/colonne texte</h2>
+<p><code>check_other</code> nécessite la liste des colonnes à vérifier. Actuellement, elle ne peut pas détecter les questions ouvertes. L’outil KOBO peut être utilisé.</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">other_columns_to_check</span> <span class="op">&lt;-</span> <span class="va">my_kobo_survey</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">type</span> <span class="op">==</span> <span class="st">"text"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
