@@ -1,5 +1,5 @@
 ---
-title: "03 - verificación con lista de lógicas"
+title: "03 - Verificación con lista de lógicas"
 author: "Yann Say"
 date: last-modified
 
@@ -26,8 +26,8 @@ La entrada, es decir, la tabla de Excel con las verificaciones lógicas, debe te
 
 -   check_id : el nombre de la verificación
 -   description : la descripcion de la verificacion 
--   check_to_perform : la verificación por hacer. El formato de la verificación por hacer debe ser compatible con tidyverse. Se debe usar un formato similar al que se utilizaría en la función `mutate` para crear un nuevo indicador lógico (es decir, TRUE o FALSE). La verificación lógica debe estar escrita de manera que la salida TRUE corresponda a la encuesta que se quiera señalar.
--   columns_to_clean : la lista de columnas utilizadas para la verificación lógica.
+-   check_to_perform : la verificación por hacer. El formato de la verificación por hacer debe ser compatible con **tidyverse**. Se debe usar un formato similar al que se utilizaría en la función `mutate` para crear un nuevo indicador lógico (es decir, TRUE o FALSE). La verificación lógica debe estar escrita de manera que la salida TRUE corresponda a la encuesta que se quiera señalar.
+-   columns_to_clean : las columnas utilizadas para la verificación lógica (y se utilisaràn con la limpieza).
 
 Una tal lista se puede utilizar con  `check_logical_with_list`.
 

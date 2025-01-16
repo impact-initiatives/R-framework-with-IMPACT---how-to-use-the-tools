@@ -1,5 +1,5 @@
 ---
-title: "02 - Add, durations and others"
+title: "02 - Ajouter, durée, et autres"
 author: "Yann Say"
 date: last-modified
 
@@ -24,15 +24,15 @@ more_logs <- my_raw_dataset %>%
 ## add_duration
 
 ::: {.callout-tip appearance="minimal"}
-### add\_\*
+### add\_\* (ajouter)
 
 ![](../config/images/verb%20-%20add.png)
 
-**add\_**\* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.
+Les fonctions **add\_**\* ajouteront une variable (colonne) à l'ensemble de données. Par exemple, pour ajouter la durée d'une enquête, pour ajouter la catégorie de score de consommation alimentaire, etc.
 
-**add\_**\* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation).
+Les fonctions **add\_**\*  prennent un ensemble de données en entrée et renvoient l'ensemble de données + le nouvel indicateur (et toutes les étapes intermédiaires utilisées pour le calcul).
 
-For example, to check the duration of a survey, there is only the start and end, but not the duration column.
+Par exemple, pour vérifier la durée d'une enquête, il n'y a que les colonnes *start* et *end*, mais pas la colonne durée.
 :::
 
 ```{r}
@@ -43,14 +43,14 @@ more_logs$checked_dataset[1:6, c("start_date", "start_time", "end_date", "end_ti
 ```
 
 ::: {.callout-warning .column-margin}
-The duration is added to the `checked_dataset` in the list, not in the `my_raw_dataset` dataframe. The **check\_**\* functions are used in a pipe, so it needs the current dataset to be modified.
+La colonne *duration* est ajoutée au dataframe `checked_dataset` dans la liste, pas dans le dataframe `my_raw_dataset`. Les fonctions **check\_**\* sont utilisées dans une chaîne, donc il faut modifier l'ensemble de données utilisé.
 :::
 
 ::: {.callout-warning .column-margin}
-At the moment, `add_duration` takes very specific format. It will change in the future to become more robust and using **lubridate**.
+Pour l'instant, `add_duration` prend un format très spécifique. Elle deviendra plus robuste avec **lubridate** dans le futur.
 :::
 
-`check_duration` can now be used with the previous checks.
+`check_duration` peut maintenant être utilisé avec les autres vérifications.
 
 ```{r}
 more_logs <- more_logs %>% 

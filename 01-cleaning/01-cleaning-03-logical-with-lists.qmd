@@ -27,8 +27,8 @@ The check list has 4 columns:
 
 -   check_id : the name of the check
 -   description: the description of the check
--   check_to_perform: the check to perform. The format for the check to be performed should take the format based on tidyverse. That format is as if a new indicator is create with a mutate. That new indicator should be a logical (i.e. TRUE or FALSE) with TRUE being the value to flag.
--   columns_to_clean: the list of column names that are used for the logical check.
+-   check_to_perform: the check to perform. should take the format based on *tidyverse*. That format is as if a new indicator is create with a `mutate`. That new indicator should be a logical (i.e. TRUE or FALSE) with TRUE being the value to flag.
+-   columns_to_clean: the names of the columns that are used for the logical check (and will be used in the cleaning).
 
 This list can then be used with `check_logical_with_list`.
 

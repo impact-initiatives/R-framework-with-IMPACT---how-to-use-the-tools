@@ -1,33 +1,33 @@
 ---
-title: "01 - El marco R con IMPACT Initiatives"
+title: "01 - Cadre R avec IMPACT Initiatives"
 author: "Yann Say"
 date: last-modified
 
 ---
 
-# IMPACT R framework
+# Cadre R avec IMPACT
 
 ![](config/images/rframwork.png)
 
-El marco R de IMPACT se desarrollo para cumplir con los requisitos del ciclo de investigación IMPACT. <br/><br/> El marco es modular y tiene dos dimensiones:
+Le cadre R avec IMPACT a été développé pour répondre aux exigences du cycle de recherche IMPACT. <br/><br/> Le cadre est modulable et présente deux dimensions :
 
--   una dimensión horizontal que se centra en el resultado de un cierto paso, y
--   una dimensión vertical que se centra en el contenido de un cierto paso.
+- une dimension horizontale qui se concentre sur le résultat d'une certaine étape, et
+- une dimension verticale qui se concentre sur le contenu d'une certaine étape.
 
-El marco se basa en :
+Le cadre est basé sur :
 
--   **4 etapas**: 
-    -   **Limpieza**: cualquier manipulación necesaria para pasar de los datos brutos a los datos limpios.
-    -   **Composición**: cualquier manipulaciòn anterior al análisis p.ej., añadir indicadores, añadir información proveniente del bucle o del dato principal , agragación por AOK, etc.
-    -   **Análisis**: cualquier manipulaciòn que sea relativa al análisis unicamente
-    -   **Resultados**: cualquier manipulaciòn necesaria para formatear los resultados.
--   **4 verbos**: 
-    -   **Add**: (añadir) funciones que añaden una nueva variable (columna) a los datos.
-    -   **Check**: (verificar) funciones que maracarán valores basándose en una verificación específica. Retornarán estos valores en un registro. Una función check_* devolverá una lista: el conjunto de datos verificado y el registro. La función toma un conjunto de datos como entrada y devuelve el conjunto de datos + el nuevo indicador (y cualquier paso intermedio utilizado para el cálculo).
-    -   **Create**: (crear) funciones que crearán o transformaran algun objecto p.ej. functiones que crearán o transformarán algun objeto creando un registro de limpieza con las verificaciones por hacer, creando una tabla de resultados del análisis etc. Las salidas de las funciones **create\_**\* pueden tener formatos diversos.
-    -   **Review**: (revisar) funciones que revisarán un objeto comparándolo con estándares u otro objeto y señalaran las diferencias. Por ejemplo, revisando la limpieza comparando el conjunto de datos original, el conjunto de datos limpio y el registro de limplieza o comparando los resultados de dos análisis.
--   **2 adjetivos**:
-    - **Pipe-able**: (encadenable) En el marco, las funciones de la misma familia son encadenables (es decir, se pueden aplicar una después de la otra). En el siguiento ejemplo, se encadenan dos funciones **check\_**\*.
-    - **Independiente**: En cualquier paso dado, el usuario puede cambiar de herramienta. Cada entrada y cada salida de un paso deben seguir el mismo formato y definición.
+- **4 étapes** : 
+    - **Nettoyage** : toute manipulation nécessaire pour passer des données brutes aux données propres.
+    - **Composition** : toute manipulation préalable à l'analyse, par exemple l'ajout d'indicateurs, l'ajout d'informations provenant de la boucle ou des données principales, l'agrégation AOK, etc.
+    - **Analyse** : toute manipulation liée à l'analyse uniquement.
+    - **Résultats** : toute manipulation nécessaire à la mise en forme des résultats.
+- **4 verbes** : 
+    - **Ajouter** : (add) fonctions qui ajoutent une nouvelle variable (colonne) aux données. La fonction prend un ensemble de données en entrée et renvoie l'ensemble de données + le nouvel indicateur (et toutes les étapes intermédiaires utilisées pour le calcul).
+    - **Vérifier** : (check) fonctions qui  signalent des valeurs sur la base d'une vérification spécifique. Elles renvoient ces valeurs dans un registre (ou journal). Une fonction check_* renvoie une liste : l'ensemble de données vérifié et le registre(journal). 
+    - **Créer** : (create) fonctions qui créent ou transforment un objet, par exemple en créant un journal de nettoyage avec les vérifications à effectuer, en créant un tableau de résultats d'analyse, etc. Les résultats des fonctions **create\_**\* peuvent avoir différents formats.
+    - **Revoir** : (review) fonctions permettant de revoir un objet en le comparant à des normes ou à un autre objet et de mettre en évidence les différences. Par exemple, vérifier le nettoyage en comparant l'ensemble de données brut, l'ensemble de données nettoyé et le registre (journal) de nettoyage ou comparer les résultats de deux analyses.
+- **2 adjectifs ** :
+    - **pipe-pable** : Dans le cadre d'analyse, les fonctions de la même famille sont "pipe-pable" (c'est-à-dire qu'elles peuvent être utilisée l'une après l'autre). Par exemple, deux fonctions **check\_**\* sont pipe-able, et peuvent être utilisées une après l'autre, dans n'importe quel ordre.
+    - **Indépendant** : à chaque étape, l'utilisateur peut changer d'outil. Chaque entrée et sortie d'une étape doit suivre le même format et la même définition.
 
-El objetivo es que este conjunto de elementos ayude a la cooperación y colaboración entre diferentes equipos. Las herramientas presentes en este marco deben ser adaptables a cada contexto y evaluación.
+L'objectif est que cet ensemble d'éléments favorise la coopération et la collaboration entre différentes équipes. Les outils de ce cadre doivent pouvoir être adaptés à chaque contexte et à chaque évaluation.

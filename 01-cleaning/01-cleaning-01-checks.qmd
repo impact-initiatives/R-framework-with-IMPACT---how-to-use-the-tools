@@ -6,7 +6,7 @@ date: last-modified
 ---
 # Cleaning - Checking a dataset
 
-The following section will present some introduction about the composition.
+The following section will present some introduction about the cleaning.
 
 ![](../config/images/step%20-%20cleaning.png)
 
