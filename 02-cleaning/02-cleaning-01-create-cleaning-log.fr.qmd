@@ -1,5 +1,5 @@
 ---
-title: "01 - Create a cleaning log"
+title: "01 - Créer un journal de nettoyage (cleaning log)"
 author: "Yann Say"
 date: last-modified
 
@@ -15,10 +15,10 @@ my_kobo_survey <- cleaningtools::cleaningtools_survey
 my_kobo_choice <- cleaningtools::cleaningtools_choices
 ```
 
-This section continues with the cleaning step.
+Cette section décrit la création d'un journal de nettoyage.
 ![](../config/images/step - cleaning.png)
 
-# Recap
+# Récapitulatif
 
 ```{r}
 #| output: false
@@ -50,23 +50,21 @@ more_logs <- more_logs %>%
 ```
 
 
-# Cleaning - Creating a cleaning log
+# Nettoyage - création d'un journal
 
 ::: {.callout-tip appearance="minimal"}
 ### create\_\*
 
 ![](../config/images/verb - create.png)
 
-**create_**\* functions will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output.
+Les fonctions **create_**\* servent à créer ou transformer des objets, par exemple un journal de nettoyage, un tableau de résultats d'analyse, etc. La sortie de ces fonctions peuvent varier en termes de forme ou de format.
 
-Outputs from **create_**\* functions outputs can be in different shape, format, etc. 
-
-**create_**\* function is catch-all.
+**create_**\* est une famille de fonctions polyvalente.
 :::
 
 ## create_combined_log
 
-`create_combined_log` will combined all the logs from a list into one. It will also add 2 columns that will be used for the cleaning.
+`create_combined_log` combinera tous les journaux d'une liste en un seul. Il ajoutera également 2 colonnes qui seront utilisées pour le nettoyage.
 
 ```{r}
 names(more_logs)
@@ -79,26 +77,27 @@ my_combined_log$cleaning_log %>%
   head()
 ```
 
-The cleaning log contains all the columns from all the logs from `more_logs` with in addition:
+Le journal de nettoyage contient toutes les colonnes de tous les journaux de `more_logs` avec en plus :
 
--   check_binding is filled for all rows.
--   change_type (empty)
--   new_value (empty)
+-   check_binding est rempli pour toutes les lignes.
+-   change_type (vide)
+-   new_value (vide)
 
 ## add_info_to_cleaning_log
 
-If more information from the dataset should be added, the function `add_info_to_cleaning_log` can help.
+Si plus d'informations du jeu de données doivent être ajoutées, la fonction `add_info_to_cleaning_log` peut aider.
 
 ::: {.callout-tip appearance="minimal"}
 ### add\_\*
 
 ![](../config/images/verb - add.png)
 
-**add_**\* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.
+Les fonctions **add_**\* ajouteront une variable (colonne) au jeu de données. Par exemple, pour ajouter la durée d'une enquête, pour ajouter la catégorie du score de consommation alimentaire (FCS), etc.
 
-**add_**\* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation). 
+La fonction **add_**\* prend un jeu de données en entrée et renvoie le jeu de données + le nouvel indicateur (et toutes les étapes intermédiaires utilisées pour le calcul).
 
-For example, to check the duration of a survey, there is only the start and end, but not the duration column.
+Par exemple, pour vérifier la durée d'une enquête, il n'y a que les colonnes start et end, mais pas la colonne duration.
+
 :::
 
 ```{r}
@@ -119,20 +118,20 @@ create_xlsx_cleaning_log(my_combined_log,
                          output_path =  "../outputs/01 - example - cleaning-log-no-kobo.xlsx")
 ```
 
-`create_xlsx_cleaning_log` will write an excel file with:
+`create_xlsx_cleaning_log` écrira un fichier Excel avec :
 
--   checked_dataset tab: the checked dataset, with additional columns if any.
--   cleaning_log tab: the combined log with the **change_type** column with a data validation rules.
--   readme tab: change_type values definition.
+-   onglet checked_dataset : le jeu de données vérifié, avec des colonnes supplémentaires s'il y en a.
+-   onglet cleaning_log : le journal combiné avec la colonne **change_type** avec des règles de validation des données.
+-   onglet readme : définition des valeurs de change_type.
 
-There are 4 actions possible:
+Il y a 4 actions possibles :
 
--   change_response: Change the response to new.value
--   blank_response: Remove and NA the response
--   remove_survey: Delete the survey
--   no_action: No action to take.
+-   change_response : Changer la réponse à new.value
+-   blank_response : Supprimer et mettre NA à la réponse
+-   remove_survey : Supprimer l'enquête
+-   no_action : Aucune action à prendre.
 
-This log will have to be filled in with actions to take and new value if needed.
+Ce journal devra être rempli avec les actions à prendre et la nouvelle valeur si nécessaire.
 
 ```{r}
 #| output: false
@@ -144,13 +143,13 @@ create_xlsx_cleaning_log(my_combined_log,
                          output_path =  "../outputs/02 - example - cleaning-log-with-kobo.xlsx")
 ```
 
-If the KOBO information are provided and the **use_dropdown** argument is set to TRUE, **new_value** will have a data validation rule based on the KOBO options.
+Si les informations KOBO sont fournies et que l'argument **use_dropdown** est défini comme TRUE, **new_value** aura une règle de validation des données basée sur les options KOBO.
 
 ::: callout-note
-Select multiple dummy columns (TRUE/FALSE or 1/0) are flagged and used later for the cleaning, not the parent column.
+Les colonnes factices select_multiple (TRUE/FALSE ou 1/0) sont signalées et utilisées plus tard pour le nettoyage, pas la colonne parente.
 :::
 
-## Downloads
+## Téléchargements
 
 - [01 - example - check_list](../inputs/01 - example - check_list.xlsx)
 - [01 - example - cleaning-log-no-kobo.xlsx](../outputs/01 - example - cleaning-log-no-kobo.xlsx)

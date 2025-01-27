@@ -1,9 +1,9 @@
 ---
-title: "05 - Review templates"
+title: "05 - Modèles de revue"
 author: "Yann Say"
 date: last-modified
 
 ---
-# Review templates
+# Modèles de revue
 
-There are some project templates that can be used to review the cleaning. More information on [this repository](https://github.com/impact-initiatives/impacttemplates).
+Il y a des modèles (templates) de projet R qui peuvent être utilisés pour revoir le nettoyage. Plus d'information sur [ce repository GitHub](https://github.com/impact-initiatives/impacttemplates).

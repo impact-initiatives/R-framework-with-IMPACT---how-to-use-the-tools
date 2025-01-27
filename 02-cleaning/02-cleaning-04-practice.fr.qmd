@@ -1,11 +1,11 @@
 ---
-title: "04 - Practice (2)"
+title: "04 - Pratique (2)"
 author: "Yann Say"
 date: last-modified
 
 ---
 
-# Practice
+# Pratique
 ```{r}
 #| warning: false
 library(cleaningtools)
@@ -16,9 +16,9 @@ my_kobo_survey <- cleaningtools::cleaningtools_survey
 my_kobo_choice <- cleaningtools::cleaningtools_choices
 ```
 
-## Practice 1
+## Pratique 1
 
-- Export the cleaning log you have created previously. The previous log is loaded below.
+- Exportez le journal de nettoyage précédemment créé. Il est téléchargé ci-dessous.
 ```{r}
 previous_exercise_log <- readRDS("../inputs/03 - exercise - previous_log.RDS")
 
@@ -27,19 +27,19 @@ previous_exercise_log %>% names()
 
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint.
+### Ouvrir pour obtenir un indice.
 
-Did you try the function `create_combined_log`
+Avez-vous essayé la fonction `create_combined_log`
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint.
+### Ouvrir pour obtenir un indice.
 
-Did you try the function `create_xlsx_cleaning_log`
+Avez-vous essayé la fonction `create_xlsx_cleaning_log`
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Ouvrir pour obtenir la réponse.
 
 ```{r}
 #| output: false
@@ -54,28 +54,28 @@ previous_exercise_log %>%
 ```
 :::
 
-## Practice 2
+## Pratique 2
 
-- Create the clean data from the raw dataset and the filled cleaning.
+- Créez le jeu de données nettoyé à partir du jeu brut et du journal rempli.
 
 ```{r}
 exercise_filled_log <- readxl::read_excel("../inputs/04 - exercise - cleaning_log - filled.xlsx", sheet = "cleaning_log")
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Ouvrir pour obtenir un indice.
 
-Did you try the function `create_clean_data`
+Avez-vous essayé la fonction `create_clean_data`
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Ouvrir pour obtenir un indice.
 
-Did you try the function `recreate_parent_column`
+Avez-vous essayé la fonction `recreate_parent_column`
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Ouvrir pour obtenir la réponse.
 
 ```{r}
 #| output: false
@@ -98,9 +98,9 @@ exercise_clean_dataset2 <- recreate_parent_column(exercise_clean_dataset,
 ```
 :::
 
-## Practice 3
+## Pratique 3
 
-- Review the cleaning below, if there is someone else doing the exercise, you can try to review someone's cleaning.
+- Revoyez le journal de nettoyage ci-dessous, si quelqu'un d'autre fait l'exercice, vous pouvez essayer de revoir le nettoyage de quelqu'un.
 
 ```{r}
 exercise3_clean_dataset <- readxl::read_excel("../inputs/05 - exercise - clean dataset for review.xlsx")
@@ -110,19 +110,19 @@ exercise3_cleaning_log <- readxl::read_excel("../inputs/05 - exercise - clean da
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Ouvrir pour obtenir un indice.
 
-Did you try the function `review_cleaning`
+Avez-vous essayé la fonction `review_cleaning`
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Ouvrir pour obtenir un indice.
 
-Did you separate the cleaning log?
+Avez-vous bien séparé le journal?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Ouvrir pour obtenir la réponse.
 
 ```{r}
 #| output: false
@@ -150,7 +150,7 @@ review_of_cleaning <- review_cleaning(raw_dataset = my_raw_dataset,
 
 :::
 
-## Downloads
+## Téléchargements
 
 - [03 - exercise - previous_log](../inputs/03 - exercise - previous_log.RDS)
 - [03 - correction - cleaning_log.xlsx](../outputs/03 - correction - cleaning_log.xlsx)

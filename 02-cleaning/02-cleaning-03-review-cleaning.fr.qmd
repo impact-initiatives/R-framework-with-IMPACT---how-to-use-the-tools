@@ -1,5 +1,5 @@
 ---
-title: "03 - Review cleaning"
+title: "03 - Revue du nettoyage"
 author: "Yann Say"
 date: last-modified
 
@@ -33,9 +33,9 @@ my_clean_data2 <- recreate_parent_column(dataset = my_clean_data,
 
 ## review_others
 
-In the cleaning log, some opentext values are changed to blank. Some open text questions are linked some skip logic, i.e. *what is X? Other, please specify*. In some cases, values some values should be changed.
+Dans le journal de nettoyage, certaines valeurs de texte libre sont changées en blanc. Certaines questions à texte libre sont liées à un *skip_logic*, par exemple *qu'est-ce que X ? Autre, veuillez préciser*. Dans certains cas, certaines valeurs doivent être modifiées.
 
-In the example below, the value for **water_supply_other_neighbourhoods_why** for the **uuid 019bc718-c06a-46b8-bba8-c84f6c6efbd5** was changed to NA.
+Dans l'exemple ci-dessous, la valeur pour **water_supply_other_neighbourhoods_why** pour l'**uuid 019bc718-c06a-46b8-bba8-c84f6c6efbd5** a été changée à NA.
 
 ```{r}
 my_filled_log %>% 
@@ -43,7 +43,7 @@ my_filled_log %>%
          change_type == "blank_response")
 ```
 
-The kobo show a skip logic based on **water_supply_other_neighbourhoods**.
+Le kobo montre le *skip_logic* basé sur **water_supply_other_neighbourhoods**.
 
 ```{r}
 my_kobo_survey %>% 
@@ -57,7 +57,7 @@ my_clean_data %>%
   select(water_supply_other_neighbourhoods, water_supply_other_neighbourhoods_why	)
 ```
 
-Should the value of **water_supply_other_neighbourhoods** be changed? It depends on the question and skip logic but it important to flag those so a decision can be taken.
+La valeur de **water_supply_other_neighbourhoods** doit-elle être changée? Cela dépend de la question et du *skip_logic* mais le plus important est de les signaler afin qu'une décision puisse être prise.
 
 ```{r}
 review_other_log <- review_others(dataset = my_clean_data2$data_with_fix_concat,
@@ -95,6 +95,6 @@ review_of_cleaning <- review_cleaning(raw_dataset = my_raw_dataset,
 review_of_cleaning
 ```
 
-## Downloads
+## Téléchargements
 
-- [02 - example - cleaning-log-with-kobo - filled](../inputs/02 - example - cleaning-log-with-kobo - filled.xlsx)
+- [02 - exemple - cleaning-log-with-kobo - filled](../inputs/02 - example - cleaning-log-with-kobo - filled.xlsx)
