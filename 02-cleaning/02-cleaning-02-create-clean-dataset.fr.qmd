@@ -1,5 +1,5 @@
 ---
-title: "02 - Creating a clean dataset"
+title: "02 - Créer le jeu de données nettoyé (clean dataset)"
 author: "Yann Say"
 date: last-modified
 
@@ -15,10 +15,10 @@ my_kobo_survey <- cleaningtools::cleaningtools_survey
 my_kobo_choice <- cleaningtools::cleaningtools_choices
 ```
 
-# Cleaning - Creating a clean dataset
+# Nettoyage - créer le jeu de données nettoyé
 
 ::: callout-important
-The cleaning has to be filled before moving forward. The above steps are to create the cleaning log, not to **fill** it or **clean** the dataset. Filling the cleaning log is not an automatic step for this process. The decision to change a value has to be recorded.
+Le journal de nettoyage doit être rempli avant de continuer. Les étapes ci-dessus servent à créer le journal de nettoyage, pas à le **remplir** ou à **nettoyer** le jeu de données. Remplir le journal de nettoyage n'est pas une étape automatique de ce processus. La décision de changer une valeur doit être enregistrée.
 :::
 
 ::: {.callout-tip appearance="minimal"}
@@ -26,18 +26,19 @@ The cleaning has to be filled before moving forward. The above steps are to crea
 
 ![](../config/images/verb - review.png)
 
-**review_**\* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis. 
+Les fonctions **review_**\* examineront un objet en le comparant à des normes ou à un autre objet et signaleront les différences, par exemple pour le nettoyage en comparant le jeu de données brut, le jeu de données nettoyé et le journal de nettoyage ; ou pour l'analyse en la comparant avec une autre analyse.
 
--   if the cleaning has been filled correctly
--   the cleaning has been done correctly
--   comparing indicators
--   comparing analysis
+-   si le journal de nettoyage a été correctement rempli
+-   si le nettoyage a été correctement effectué
+-   comparaison des indicateurs
+-   comparaison des analyses
 -   etc.
+
 :::
 
 ## review_cleaning_log
 
-`review_cleaning_log` will review the **filled** cleaning log.
+`review_cleaning_log` revoit le journal de nettoyage une fois **rempli**.
 
 ```{r}
 my_filled_log <- readxl::read_excel("../inputs/02 - example - cleaning-log-with-kobo - filled.xlsx", sheet = 2)
@@ -55,7 +56,7 @@ check_log_results
 
 ## create_clean_data
 
-To create the clean dataset, `create_clean_data` will use the raw dataset and the filled cleaning log.
+Pour créer un jeu de données nettoyé, `create_clean_data` prend en entrée le jeu de données brut et le journal de nettoyage.
 
 ```{r}
 my_clean_data <- create_clean_data(raw_dataset = my_raw_dataset,
@@ -69,7 +70,7 @@ my_clean_data <- create_clean_data(raw_dataset = my_raw_dataset,
 
 ## recreate_parent_column
 
-In the cleaning log, some select multiple are changed, but only the dummy.
+Dans le journal de nettoyage, certains select_multiple sont modifiées, mais seulement les colonnes factices.
 
 ```{r}
 my_filled_log %>% 
@@ -78,7 +79,7 @@ my_filled_log %>%
   select(uuid, question, old_value, new_value)
 ```
 
-The parent column did not change, in the following example employment still appears in the parent column.
+La colonne parente n'a pas changé, dans l'exemple suivant "employment" apparaît toujours dans la colonne parente.
 
 ```{r}
 my_clean_data %>% 
@@ -86,7 +87,7 @@ my_clean_data %>%
   select(X_uuid,primary_livelihood, primary_livelihood.employment)
 ```
 
-`recreate_parent_column` will recode the parent columns based on the dummies.
+`recreate_parent_column` la colonne parente à partir des colonnes factices.
 
 ```{r}
 #| output: false
@@ -98,7 +99,7 @@ my_clean_data2 <- recreate_parent_column(dataset = my_clean_data,
                                          cleaning_log_to_append = my_filled_log)
 ```
 
-The parent are corrected, employment does not appear in the parent column.
+La colonne parente est corrigée, "employment" n'apparaît plus dans la colonne parente.
 
 ```{r}
 my_clean_data2$data_with_fix_concat %>% 
@@ -106,7 +107,7 @@ my_clean_data2$data_with_fix_concat %>%
   select(X_uuid,primary_livelihood, primary_livelihood.employment)
 ```
 
-The changes were added to the cleaning log.
+Ce changement a été ajouté au cleaning log.
 
 ```{r}
 my_clean_data2$cleaning_log %>% 
@@ -115,6 +116,6 @@ my_clean_data2$cleaning_log %>%
   select(uuid, question, old_value, new_value)
 ```
 
-## Downloads
+## Téléchargements
 
-- [02 - example - cleaning-log-with-kobo - filled](../inputs/02 - example - cleaning-log-with-kobo - filled.xlsx)
+- [02 - exemple - cleaning-log-with-kobo - filled](../inputs/02 - example - cleaning-log-with-kobo - filled.xlsx)
