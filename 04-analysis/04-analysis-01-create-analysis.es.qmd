@@ -19,17 +19,6 @@ La siguiente sección presentará una introducción sobre el análisis.
 
 El tercer paso del marco es el análisis. El paso de análisis tiene como objetivo crear una tabla larga con un resultado por línea y una **clave de análisis**. Esa tabla no está hecha para que un humano la lea, sino para almacenar información. El análisis se detiene al producir la tabla de resultados: formato largo, estadística + clave de análisis.
 
-
-- tipo de análisis @/@ variable de análisis %/% valor de la variable de análisis @/@ variable de agrupamiento %/% valor de la variable de agrupamiento
-
-- tipo de análisis @/@ variable dependiente %/% valor de la variable dependiente @/@ variable independiente %/% valor de la variable independiente
-
-Si hay dos o más variables de agrupamiento, se vería así:
-
-- tipo de análisis @/@ variable de análisis %/% valor de la variable de análisis @/@ variable de agrupamiento 1 %/% valor de la variable de agrupamiento 1 -/- variable de agrupamiento 2 %/% valor de la variable de agrupamiento 2
-
-Lo mismo se aplicaría en el caso de una proporción.
-
 Los tipos de análisis actuales son:
 
 - media
@@ -109,3 +98,15 @@ my_analysis$results_table %>%
 my_analysis$loa %>%
   head()
 ```
+
+## Clave de análisis
+
+- tipo de análisis @/@ variable de análisis %/% valor de la variable de análisis @/@ variable de agrupamiento %/% valor de la variable de agrupamiento
+
+- tipo de análisis @/@ variable dependiente %/% valor de la variable dependiente @/@ variable independiente %/% valor de la variable independiente
+
+Si hay dos o más variables de agrupamiento, se vería así:
+
+- tipo de análisis @/@ variable de análisis %/% valor de la variable de análisis @/@ variable de agrupamiento 1 %/% valor de la variable de agrupamiento 1 -/- variable de agrupamiento 2 %/% valor de la variable de agrupamiento 2
+
+Lo mismo se aplicaría en el caso de una proporción.

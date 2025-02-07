@@ -13,6 +13,7 @@ Try the following with a dataset:
 -   Perform a check to spot personal identifiable information
 
 ```{r}
+#| message: false
 library(cleaningtools)
 library(dplyr)
 

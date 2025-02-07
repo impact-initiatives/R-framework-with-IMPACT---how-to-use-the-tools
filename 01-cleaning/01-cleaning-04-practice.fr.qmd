@@ -13,6 +13,7 @@ Essayer les vérifications suivantes:
 - Effectuez une vérification pour repérer les informations personnelles identifiables (PII)
 
 ```{r}
+#| message: false
 library(cleaningtools)
 library(dplyr)
 
