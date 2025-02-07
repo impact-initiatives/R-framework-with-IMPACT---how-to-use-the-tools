@@ -5076,7 +5076,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">28 de enero de 2025</p>
+      <p class="date">7 de febrero de 2025</p>
     </div>
   </div>
   
@@ -5093,22 +5093,9 @@ vertical-align: -.125em;
 </ul>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/">cleaningtools</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'dplyr'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:stats':
-
-    filter, lag</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union</code></pre>
-</div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_raw_dataset</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_raw_data.html">cleaningtools_raw_data</a></span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">my_raw_dataset</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_raw_data.html">cleaningtools_raw_data</a></span></span>
 <span><span class="va">my_kobo_survey</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_survey.html">cleaningtools_survey</a></span></span>
 <span><span class="va">my_kobo_choice</span> <span class="op">&lt;-</span> <span class="fu">cleaningtools</span><span class="fu">::</span><span class="va"><a href="https://impact-initiatives.github.io/cleaningtools/reference/cleaningtools_choices.html">cleaningtools_choices</a></span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -5141,7 +5128,7 @@ Haga clic para ver la respuesta.
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_raw_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_raw_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/check_pii.html">check_pii</a></span><span class="op">(</span>uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span><span class="op">)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
@@ -5196,7 +5183,7 @@ Haga clic para ver la respuesta.
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_data_with_missing</span> <span class="op">&lt;-</span> <span class="va">my_raw_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_data_with_missing</span> <span class="op">&lt;-</span> <span class="va">my_raw_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/add_percentage_missing.html">add_percentage_missing</a></span><span class="op">(</span>kobo_survey <span class="op">=</span> <span class="va">my_kobo_survey</span><span class="op">)</span></span>
 <span>  </span>
 <span><span class="va">my_data_with_missing</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
@@ -5290,7 +5277,7 @@ Haga clic para ver la respuesta.
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise_check_list</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/01 - example - check_list.xlsx"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">exercise_check_list</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"../inputs/01 - example - check_list.xlsx"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">my_raw_dataset</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>    <span class="fu"><a href="https://impact-initiatives.github.io/cleaningtools/reference/check_logical_with_list.html">check_logical_with_list</a></span><span class="op">(</span>uuid_column <span class="op">=</span> <span class="st">"X_uuid"</span>,</span>
@@ -5313,7 +5300,7 @@ Haga clic para ver la respuesta.
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_check_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>check_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"check_household number"</span>, <span class="st">"check_water_treatment"</span>, <span class="st">"check_3"</span><span class="op">)</span>,</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_check_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>check_id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"check_household number"</span>, <span class="st">"check_water_treatment"</span>, <span class="st">"check_3"</span><span class="op">)</span>,</span>
 <span>                            description <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"num_hh_member is big"</span>,<span class="st">"using bottled water and always treat"</span>,<span class="st">"using bottled water and main reason is water pressure"</span><span class="op">)</span>,</span>
 <span>                            check_to_perform <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"num_hh_member &gt; 8"</span>,<span class="st">"water_source_drinking == \"bottled\" &amp; treat_drink_water == \"always_treat\""</span>,<span class="st">"water_source_drinking == \"bottled\" &amp; access_water_enough_why_not.water_pressure == TRUE"</span><span class="op">)</span>,</span>
 <span>                            columns_to_clean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"num_hh_member"</span>,<span class="st">"water_source_drinking, treat_drink_water"</span>,<span class="st">"water_source_drinking, access_water_enough_why_not.water_pressure"</span><span class="op">)</span><span class="op">)</span></span>
