@@ -13,6 +13,7 @@ Probar lo siguiente con un conjunto de datos:
 -   Realiza una verificación para detectar información de identificación personal.
 
 ```{r}
+#| message: false
 library(cleaningtools)
 library(dplyr)
 

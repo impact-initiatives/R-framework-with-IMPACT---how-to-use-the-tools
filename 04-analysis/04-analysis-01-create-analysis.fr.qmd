@@ -19,18 +19,6 @@ The following section will present some introduction about the analysis.
 
 The third step of the framework is the analysis. The analysis step aims to create a long table with one result per line and an **analysis key**. That table is not made for a human to read it but to store some information. Analysis stops at the results table: long format, stat + analysis key
 
-The analysis key format is currently :
-
-- analysis type @/@ analysis variable %/% analysis variable value @/@ grouping variable %/% grouping variable value
-
-- analysis type @/@ dependent variable %/% dependent variable value @/@ independent variable %/% independent variable value
-
-If there are two or more grouping variables it would look like that
-
-- analysis type @/@ analysis variable %/% analysis variable value @/@ grouping variable 1 %/% grouping variable value 1 -/-  grouping variable 2 %/% grouping variable value 2
-
-Same would apply for analysis variable in case of a ratio.
-
 The current analysis types are :
 
 - mean
@@ -109,3 +97,17 @@ my_analysis$results_table %>%
 my_analysis$loa %>%
   head()
 ```
+
+## Analysis key format
+
+The analysis key format is currently :
+
+- analysis type @/@ analysis variable %/% analysis variable value @/@ grouping variable %/% grouping variable value
+
+- analysis type @/@ dependent variable %/% dependent variable value @/@ independent variable %/% independent variable value
+
+If there are two or more grouping variables it would look like that
+
+- analysis type @/@ analysis variable %/% analysis variable value @/@ grouping variable 1 %/% grouping variable value 1 -/-  grouping variable 2 %/% grouping variable value 2
+
+Same would apply for analysis variable in case of a ratio.
