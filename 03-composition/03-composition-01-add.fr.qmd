@@ -1,19 +1,22 @@
 ---
-title: "01 - Add indicators"
+title: "01 - Ajout des indicateurs"
 author: "Yann Say"
 date: last-modified
 
 ---
-# Composition - adding indicators
 
-The framework is built around 4 steps: cleaning, composition, analysis, outputs
 
--   *Cleaning*: any manipulation to go from the raw data to the clean data
--   *Composition*: any manipulation before the analysis e.g. adding indicators, adding information from loop or main, aok aggregation, etc.
--   *Analysis*: any manipulation regarding only the analysis
--   *Outputs*: any manipulation to format the outputs.
+# Composition - ajout d'indicateurs
 
-The following section will present some introduction about the composition.
+Le cadre est structuré en 4 étapes : nettoyage, composition, analyse, sorties
+
+-   *Nettoyage* : toute manipulation permettant de passer des données brutes aux données nettoyées
+-   *Composition* : toute manipulation avant l'analyse, par ex. ajout d'indicateurs, ajout d'informations à partir de loop ou main, agrégation aok, etc.
+-   *Analyse* : toute manipulation concernant uniquement l'analyse
+-   *Sorties* : toute manipulation pour formater les résultats.
+
+La section suivante présentera une introduction à la composition.
+
 
 ![](../config/images/step - composition.png)
 
@@ -31,13 +34,14 @@ my_data <- impactR4PHU::impactR4PHU_data_template |>
 
 ![](../config/images/verb - add.png)
 
-**add_**\* functions will add a variable (column) to the dataset. For example, to add the duration of a survey, to add the food consumption score category, etc.
+les fonctions **add_**\* ajouteront une variable (colonne) au jeu de données. Par exemple, pour ajouter la durée d'une enquête, pour ajouter la catégorie de score de consommation alimentaire, etc.
 
-**add_**\* function takes a dataset as input and returns the dataset + the new indicator (and any intermediate steps used for the calculation). 
+La fonction **add_**\* prend un jeu de données en entrée et retourne le jeu de données + le nouvel indicateur (ainsi que toutes les étapes intermédiaires utilisées pour le calcul).
 
-For example, to check the duration of a survey, there is only the start and end, but not the duration column.
+Par exemple, pour vérifier la durée d'une enquête, il n'y a que le début et la fin, mais pas la colonne de durée.
 
-With `addindicators` some intermediate columns can be added if they are used to create the new indicator.
+Avec `addindicators`, certaines colonnes intermédiaires peuvent être ajoutées si elles sont utilisées pour créer le nouvel indicateur.
+
 :::
 
 ## add_fcs
@@ -51,7 +55,7 @@ my_data_with_fcs[, tail(names(my_data_with_fcs), 10)] %>%
   head()
 ```
 ::: {.callout-note .column-margin}
-You can learn more about food security indicators [here](https://fscluster.org/handbook/).
+Vous pouvez en apprendre plus sur les indicateurs de sécurité alimentaire [ici](https://fscluster.org/handbook/).
 :::
 
 ## add_hhs
@@ -59,7 +63,7 @@ You can learn more about food security indicators [here](https://fscluster.org/h
 ::: {.callout-tip appearance="minimal"}
 ### Pipe-able
 
-The framework is built around 2 adjectives, **pipe-able** and **independent**. In the framework, functions of the same family should be pipe-able. In the following case, 2 **add\_**\* functions are piped.
+Le framework est construit autour de deux adjectifs : **pipe-able** et **independent**. Dans le framework, les fonctions de la même famille sont en principe pipe-able. Dans le cas suivant, deux fonctions **add_**\* sont pipées.
 :::
 
 
