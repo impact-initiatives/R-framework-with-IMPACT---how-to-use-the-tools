@@ -1,12 +1,12 @@
 ---
-title: "02 - Review indicators"
+title: "02 - Revoir les indicateurs"
 author: "Yann Say"
 date: last-modified
 
 ---
-# Composition - reviewing indicators
+# Composition - révision des indicateurs
 
-Reviewing indicators will compare 2 indicators together and present the differences. It will not check how the indicator was created nor check for inconsistencies. That mean, to review an indicator, it is necessary to create one and compare them. The functions `review_one_variable` and `review_variables` will focus on the latter.
+La révision des indicateurs comparera deux indicateurs ensemble et présentera les différences. Elle ne vérifiera pas comment l'indicateur a été créé ni ne cherchera d'incohérences. Cela signifie que pour réviser un indicateur, il est nécessaire d'en créer un et de les comparer. Les fonctions `review_one_variable` et `review_variables` se concentreront sur ce dernier point.
 
 ```{r}
 #| warning: false
@@ -25,7 +25,7 @@ my_data_with_indicators <- my_data %>%
 
 ## review_variables
 
-First, a new dataset can be created for the review.
+Tout d'abord, un nouveau dataset est créé pour la revue.
 ```{r}
 review_df <- my_data %>%
   add_fcs(
@@ -34,7 +34,7 @@ review_df <- my_data %>%
   select(uuid, fsl_fcs_score, fsl_fcs_cat)
 ```
 
-Then the dataset to be reviewed and the new dataset can be binded together.
+Ensuite, le dataset à revoir et le nouveau dataset sont joins ensemble.
 
 ```{r}
 binded_df <- my_data_with_indicators %>%
@@ -42,11 +42,11 @@ binded_df <- my_data_with_indicators %>%
 ```
 
 ::: {.callout-note .column-margin}
-I would advice to use a `full_join` rather than a `left/right_join`. That way if any computation has missing value they will be spotted.
+Je conseillerais d'utiliser un `full_join` plutôt qu'un `left/right_join`. De cette façon, si une valeur manque dans un calcul, elle sera repérée.
 :::
 
 ::: {.callout-note .column-margin}
-With the `join_*` if the names are the same .x and .y will added to the names.
+Avec `join_*`, si les noms sont identiques, .x et .y seront ajoutés aux noms.
 :::
 
 ::: {.callout-tip appearance="minimal"}
@@ -54,8 +54,10 @@ With the `join_*` if the names are the same .x and .y will added to the names.
 
 ![](../config/images/verb - review.png)
 
-**review_**\* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis. 
+Les fonctions **review_**\* vont réviser un objet en le comparant à des normes ou à un autre objet et signaler les différences, par exemple, réviser le nettoyage en comparant le jeu de données brut, le jeu de données nettoyé et le journal de nettoyage, ou comparer une analyse à une autre.
 :::
+
+
 
 ```{r}
 library(addindicators)
@@ -70,14 +72,15 @@ review_one_var <- review_variables(binded_df,
 review_one_var %>% 
   names()
 ```
-It is a list with the dataset and a review table.
+C'est une liste avec le jeu de données et une table de révision.
+
 
 ```{r}
 review_one_var$review_table %>% 
   head()
 ```
 
-The review table can be summarised to have a quicker overview.
+La table de révision peut être résumée pour avoir un aperçu plus rapide.
 
 ```{r}
 review_one_var$review_table %>%
@@ -85,7 +88,7 @@ review_one_var$review_table %>%
   tally()
 ```
 
-To see how differences are shown, some noise is introduced to the dataset.
+Pour voir comment les différences sont affichées, du bruit est introduit dans le jeu de données.
 
 ```{r}
 jittered_df <- binded_df
@@ -111,7 +114,7 @@ review_one_variable_jittered$review_table %>%
   tally()
 ```
 
-The dataset has new columns to help filtering for further investigation.
+Le jeu de données a de nouvelles colonnes pour aider au filtrage en vue d'investigations ultérieures.
 
 ```{r}
 review_one_variable_jittered$dataset[, tail(names(review_one_variable_jittered$dataset), 5)] %>%
@@ -123,8 +126,7 @@ review_one_variable_jittered$dataset %>%
   select(uuid, fsl_fcs_cat.x, fsl_fcs_cat.y, review_check_fsl_fcs_cat.x, review_comment_fsl_fcs_cat.x)
 ```
 
-
-If there are more than one variable to review, pair-wise vectors can be used.
+Si plusieurs variables doivent être revues, des vecteurs par paires peuvent être utilisés.
 
 ```{r}
 my_review <- review_variables(jittered_df,

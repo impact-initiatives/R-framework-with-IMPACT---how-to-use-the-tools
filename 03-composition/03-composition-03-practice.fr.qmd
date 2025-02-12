@@ -1,10 +1,10 @@
 ---
-title: "03 - Practice (3)"
+title: "03 - Pratique (3)"
 author: "Yann Say"
 date: last-modified
 
 ---
-# Practice 
+# Pratique 
 
 ```{r}
 #| message: false
@@ -13,9 +13,9 @@ library(addindicators)
 library(dplyr)
 ```
 
-## Practice 1
+## Pratique 1
 
-- Add the **food consumption matrix score** to the dataset. The food consumption matrix score is a food security indicator that uses the **food consumption score**, **household hunger score** and the **reduced coping strategy index**.
+- Ajouter le **food consumption matrix score** au jeu de données. Le score de la matrice de consommation alimentaire est un indicateur de sécurité alimentaire qui utilise le **food consumption score**, **household hunger score** et le **reduced coping strategy index**.
 
 ```{r}
 #| echo: false
@@ -62,25 +62,27 @@ exercise_data <- addindicators::addindicators_MSNA_template_data %>%
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Développer pour obtenir un indice
 
-Did you try the function `add_fcm_phase`?
+Avez-vous essayé la fonction `add_fcm_phase` ?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Développer pour obtenir un indice
 
-The food consumption matrix needs 3 indicators, FCS, rCSI, HHS.
+La matrice de consommation alimentaire nécessite 3 indicateurs : FCS, rCSI, HHS.
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Développer pour obtenir un indice
 
-Have you used the correct HHS category variable?
+Avez-vous utilisé la bonne variable de catégorie HHS ?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Développer pour obtenir la réponse
+
+
 
 ```{r}
 #| output: false
@@ -97,14 +99,15 @@ my_answer <- exercise_data %>%
 ```
 :::
 
-## Practice 2
+## Pratique 2
 
-- You receive a dataset, you need to review the following four indicators.
+- Vous recevez un jeu de données, vous devez réviser les quatre indicateurs suivants.
 
-  - Food Consumption Score: **fsl_fcs_score**, **fsl_fcs_cat**
-  - Household Hunger Score: **hhs_score**, **hhs_cat**
-  
-Don't forget to write the review.
+  - Score de Consommation Alimentaire : **fsl_fcs_score**, **fsl_fcs_cat**
+  - Score de Faim des Ménages : **hhs_score**, **hhs_cat**
+
+N'oubliez pas d'écrire la revue.
+
 
 ```{r}
 dataset_to_review <- read.csv("../inputs/06 - exercise - dataset_to_review.csv")
@@ -113,27 +116,28 @@ dataset_without_indicators <- addindicators::addindicators_MSNA_template_data
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Développer pour obtenir un indice
 
-Did you try the function `review_variables`
+Avez-vous essayé la fonction `review_variables` ?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Développer pour obtenir un indice
 
-How was the FSC created?
+Comment le FCS a-t-il été créé ?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Développer pour obtenir un indice
 
-How was coded the category for the HHS? 
-Names in the dataset are: "hhs_cat", "hhs_score"
-Names created with `add_hhs` are: "fsl_hhs_cat", "fsl_hhs_score"
+Comment la catégorie pour le HHS a-t-elle été codée ?
+Les noms dans le jeu de données sont : "hhs_cat", "hhs_score"
+Les noms créés avec `add_hhs` sont : "fsl_hhs_cat", "fsl_hhs_score"
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Développer pour obtenir la réponse
+
 
 ```{r}
 #| output: false
@@ -174,8 +178,9 @@ review$review_table %>%
   tally()
 ```
 
-- There are 10 fcs categories that are different.
-- There are 100 HHS categories that are different
+- Il y a 10 catégories FCS différentes.
+- Il y a 100 catégories HHS différentes.
+
 
 ```{r}
 review$dataset %>% 
@@ -183,7 +188,8 @@ review$dataset %>%
   select(uuid, review_comment_fsl_fcs_cat.x, fsl_fcs_score.x, fsl_fcs_cat.x, fsl_fcs_cat.y)
 
 ```
-- Food Consumption Score have different categories, what threshold were used to compute the FCS?  Maybe 28-42?
+- Le Food Consumption Score a différentes catégories, quels seuils ont été utilisés pour calculer le FCS ? Peut-être 28-42 ?
+
 
 
 ```{r}
@@ -192,9 +198,10 @@ review$dataset %>%
   select(hhs_cat, fsl_hhs_cat) %>% 
   table(useNA = "ifany")
 ```
-- HHS is fine. Labeling is different
+- Le HHS est correct. L'étiquetage est différent.
 :::
 
-## Downloads
+## Téléchargements
+
 
 - [dataset_to_review](../inputs/06 - exercise - dataset_to_review.csv)
