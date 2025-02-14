@@ -8,6 +8,7 @@ date: last-modified
 # impactR4PHU et humind
 
 Les fonctions concernant les vérifications et indicateurs de santé publique sont à jour dans `impactR4PHU`. Plus d'informations sur [ce repo](https://github.com/impact-initiatives/impactR4PHU).
+
 Les fonctions concernant l'Indice des Besoins Multi-Sectoriels (MSNI) se trouvent dans `humind`. Plus d'informations sur [ce repo](https://github.com/impact-initiatives-hppu/humind).
 
 

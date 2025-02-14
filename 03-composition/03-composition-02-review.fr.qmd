@@ -4,7 +4,7 @@ author: "Yann Say"
 date: last-modified
 
 ---
-# Composition - révision des indicateurs
+# Composition - Revoir des indicateurs
 
 La révision des indicateurs comparera deux indicateurs ensemble et présentera les différences. Elle ne vérifiera pas comment l'indicateur a été créé ni ne cherchera d'incohérences. Cela signifie que pour réviser un indicateur, il est nécessaire d'en créer un et de les comparer. Les fonctions `review_one_variable` et `review_variables` se concentreront sur ce dernier point.
 

@@ -1,12 +1,12 @@
 ---
-title: "01 - Ajout des indicateurs"
+title: "01 - Ajouter des indicateurs"
 author: "Yann Say"
 date: last-modified
 
 ---
 
 
-# Composition - ajout d'indicateurs
+# Composition - Ajouter des indicateurs
 
 Le cadre est structuré en 4 étapes : nettoyage, composition, analyse, sorties
 
