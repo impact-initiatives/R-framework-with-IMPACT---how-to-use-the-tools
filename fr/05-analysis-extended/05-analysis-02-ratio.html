@@ -4896,13 +4896,13 @@ vertical-align: -.125em;
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../04-analysis/04-analysis-01-create-analysis.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - Simple analysis</span></a>
+ <span class="menu-text">01 - Analyse simple</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../04-analysis/04-analysis-02-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02 - Practice (4)</span></a>
+ <span class="menu-text">02 - Pratique (4)</span></a>
   </div>
 </li>
       </ul>
@@ -4919,7 +4919,7 @@ vertical-align: -.125em;
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../05-analysis-extended/05-analysis-01-loa.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">01 - List of analysis</span></a>
+ <span class="menu-text">01 - Listes d’analyses (LOA)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -4931,7 +4931,7 @@ vertical-align: -.125em;
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../05-analysis-extended/05-analysis-03-practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03 - Practice (5)</span></a>
+ <span class="menu-text">03 - Pratique (5)</span></a>
   </div>
 </li>
       </ul>
@@ -5038,15 +5038,15 @@ vertical-align: -.125em;
    
   <ul>
 <li>
-<a href="#analysis---ratio" id="toc-analysis---ratio" class="nav-link active" data-scroll-target="#analysis---ratio">Analysis - ratio</a>
+<a href="#analyses---ratio" id="toc-analyses---ratio" class="nav-link active" data-scroll-target="#analyses---ratio">Analyses - ratio</a>
   <ul class="collapse">
 <li>
 <a href="#create_analysis_ratio" id="toc-create_analysis_ratio" class="nav-link" data-scroll-target="#create_analysis_ratio"><code>create_analysis_ratio</code></a>
   <ul class="collapse">
-<li><a href="#arguments-of-create_analysis_ratio" id="toc-arguments-of-create_analysis_ratio" class="nav-link" data-scroll-target="#arguments-of-create_analysis_ratio">Arguments of <code>create_analysis_ratio</code></a></li>
+<li><a href="#arguments-de-create_analysis_ratio" id="toc-arguments-de-create_analysis_ratio" class="nav-link" data-scroll-target="#arguments-de-create_analysis_ratio">Arguments de <code>create_analysis_ratio</code></a></li>
   </ul>
 </li>
-  <li><a href="#downloads" id="toc-downloads" class="nav-link" data-scroll-target="#downloads">Downloads</a></li>
+  <li><a href="#t%C3%A9l%C3%A9chargements" id="toc-téléchargements" class="nav-link" data-scroll-target="#t%C3%A9l%C3%A9chargements">Téléchargements</a></li>
   </ul>
 </li>
   </ul>
@@ -5078,7 +5078,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Date de publication</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 février 2025</p>
+      <p class="date">18 février 2025</p>
     </div>
   </div>
   
@@ -5087,7 +5087,7 @@ vertical-align: -.125em;
   
 
 
-</header><section id="analysis---ratio" class="level1"><h1>Analysis - ratio</h1>
+</header><section id="analyses---ratio" class="level1"><h1>Analyses - ratio</h1>
 <section id="create_analysis_ratio" class="level2"><h2 class="anchored" data-anchor-id="create_analysis_ratio"><code>create_analysis_ratio</code></h2>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://impact-initiatives.github.io/analysistools/">analysistools</a></span><span class="op">)</span></span>
@@ -5111,7 +5111,7 @@ vertical-align: -.125em;
 <span></span>
 <span><span class="va">my_design</span> <span class="op">&lt;-</span> <span class="fu">srvyr</span><span class="fu">::</span><span class="fu"><a href="http://gdfe.co/srvyr/reference/as_survey_design.html">as_survey_design</a></span><span class="op">(</span><span class="va">my_data</span>, weights <span class="op">=</span> <span class="st">"weights"</span>, strata <span class="op">=</span> <span class="st">"admin1"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To calculate ratio, there are two functions <code>create_analysis_ratio</code> or <code>create_analysis</code> with a loa with more information.</p>
+<p>Pour calculer un ratio, il existe deux fonctions : <code>create_analysis_ratio</code> ou <code>create_analysis</code> avec une loa contenant plus d’informations.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">my_loa_with_ratio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"../inputs/07 - example - loa_with_ratio.csv"</span><span class="op">)</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -5261,14 +5261,14 @@ vertical-align: -.125em;
 </div>
 </div>
 </div>
-<section id="arguments-of-create_analysis_ratio" class="level3"><h3 class="anchored" data-anchor-id="arguments-of-create_analysis_ratio">Arguments of <code>create_analysis_ratio</code>
+<section id="arguments-de-create_analysis_ratio" class="level3"><h3 class="anchored" data-anchor-id="arguments-de-create_analysis_ratio">Arguments de <code>create_analysis_ratio</code>
 </h3>
-<p><code>create_analysis_ratio</code> has two arguments: <code>numerator_NA_to_0</code> and <code>filter_denominator_0</code> that by default are set to TRUE.</p>
+<p><code>create_analysis_ratio</code> possède deux arguments : <code>numerator_NA_to_0</code> et <code>filter_denominator_0</code>, qui par défaut sont définis sur TRUE.</p>
 <ul>
-<li><p><code>numerator_NA_to_0</code> will turn all NA of the numerator into 0’s, default TRUE.</p></li>
-<li><p><code>filter_denominator_0</code> will remove all rows with 0’s in the denominator, default TRUE.</p></li>
+<li><p><code>numerator_NA_to_0</code> transformera toutes les valeurs NA du numérateur en 0, par défaut TRUE.</p></li>
+<li><p><code>filter_denominator_0</code> supprimera toutes les lignes avec des 0 dans le dénominateur, par défaut TRUE.</p></li>
 </ul>
-<p>The following example show a dataset with the number of children (<em>num_children</em>), the number of children enrolled to a school (<em>num_enrolled</em>) and the number of children attending school on a regular basis (<em>num_attending</em>).</p>
+<p>L’exemple suivant montre un jeu de données avec le nombre d’enfants (<em>num_children</em>), le nombre d’enfants inscrits à l’école (<em>num_enrolled</em>) et le nombre d’enfants fréquentant régulièrement l’école (<em>num_attending</em>).</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">school_ex</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
 <span>  hh <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"hh1"</span>, <span class="st">"hh2"</span>, <span class="st">"hh3"</span>, <span class="st">"hh4"</span><span class="op">)</span>,</span>
@@ -5320,8 +5320,8 @@ vertical-align: -.125em;
 </div>
 </div>
 <ul>
-<li>What is the ratio between children attending school and the number of children ?</li>
-<li>How many households are included in the calculation?</li>
+<li>Quel est le ratio entre les enfants fréquentant l’école et le nombre total d’enfants ?</li>
+<li>Combien de ménages sont inclus dans le calcul ?</li>
 </ul>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -5329,17 +5329,20 @@ vertical-align: -.125em;
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get the answer
+Développer pour obtenir la réponse
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Default value will give a ratio of 0.2 as there are 1 child out of 5 attending school.</p>
-<p>numerator: 1 child from hh1 and 0 from hh3.</p>
-<p>denominator: 3 from hh1 and 2 from hh3. In the hh3, the num_attending is NA because there is a skip logic, there cannot be a child attending as none are enrolled.</p>
-<p>By default, the function has the argument <code>numerator_NA_to_0</code> set to TRUE to turn that NA into a 0.</p>
-<p>n and n_total are 2 as 2 households were included in the calculation. hh2 was not included in the calculation of totals. The argument <code>filter_denominator_0</code> set to TRUE removes that row.</p>
+<p>La valeur par défaut donnera un ratio de 0,2 car 1 enfant sur 5 fréquente l’école.</p>
+<p>Numérateur : 1 enfant du ménage 1 et 0 du ménage 3.</p>
+<p>Dénominateur : 3 du ménage 1 et 2 du ménage 3. Dans le ménage 3, la valeur de num_attending est NA en raison d’un <em>skip logic</em>, car aucun enfant ne peut fréquenter l’école s’il n’est pas inscrit.</p>
+<p>Par défaut, la fonction a l’argument <code>numerator_NA_to_0</code> défini sur TRUE pour transformer ce NA en 0.</p>
+<p>n et n_total sont égaux à 2 car 2 ménages ont été inclus dans le calcul. Le ménage 2 n’a pas été inclus dans le calcul des totaux. L’argument <code>filter_denominator_0</code> défini sur TRUE supprime cette ligne.</p>
+</div>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/create_analysis_ratio.html">create_analysis_ratio</a></span><span class="op">(</span><span class="va">me_design</span>,</span>
 <span>  analysis_var_numerator <span class="op">=</span> <span class="st">"num_attending"</span>,</span>
@@ -5376,12 +5379,10 @@ Expand to get the answer
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+<p>:::</p>
 <ul>
-<li>What will be the ratio if only <code>numerator_NA_to_0</code> is set to FALSE ?</li>
-<li>How many households are included in the calculation?</li>
+<li>Quel sera le ratio si seulement <code>numerator_NA_to_0</code> est défini sur FALSE ?</li>
+<li>Combien de ménages sont inclus dans le calcul ?</li>
 </ul>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -5389,14 +5390,17 @@ Expand to get the answer
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get the answer
+Développer pour obtenir la réponse
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Ratio will be 1/3, as hh3 with 2 children and NA for attending will be removed with the <code>na.rm = T</code> inside the <code>survey_ratio</code> calculation.</p>
-<p>n and n_total is 1 as only 1 household was used.</p>
+<p>Le ratio sera de 1/3, car le ménage 3 avec 2 enfants et NA pour la fréquentation sera supprimé avec <code>na.rm = TRUE</code> dans le calcul <code>survey_ratio</code>.</p>
+<p>n et n_total sont égaux à 1 car un seul ménage a été utilisé.</p>
+</div>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/create_analysis_ratio.html">create_analysis_ratio</a></span><span class="op">(</span><span class="va">me_design</span>,</span>
 <span>                      analysis_var_numerator <span class="op">=</span> <span class="st">"num_attending"</span>,</span>
@@ -5442,12 +5446,10 @@ Caused by warning in `qt()`:
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+<p>:::</p>
 <ul>
-<li>What will be the ratio if only <code>filter_denominator_0</code> is set to FALSE ?</li>
-<li>How many households are included in the calculation?</li>
+<li>Quel sera le ratio si seulement <code>filter_denominator_0</code> est défini sur FALSE ?</li>
+<li>Combien de ménages sont inclus dans le calcul ?</li>
 </ul>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -5455,13 +5457,16 @@ Caused by warning in `qt()`:
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expand to get the answer
+Développer pour obtenir la réponse
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>ratio will be 0.2 as there are 1 child out of 5 attending school. The number of household counted, n and n_total, is equal to 3 instead 2. The household with 0 child is counted in the totals. (01 + 0 + 0) / (3 + 0 + 2)</p>
+<p>Le ratio sera de 0,2 car il y a 1 enfant sur 5 qui fréquente l’école. Le nombre de ménages comptabilisés, n et n_total, est égal à 3 au lieu de 2. Le ménage avec 0 enfant est compté dans les totaux. (01 + 0 + 0) / (3 + 0 + 2).</p>
+</div>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://impact-initiatives.github.io/analysistools/reference/create_analysis_ratio.html">create_analysis_ratio</a></span><span class="op">(</span><span class="va">me_design</span>,</span>
 <span>                      analysis_var_numerator <span class="op">=</span> <span class="st">"num_attending"</span>,</span>
@@ -5499,10 +5504,8 @@ Expand to get the answer
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</section></section><section id="downloads" class="level2"><h2 class="anchored" data-anchor-id="downloads">Downloads</h2>
+<p>:::</p>
+</section></section><section id="téléchargements" class="level2"><h2 class="anchored" data-anchor-id="téléchargements">Téléchargements</h2>
 <ul>
 <li><a href="../inputs/07%20-%20example%20-%20loa_with_ratio.csv">07 - example - loa_with_ratio.csv</a></li>
 </ul></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
