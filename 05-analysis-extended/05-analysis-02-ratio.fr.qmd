@@ -4,7 +4,7 @@ author: "Yann Say"
 date: last-modified
 
 ---
-# Analysis - ratio
+# Analyses - ratio
 
 ## `create_analysis_ratio`
 
@@ -34,7 +34,7 @@ my_data <- my_data %>%
 my_design <- srvyr::as_survey_design(my_data, weights = "weights", strata = "admin1")
 ```
 
-To calculate ratio, there are two functions `create_analysis_ratio` or `create_analysis` with a loa with more information. 
+Pour calculer un ratio, il existe deux fonctions : `create_analysis_ratio` ou `create_analysis` avec une loa contenant plus d'informations.
 
 ```{r}
 my_loa_with_ratio <- read.csv("../inputs/07 - example - loa_with_ratio.csv")
@@ -56,15 +56,16 @@ my_results_with_ratio$results_table %>%
   filter(analysis_type == "ratio")
 ```
 
-### Arguments of `create_analysis_ratio`
+### Arguments de `create_analysis_ratio`
 
-`create_analysis_ratio` has two arguments: `numerator_NA_to_0 ` and `filter_denominator_0 ` that by default are set to TRUE. 
+`create_analysis_ratio` possède deux arguments : `numerator_NA_to_0` et `filter_denominator_0`, qui par défaut sont définis sur TRUE.
 
-- `numerator_NA_to_0` will turn all NA of the numerator into 0's, default TRUE.
+- `numerator_NA_to_0` transformera toutes les valeurs NA du numérateur en 0, par défaut TRUE.
 
-- `filter_denominator_0` will remove all rows with 0's in the denominator, default TRUE.
+- `filter_denominator_0` supprimera toutes les lignes avec des 0 dans le dénominateur, par défaut TRUE.
 
-The following example show a dataset with the number of children (*num_children*), the number of children enrolled to a school (*num_enrolled*) and the number of children attending school on a regular basis (*num_attending*).
+L'exemple suivant montre un jeu de données avec le nombre d'enfants (*num_children*), le nombre d'enfants inscrits à l'école (*num_enrolled*) et le nombre d'enfants fréquentant régulièrement l'école (*num_attending*).
+
 
 ```{r}
 school_ex <- data.frame(
@@ -79,21 +80,23 @@ me_design <- srvyr::as_survey(school_ex)
 school_ex
 ```
 
-- What is the ratio between children attending school and the number of children ?
-- How many households are included in the calculation?
+- Quel est le ratio entre les enfants fréquentant l'école et le nombre total d'enfants ?
+- Combien de ménages sont inclus dans le calcul ?
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-###  Expand to get the answer
+### Développer pour obtenir la réponse
 
-Default value will give a ratio of 0.2 as there are 1 child out of 5 attending school.
+La valeur par défaut donnera un ratio de 0,2 car 1 enfant sur 5 fréquente l'école.
 
-numerator: 1 child from hh1 and 0 from hh3. 
+Numérateur : 1 enfant du ménage 1 et 0 du ménage 3.
 
-denominator: 3 from hh1 and 2 from hh3. In the hh3, the num_attending is NA because there is a skip logic, there cannot be a child attending as none are enrolled. 
+Dénominateur : 3 du ménage 1 et 2 du ménage 3. Dans le ménage 3, la valeur de num_attending est NA en raison d'un *skip logic*, car aucun enfant ne peut fréquenter l'école s'il n'est pas inscrit.
 
-By default, the function has the argument `numerator_NA_to_0` set to TRUE to turn that NA into a 0.
+Par défaut, la fonction a l'argument `numerator_NA_to_0` défini sur TRUE pour transformer ce NA en 0.
 
-n and n_total are 2 as 2 households were included in the calculation. hh2 was not included in the calculation of totals. The argument `filter_denominator_0` set to TRUE removes that row.
+n et n_total sont égaux à 2 car 2 ménages ont été inclus dans le calcul. Le ménage 2 n'a pas été inclus dans le calcul des totaux. L'argument `filter_denominator_0` défini sur TRUE supprime cette ligne.
+:::
+
 
 
 ``` {r}
@@ -104,15 +107,17 @@ create_analysis_ratio(me_design,
 ```
 :::
 
-- What will be the ratio if only `numerator_NA_to_0` is set to FALSE ?
-- How many households are included in the calculation?
+- Quel sera le ratio si seulement `numerator_NA_to_0` est défini sur FALSE ?
+- Combien de ménages sont inclus dans le calcul ?
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-###  Expand to get the answer
+### Développer pour obtenir la réponse
 
-Ratio will be 1/3, as hh3 with 2 children and NA for attending will be removed with the `na.rm = T` inside the `survey_ratio` calculation.
+Le ratio sera de 1/3, car le ménage 3 avec 2 enfants et NA pour la fréquentation sera supprimé avec `na.rm = TRUE` dans le calcul `survey_ratio`.
 
-n and n_total is 1 as only 1 household was used.
+n et n_total sont égaux à 1 car un seul ménage a été utilisé.
+:::
+
 
 ``` {r}
 create_analysis_ratio(me_design,
@@ -123,14 +128,16 @@ create_analysis_ratio(me_design,
 ```
 :::
 
-- What will be the ratio if only `filter_denominator_0` is set to FALSE ?
-- How many households are included in the calculation?
+- Quel sera le ratio si seulement `filter_denominator_0` est défini sur FALSE ?
+- Combien de ménages sont inclus dans le calcul ?
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-###  Expand to get the answer
+### Développer pour obtenir la réponse
 
-ratio will be 0.2 as there are 1 child out of 5 attending school.
-The number of household counted, n and n_total, is equal to 3 instead 2. The household with 0 child is counted in the totals. (01 + 0 + 0) / (3 + 0 + 2)
+Le ratio sera de 0,2 car il y a 1 enfant sur 5 qui fréquente l'école.
+Le nombre de ménages comptabilisés, n et n_total, est égal à 3 au lieu de 2. Le ménage avec 0 enfant est compté dans les totaux. (01 + 0 + 0) / (3 + 0 + 2).
+:::
+
 
 ```{r}
 create_analysis_ratio(me_design,
@@ -142,6 +149,6 @@ create_analysis_ratio(me_design,
 
 :::
 
-## Downloads
+## Téléchargements
 
 - [07 - example - loa_with_ratio.csv](../inputs/07 - example - loa_with_ratio.csv)

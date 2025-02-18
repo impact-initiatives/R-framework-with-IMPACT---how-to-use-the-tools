@@ -1,5 +1,5 @@
 ---
-title: "01 - List of analysis"
+title: "01 - Listes d'analyses (LOA)"
 author: "Yann Say"
 date: last-modified
 
@@ -18,16 +18,17 @@ sampling_frame <- data.frame(
 
 ```
 
-# Analysis - list of analysis
+# Analyse - liste des analyses
 
-## `create_analysis` and list of analysis (loa)
+## `create_analysis` et liste des analyses (loa)
 
-List of analysis (loa) is a list with all analysis to be performed. It takes the form of a data frame with minimum 4 columns:
+La liste des analyses (loa) est une liste contenant toutes les analyses à effectuer. Elle prend la forme d'un data frame avec au minimum 4 colonnes :
 
-- *analysis_type* : The analysis type that should be performed.
-- *analysis_var* : The analysis variable or dependent variable.
-- *group_var* : The grouping variable or independent variable.
-- *level* : The confidence level (expressed between 0 and 1).
+- *analysis_type* : Le type d'analyse à effectuer.
+- *analysis_var* : La variable d'analyse ou variable dépendante.
+- *group_var* : La variable de regroupement ou variable indépendante.
+- *level* : Le niveau de confiance (exprimé entre 0 et 1).
+
 
 ```{r}
 my_loa <- analysistools::analysistools_MSNA_template_loa
@@ -35,7 +36,7 @@ my_loa <- analysistools::analysistools_MSNA_template_loa
 my_loa
 ```
 
-The loa can be passed as argument to the `create_analysis` function. 
+La loa peut être passée en argument à la fonction `create_analysis`.
 
 ```{r}
 #| output: false
@@ -46,7 +47,7 @@ my_design <- srvyr::as_survey_design(my_data, weights = "weights", strata = "adm
 my_results <- create_analysis(my_design, loa = my_loa, sm_separator = "/")
 ```
 
-The calculations are made only for the indicators in the loa. That way the analysis can be tailored to specific needs.
+Les calculs ne sont effectués que pour les indicateurs présents dans la loa. Ainsi, l'analyse peut être adaptée à des besoins spécifiques.
 ```{r}
 head_results_table <- my_results$results_table %>% 
   head(5)

@@ -1,12 +1,12 @@
 ---
-title: "02 - Practice (4)"
+title: "02 - Pratique (4)"
 author: "Yann Say"
 date: last-modified
 
 ---
-# Practice
+# Pratique
 
-## Practice 1
+## Pratique 1
 
 ```{r}
 library(analysistools)
@@ -30,18 +30,19 @@ exercise_data_shorter <- exercise_data_shorter[,1:30]
 ```
 
 
-With the dataset *exercise_data*, please do the following:
+Avec le jeu de données *exercise_data*, veuillez faire ce qui suit :
 
-- Create a results table at the level **respondent_gender**. Keep the strata at **admin1**
+- Créez une table de résultats au niveau **respondent_gender**. Conservez les strates au niveau **admin1**.
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Développer pour obtenir un indice
 
-Did you try the argument *group_var* in `create_analysis` ?
+Avez-vous essayé l'argument *group_var* dans `create_analysis` ?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Développer pour obtenir la réponse
+
 
 ```{r}
 #| eval: false
@@ -52,9 +53,9 @@ my_answer_analysis <- create_analysis(my_exercise_design, group_var = "responden
 ```
 :::
 
-## Practice 2
+## Pratique 2
 
-- The analysis should be weighted, this is the sampling frame. Re-do the analysis at the overall level.
+- L'analyse doit être pondérée, il s'agit du cadre d'échantillonnage. Refaites l'analyse au niveau global.
 
 ```{r}
 sampling_frame <- data.frame(
@@ -65,19 +66,20 @@ sampling_frame
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Développer pour obtenir un indice
 
-Did you try the function *add_weights* ?
+Avez-vous essayé la fonction *add_weights* ?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Développer pour obtenir un indice
 
-Did you modify your design object?
+Avez-vous modifié votre *survey design* ?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Développer pour obtenir la réponse
+
 
 ```{r}
 #| eval: false
