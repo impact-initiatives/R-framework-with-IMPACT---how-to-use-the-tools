@@ -1,46 +1,47 @@
 ---
-title: "01 - Simple analysis"
+title: "01 - Analyse simple"
 author: "Yann Say"
 date: last-modified
 
 ---
-# Analysis - Introduction
 
-The framework is built around 4 steps: cleaning, composition, analysis, outputs
+# Analyse - Introduction
 
--   *Cleaning*: any manipulation to go from the raw data to the clean data
--   *Composition*: any manipulation before the analysis e.g. adding indicators, adding information from loop or main, aok aggregation, etc.
--   *Analysis*: any manipulation regarding only the analysis
--   *Outputs*: any manipulation to format the outputs.
+Le framework est construit autour de 4 étapes : nettoyage, composition, analyse, résultats.
 
-The following section will present some introduction about the analysis.
+-   *Nettoyage* : toute manipulation pour passer des données brutes aux données propres.
+-   *Composition* : toute manipulation avant l'analyse, par exemple, ajout d'indicateurs, ajout d'informations provenant de loops, agrégation aok, etc.
+-   *Analyse* : toute manipulation concernant uniquement l'analyse.
+-   *Résultats* : toute manipulation pour formater les résultats.
+
+La section suivante présentera une introduction à l'analyse.
 
 ![](../config/images/step - analysis.png)
 
-The third step of the framework is the analysis. The analysis step aims to create a long table with one result per line and an **analysis key**. That table is not made for a human to read it but to store some information. Analysis stops at the results table: long format, stat + analysis key
+La troisième étape du framework est l'analyse. L'étape d'analyse vise à créer une table longue avec un résultat par ligne et une clé d'analyse (**analysis key**). Cette table n'est pas destinée à être lue par un humain mais à stocker des informations. L'analyse s'arrête à la table des résultats : format long, statistiques + clé d'analyse.
 
-The current analysis types are :
+Les types d'analyses actuels sont :
 
-- mean
-- median
-- prop_select_one: proportion for select one
-- prop_select_multiple: proportion for select multiple
+- moyenne
+- médiane
+- prop_select_one : proportion pour sélection unique
+- prop_select_multiple : proportion pour sélection multiple
 - ratio
 
 ## create_analysis
 
-Any **create_analysis_*** function will need a survey to be used, not a dataset. A survey object will be defined with the weights, strata and cluster information if they exists. 
+Toute fonction **create_analysis_** nécessitera un objet *survey design* pour être utilisée, et non un jeu de données. Un objet *survey design* sera défini avec les poids, les strates et les informations de cluster s'ils existent.
 
 ::: {.callout-tip appearance="minimal"}
 ### create\_\*
 
 ![](../config/images/verb - create.png)
 
-**create_**\* functions will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output.
+Les fonctions **create_**\* créeront, transformeront quelque chose, par exemple, créer un journal de nettoyage avec les vérifications à remplir, créer une table de résultats d'analyse, créer un résultat.
 
-Outputs from **create_**\* functions outputs can be in different shape, format, etc. 
+Les résultats des fonctions **create_**\* peuvent avoir différentes formes, formats, etc.
 
-**create_**\* function is catch-all.
+La fonction **create_**\* est un fourre-tout.
 :::
 
 ```{r}
@@ -62,7 +63,7 @@ my_data_shorter <- analysistools_MSNA_template_data[, !only_nas] %>%
 ```
 
 ::: {.callout-note .column-margin}
-At the moment, `create_analysis` breaks where a column only have missing values. They need to be removed beforehand.
+Actuellement, `create_analysis` échoue lorsqu'une colonne ne contient que des valeurs manquantes. Elles doivent être supprimées au préalable.
 :::
 
 ```{r}
@@ -72,16 +73,18 @@ my_design <- srvyr::as_survey_design(my_data_shorter, strata = "admin1")
 my_analysis <- create_analysis(my_design, sm_separator = "/")
 ```
 
+
 ::: {.callout-note .column-margin}
-`create_analysis` uses a survey design, not a dataset. Survey design object contains the information on the design of the survey, such as stratas, cluster, weights. It is built with **srvyr** package which is a wrapper around [**survey** package](http://r-survey.r-forge.r-project.org/survey/).
+`create_analysis` utilise un *survey design*, et non un jeu de données. L'objet *survey design* contient des informations sur la conception de l'enquête, telles que les strates, les clusters et les poids. Il est construit avec le package **srvyr**, qui est un wrapper autour du package [**survey**](http://r-survey.r-forge.r-project.org/survey/).
 
 :::
 
-`create_analysis` returns a list with:
+`create_analysis` retourne une liste avec :
 
-- Results table: a long table with summary statistics per line
-- Dataset: the dataset used with the survey design
-- List of analysis: all the analysis that were performed 
+- Table des résultats : une table longue avec des statistiques récapitulatives par ligne
+- Jeu de données : le jeu de données utilisé avec le plan d'enquête
+- Liste des analyses : toutes les analyses qui ont été effectuées
+
 
 ```{r}
 my_analysis %>%
@@ -98,16 +101,17 @@ my_analysis$loa %>%
   head()
 ```
 
-## Analysis key format
 
-The analysis key format is currently :
+## Format de la clé d'analyse
 
-- analysis type @/@ analysis variable %/% analysis variable value @/@ grouping variable %/% grouping variable value
+Le format actuel de la clé d'analyse est :
 
-- analysis type @/@ dependent variable %/% dependent variable value @/@ independent variable %/% independent variable value
+- type d'analyse @/@ variable d'analyse %/% valeur de la variable d'analyse @/@ variable de regroupement %/% valeur de la variable de regroupement
 
-If there are two or more grouping variables it would look like that
+- type d'analyse @/@ variable dépendante %/% valeur de la variable dépendante @/@ variable indépendante %/% valeur de la variable indépendante
 
-- analysis type @/@ analysis variable %/% analysis variable value @/@ grouping variable 1 %/% grouping variable value 1 -/-  grouping variable 2 %/% grouping variable value 2
+Si deux ou plusieurs variables de regroupement sont présentes, cela ressemblerait à :
 
-Same would apply for analysis variable in case of a ratio.
+- type d'analyse @/@ variable d'analyse %/% valeur de la variable d'analyse @/@ variable de regroupement 1 %/% valeur de la variable de regroupement 1 -/- variable de regroupement 2 %/% valeur de la variable de regroupement 2
+
+Le même principe s'applique à la variable d'analyse dans le cas d'un ratio.
