@@ -1,6 +1,5 @@
 ---
 title: "01 - Simple analysis"
-author: "Yann Say"
 date: last-modified
 
 ---
@@ -8,10 +7,10 @@ date: last-modified
 
 El marco se basa en 4 pasos: limpieza, composición, análisis, resultados.
 
--   *Limpieza*: cualquier manipulación para pasar de los datos en bruto a los datos limpios
--   *Composición*:  cualquier manipulación antes del análisis, por ejemplo, agregar indicadores, agregar información del bucle o principal, agregación de aok, etc.
--   *Análisis*: cualquier manipulación que se refiere únicamente al análisis
--   *Resultados*: cualquier manipulación para formatear los resultados.
+-   **Limpieza**: cualquier manipulación para pasar de los datos en bruto a los datos limpios
+-   **Composición**:  cualquier manipulación antes del análisis, por ejemplo, agregar indicadores, agregar información del bucle o principal, agregación de aok, etc.
+-   **Análisis**: cualquier manipulación que se refiere únicamente al análisis
+-   **Resultados**: cualquier manipulación para formatear los resultados.
 
 La siguiente sección presentará una introducción sobre el análisis.
 

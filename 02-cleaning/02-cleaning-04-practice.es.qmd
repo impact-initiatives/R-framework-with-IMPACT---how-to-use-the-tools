@@ -1,6 +1,5 @@
 ---
 title: "04 - Práctica (2)"
-author: "Yann Say"
 date: last-modified
 
 ---

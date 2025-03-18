@@ -1,6 +1,5 @@
 ---
 title: "01 - Create a cleaning log"
-author: "Yann Say"
 date: last-modified
 
 ---

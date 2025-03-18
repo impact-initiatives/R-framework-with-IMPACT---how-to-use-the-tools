@@ -1,6 +1,5 @@
 ---
 title: "03 - Checks with logical list"
-author: "Yann Say"
 date: last-modified
 
 ---

@@ -1,6 +1,5 @@
 ---
 title: "02 - Tables for maps"
-author: "Yann Say"
 date: last-modified
 ---
 

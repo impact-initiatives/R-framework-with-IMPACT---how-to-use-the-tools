@@ -1,6 +1,5 @@
 ---
 title: "04 - Practice - session 1"
-author: "Yann Say"
 date: last-modified
 
 ---

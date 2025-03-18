@@ -1,6 +1,5 @@
 ---
 title: "02 - Añadir, duracion y otros"
-author: "Yann Say"
 date: last-modified
 
 ---
@@ -26,7 +25,7 @@ more_logs <- my_raw_dataset %>%
 ::: {.callout-tip appearance="minimal"}
 ### add\_\*
 
-![](../config/images/verb%20-%20add.png)
+![](../config/images/verb - add.png)
 
 Las funciones **add\_**\* añadirán una variable (columna) al conjunto de datos. Por ejemplo, añadirán la duración de una encuesta, añadiran la categoría de puntaje de consumo de alimentos, etc.
 

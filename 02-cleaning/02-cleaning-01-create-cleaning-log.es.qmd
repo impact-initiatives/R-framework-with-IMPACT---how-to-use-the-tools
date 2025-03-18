@@ -1,6 +1,5 @@
 ---
 title: "01 - Creando un registro de limpieza"
-author: "Yann Say"
 date: last-modified
 
 ---

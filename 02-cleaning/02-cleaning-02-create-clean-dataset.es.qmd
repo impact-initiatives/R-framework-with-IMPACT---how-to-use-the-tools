@@ -1,6 +1,5 @@
 ---
 title: "02 - Crear un conjunto de datos limpios"
-author: "Yann Say"
 date: last-modified
 
 ---

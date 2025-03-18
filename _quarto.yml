@@ -82,8 +82,12 @@ babelquarto:
   languages: ['es', 'fr']
 title-es: Intoducciòn al Marco R en IMPACT Initiatives
 title-fr: Introduction au cadre R chez IMPACT Initiatives
-description-es: description in es
-description-fr: description in fr
-author-es: author in es
-author-fr: author in fr
 lang: en
+author:
+  - name: Yann Say
+    role: "Author and traduction"
+  - name: Laura Grave de Peralta
+    role: "Traduction to Spanish"
+  - name: Gregory Maulet-Toucher
+    role: "Traduction to French"
+

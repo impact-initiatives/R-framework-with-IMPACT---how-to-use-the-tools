@@ -1,6 +1,5 @@
 ---
 title: "02 - Ajouter, durée, et autres"
-author: "Yann Say"
 date: last-modified
 
 ---
@@ -26,7 +25,7 @@ more_logs <- my_raw_dataset %>%
 ::: {.callout-tip appearance="minimal"}
 ### add\_\* (ajouter)
 
-![](../config/images/verb%20-%20add.png)
+![](../config/images/verb - add.png)
 
 Les fonctions **add\_**\* ajouteront une variable (colonne) à l'ensemble de données. Par exemple, pour ajouter la durée d'une enquête, pour ajouter la catégorie de score de consommation alimentaire, etc.
 

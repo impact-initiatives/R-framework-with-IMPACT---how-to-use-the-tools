@@ -1,6 +1,5 @@
 ---
 title: "01 - Revoir une analyse"
-author: "Yann Say"
 date: last-modified
 
 ---

@@ -1,6 +1,5 @@
 ---
 title: "03 - Vérification logique avec liste"
-author: "Yann Say"
 date: last-modified
 
 ---

@@ -1,6 +1,5 @@
 ---
 title: "03 - Review cleaning"
-author: "Yann Say"
 date: last-modified
 
 ---

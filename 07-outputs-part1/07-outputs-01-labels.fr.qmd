@@ -1,8 +1,18 @@
 ---
 title: "01 - Étiquettes"
-author: "Yann Say"
 date: last-modified
 ---
+
+Le cadre est construit autour de 4 étapes : nettoyage, composition, analyse, résultats.
+
+-   **Nettoyage** : toute manipulation nécessaire pour passer des données brutes aux données propres.
+-   **Composition** : toute manipulation préalable à l'analyse, par exemple l'ajout d'indicateurs, l'ajout d'informations provenant de la boucle ou des données principales, l'agrégation AOK, etc.
+-   **Analyse** : toute manipulation liée à l'analyse uniquement.
+-   **Résultats** : toute manipulation nécessaire à la mise en forme des résultats.
+
+La section suivante présente une introduction sur les résultats.
+
+![](../config/images/step - outputs.png)
 
 ```{r}
 #| message: false
@@ -54,7 +64,7 @@ L'ajout des étiquettes au tableau des résultats se fera en trois étapes :
 Pour commencer, il faut revoir l'outil KOBO pour voir s'il n'y a pas d'étiquettes, de noms, etc. en double. Cela causera des problèmes par la suite. Dans l'exemple suivant, l'utilisation de `review_kobo_labels` en passant la table des résultats va regarder les noms des variables présents dans les résultats, et non pas toutes les variables.
 
 ::: {.callout-note .column-margin}
-La version actuelle tient compte de tous les choix, au lieu de celui qui figure dans le tableau. Elle sera modifiée ultérieurement.
+La version actuelle tient compte de tous les choix, au lieu de ceux qui figurent uniquement dans le tableau de résultats. Elle sera modifiée ultérieurement.
 :::
 
 ```{r}

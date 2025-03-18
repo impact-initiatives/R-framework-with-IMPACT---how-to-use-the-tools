@@ -1,6 +1,5 @@
 ---
-title: "02 - Tableau"
-author: "Yann Say"
+title: "02 - Tableaux"
 date: last-modified
 ---
 
@@ -12,16 +11,6 @@ library(presentresults)
 my_results_table <- presentresults::presentresults_resultstable
 ```
 
-Le cadre est construit autour de 4 étapes : nettoyage, composition, analyse, résultats.
-
--   **Nettoyage** : toute manipulation nécessaire pour passer des données brutes aux données propres.
--   **Composition** : toute manipulation préalable à l'analyse, par exemple l'ajout d'indicateurs, l'ajout d'informations provenant de la boucle ou des données principales, l'agrégation AOK, etc.
--   **Analyse** : toute manipulation liée à l'analyse uniquement.
--   **Résultats** : toute manipulation nécessaire à la mise en forme des résultats.
-
-La section suivante présente une introduction sur les résultats.
-
-![](../config/images/step%20-%20outputs.png)
 
 Il existe actuellement deux types de tableaux :
 
@@ -36,7 +25,7 @@ La transformation d'un tableau de résultats se fait en deux étapes :
 ::: {.callout-tip appearance="minimal"}
 ### Créer (create\_\*)
 
-![](../config/images/verb%20-%20create.png)
+![](../config/images/verb - create.png)
 
 Les fonctions **create\_**\* créeront, transformeront quelque chose, par exemple, créer un journal de nettoyage avec les vérifications à remplir, créer une table de résultats d'analyse, créer un résultat.
 
@@ -55,7 +44,7 @@ my_results_table %>%
   create_xlsx_group_x_variable(file_path = "../outputs/04 - example - group_x_variable.xlsx", overwrite = T)
 ```
 
-![](../config/images/table%20group%20x%20variables.png)
+![](../config/images/table group x variables.png)
 
 ## create\_\*\_variable_x_group
 
@@ -67,9 +56,9 @@ my_results_table %>%
   create_xlsx_variable_x_group(file_path = "../outputs/05 - example - variable_x_group.xlsx", overwrite = T)
 ```
 
-![](../config/images/table%20variables%20x%20group.png)
+![](../config/images/table variables x group.png)
 
 ## Téléchargements
 
--   [04 - example - group_x_variable](../outputs/04%20-%20example%20-%20group_x_variable.xlsx)
--   [05 - example - variable_x_group](../outputs/05%20-%20example%20-%20variable_x_group.xlsx)
+-   [04 - example - group_x_variable](../outputs/04 - example - group_x_variable.xlsx)
+-   [05 - example - variable_x_group](../outputs/05 - example - variable_x_group.xlsx)

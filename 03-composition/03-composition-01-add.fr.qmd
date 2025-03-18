@@ -1,6 +1,5 @@
 ---
 title: "01 - Ajouter des indicateurs"
-author: "Yann Say"
 date: last-modified
 
 ---

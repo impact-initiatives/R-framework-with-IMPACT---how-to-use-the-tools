@@ -1,6 +1,5 @@
 ---
 title: "02 - Revoir les indicateurs"
-author: "Yann Say"
 date: last-modified
 
 ---

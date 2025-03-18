@@ -1,6 +1,5 @@
 ---
 title: "03 - Pratique (3)"
-author: "Yann Say"
 date: last-modified
 
 ---

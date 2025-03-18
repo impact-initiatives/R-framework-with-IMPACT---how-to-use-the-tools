@@ -1,8 +1,18 @@
 ---
 title: "01 - Labels"
-author: "Yann Say"
 date: last-modified
 ---
+
+El marco se basa en 4 pasos: limpieza, composición, análisis, resultados
+
+-   **Limpieza**: Cualquier manipulación para pasar de los datos sin procesar a los datos limpios.
+-   **Composición**: Cualquier manipulación antes del análisis, por ejemplo, agregar indicadores, añadir información de bucles, conjunto de datos principal u otros conjuntos de datos (por ejemplo, rondas anteriores), agregación aok, etc.
+-   **Análisis**: Cualquier manipulación que se refiera únicamente al análisis.
+-   **Resultados**: Cualquier manipulación para dar formato a los resultados. Los resultados se crean a partir de la tabla de resultados, de la clave de análisis + estadística.
+
+La siguiente sección presentará una introducción sobre los resultados.
+
+![](../config/images/step - outputs.png)
 
 ```{r}
 #| message: false

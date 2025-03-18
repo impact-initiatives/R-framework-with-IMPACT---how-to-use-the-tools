@@ -1,6 +1,5 @@
 ---
 title: "01 - Verificaciones"
-author: "Yann Say"
 date: last-modified
 
 ---
@@ -8,7 +7,7 @@ date: last-modified
 
 En esta sección, se presentan ciertas herramientas para la verificación de un conjunto de datos.
 
-![](../config/images/step%20-%20cleaning.png)
+![](../config/images/step - cleaning.png)
 
 ```{r}
 #| warning: false
@@ -23,7 +22,7 @@ my_kobo_choice <- cleaningtools::cleaningtools_choices
 ::: {.callout-tip appearance="minimal"}
 ### check\_\*
 
-![](../config/images/verb%20-%20check.png)
+![](../config/images/verb - check.png)
 
 Las funciones de tipo check_* marcarán valores basándose en una verificación específica. Retornarán estos valores en un registro. Una función check_* devolverá una lista: el conjunto de datos verificado y el registro.
 

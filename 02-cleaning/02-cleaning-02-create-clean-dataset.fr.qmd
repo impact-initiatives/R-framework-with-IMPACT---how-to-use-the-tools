@@ -1,6 +1,5 @@
 ---
 title: "02 - Créer le jeu de données nettoyé (clean dataset)"
-author: "Yann Say"
 date: last-modified
 
 ---

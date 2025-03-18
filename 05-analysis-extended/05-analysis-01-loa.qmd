@@ -1,6 +1,5 @@
 ---
 title: "01 - List of analysis"
-author: "Yann Say"
 date: last-modified
 
 ---

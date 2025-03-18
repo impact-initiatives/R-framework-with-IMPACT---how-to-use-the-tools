@@ -1,6 +1,5 @@
 ---
 title: "01 - Vérifications"
-author: "Yann Say"
 date: last-modified
 
 ---
@@ -8,7 +7,7 @@ date: last-modified
 
 La section suivante présentera une introduction à l'étape de nettoyage.
 
-![](../config/images/step%20-%20cleaning.png)
+![](../config/images/step - cleaning.png)
 
 ```{r}
 #| warning: false
@@ -23,7 +22,7 @@ my_kobo_choice <- cleaningtools::cleaningtools_choices
 ::: {.callout-tip appearance="minimal"}
 ### check\_\* (vérifier)
 
-![](../config/images/verb%20-%20check.png)
+![](../config/images/verb - check.png)
 
 Les fonctions **check\_**\* (vérifier) onctions qui  signalent des valeurs sur la base d'une vérification spécifique. Elles renvoient ces valeurs dans un registre (ou journal). Une fonction \*check\_\*\* renvoie une liste : l'ensemble de données vérifié et le registre(journal). 
 
