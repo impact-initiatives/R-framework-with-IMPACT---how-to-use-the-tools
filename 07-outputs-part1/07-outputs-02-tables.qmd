@@ -1,6 +1,5 @@
 ---
 title: "02 - Tables"
-author: "Yann Say"
 date: last-modified
 ---
 # Outputs - Wide tables
@@ -11,16 +10,6 @@ library(presentresults)
 my_results_table <- presentresults::presentresults_resultstable
 ```
 
-The framework is built around 4 steps: cleaning, composition, analysis, outputs
-
--   *Cleaning*: Any manipulation to go from the raw data to the clean data
--   *Composition*: Any manipulation before the analysis e.g. adding indicators, adding information from loop, main dataset, or any other dataset (e.g. previous round), aok aggregation, etc.
--   *Analysis*: Any manipulation regarding only the analysis. 
--   *Outputs*: Any manipulation to format the outputs. Outputs are created from the results table, from the stat + analysis key
-
-The following section will present some introduction about the outputs.
-
-![](../config/images/step - outputs.png)
 
 There are currently two types of table: 
 

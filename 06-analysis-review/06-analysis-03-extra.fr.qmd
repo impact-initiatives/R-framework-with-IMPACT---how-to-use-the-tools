@@ -1,6 +1,5 @@
 ---
 title: "03 - Modèles de revue"
-author: "Yann Say"
 date: last-modified
 
 ---

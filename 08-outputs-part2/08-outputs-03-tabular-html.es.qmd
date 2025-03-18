@@ -1,6 +1,5 @@
 ---
 title: "03 - Tabular html"
-author: "Yann Say"
 date: last-modified
 ---
 # Resultados - HTML Tabular

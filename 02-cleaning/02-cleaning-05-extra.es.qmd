@@ -1,6 +1,5 @@
 ---
 title: "05 - Plantillas de revisión"
-author: "Yann Say"
 date: last-modified
 
 ---

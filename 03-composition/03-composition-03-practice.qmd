@@ -1,6 +1,5 @@
 ---
 title: "03 - Practice (3)"
-author: "Yann Say"
 date: last-modified
 
 ---

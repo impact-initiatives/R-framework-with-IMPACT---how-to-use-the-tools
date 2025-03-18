@@ -1,6 +1,5 @@
 ---
 title: "01 - Analyse simple"
-author: "Yann Say"
 date: last-modified
 ---
 
@@ -15,7 +14,7 @@ Le cadre est construit autour de 4 étapes : nettoyage, composition, analyse, r�
 
 La section suivante présentera une introduction à l'analyse.
 
-![](../config/images/step%20-%20analysis.png)
+![](../config/images/step - analysis.png)
 
 La troisième étape du framework est l'analyse. L'étape d'analyse vise à créer une table longue avec un résultat par ligne et une clé d'analyse (**analysis key**). Cette table n'est pas destinée à être lue par un humain mais à stocker des informations. L'analyse s'arrête à la table des résultats : format long, statistiques + clé d'analyse.
 
@@ -34,7 +33,7 @@ Toute fonction **create_analysis\_** nécessitera un objet *survey design* pour 
 ::: {.callout-tip appearance="minimal"}
 ### create\_\*
 
-![](../config/images/verb%20-%20create.png)
+![](../config/images/verb - create.png)
 
 Les fonctions **create\_**\* créeront, transformeront quelque chose, par exemple, créer un journal de nettoyage avec les vérifications à remplir, créer une table de résultats d'analyse, créer un résultat.
 

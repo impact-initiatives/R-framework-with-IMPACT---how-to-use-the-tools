@@ -1,6 +1,5 @@
 ---
 title: "01 - ggplot2 theme"
-author: "Yann Say"
 date: last-modified
 ---
 ```{r setup}

@@ -1,6 +1,5 @@
 ---
 title: "02 - Tableaux pour les cartes"
-author: "Yann Say"
 date: last-modified
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: "02 - Ratio"
-author: "Yann Say"
 date: last-modified
 
 ---

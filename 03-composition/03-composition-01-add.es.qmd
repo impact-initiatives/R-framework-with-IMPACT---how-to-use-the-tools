@@ -1,6 +1,5 @@
 ---
 title: "01 - Añadir indicadores"
-author: "Yann Say"
 date: last-modified
 
 ---
@@ -8,10 +7,10 @@ date: last-modified
 
 El marco se basa en 4 etapas : limpieza, composición, análisis, resultados.
 
--   *Limpieza*: cualquier manipulación necesaria para pasar de los datos brutos a los datos limpios.
--   *Composición*: cualquier manipulaciòn anterior al análisis p.ej., añadir indicadores, añadir información proveniente del bucle o del dato principal , agragación por AOK, etc.
--   *Análisis*: cualquier manipulaciòn que sea relativa al análisis unicamente.
--   *Resultados*: cualquier manipulaciòn necesaria para formatear los resultados.
+-   **Limpieza**: cualquier manipulación necesaria para pasar de los datos brutos a los datos limpios.
+-   **Composición**: cualquier manipulaciòn anterior al análisis p.ej., añadir indicadores, añadir información proveniente del bucle o del dato principal , agragación por AOK, etc.
+-   **Análisis**: cualquier manipulaciòn que sea relativa al análisis unicamente.
+-   **Resultados**: cualquier manipulaciòn necesaria para formatear los resultados.
 
 En la siguiente sección miraremos ciertas funciones usadas durante la etapa de composición.
 

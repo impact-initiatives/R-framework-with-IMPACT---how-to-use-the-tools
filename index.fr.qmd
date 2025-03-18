@@ -1,6 +1,5 @@
 ---
 title: "01 - Cadre R avec IMPACT Initiatives"
-author: "Yann Say"
 date: last-modified
 
 ---

@@ -1,6 +1,5 @@
 ---
 title: "01 - Checks"
-author: "Yann Say"
 date: last-modified
 
 ---
@@ -8,7 +7,7 @@ date: last-modified
 
 The following section will present some introduction about the cleaning.
 
-![](../config/images/step%20-%20cleaning.png)
+![](../config/images/step - cleaning.png)
 
 ```{r}
 #| warning: false
@@ -23,7 +22,7 @@ my_kobo_choice <- cleaningtools::cleaningtools_choices
 ::: {.callout-tip appearance="minimal"}
 ### check\_\*
 
-![](../config/images/verb%20-%20check.png)
+![](../config/images/verb - check.png)
 
 **check\_**\* functions will flag values based on a specific check. It will return them in a log. A \*check\_\*\* will return a list: the checked dataset, and the log.
 

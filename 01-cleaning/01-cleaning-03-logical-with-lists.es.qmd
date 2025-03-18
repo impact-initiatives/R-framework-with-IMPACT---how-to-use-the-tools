@@ -1,6 +1,5 @@
 ---
 title: "03 - Verificación con lista de lógicas"
-author: "Yann Say"
 date: last-modified
 
 ---

@@ -1,6 +1,5 @@
 ---
 title: "03 - Review template"
-author: "Yann Say"
 date: last-modified
 
 ---

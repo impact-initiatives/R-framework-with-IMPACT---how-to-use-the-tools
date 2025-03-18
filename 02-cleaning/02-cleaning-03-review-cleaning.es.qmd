@@ -1,6 +1,5 @@
 ---
 title: "03 - Revisar la limpieza"
-author: "Yann Say"
 date: last-modified
 
 ---

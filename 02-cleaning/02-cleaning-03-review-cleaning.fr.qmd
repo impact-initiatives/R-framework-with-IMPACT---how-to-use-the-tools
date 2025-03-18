@@ -1,6 +1,5 @@
 ---
 title: "03 - Revue du nettoyage"
-author: "Yann Say"
 date: last-modified
 
 ---

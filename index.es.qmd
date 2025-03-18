@@ -1,6 +1,5 @@
 ---
 title: "01 - El marco R con IMPACT Initiatives"
-author: "Yann Say"
 date: last-modified
 
 ---

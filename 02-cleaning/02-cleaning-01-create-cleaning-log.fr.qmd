@@ -1,6 +1,5 @@
 ---
 title: "01 - Créer un journal de nettoyage (cleaning log)"
-author: "Yann Say"
 date: last-modified
 
 ---

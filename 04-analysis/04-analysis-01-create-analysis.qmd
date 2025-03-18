@@ -1,6 +1,5 @@
 ---
 title: "01 - Simple analysis"
-author: "Yann Say"
 date: last-modified
 
 ---
@@ -8,10 +7,10 @@ date: last-modified
 
 The framework is built around 4 steps: cleaning, composition, analysis, outputs
 
--   *Cleaning*: any manipulation to go from the raw data to the clean data
--   *Composition*: any manipulation before the analysis e.g. adding indicators, adding information from loop or main, aok aggregation, etc.
--   *Analysis*: any manipulation regarding only the analysis
--   *Outputs*: any manipulation to format the outputs.
+-   **Cleaning**: any manipulation to go from the raw data to the clean data
+-   **Composition**: any manipulation before the analysis e.g. adding indicators, adding information from loop or main, aok aggregation, etc.
+-   **Analysis**: any manipulation regarding only the analysis
+-   **Outputs**: any manipulation to format the outputs.
 
 The following section will present some introduction about the analysis.
 

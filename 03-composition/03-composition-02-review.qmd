@@ -1,6 +1,5 @@
 ---
 title: "02 - Review indicators"
-author: "Yann Say"
 date: last-modified
 
 ---
