@@ -62,25 +62,25 @@ exercise_data <- addindicators::addindicators_MSNA_template_data %>%
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Développer pour obtenir un indice
+### Agrandir pour obtenir un indice
 
 Avez-vous essayé la fonction `add_fcm_phase` ?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Développer pour obtenir un indice
+### Agrandir pour obtenir un indice
 
 La matrice de consommation alimentaire nécessite 3 indicateurs : FCS, rCSI, HHS.
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Développer pour obtenir un indice
+### Agrandir pour obtenir un indice
 
 Avez-vous utilisé la bonne variable de catégorie HHS ?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Développer pour obtenir la réponse
+### Ouvrir pour obtenir la réponse.
 
 
 
@@ -116,19 +116,19 @@ dataset_without_indicators <- addindicators::addindicators_MSNA_template_data
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Développer pour obtenir un indice
+### Agrandir pour obtenir un indice
 
 Avez-vous essayé la fonction `review_variables` ?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Développer pour obtenir un indice
+### Agrandir pour obtenir un indice
 
 Comment le FCS a-t-il été créé ?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Développer pour obtenir un indice
+### Agrandir pour obtenir un indice
 
 Comment la catégorie pour le HHS a-t-elle été codée ?
 Les noms dans le jeu de données sont : "hhs_cat", "hhs_score"
@@ -136,7 +136,7 @@ Les noms créés avec `add_hhs` sont : "fsl_hhs_cat", "fsl_hhs_score"
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Développer pour obtenir la réponse
+### Ouvrir pour obtenir la réponse.
 
 
 ```{r}

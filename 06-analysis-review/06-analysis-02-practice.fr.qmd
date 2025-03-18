@@ -1,16 +1,17 @@
 ---
-title: "02 - Practice (6)"
+title: "02 - Pratique (6)"
 author: "Yann Say"
 date: last-modified
 
 ---
-# Practices
+# Pratique
 
-## Practice 1
+## Pratique 1
 
-- Review this analysis 
+- Revoit cette analyse 
 
-There is no weights. The strata are **admin1**
+Il n'y a pas de pondération. Les strates sont **admin1**
+
 ```{r}
 #| message: false
 library(analysistools)
@@ -21,7 +22,7 @@ dataset_to_review <- readxl::read_excel("../inputs/10 - exercise - analysis_to_r
 ```
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Agrandir pour obtenir la réponse
 
 ```{r}
 loa_for_review <- analysis_to_review %>% 
@@ -50,16 +51,16 @@ exercise_review$review_table %>%
 
 ## Extra
 
-How you would review an analysis that does not have an analysis key? (discussion)
+Comment réviser une analyse qui n'a pas de clé d'analyse (discussion) ?
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Agrandir pour obtenir la réponse
 
-- If the analysis is in long format, add the analysis key.
-- If the analysis is in a wide format, change to long format then add the analysis key.
+- Si l'analyse est en format long, ajouter la clé d'analyse.
+- Si l'analyse est en format large, passer en format long puis ajouter la clé d'analyse.
 
 :::
 
-## Downloads
+## Téléchargements
 
 - [10 - exercise - analysis_to_review](../inputs/10 - exercise - analysis_to_review.xlsx)

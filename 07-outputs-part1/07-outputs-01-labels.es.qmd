@@ -8,7 +8,6 @@ date: last-modified
 #| message: false
 library(presentresults)
 library(dplyr)
-# load dataset and kobo
 results_table <- presentresults_MSNA2024_results_table
 
 kobo_survey <- presentresults_MSNA2024_kobotool_template$kobo_survey
@@ -22,7 +21,7 @@ results_table[c(1,9), c("analysis_var", "group_var", "group_var_value")]
 
 ```
 
-Con la herramienta KOBO, las hojas de encuesta (survey) y opciones (choices) siempre tienen al menos una columna de etiqueta (típicamente, label::Spanish) que muestra cómo deben leerse las preguntas y opciones. Esta columna puede utilizarse para etiquetar la tabla de resultados.
+Con la herramienta KOBO, las hojas de encuesta (`survey`) y opciones (`choices`) siempre tienen al menos una columna de etiqueta (típicamente, label::Spanish) que muestra cómo deben leerse las preguntas y opciones. Esta columna puede utilizarse para etiquetar la tabla de resultados.
 
 ```{r}
 kobo_survey |>
@@ -151,7 +150,7 @@ label_dictionary$analysis_type_dictionary |> head(10)
 El `analysis_type_dictionary` siempre estará en inglés; si desea modificarlo, consulte el ejemplo de la función.
 :::
 
-## Agregar la etiqueta
+## Agregar las etiquetas
 
 Finalmente, al usar `add_label_columns_to_results_table`, se añadirán las columnas de etiquetas a la tabla de resultados.
 

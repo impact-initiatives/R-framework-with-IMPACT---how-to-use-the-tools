@@ -8,12 +8,12 @@ date: last-modified
 
 # Composition - Ajouter des indicateurs
 
-Le cadre est structuré en 4 étapes : nettoyage, composition, analyse, sorties
+Le cadre est construit autour de 4 étapes : nettoyage, composition, analyse, résultats.
 
--   *Nettoyage* : toute manipulation permettant de passer des données brutes aux données nettoyées
--   *Composition* : toute manipulation avant l'analyse, par ex. ajout d'indicateurs, ajout d'informations à partir de loop ou main, agrégation aok, etc.
--   *Analyse* : toute manipulation concernant uniquement l'analyse
--   *Sorties* : toute manipulation pour formater les résultats.
+-   **Nettoyage** : toute manipulation nécessaire pour passer des données brutes aux données propres.
+-   **Composition** : toute manipulation préalable à l'analyse, par exemple l'ajout d'indicateurs, l'ajout d'informations provenant de la boucle ou des données principales, l'agrégation AOK, etc.
+-   **Analyse** : toute manipulation liée à l'analyse uniquement.
+-   **Résultats** : toute manipulation nécessaire à la mise en forme des résultats.
 
 La section suivante présentera une introduction à la composition.
 

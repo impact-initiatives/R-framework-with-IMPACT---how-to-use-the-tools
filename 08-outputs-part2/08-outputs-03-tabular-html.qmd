@@ -10,13 +10,13 @@ The folders *templates-quarto*  are example of Quarto projects. They can be used
 ![](../config/images/tabular_html_folder.png)
 ![](../config/images/tabular_html_quarto_file.png)
 
-The params in the header can be change. Use *Render* after to create the html output.
+The `params` in the header can be change. Use *Render* after to create the html output.
 
 ![](../config/images/tabular_html_output.png)
 
 
 ::: {.callout-note .column-margin}
-**The following is work in progress.** It will later become something like *create_html_variable_x_group*.
+**This is a work in progress**. There's still a lot to do
 :::
 
 ## Downloads

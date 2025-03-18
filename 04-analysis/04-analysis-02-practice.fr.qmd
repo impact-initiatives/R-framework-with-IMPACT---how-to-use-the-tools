@@ -35,13 +35,13 @@ Avec le jeu de données *exercise_data*, veuillez faire ce qui suit :
 - Créez une table de résultats au niveau **respondent_gender**. Conservez les strates au niveau **admin1**.
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Développer pour obtenir un indice
+### Agrandir pour obtenir un indice
 
 Avez-vous essayé l'argument *group_var* dans `create_analysis` ?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Développer pour obtenir la réponse
+### Agrandir pour obtenir la réponse
 
 
 ```{r}
@@ -66,19 +66,19 @@ sampling_frame
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Développer pour obtenir un indice
+### Agrandir pour obtenir un indice
 
 Avez-vous essayé la fonction *add_weights* ?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Développer pour obtenir un indice
+### Agrandir pour obtenir un indice
 
 Avez-vous modifié votre *survey design* ?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Développer pour obtenir la réponse
+### Agrandir pour obtenir la réponse
 
 
 ```{r}

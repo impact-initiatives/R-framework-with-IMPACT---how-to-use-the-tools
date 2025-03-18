@@ -1,5 +1,5 @@
 ---
-title: "02 - Tables for maps"
+title: "02 - Tableaux pour les cartes"
 author: "Yann Say"
 date: last-modified
 ---
@@ -16,28 +16,28 @@ set.seed(12344)
 results_table$stat <-runif(nrow(results_table))
 ```
 
-This vignette will show an example of how to create a table for the MSNA Indicator Maps 1.2 tool.
+Cette vignette montre un exemple de création d'un tableau pour l'outil MSNA Indicator Maps 1.2.
 
 ## `create_table_for_map`
 
-La tabla de resultados (generada aleatoriamente) que se muestra a continuación presenta los resultados en formato largo para 7 indicadores y a nivel administrativo 1:
+Le tableau de résultats (généré aléatoirement) ci-dessous présente les résultats en format long pour 7 indicateurs et au niveau administratif 1 :
 
-- **msni_in_need**: Puntaje del Índice de Necesidades Multisectoriales  
-- **comp_health_in_need**: Puntaje compuesto sectorial de Salud  
-- **comp_prot_in_need**: Puntaje compuesto sectorial de Protección  
-- **comp_edu_in_need**: Puntaje compuesto sectorial de Educación  
-- **comp_foodsec_in_need**: Puntaje compuesto sectorial de Seguridad Alimentaria  
-- **comp_wash_in_need**: Puntaje compuesto sectorial de Agua, Saneamiento e Higiene  
-- **comp_snfi_in_need**: Puntaje compuesto sectorial de Refugio y Artículos No Alimentarios  
-- **admin1**: **PCODE1** y **PCODE2**.  
+- **msni_in_need** : score de l'indice des besoins multisectoriels  
+- **comp_health_in_need** : Score composite du secteur de la santé  
+- **comp_prot_in_need** : score composite du secteur de la protection  
+- **comp_edu_in_need** : Score composite du secteur de l'éducation  
+- **comp_foodsec_in_need** : Score composite du secteur de la sécurité alimentaire  
+- **comp_wash_in_need** : score composite du secteur de l'eau, de l'assainissement et de l'hygiène
+- **comp_snfi_in_need** : score composite sectoriel pour les abris et les articles non alimentaires
+- **admin1** : **PCODE1** et **PCODE2**.  
 
-La columna **stat** representa los porcentajes.
+La colonne **stat** représente des pourcentages.
 
 ```{r}
 head(results_table)
 ```
 
-Maps can only show one information per admin level. First thing is to filter the results table for the information to get the information to be map. In the example, the analysis variable value can be 1 or 0, where 1 means "in need", and 0 means "not in need". The map will show the percentages of household in needs, the results will be filtered for 1. Then the function `create_table_for_map` can be used.
+Les cartes ne peuvent afficher qu'une seule information par niveau d'administration. La première chose à faire est de filtrer le tableau des résultats pour obtenir les informations à cartographier. Dans l'exemple, la valeur de la variable d'analyse peut être 1 ou 0, où 1 signifie « dans le besoin » et 0 signifie « pas dans le besoin ». La carte montrera les pourcentages de ménages dans le besoin, les résultats seront filtrés pour 1. La fonction `create_table_for_map` peut ensuite être utilisée.
 
 ```{r}
 results_table_filtered <- results_table |> 
@@ -49,7 +49,7 @@ results_table_recoded_5_classes <- results_table_filtered %>%
 results_table_recoded_5_classes
 ```
 
-If you want to use 6 classes, set the argument `number_classes` to 6.
+Si vous voulez utiliser 6 classes, mettez l'argument `nombre_classes` à 6.
 
 ```{r}
 results_table_filtered %>% 
@@ -57,21 +57,21 @@ results_table_filtered %>%
 ```
 
 
-There can be 5 or 6 classes as follow:
+Il peut y avoir 5 ou 6 classes comme suit :
 
 :::: {.columns}
 
 ::: {.column width="45%"}
 ### 5 classes
 
-| Class | Value         |
-|-------|---------------|
-| 1     | 0             |
-| 2     | \<= 25%       |
-| 3     | \<= 50%       |
-| 4     | \<= 75%       |
-| 5     | \<= 100%      |
-| empty | Anything else |
+| Classe | Valeurs         |
+|--------|-----------------|
+| 1      | 0               |
+| 2      | \<= 25%         |
+| 3      | \<= 50%         |
+| 4      | \<= 75%         |
+| 5      | \<= 100%        |
+| empty  | Anything else   |
 :::
 
 ::: {.column width="10%"}
@@ -81,22 +81,22 @@ There can be 5 or 6 classes as follow:
 ::: {.column width="45%"}
 ### 6 classes
 
-| Class | Value         |
-|-------|---------------|
-| 1     | 0             |
-| 2     | \<= 20%       |
-| 3     | \<= 40%       |
-| 4     | \<= 60%       |
-| 5     | \<= 80%       |
-| 6     | \<= 100%      |
-| empty | Anything else |
+| Classe | Valeurs         |
+|--------|-----------------|
+| 1      | 0               |
+| 2      | \<= 20%         |
+| 3      | \<= 40%         |
+| 4      | \<= 60%         |
+| 5      | \<= 80%         |
+| 6      | \<= 100%        |
+| empty  | Anything else   |
 :::
 
 ::::
 
-## Troubleshooting
+## Problème possible
 
-If you have more than one value per indicator and admin level, you should get a warning from tidyr. You can use it to explore where the problem lies.
+Si vous avez plus d'une valeur par indicateur et par niveau d'administration, vous devriez recevoir un avertissement de `tidyr`. Vous pouvez l'utiliser pour déterminer où se situe le problème.
 
 ```{r}
 results_table %>% 
@@ -108,12 +108,13 @@ results_table |>
   dplyr::filter(n > 1L)
 ```
 
-In this case there are 2 values for each combination of *group_var_value* and *analysis_var*.
+Dans ce cas, il y a 2 valeurs pour chaque combinaison de *group_var_value* et *analysis_var*.
 
 ```{r}
 results_table |>
   filter(group_var_value == "PCODE1" & analysis_var == "msni_in_need")
 ```
-There are two values, maps can only show one. The results table should be filtered to one value only.
 
-This is section comes from this [vignette](https://impact-initiatives.github.io/presentresults/articles/create-table-for-map.html). 
+Il y a deux valeurs, les cartes ne peuvent en afficher qu'une. Le tableau des résultats doit être filtré sur une seule valeur.
+
+Cette section est issue de cette [vignette](https://impact-initiatives.github.io/presentresults/articles/create-table-for-map.html). 

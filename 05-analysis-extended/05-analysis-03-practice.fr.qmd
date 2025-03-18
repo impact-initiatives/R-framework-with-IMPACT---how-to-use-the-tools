@@ -56,14 +56,14 @@ template_loa <- readxl::read_excel("../inputs/08 - exercise - template loa.xlsx"
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Développer pour obtenir un indice
+### Agrandir pour obtenir la réponse
 
 *rCSIMealAdult* doit être analysé comme une variable catégorielle et non numérique pour obtenir la proportion par jour.
 
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Développer pour obtenir la réponse
+### Agrandir pour obtenir la réponse
 
 
 ```{r}

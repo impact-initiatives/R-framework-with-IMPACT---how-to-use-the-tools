@@ -27,19 +27,19 @@ previous_exercise_log %>% names()
 
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Ouvrir pour obtenir un indice.
+### Agrandir pour obtenir un indice
 
 Avez-vous essayé la fonction `create_combined_log`
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Ouvrir pour obtenir un indice.
+### Agrandir pour obtenir un indice
 
 Avez-vous essayé la fonction `create_xlsx_cleaning_log`
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Ouvrir pour obtenir la réponse.
+### Agrandir pour obtenir la réponse
 
 ```{r}
 #| output: false
@@ -63,19 +63,19 @@ exercise_filled_log <- readxl::read_excel("../inputs/04 - exercise - cleaning_lo
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Ouvrir pour obtenir un indice.
+### Agrandir pour obtenir un indice
 
 Avez-vous essayé la fonction `create_clean_data`
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Ouvrir pour obtenir un indice.
+### Agrandir pour obtenir un indice
 
 Avez-vous essayé la fonction `recreate_parent_column`
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Ouvrir pour obtenir la réponse.
+### Agrandir pour obtenir la réponse
 
 ```{r}
 #| output: false
@@ -110,19 +110,19 @@ exercise3_cleaning_log <- readxl::read_excel("../inputs/05 - exercise - clean da
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Ouvrir pour obtenir un indice.
+### Agrandir pour obtenir un indice
 
 Avez-vous essayé la fonction `review_cleaning`
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Ouvrir pour obtenir un indice.
+### Agrandir pour obtenir un indice
 
 Avez-vous bien séparé le journal?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Ouvrir pour obtenir la réponse.
+### Agrandir pour obtenir la réponse
 
 ```{r}
 #| output: false

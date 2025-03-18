@@ -1,13 +1,13 @@
 ---
-title: "04 - Practice (8)"
+title: "04 - Pratique (8)"
 author: "Yann Say"
 date: last-modified
 ---
-# Practice
+# Pratique
 
-## Practice 1
+## Pratique 1
 
-- Add IMPACT theme to the following barplot `initialplot`
+- Ajouter le thème IMPACT au diagramme à barres `initialplot` suivant
 
 ```{r}
 #| message: false
@@ -43,25 +43,25 @@ initialplot
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Agrandir pour obtenir un indice
 
-Did you try the argument *palette* in `theme_barplot`?
+Avez-vous essayé l'argument *palette* dans `theme_barplot` ?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Agrandir pour obtenir un indice
 
-Have you looked at the object `impact_palettes`?
+Avez-vous consulté l'objet `impact_palettes` ?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Agrandir pour obtenir un indice
 
-Did you try the argument *initiative* in `theme_impact`?
+Avez-vous essayé l'argument *initiative* dans `theme_impact` ?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Agrandir pour obtenir la réponse
 
 ```{r}
 #| output: false
@@ -71,11 +71,11 @@ initialplot +
 ```
 :::
 
-## Practice 2
+## Pratique 2
+- Vous disposez du tableau de résultats suivant. Vous voulez créer une carte qui montre les pourcentages de ménages utilisant l'eau de surface (`surface_water`, **Surface water**) comme principale source d'eau potable (`wash_drinking_water_source_cat`, **Category of the drinking water source**) par niveau d'administration 1 (`admin1`, **Admin 1**). 
 
-- You have the following results table. You want to create a map that shows the percentages of households using surface water (`surface_water`, **Surface water**) as main drinking water source (`wash_drinking_water_source_cat`, **Category of the drinking water source**) per admin level 1 (`admin1`, **Admin 1**). 
+- Créez la table qui doit être partagée avec l'équipe SIG, la table doit avoir 5 classes (0, moins de 20%, moins de 40%, moins de 60%, moins de 80% et moins de 100%).
 
-- Create the table that should be share to the GIS team, the table should have 5 classes (0, less than 20%, less than 40%, less than 60%, less than 80% and less than 100%).
 
 ```{r}
 library(presentresults)
@@ -84,19 +84,18 @@ data_to_map <- presentresults::presentresults_MSNA2024_labelled_results_table
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
-
-Did you filter `data_to_map` for only *surface_water* in *wash_drinking_water_source_cat*?
+### Agrandir pour obtenir un indice
+Avez-vous filtré `data_to_map` uniquement pour *surface_water* dans *wash_drinking_water_source_cat* ?
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
-
-Did you filter `data_to_map` for only *admin1*?
+### Agrandir pour obtenir un indice
+Avez-vous filtré `data_to_map` pour seulement *admin1* ?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Agrandir pour obtenir la réponse
+
 ```{r}
 data_filtered <- data_to_map |> 
   filter(
@@ -111,12 +110,12 @@ results_table_recoded_5_classes
 ```
 :::
 
-## Practice 3
+## Pratique 3
 
-- Try the tabular html output. 
-- Try to edit the authors, RCID and the introduction.
+- Essayez les Tabular HTML. 
+- Essayez d'éditer les auteurs, le RCID et l'introduction.
 
-## Downloads
+## Téléchargements
 
 - [reach_tabular_html_example1](../templates-quarto/reach_tabular_html_example1.zip)
 - [reach_tabular_html_example2](../templates-quarto/reach_tabular_html_example2.zip)
