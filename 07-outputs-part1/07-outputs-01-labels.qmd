@@ -8,7 +8,6 @@ date: last-modified
 #| message: false
 library(presentresults)
 library(dplyr)
-# load dataset and kobo
 results_table <- presentresults_MSNA2024_results_table
 
 kobo_survey <- presentresults_MSNA2024_kobotool_template$kobo_survey
@@ -20,7 +19,7 @@ Most of the time, the information in a dataset will be using coding label, not v
 results_table[c(1,9), c("analysis_var", "group_var", "group_var_value")]
 
 ```
-With KOBO tool, the survey and choices sheets always always have at least one column label to show how the questions and choices should be read. It can be used to label the results table.
+With KOBO tool, the `survey` and `choices` sheets always always have at least one column label to show how the questions and choices should be read. It can be used to label the results table.
 ```{r}
 kobo_survey |>
   tail() |>
@@ -38,7 +37,7 @@ If there are new variables added to the dataset, they should also be added in th
 :::
 
 ::: {.callout-note .column-margin}
-If the labels should be changed to be better suited, you can add a new label column to the KOBO tool. It should be added to the survey and choice tab.
+If the labels should be changed to be better suited, you can add a new label column to the KOBO tool. It should be added to the survey and choice tabs.
 :::
 
 Adding the labels to the results table will be done in three steps:
@@ -146,7 +145,7 @@ label_dictionary$analysis_type_dictionary |> head(10)
 `analysis_type_dictionary` will always come in English, if you want to modify it please check the example of the function.
 :::
 
-## Add the label
+## Add the labels
 
 Finally, using `add_label_columns_to_results_table` will add the label columns to the results table.
 ```{r}

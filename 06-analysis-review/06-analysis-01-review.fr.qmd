@@ -1,10 +1,10 @@
 ---
-title: "01 - Review an analysis"
+title: "01 - Revoir une analyse"
 author: "Yann Say"
 date: last-modified
 
 ---
-# Analysis - Reviewing the analysis
+# Analyse - Revoir une analyse
 ```{r}
 #| warning: false
 #| output: false
@@ -18,7 +18,7 @@ my_results <- analysistools::analysistools_MSNA_template_no_ratio_results_table
 
 ## `create_loa_from_results`
 
-If the loa that was used was shared, it can be re-used. Otherwise, with the results table and the analysis key, the function `create_loa_from_results` will generate a loa that can be used to create the analysis for the review. 
+Si la loa utilisée a été partagée, elle peut être réutilisée. Dans le cas contraire, la fonction `create_loa_from_results` génère, à partir de la table des résultats et de la clé d'analyse, une loa qui peut être utilisé pour créer l'analyse pour la revue. 
 
 ```{r}
 my_loa_for_review <- my_results$results_table %>% 
@@ -28,23 +28,22 @@ my_loa_for_review
 ```
 
 ::: {.callout-note .column-margin}
-create_loa_from_results will not guess the arguments for `numerator_NA_to_0 ` and `filter_denominator_0 `, they will be set to TRUE by default.
+create_loa_from_results ne devinera pas les arguments pour `numerator_NA_to_0 ` et `filter_denominator_0 `, ils seront mis à VRAI par défaut.
 
-The confidence level will also be set to .95 by default.
+Le niveau de confiance sera également fixé à .95 par défaut.
 :::
 
 ## `review_analysis`
 
 ::: {.callout-tip appearance="minimal"}
-### review\_\*
+### Revoir (review\_\*)
 
 ![](../config/images/verb - review.png)
-
-**review\_**\* functions will review an object by comparing it to standards or another object and flags differences, e.g. reviewing the cleaning by comparing the raw dataset, the clean dataset and the cleaning log, analysis comparing it with another analysis. 
+Les fonctions **review\_**\* examineront un objet en le comparant à des normes ou à un autre objet et signaleront les différences, par exemple pour le nettoyage en comparant le jeu de données brut, le jeu de données nettoyé et le journal de nettoyage ; ou pour l’analyse en la comparant avec une autre analyse.
 
 :::
 
-`review_analysis` will compare 2 results together and present the differences. It will not check how the analysis was created nor check for inconsistencies. That mean, to review an analysis, it is necessary to create one and compare them. 
+`review_analysis` compare deux résultats et présente les différences. Il ne vérifiera pas la façon dont l'analyse a été créée ni les incohérences (strates, poids, etc). Cela signifie que pour revoir  une analyse, il est nécessaire d'en créer une et de les comparer. 
 
 ```{r}
 #| output: false
@@ -54,20 +53,24 @@ analysis_for_review <- create_analysis(my_design_for_review, my_loa_for_review, 
 binded_table <- my_results$results_table %>% 
   left_join(analysis_for_review$results_table, by = "analysis_key")
 ```
-The binded table, i.e. with both results columns, can then be used to compared the 2 results. It will give back the results table and a review table.
+Le tableau avec les deux colonnes de résultats peut être utilisé pour comparer les deux résultats. 
+
 ```{r}
 my_review <- review_analysis(binded_table)
 
 typeof(my_review)
 names(my_review)
 ```
-The review table will tell if there is any difference.
+
+`review_analysis` renvoie le tableau des résultats et un tableau de revue. Le tableau de revue. indiquera s'il y a une différence.
 
 ```{r}
 my_review$review_table %>%
   head()
 ```
-It can be summarise with the `group_by` and `tally` functions
+
+Les fonctions `group_by` et `tally` permettent de le résumer.
+
 ```{r}
 my_review$review_table %>%
   group_by(stat, review_check, review_comment) %>%
@@ -75,10 +78,11 @@ my_review$review_table %>%
 ```
 
 ::: {.callout-note .column-margin}
-*analysis_key* are equivalent of an unique identifier. All analysis key should be unique.
+Les *clés d'analyse* sont l'équivalent d'un identifiant unique. Toutes les clés d'analyse doivent être uniques.
 :::
 
-The following part adds some noise to show how difference would appear.
+La partie suivante mélange des résultats pour montrer comment les différences apparaissent.
+
 ```{r}
 jittered_results_table <- binded_table
 set.seed(123)
@@ -101,7 +105,7 @@ my_jittered_review$review_table %>%
   tally()
 ```
 
-The results table has new columns, in particular the review_check_* and review_comment_*. They can help to filter for the differences and explore.
+Le tableau des résultats comporte de nouvelles colonnes, en particulier review_check_* et review_comment_*. Elles peuvent aider à filtrer les différences et à explorer.
 
 ```{r}
 my_jittered_review$results_table %>%

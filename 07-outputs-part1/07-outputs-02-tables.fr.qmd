@@ -1,9 +1,10 @@
 ---
-title: "02 - Tables"
+title: "02 - Tableau"
 author: "Yann Say"
 date: last-modified
 ---
-# Outputs - Wide tables
+
+# Résultats - Tableaux larges
 
 ```{r}
 library(presentresults)
@@ -11,42 +12,42 @@ library(presentresults)
 my_results_table <- presentresults::presentresults_resultstable
 ```
 
-The framework is built around 4 steps: cleaning, composition, analysis, outputs
+Le cadre est construit autour de 4 étapes : nettoyage, composition, analyse, résultats.
 
--   *Cleaning*: Any manipulation to go from the raw data to the clean data
--   *Composition*: Any manipulation before the analysis e.g. adding indicators, adding information from loop, main dataset, or any other dataset (e.g. previous round), aok aggregation, etc.
--   *Analysis*: Any manipulation regarding only the analysis. 
--   *Outputs*: Any manipulation to format the outputs. Outputs are created from the results table, from the stat + analysis key
+-   **Nettoyage** : toute manipulation nécessaire pour passer des données brutes aux données propres.
+-   **Composition** : toute manipulation préalable à l'analyse, par exemple l'ajout d'indicateurs, l'ajout d'informations provenant de la boucle ou des données principales, l'agrégation AOK, etc.
+-   **Analyse** : toute manipulation liée à l'analyse uniquement.
+-   **Résultats** : toute manipulation nécessaire à la mise en forme des résultats.
 
-The following section will present some introduction about the outputs.
+La section suivante présente une introduction sur les résultats.
 
-![](../config/images/step - outputs.png)
+![](../config/images/step%20-%20outputs.png)
 
-There are currently two types of table: 
+Il existe actuellement deux types de tableaux :
 
-- one that have the variables in the rows and the disagregation in the columns,
-- one that have the disagregation in the rows and the variables in the columns.
+- un tableau dont les lignes contiennent les variables et les colonnes la désagrégation,
+- un tableau dont les lignes contiennent la désagrégation et les colonnes les variables.
 
-There are two steps to turn a results table:
+La transformation d'un tableau de résultats se fait en deux étapes :
 
-- Turn the long results table to a large results table.
-- Format and export it to Excel.
+- Transformer le tableau long de résultats en un tableau large de résultats.
+- Formatez et exportez le tableau vers Excel.
 
 ::: {.callout-tip appearance="minimal"}
-### create\_\*
+### Créer (create\_\*)
 
-![](../config/images/verb - create.png)
+![](../config/images/verb%20-%20create.png)
 
-**create_**\* functions will create, transform something, e.g. creating a cleaning log with the checks to be filled, create analysis results table, create an output.
+Les fonctions **create\_**\* créeront, transformeront quelque chose, par exemple, créer un journal de nettoyage avec les vérifications à remplir, créer une table de résultats d'analyse, créer un résultat.
 
-Outputs from **create_**\* functions outputs can be in different shape, format, etc. 
+Les résultats des fonctions **create\_**\* peuvent avoir différentes formes, formats, etc.
 
-**create_**\* function is catch-all.
+La fonction **create\_**\* est un fourre-tout.
 :::
 
-## create_*_group_x_variable
+## create\_\*\_group_x_variable
 
-Wide table with the groups in the rows and the variables in the columns.
+Tableau large avec les groupes dans les lignes et les variables dans les colonnes.
 
 ```{r}
 my_results_table %>% 
@@ -54,11 +55,11 @@ my_results_table %>%
   create_xlsx_group_x_variable(file_path = "../outputs/04 - example - group_x_variable.xlsx", overwrite = T)
 ```
 
-![](../config/images/table group x variables.png)
+![](../config/images/table%20group%20x%20variables.png)
 
-## create_*_variable_x_group
+## create\_\*\_variable_x_group
 
-Wide table with the variables in the rows and the groups in the columns.
+Tableau large avec les variables dans les lignes et les groupes dans les colonnes.
 
 ```{r}
 my_results_table %>% 
@@ -66,9 +67,9 @@ my_results_table %>%
   create_xlsx_variable_x_group(file_path = "../outputs/05 - example - variable_x_group.xlsx", overwrite = T)
 ```
 
-![](../config/images/table variables x group.png)
+![](../config/images/table%20variables%20x%20group.png)
 
-## Downloads
+## Téléchargements
 
-- [04 - example - group_x_variable](../outputs/04 - example - group_x_variable.xlsx)
-- [05 - example - variable_x_group](../outputs/05 - example - variable_x_group.xlsx)
+-   [04 - example - group_x_variable](../outputs/04%20-%20example%20-%20group_x_variable.xlsx)
+-   [05 - example - variable_x_group](../outputs/05%20-%20example%20-%20variable_x_group.xlsx)

@@ -54,15 +54,14 @@ analysis_for_review <- create_analysis(my_design_for_review, my_loa_for_review, 
 binded_table <- my_results$results_table %>% 
   left_join(analysis_for_review$results_table, by = "analysis_key")
 ```
-The binded table, i.e. with both results columns, can then be used to compared the 2 results. It will give back the results table and a review table.
+The binded table, i.e. with both results columns, can then be used to compared the 2 results
 ```{r}
 my_review <- review_analysis(binded_table)
 
 typeof(my_review)
 names(my_review)
 ```
-The review table will tell if there is any difference.
-
+`review_analysis` returns the results table and a review table. The review table will indicate if there is a difference.
 ```{r}
 my_review$review_table %>%
   head()

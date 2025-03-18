@@ -81,7 +81,7 @@ impact_palettes
 
 ## Errors and number of colors
 
-The palette should have enough color to match the scale fill. The impact palette only has 3 colors while the graph needs 4.
+The palette must have enough colours to match the number of categories. In the example below, the `impact` palette has only 3 colours, whereas the graphic needs 4.
 
 ```{r, error=TRUE}
 data_to_plot <- presentresults::presentresults_MSNA2024_labelled_results_table |>

@@ -95,7 +95,7 @@ Puede haber 5 o 6 clases, como se indica a continuación:
 
 ## Solución de problemas
 
-Si tiene más de un valor por indicador y nivel administrativo, debería recibir una advertencia de **tidyr**. Puede usar esta advertencia para explorar dónde está el problema.
+Si tiene más de un valor por indicador y nivel administrativo, debería recibir una advertencia de `tidyr`. Puede usar esta advertencia para explorar dónde está el problema.
 
 ```{r}
 results_table %>% 

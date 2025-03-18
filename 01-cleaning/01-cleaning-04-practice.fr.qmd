@@ -23,13 +23,13 @@ my_kobo_choice <- cleaningtools::cleaningtools_choices
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Cliquez pour obtenir un indice
+### Agrandir pour obtenir un indice
 
 Essayez la fonction `check_pii`.
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Cliquez pour obtenir la réponse
+### Agrandir pour obtenir la réponse
 
 ```{r}
 #| output: false
@@ -44,19 +44,19 @@ my_raw_dataset %>%
 
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Cliquez pour obtenir un indice
+### Agrandir pour obtenir un indice
 
 Essayez la fonction `check_percentage_missing`.
 :::
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Cliquez pour obtenir un indice
+### Agrandir pour obtenir un indice
 
 Avez vous essayer d'ajouter une colonne avec `add_percentage_missing`?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Cliquez pour obtenir la réponse
+### Agrandir pour obtenir la réponse
 
 ```{r}
 #| output: false
@@ -112,7 +112,7 @@ my_raw_dataset %>%
 ```
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Cliquez pour obtenir la réponse
+### Agrandir pour obtenir la réponse
 
 ```{r}
 #| output: false
@@ -136,7 +136,7 @@ my_raw_dataset %>%
 -   Essayaer d'ajouter la durée à des fichiers audits.
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Cliquez pour obtenir un indice
+### Agrandir pour obtenir un indice
 
 Essayez `create_audit_list()` et `add_duration_from_audit()`
 :::

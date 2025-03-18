@@ -83,7 +83,7 @@ impact_palettes
 
 ## Errores y número de colores
 
-La paleta debe tener suficientes colores para coincidir con la escala de relleno. La paleta de impacto solo tiene 3 colores, mientras que el gráfico necesita 4.
+La paleta debe tener suficientes colores para el número de categorías. En el ejemplo siguiente, la paleta `impact` sólo tiene 3 colores, mientras que el gráfico necesita 4.
 
 ```{r, error=TRUE}
 data_to_plot <- presentresults::presentresults_MSNA2024_labelled_results_table |>

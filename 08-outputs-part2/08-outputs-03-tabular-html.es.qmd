@@ -10,15 +10,14 @@ Las carpetas *templates-quarto* son ejemplos de proyectos Quarto. Pueden usarse 
 ![](../config/images/tabular_html_folder.png)
 ![](../config/images/tabular_html_quarto_file.png)
 
-Los parámetros en el encabezado se pueden modificar. Use *Render* después para crear el resultado en formato HTML.
+Los parámetros en el encabezado (`params`) se pueden modificar. Use *Render* después para crear el resultado en formato HTML.
 
 
 ![](../config/images/tabular_html_output.png)
 
 
 ::: {.callout-note .column-margin}
-**Lo siguiente está en desarrollo.** Más adelante se convertirá en algo como *create_html_variable_x_group*.
-
+**Se trata de un trabajo en curso**. Aún queda mucho por hacer.
 :::
 
 ## Descargas

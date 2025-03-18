@@ -1,14 +1,14 @@
 ---
-title: "03 - Practice (7)"
+title: "03 - Pratique (7)"
 author: "Yann Say"
 date: last-modified
 ---
 
-# Practice
+# Pratique
 
-## Practice 1
+## Pratique 1
 
-- Add labels to the following results table. 
+- Ajoutez des étiquettes au tableau de résultats suivant. 
 ```{r}
 library(dplyr)
 library(presentresults)
@@ -31,13 +31,13 @@ head(label_exercise_kobo_choices)
 ```
 
 ::: {.callout-note collapse="true" appearance="minimal"}
-### Expand to get a hint
+### Agrandir pour obtenir un indice
 
-Did you try the argument *label_column* in `review_kobo_labels` and `create_label_dictionary` ?
+Avez-vous essayé l'argument *label_column* dans `review_kobo_labels` et `create_label_dictionary` ?
 :::
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Agrandir pour obtenir la réponse
 
 ```{r}
 #| output: false
@@ -60,9 +60,9 @@ results_table_labeled <- add_label_columns_to_results_table(
 ```
 :::
 
-## Practice 2
+## Pratique 2
 
-- Create an excel table with the strata in the rows and the variables in the columns.
+- Créez un tableau Excel avec les strates dans les lignes et les variables dans les colonnes.
 
 ```{r}
 #| message: false
@@ -76,7 +76,7 @@ exercise_outputs <- readxl::read_excel("../inputs/10 - exercise - analysis_to_re
 ```
 
 ::: {.callout-tip collapse="true" appearance="minimal"}
-### Expand to get the answer
+### Agrandir pour obtenir la réponse
 
 ```{r}
 #| output: false
@@ -87,7 +87,7 @@ exercise_outputs %>%
 ```
 :::
 
-## Downloads
+## Téléchargements
 
 - [11 - exercise - analysis_to_review](../inputs/11 - exercise - label.xlsx)
 - [10 - exercise - analysis_to_review](../inputs/10 - exercise - analysis_to_review.xlsx)
