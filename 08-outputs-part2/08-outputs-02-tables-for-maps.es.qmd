@@ -15,7 +15,7 @@ set.seed(12344)
 results_table$stat <-runif(nrow(results_table))
 ```
 
-Esta viñeta mostrará un ejemplo de cómo crear una tabla para la herramienta **MSNA Indicator Maps 1.2**.
+Esta viñeta mostrará un ejemplo de cómo crear una tabla para la [herramienta MSNA Indicator Maps 1.2](https://acted.sharepoint.com/:f:/s/IMPACTHQ-HumanitarianPlanningPrioritization/EtqbotKFYatCsw58xxHf338BHFnGIwNxm-RzJU5rbkuREQ?e=bLwe7a).
 
 ## `create_table_for_map`
 
@@ -62,14 +62,14 @@ Puede haber 5 o 6 clases, como se indica a continuación:
 ::: {.column width="45%"}
 ### 5 clases
 
-| Class | Value         |
-|-------|---------------|
-| 1     | 0             |
-| 2     | \<= 25%       |
-| 3     | \<= 50%       |
-| 4     | \<= 75%       |
-| 5     | \<= 100%      |
-| empty | Anything else |
+| Class | Value               |
+|-------|---------------------|
+| 1     | 0                   |
+| 2     | \<= 25%             |
+| 3     | \<= 50%             |
+| 4     | \<= 75%             |
+| 5     | \<= 100%            |
+| vacio | Cualquier otra cosa |
 :::
 
 ::: {.column width="10%"}
@@ -79,15 +79,15 @@ Puede haber 5 o 6 clases, como se indica a continuación:
 ::: {.column width="45%"}
 ### 6 clases
 
-| Class | Value         |
-|-------|---------------|
-| 1     | 0             |
-| 2     | \<= 20%       |
-| 3     | \<= 40%       |
-| 4     | \<= 60%       |
-| 5     | \<= 80%       |
-| 6     | \<= 100%      |
-| empty | Anything else |
+| Class | Value               |
+|-------|---------------------|
+| 1     | 0                   |
+| 2     | \<= 20%             |
+| 3     | \<= 40%             |
+| 4     | \<= 60%             |
+| 5     | \<= 80%             |
+| 6     | \<= 100%            |
+| vacio | Cualquier otra cosa |
 :::
 
 ::::

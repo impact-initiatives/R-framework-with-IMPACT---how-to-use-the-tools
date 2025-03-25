@@ -15,7 +15,7 @@ set.seed(12344)
 results_table$stat <-runif(nrow(results_table))
 ```
 
-This vignette will show an example of how to create a table for the MSNA Indicator Maps 1.2 tool.
+This vignette will show an example of how to create a table for the [MSNA Indicator Maps 1.2 tool](https://acted.sharepoint.com/:f:/s/IMPACTHQ-HumanitarianPlanningPrioritization/EtqbotKFYatCsw58xxHf338BHFnGIwNxm-RzJU5rbkuREQ?e=bLwe7a).
 
 ## `create_table_for_map`
 
